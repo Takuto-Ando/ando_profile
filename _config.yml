@@ -63,21 +63,30 @@ author:
             専攻科 
             電気電子情報工学専攻 2年"
   links:
-     - label: "GitHub"
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://"
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/"
+    - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/your-username"
-    - label: "ResearchGate"
-      icon: "fas fa-fw fa-graduation-cap"
-      url: "https://www.researchgate.net/profile/Takuto-Ando"
+      url: "https://github.com/"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://instagram.com/"
 
 footer:
   links:
+    - label: "Twitter"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://twitter.com/"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/your-username"
-    - label: "ResearchGate"
-      icon: "fas fa-fw fa-graduation-cap"
-      url: "https://www.researchgate.net/profile/Takuto-Ando"
+      url: "https://github.com/"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://instagram.com/"
 
 defaults:
   # _posts
@@ -108,7 +117,7 @@ tag_archive:
 
 google_analytics: GT-WRF24CXG
 
-languages: ['ja', 'en']
+languages: ['ja', 'ko', 'en']
 default_lang: 'ja'
 exclude_from_localization: ['javascript', 'images', 'css']
 parallel_localization: false
