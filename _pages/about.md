@@ -1,6 +1,7 @@
 ---
 permalink: /about/
 title: "About"
+lang: 'ja'
 ---
 
 AI推論処理のハードウェア実装
