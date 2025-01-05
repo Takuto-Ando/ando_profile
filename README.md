@@ -1,4 +1,4 @@
-# GoOGleSearchTest(https://github.com/Takuto-Ando/ando_profile)
+# [GoOGleSearchTest](https://github.com/Takuto-Ando/ando_profile)
 Githubがgoogle探索に引っかかるようにテスト
 
 # Minimal Mistakes remote theme starter
