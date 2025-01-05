@@ -63,18 +63,22 @@ author:
   bio    : "大分工業高等専門学校 専攻科 
             電気電子情報工学専攻 2年"
   links:
-    - label: "Website"
+    - label: "researchmap"
       icon: "fas fa-fw fa-link"
-      url: "https://"
+      url: "https://researchmap.jp/takuto_ando"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/Takuto-Ando"
 
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
-      url: "https://github.com/"
+      url: "https://github.com/Takuto-Ando"
+    - label: "researchmap"
+      icon: "fas fa-fw fa-link"
+      url: "https://researchmap.jp/takuto_ando"
+      
 
 
 defaults:
