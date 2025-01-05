@@ -16,7 +16,8 @@
 title: Takuto ANDO'profile
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  安藤 拓翔のプロフィールサイトです。研究活動やプロジェクトについて紹介します。
+大分高専の安藤 拓翔です。研究活動やプロフィールについて紹介します。
+
 twitter_username: username
 github_username: username
 minimal_mistakes_skin: default
@@ -78,7 +79,7 @@ footer:
     - label: "researchmap"
       icon: "fas fa-fw fa-link"
       url: "https://researchmap.jp/takuto_ando"
-      
+
 
 
 defaults:
