@@ -3,10 +3,11 @@ main:
     url: /about/
   - title: "経歴"
     url: /biography/
-  - title: "Posts"
+  - title: "研究業績"
+    url: /publications/
+  - title: "趣味"
+    url: /hobby/
+  - title: "ポートフォリオ"
+    url: /portfolio/
+  - title: "投稿"
     url: /posts/
-  - title: "Categories"
-    url: /categories/
-  - title: "Tags"
-    url: /tags/
-  
