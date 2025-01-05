@@ -56,6 +56,7 @@ plugins:
   - jekyll-feed
   - jemoji
   - jekyll-include-cache
+  - jekyll-sitemap
 
 author:
   name   : "First Lastname"
@@ -113,3 +114,5 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+
+google_analytics: G-SXLHRP1FQZ
