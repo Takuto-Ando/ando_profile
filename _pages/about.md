@@ -1,6 +1,6 @@
 ---
 permalink: /about/
-title: "About"
+title: "研究内容"
 lang: 'ja'
 ---
 
