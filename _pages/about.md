@@ -3,6 +3,10 @@ permalink: /about/
 title: "About"
 ---
 
-Tempor velit sint sunt ipsum tempor enim ad qui ullamco. Est dolore anim ad velit duis dolore minim sunt aliquip amet commodo labore. Ut eu pariatur aute ea aute excepteur laborum. Esse ea esse excepteur minim mollit qui cillum excepteur ex dolore magna. Labore deserunt fugiat incididunt incididunt sint ea. Consequat dolore aute laboris quis proident quis non et est consectetur ex eiusmod sit culpa.
+AI推論処理のハードウェア実装
 
-Cupidatat ea do et in excepteur in. Ad nostrud ut est esse eu duis ea sunt eiusmod. Aliquip tempor veniam sint elit fugiat. Velit incididunt laboris amet incididunt labore dolore irure velit excepteur commodo deserunt laborum. Consectetur eu fugiat veniam veniam Lorem labore magna eiusmod. Ea occaecat reprehenderit pariatur consectetur minim labore ut aliquip.
+人間の表情を画像解析によって推定するシステムをハードウェア化し、消費電力の少ない効率的な処理方法について研究しています。 具体的には、FPGA(Field Programmable Gate Array)上のDNN (AI) アクセラレータを効果的に利用した表情認識システムを実装しました。TransformerをはじめとするSOTAな演算のハードウェア実装に興味があります。
+
+物体検出アルゴリズムの実応用
+
+高専５年次の卒業研究では、画像解析技術に関する研究に取り組み、効率的な小ねぎ調製のための小ねぎ分岐部検出アルゴリズムを開発しました。さらに、特に農工連携関係でYOLOやMask-RCNNといった深層学習モデルによる物体検出やセグメンテーションの実応用に取り組んでいます。
