@@ -57,6 +57,7 @@ plugins:
   - jemoji
   - jekyll-include-cache
   - jekyll-sitemap
+  - jekyll-polyglot
 
 author:
   name   : "安藤 拓翔 (あんどう たくと)"
@@ -116,4 +117,8 @@ tag_archive:
   path: /tags/
 
 google_analytics: GT-WRF24CXG
-lang: ja
+
+languages: ['ja', 'ko', 'en']
+default_lang: 'ja'
+exclude_from_localization: ['javascript', 'images', 'css']
+parallel_localization: false
