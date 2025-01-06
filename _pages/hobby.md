@@ -24,5 +24,5 @@ classes: wide
   </div>
 </div>
 
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/inui.jpg" style="width: 45%;">
-  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/momonga.jpg" style="width: 45%;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/inui.jpg" style="width: 45%;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/momonga.jpg" style="width: 45%;">
