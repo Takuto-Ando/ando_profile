@@ -15,6 +15,8 @@ lang: 'ja'
 画像を挿入
 ![profile](/assets/images/bio-photo.jpg)
 <figure>
-  <img src="{{ '/assets/images/bio-photo.jpg' | relative_url }}" alt="custom sidebar content example">
+  <img src="{{ '/assets/images/bio-photo.jpg' }}" alt="custom sidebar content example">
   <figcaption>Example of custom sidebar content added as YAML Front Matter.</figcaption>
 </figure>
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/imagge/bio-photo.jpg" alt="">
