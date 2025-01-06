@@ -28,6 +28,4 @@ lang: 'ja'
 
 
 
-
-
-![alt](/assets/images/ando_1.jpg)
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg)
