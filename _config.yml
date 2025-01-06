@@ -108,7 +108,7 @@ defaults:
       author_profile: true
       
 
-category_archive:
+potfolio:
   type: liquid
   path: /categories/
 tag_archive:
