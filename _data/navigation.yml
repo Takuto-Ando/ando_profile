@@ -11,6 +11,8 @@ main:
     url: /hobby/
   - title: "ポートフォリオ"
     url: /categories/
+  - title: "資料"
+    url: /presentations/
   - title: "投稿"
     url: /posts/
     target: _blank
