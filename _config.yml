@@ -31,6 +31,14 @@ paginate: 5 # amount of posts to show
 paginate_path: /page:num/
 timezone: Asia/Tokyo
 
+
+# Header
+excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
+header:
+  overlay_color: "#333"
+  tagline: "Takuto ANDO"
+
+
 include:
   - _pages
 
@@ -71,11 +79,7 @@ author:
       icon: "fab fa-fw fa-github"
       url: "https://github.com/Takuto-Ando"
 
-# Header
-excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
-header:
-  overlay_color: "#333"
-  tagline: "Takuto ANDO"
+
 
 footer:
   links:
