@@ -37,3 +37,4 @@ lang: 'ja'
 <div class="img_container">
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg){: height="36px" width="36px"}
 </div>
+<iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdf/ieice_kyusyu_ando.pdf" width="600" height="400"></iframe>
