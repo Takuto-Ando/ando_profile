@@ -19,7 +19,7 @@ classes: wide
 大分工業高等専門学校 専攻科 電気電子情報工学専攻 2年(B4) の安藤拓翔です。
 私の学術的関心は、画像処理、AI、およびAIアクセラレータを活用した実装技術にあります。これらの技術により実社会の課題を解決する効率的で実用的なソリューションの開発に取り組んでいます。
 
-<figure style="width: 250px" class="align-right">
+<figure style="width: 300px" class="align-right">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg" alt="">
 
 </figure> 
