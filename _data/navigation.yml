@@ -7,8 +7,8 @@ main:
     url: /biography/
   - title: "研究業績"
     url: /publications/
-  # - title: "資料"
-  #   url: /presentations/
+  - title: "資料"
+    url: /presentations/
   - title: "趣味"
     url: /hobby/
   - title: "ポートフォリオ"
