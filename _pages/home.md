@@ -1,21 +1,24 @@
 ---
 permalink: /home/
-title: "ホーム"
+title: "Profile"
 lang: 'ja'
 
 
-# Header
-excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
-header:
-  overlay_color: "#333"
-  tagline: "Takuto ANDO"
+# # Header
+# excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
+# header:
+# # 色はグレー
+#   overlay_color: "#7d7d7d"
+#   tagline: "Takuto ANDO"
 ---
 
 
 
 
-
 大分工業高等専門学校 専攻科 電気電子情報工学専攻 2年(B4) の安藤拓翔です。
+私の学術的関心は、画像処理、AI、およびAIアクセラレータを活用した実装技術にあります。これらの技術により実社会の課題を解決する効率的で実用的なソリューションの開発に取り組んでいます。
+
+
 画像処理とAIアクセラレーションの応用研究を行っています。
 2025年4月から奈良先端科学技術大学院大学(NAIST) 情報科学領域 に進学する予定です。
 
