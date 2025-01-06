@@ -2,6 +2,7 @@
 permalink: /home/
 title: "Profile"
 lang: 'ja'
+classes: wide
 
 
 # # Header

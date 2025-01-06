@@ -2,6 +2,7 @@
 permalink: /publications/
 title: "研究業績"
 lang: 'ja'
+classes: wide
 ---
 
 ## 国際論文誌 (査読付き)

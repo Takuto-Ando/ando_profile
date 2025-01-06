@@ -2,6 +2,7 @@
 permalink: /hobby/
 title: "趣味"
 lang: 'ja'
+classes: wide
 ---
 
 * 筋トレ
