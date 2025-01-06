@@ -29,3 +29,8 @@ lang: 'ja'
 
 
 ![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg)
+<div class="img_container">
+
+![alt]({{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg){: height="36px" width="36px"}
+
+</div>
