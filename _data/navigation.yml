@@ -10,7 +10,7 @@ main:
   - title: "趣味"
     url: /hobby/
   - title: "ポートフォリオ"
-    url: /portfolio/
+    url: /categories/
   - title: "投稿"
     url: /posts/
     target: _blank

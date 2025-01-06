@@ -1,11 +1,6 @@
 ---
+title: "Posts by Category"
+layout: categories
 permalink: /categories/
-title: "ポートフォリオ"
 author_profile: true
-lang: 'ja'
-entries_layout: grid
-classes: wide
 ---
-
-
-
