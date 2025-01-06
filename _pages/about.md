@@ -2,6 +2,7 @@
 permalink: /about/
 title: "研究内容"
 lang: 'ja'
+classes: wide
 ---
 
 ## AI推論処理のハードウェア実装
