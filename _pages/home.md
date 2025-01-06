@@ -20,3 +20,5 @@ lang: 'ja'
 </figure>
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/imagge/bio-photo.jpg" alt="">
+
+![alt](/assets/images/bio-photo.jpg)
