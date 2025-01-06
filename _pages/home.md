@@ -2,23 +2,29 @@
 permalink: /home/
 title: "ホーム"
 lang: 'ja'
+
+
+# Header
+excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
+header:
+  overlay_color: "#333"
+  tagline: "Takuto ANDO"
 ---
+
+
+
+
 
 大分工業高等専門学校 専攻科 電気電子情報工学専攻 2年(B4) の安藤拓翔です。
 画像処理とAIアクセラレーションの応用研究を行っています。
 2025年4月から奈良先端科学技術大学院大学(NAIST) 情報科学領域 に進学する予定です。
 
 発表は国内学会・研究会が４回，国際会議が２回の経験があります。
-論文は国際会議プロシーディングスも含めて
-国際3本、国内1本の研究業績があります。
+論文は国際会議プロシーディングスも含めて、国際3本、国内1本の研究業績があります。
 
-画像を挿入
-![profile](/assets/images/bio-photo.jpg)
-<figure>
-  <img src="{{ '/assets/images/bio-photo.jpg' }}" alt="custom sidebar content example">
-  <figcaption>Example of custom sidebar content added as YAML Front Matter.</figcaption>
-</figure>
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/imagge/bio-photo.jpg" alt="">
 
-![alt](/assets/images/bio-photo.jpg)
+
+
+
+![alt](/assets/images/ando_1.jpg)
