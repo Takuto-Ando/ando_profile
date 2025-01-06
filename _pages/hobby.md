@@ -14,10 +14,10 @@ classes: wide
 
 
 <div style="margin: 50px 0; display: flex; justify-content: center; gap: 60px; align-items: center;">
-    <div style="text-align: center;">
-        <img src="{{ site.url }}{{ site.baseurl }}/assets/images/inui.jpg" style="width: 45">
-    </div>
-    <div style="text-align: center;">
-        <img src="{{ site.url }}{{ site.baseurl }}/assets/images/momonga.jpg" style="width: 45%;">
-    </div>
+<div style="text-align: center;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/inui.jpg" style="width: 45">
+</div>
+<div style="text-align: center;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/momonga.jpg" style="width: 45%;">
+</div>
 </div>
