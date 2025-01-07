@@ -15,8 +15,3 @@ classes: wide
 
 高専５年次の卒業研究では、画像解析技術に関する研究に取り組み、効率的な小ねぎ調製のための小ねぎ分岐部検出アルゴリズムを開発しました。さらに、特に農工連携関係でYOLOやMask-RCNNといった深層学習モデルによる物体検出やセグメンテーションの実応用に取り組んでいます。
 
-<div style="margin: 50px 0; display: flex; justify-content: center; gap: 60px; align-items: center;">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/negi_yolo.png" style="width: 45%;">
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/negi_seg.png" style="width: 45%;">
-
-</div>
