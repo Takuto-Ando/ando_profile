@@ -10,8 +10,13 @@ lang: 'ja'
 
 ### スライド
 小ねぎセグメンテーション
-<iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/ieice_kyusyu_ando.pdf" width="500" height="700"></iframe>
+<!-- <iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/ieice_kyusyu_ando.pdf" width="500" height="700"></iframe> -->
 
+<div style="position: relative; padding-bottom: 130%; height: 0; overflow: hidden;">
+  <iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/ieice_kyusyu_ando.pdf" 
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;">
+  </iframe>
+</div>
 
 ### ポスター
 表情認識の研究
