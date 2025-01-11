@@ -2,7 +2,7 @@
 permalink: /presentations/
 title: "資料"
 lang: 'ja'
-layout: wide
+classes: wide
 ---
 
 
