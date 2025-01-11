@@ -22,7 +22,7 @@ lang: 'ja'
 表情認識の研究
 
 *The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies (SASIMI 2024)*
-<iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/sasimi_poster.pdf" width="500" height="970"></iframe>
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_poster.png" style="width: 45%;">
 
 
 <div style="
@@ -51,4 +51,3 @@ lang: 'ja'
   </iframe>
 </div>
 
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/31712b81ffbe4805832711d6c3b4f209" title="DPUを用いたマルチタスクDNN表情認識システムのFPGA実装" allowfullscreen="true" style="border: 0px; background: padding-box padding-box rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 315;" data-ratio="1.7777777777777777"></iframe>
