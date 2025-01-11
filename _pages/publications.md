@@ -24,12 +24,11 @@ classes: wide
 - **Takuto Ando**, Yusuke Inoue 
   "Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA,"  
   *2024 Twelfth International Symposium on Computing and Networking Workshops (CANDARW 2024)*,  
-  pp. 103-109, November 2024.  
+  pp. 103-109, December 2024. DOI: [10.1109/CANDARW64572.2024.00025](https://ieeexplore.ieee.org/document/10817888)  
 
 - **Takuto Ando**, Yusuke Inoue
   "FPGA Implementation of a DPU-Based Facial Expression Recognition System,"  
-  *The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies (SASIMI 2024)*,  
-  March 2024.  
+  *The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies (SASIMI 2024)*, March 2024.  
 
 ---
 
