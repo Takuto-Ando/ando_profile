@@ -2,6 +2,7 @@
 permalink: /presentations/
 title: "資料"
 lang: 'ja'
+layout: wide
 ---
 
 
@@ -22,7 +23,9 @@ lang: 'ja'
 表情認識の研究
 
 *The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies (SASIMI 2024)*
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_poster.png" style="width: 45%;">
+<div style="text-align: center;">
+    <img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_poster.png" style="width: 70%;">
+</div>
 
 
 <div style="
