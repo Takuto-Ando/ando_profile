@@ -38,6 +38,7 @@ classes: wide
   </iframe>
 </div>
 
+<br>
 
 
 # 物体検出アルゴリズムの実応用
