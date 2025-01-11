@@ -11,7 +11,6 @@ layout: wide
 
 ### スライド
 小ねぎセグメンテーション
-
 <div style="
   position: relative;
   display:block;
