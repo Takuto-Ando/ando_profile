@@ -3,14 +3,6 @@ permalink: /
 title: "Profile"
 lang: 'ja'
 classes: wide
-
-
-# # Header
-# excerpt: "This post should display a **header with a solid background color**, if the theme supports it."
-# header:
-# # 色はグレー
-#   overlay_color: "#7d7d7d"
-#   tagline: "Takuto ANDO"
 ---
 
 
