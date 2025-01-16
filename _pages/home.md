@@ -3,6 +3,7 @@ permalink: /
 title: "Profile"
 lang: 'ja'
 classes: wide
+author_profile: true
 ---
 
 
