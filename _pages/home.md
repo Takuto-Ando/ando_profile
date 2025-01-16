@@ -1,5 +1,5 @@
 ---
-permalink: /home/
+permalink: /
 title: "Profile"
 lang: 'ja'
 classes: wide
