@@ -4,7 +4,7 @@ title: "経歴"
 lang: 'ja'
 classes: wide
 ---
-<div style="font-size: 1.2em;">
+<div style="font-size: 1.1em;">
 
 ## 学歴/進路
 
