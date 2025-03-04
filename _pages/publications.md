@@ -11,7 +11,7 @@ classes: wide
 
 |                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------|
-| **Takuto Ando**, Yusuke Inoue "DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System," *ICIC Express Letters (in press)*, 2025. |
+| **Takuto Ando**, Yusuke Inoue "DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System," *ICIC Express Letters 19 (4) 419 - 426*, April 2025. |
 
 ---
 
