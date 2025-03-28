@@ -16,7 +16,7 @@
 title: 安藤 拓翔 (ANDO takuto)のプロフィール
 email:
 description: >- # this means to ignore newlines until "baseurl:"
-  大分高専の安藤 拓翔です。研究活動やプロフィールについて紹介します。
+  奈良先端大の安藤 拓翔です。研究活動やプロフィールについて紹介します。
 twitter_username: username
 github_username: username
 minimal_mistakes_skin: default
@@ -64,9 +64,9 @@ plugins:
 author:
   name   : "安藤 拓翔 (ANDO takuto)"
   avatar : "/assets/images/bio.png"
-  bio    : "大分工業高等専門学校 専攻科 
-            電気電子情報工学専攻 2年"
-  location: "Oita"
+  bio    : "奈良先端科学技術大学院大学 先端科学技術研究科 情報科学領域 
+            博士課程前期 1年"
+  location: "Nara"
   links:
     - label: "researchmap"
       icon: "fas fa-fw fa-link"
