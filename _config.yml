@@ -14,7 +14,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: 安藤 拓翔 (ANDO takuto)のプロフィール
-email:
+email: antaku7585@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   奈良先端大の安藤 拓翔です。研究活動やプロフィールについて紹介します。
 twitter_username: username
