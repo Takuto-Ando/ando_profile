@@ -15,9 +15,11 @@ IMAXの基本設計は、処理ユニット（PE）とキャッシュメモリ�
 修士課程では、世の中の人にIMAXの存在を知ってもらうために、論文投稿や学会発表をたくさん行うつもりです。
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+
 <div style="text-align: center;">imax4(左)とimax3(右) (掲載許可済み)</div>
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+
 <div style="text-align: center;">VPK120x1とVPK180x4で構成されたIMAX4のプロトタイプ (掲載許可済み)</div>
 
 ## 高専での研究
