@@ -13,8 +13,12 @@ IMAXの基本設計は、処理ユニット（PE）とキャッシュメモリ�
 私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMアプリケーション実装や評価をすることで、IMAXプロジェクトに貢献しています。
 
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+imax4(左)とimax3(右) (掲載許可済み)
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+VPK120x1とVPK180x4で構成されたIMAX4のプロトタイプ (掲載許可済み)
 
 ## 高専での研究
 ### AI推論処理のハードウェア実装
