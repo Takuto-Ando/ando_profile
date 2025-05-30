@@ -13,6 +13,8 @@ IMAXの基本設計は、処理ユニット（PE）とキャッシュメモリ�
 私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMアプリケーション実装や評価をすることで、IMAXプロジェクトに貢献しています。
 
 
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imx_system_fig.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
+
 
 ## 高専での研究
 ### AI推論処理のハードウェア実装
