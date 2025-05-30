@@ -10,9 +10,9 @@ classes: wide
 現在は、奈良先端大 コンピューティング・アーキテクチャ研究室で開発された、CGRAベースのハードウェアアクセラレータであるIMAX (In-Memory Accelerator eXtension)に関わる研究をしています。
 IMAXの基本設計は、処理ユニット（PE）とキャッシュメモリを交互に配置する線形アレイ構造にあり、ローカルメモリの徹底活用と不規則メモリアクセスの効率化を目指しています。
 これにより高いスループットに加えて、エネルギー効率を維持することができます。
-私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMアプリケーション実装や評価をすることで、IMAXプロジェクトに貢献しています。
 
-
+私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMアプリケーション実装や評価、メモリアクセスの最適化をすることで、IMAXプロジェクトに貢献しています。
+修士課程では、世の中の人にIMAXの存在を知ってもらうために、論文投稿や学会発表をたくさん行うつもりです。
 
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
 <div style="text-align: center;">imax4(左)とimax3(右) (掲載許可済み)</div>
