@@ -27,6 +27,9 @@ classes: wide
 
 |                                                                                                         |
 |--------------------------------------------------------------------------------------------------------------|
+|**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
+|Yu Eto, **Takuto Ando**, Ayumu Takeuchi, Yasuhiko Nakashima "LLM Performance Bottlenecks on CGLA", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
+|Ayumu Takeuchi, Yu Eto, **Takuto Ando**, Yasuhiko Nakashima "Energy-Efficient FlashAttention Acceleration on CGLA", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
 | **Takuto Ando**, Yu eto, Yasuhiko Nakashima "Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator", 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC) Dec 2025.|
 | **Takuto Ando**, Yu eto, Yasuhiko Nakashima " A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment", *The 26th Workshop on Synthesis And System Integration of Mixed Information Technologies (SASIMI 2025)*, Oct 2025.  |
 | Yu eto, **Takuto Ando**,Yasuhiko Nakashima "Performance Evaluation of Flan-T5 in CGLA Based Accelerators", *2025 IEEE 38th International System-on-Chip Conference (SOCC) - Special Session 2*, Oct 2025.  |
