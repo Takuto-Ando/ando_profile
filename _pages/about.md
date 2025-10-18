@@ -4,6 +4,7 @@ title: "研究内容"
 lang: 'ja'
 classes: wide
 ---
+
 ## 現在の研究
 
 近年、大規模言語モデル（LLM）や生成AIの急速な発展は、社会に大きな変革をもたらしています。この爆発的な計算需要を支えているのがGPUです。しかし、その驚異的な性能は、膨大な消費電力と引き換えに得られており、データセンターのエネルギー消費量は今や地球規模の社会課題となりつつあります。GPUは本質的に電力効率を突き詰めたアーキテクチャではなく、むしろ豪華なメモリバスといった力業で性能を稼いでいます。このアーキテクチャが、今後もAIの進化を支え続ける持続可能な基盤とは言えません。
@@ -21,6 +22,10 @@ IMAXの基本設計は、演算ユニットとキャッシュメモリを交互�
 
 私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMやAIアプリケーション実装や評価、メモリアクセスの最適化をすることで、IMAXプロジェクトに貢献しています。
 
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax3andimax4.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+
+
 私は、このIMAXのポテンシャルを実証し、さらなる発展に貢献するため、現代のAIを代表する最先端モデルの実装と評価を行っています。修士課程では、世の中の人にIMAXの存在を知ってもらうために、論文投稿や学会発表を積極的に行います(査読付き国際会議4本採択 : 2025/04~10現在)。
 
 * **大規模言語モデル（LLM）の実行とボトルネック分析** (SASIMI 2025, SOCC 2025 採択):
@@ -28,20 +33,18 @@ IMAXの基本設計は、演算ユニットとキャッシュメモリを交互�
 * **多様な生成AIアプリケーションの実装と最適化** (MCSoC 2025, CANDAR 2025 採択):
 LLMに留まらず、画像生成モデル「Stable Diffusion」や音声認識モデル「Whisper」といった、計算特性の異なる多様なAIアプリケーションをIMAX上に実装しました。特に、Whisperモデルの実装では、IMAXのアーキテクチャ特性を活かしたFP16演算カーネルを新たに実装・評価し、性能と精度のバランスを最適化する知見を得ました。これらの取り組みを通じて、IMAXが特定の用途に縛られない、汎用性の高いAIアクセラレータであることを証明しています。
 
+
+
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+
+VPK120x1とVPK180x4で構成されたIMAX4のプロトタイプ (掲載許可済み)
+
 これらの研究開発では、C言語を用いたプログラミングを通じて、メモリアクセスのパターンを最適化し、IMAXのハードウェア資源を最大限に活用する工夫が求められます。ハードウェアの深い理解に基づいたソフトウェアの作り込みも、ハードウェアの性能を引き出すポイントであることを、実践を通して学んでいます。
 
 
 
 
 
-
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
-
-imax4(左)とimax3(右) (掲載許可済み)
-
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
-
-VPK120x1とVPK180x4で構成されたIMAX4のプロトタイプ (掲載許可済み)
 
 ## 高専での研究
 ### AI推論処理のハードウェア実装
