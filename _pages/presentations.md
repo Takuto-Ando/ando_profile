@@ -9,7 +9,7 @@ classes: wide
   <p>研究内容をより直感的に伝えるためのスライドやポスター資料を公開しています。AIアクセラレータや画像処理の取り組みを視覚的に知りたい方はこちらをご覧ください。</p>
   <ul class="summary-list">
     <li><span>スライド</span> 画像処理・AI最適化の事例紹介</li>
-    <li><span>ポスター</span> 国際会議での受賞研究を掲載</li>
+    <li><span>ポスター</span> 国際会議での発表資料掲載</li>
   </ul>
 </div>
 
@@ -47,7 +47,16 @@ classes: wide
 
 ## ポスター
 
+
+
+
 <div class="content-card">
+
+<h3> CGLA<h3>
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/socc_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
+
+<iframe src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/sasimi2025_poster.png" width="600" height="400"></iframe>
+
   <h3>表情認識の研究</h3>
   <p>CGRAとFPGAを活用した表情認識システムの研究成果をまとめたポスターです。国際会議SASIMI 2024で発表し、低消費電力かつ高性能な推論実装のポイントを解説しています。</p>
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
