@@ -38,7 +38,7 @@ AIや画像処理技術を、それを支える計算機アーキテクチャの
 * WhisperやStable Diffusionなど多様な生成AIアプリケーションをIMAXに移植し、FP16カーネル設計やデータフロー最適化による省電力化を実証
 * エッジからサーバまでスケールするCGRAアーキテクチャの設計検討と、研究成果の論文化・学会発信
 
-<figure style="width: 500px" class="center">
+<figure style="width: 300px" class="center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_presen.jpg" alt="">
 
 </figure> 
