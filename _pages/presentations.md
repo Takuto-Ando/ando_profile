@@ -28,6 +28,7 @@ classes: wide
   padding-bottom: 75%;
   top: 50%;"
 >
+
   <iframe 
     src="https://speakerdeck.com/player/f027bc23215946868b187e68bec91c37" title="小ねぎ調製位置検出のためのインスタンスセグメンテーション" 
     style="
@@ -55,7 +56,7 @@ classes: wide
 <h3> CGLA<h3>
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/socc_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/sasimi2025_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
+<img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi2025_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
 <h3>表情認識の研究</h3>
   <p>CGRAとFPGAを活用した表情認識システムの研究成果をまとめたポスターです。国際会議SASIMI 2024で発表し、低消費電力かつ高性能な推論実装のポイントを解説しています。</p>
