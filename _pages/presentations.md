@@ -53,9 +53,11 @@ classes: wide
 
 <div class="content-card">
 
-<h3> CGLA<h3>
+<h3>CGLA</h3>
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/socc_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
+<!-- 隙間 -->
+<br>
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi2025_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
 <h3>表情認識の研究</h3>
