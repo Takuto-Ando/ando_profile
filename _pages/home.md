@@ -18,7 +18,6 @@ classes: wide
 
 奈良先端科学技術大学院大学(NAIST) 修士課程1年 コンピューティング・アーキテクチャ研究室 の安藤 拓翔です。
 AIや画像処理技術を、それを支える計算機アーキテクチャの視点から探求し、実社会の課題を解決するハードウェア・ソフトウェアの開発に取り組んでいます。研究成果は、積極的に学会発表および論文投稿の形で公表/発表しております。
-
 <figure style="width: 300px" class="align-right">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/ando_1.jpg" alt="">
 
@@ -29,7 +28,7 @@ AIや画像処理技術を、それを支える計算機アーキテクチャの
 
 研究発表は国内学会・研究会が５回、国際会議が6回の経験があります。
 論文(主著)は国際会議プロシーディングスも含めて、国際6本、国内1本の研究業績があります。
-このうち、奈良先端大での研究業績は、国際4，受賞2となります。
+このうち、奈良先端大での研究業績は、国際4件，受賞2件となります。
 
 
 
@@ -38,7 +37,7 @@ AIや画像処理技術を、それを支える計算機アーキテクチャの
 * WhisperやStable Diffusionなど多様な生成AIアプリケーションをIMAXに移植し、FP16カーネル設計やデータフロー最適化による省電力化を実証
 * エッジからサーバまでスケールするCGRAアーキテクチャの設計検討と、研究成果の論文化・学会発信
 
-<figure style="width: 300px" class="center">
+<figure style="width: 500px" class="center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/sasimi_presen.jpg" alt="">
 
 </figure> 
