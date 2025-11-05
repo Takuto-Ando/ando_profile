@@ -18,9 +18,31 @@ classes: wide
 <div class="content-card">
   <h3>小ねぎセグメンテーション</h3>
   <p>小ねぎの分岐部検出アルゴリズムを中心に、古典的画像処理と深層学習を併用した研究内容をまとめたスライドです。現場導入に向けた課題と解決策を整理しています。</p>
-  <div class="embed-container">
-    <iframe src="https://speakerdeck.com/player/f027bc23215946868b187e68bec91c37" title="小ねぎ調製位置検出のためのインスタンスセグメンテーション" allowfullscreen></iframe>
-  </div>
+ <div style="
+  position: relative;
+  display:block;
+  margin:0 auto;
+  width: 100%;
+  max-width:780px;
+  max-height: 585px;
+  padding-bottom: 75%;
+  top: 50%;"
+>
+  <iframe 
+    src="https://speakerdeck.com/player/f027bc23215946868b187e68bec91c37" title="小ねぎ調製位置検出のためのインスタンスセグメンテーション" 
+    style="
+      position: absolute;
+      top: 0;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      max-width:780px;
+      max-height: 585px;
+      border: 0;
+    "
+  >
+  </iframe>
+</div>
 </div>
 
 ## ポスター
