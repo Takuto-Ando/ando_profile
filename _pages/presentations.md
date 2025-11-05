@@ -28,7 +28,20 @@ classes: wide
   padding-bottom: 75%;
   top: 50%;"
 >
-
+ <iframe 
+    src="https://speakerdeck.com/player/1b0060b0e2974a659464493d58e16eb0" title="IMAX3とIMAX4の性能評価" 
+    style="
+      position: absolute;
+      top: 0;
+      left: 0%;
+      width: 100%;
+      height: 100%;
+      max-width:780px;
+      max-height: 585px;
+      border: 0;
+    "
+  >
+  </iframe>
   <iframe 
     src="https://speakerdeck.com/player/f027bc23215946868b187e68bec91c37" title="小ねぎ調製位置検出のためのインスタンスセグメンテーション" 
     style="
@@ -53,7 +66,7 @@ classes: wide
 
 <div class="content-card">
 
-<h3>CGLA</h3>
+<h3>CGLA関係</h3>
 <img src="{{ site.url }}{{ site.baseurl }}/assets/images/socc_poster.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
 
 <!-- 隙間 -->
