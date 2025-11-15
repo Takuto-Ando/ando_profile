@@ -5,6 +5,8 @@ lang: 'ja'
 classes: wide
 ---
 
+{% include lang-switcher.html %}
+
 <div style="font-size: 1.1em;">
 
 ## 国際論文誌 (査読付き)

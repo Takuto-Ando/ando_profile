@@ -13,7 +13,7 @@ classes: wide
 #   tagline: "Takuto ANDO"
 ---
 
-
+{% include lang-switcher.html %}
 
 
 奈良先端科学技術大学院大学(NAIST) 修士課程1年 コンピューティング・アーキテクチャ研究室 の安藤 拓翔です。

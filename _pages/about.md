@@ -4,6 +4,9 @@ title: "研究内容"
 lang: 'ja'
 classes: wide
 ---
+
+{% include lang-switcher.html %}
+
 ## 研究キーワード
 ### コンピュータアーキテクチャ
 - ドメイン特化アーキテクチャ

@@ -1,0 +1,24 @@
+{% if site.languages and site.languages.size > 1 %}
+  <nav class="lang-switcher" aria-label="Language selection">
+    {% assign label_map = "ja:日本語,en:English" | split: "," %}
+    {% for lang in site.languages %}
+      {% assign lang_label = lang %}
+      {% for mapping in label_map %}
+        {% assign parts = mapping | split: ":" %}
+        {% if parts[0] == lang %}
+          {% assign lang_label = parts[1] %}
+        {% endif %}
+      {% endfor %}
+      {% if lang == site.active_lang %}
+        <span class="lang-switcher__item lang-switcher__item--current">{{ lang_label }}</span>
+      {% elsif page.permalink %}
+        {% assign target_url = page.permalink | polyglot_link: lang %}
+        <a class="lang-switcher__item" href="{{ target_url | relative_url }}">{{ lang_label }}</a>
+      {% else %}
+        {% assign target_url = page.url | polyglot_link: lang %}
+        <a class="lang-switcher__item" href="{{ target_url | relative_url }}">{{ lang_label }}</a>
+      {% endif %}
+    {% endfor %}
+  </nav>
+{% endif %}
+
