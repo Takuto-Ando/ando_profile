@@ -13,7 +13,6 @@ main:
     url: /hobby/
   - title: "ポートフォリオ"
     url: /categories/
-
   - title: "投稿"
     url: /posts/
     target: _blank
