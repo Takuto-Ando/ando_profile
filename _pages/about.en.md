@@ -1,8 +1,10 @@
 ---
-permalink: /about/
+permalink: /en/about/
 title: "Research Themes"
 lang: 'en'
 classes: wide
+translations:
+  ja: /about/
 ---
 
 {% include lang-switcher.html %}

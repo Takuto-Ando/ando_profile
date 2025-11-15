@@ -3,6 +3,8 @@ permalink: /about/
 title: "研究内容"
 lang: 'ja'
 classes: wide
+translations:
+  en: /en/about/
 ---
 
 {% include lang-switcher.html %}

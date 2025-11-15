@@ -1,8 +1,10 @@
 ---
-permalink: /publications/
+permalink: /en/publications/
 title: "Research Output"
 lang: 'en'
 classes: wide
+translations:
+  ja: /publications/
 ---
 
 {% include lang-switcher.html %}

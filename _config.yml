@@ -60,7 +60,6 @@ plugins:
   - jemoji
   - jekyll-include-cache
   - jekyll-sitemap
-  - jekyll-polyglot
 
 author:
   name   : "安藤 拓翔 (ANDO takuto)"

@@ -1,8 +1,10 @@
 ---
-permalink: /home/
+permalink: /en/home/
 title: "Profile"
 lang: 'en'
 classes: wide
+translations:
+  ja: /home/
 ---
 
 {% include lang-switcher.html %}

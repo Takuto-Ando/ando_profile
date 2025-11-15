@@ -1,7 +1,9 @@
-{% if site.languages and site.languages.size > 1 %}
+{% assign available_languages = site.languages | default: '' %}
+{% assign translations = page.translations %}
+{% if available_languages and available_languages.size > 1 and translations %}
   <nav class="lang-switcher" aria-label="Language selection">
     {% assign label_map = "ja:日本語,en:English" | split: "," %}
-    {% for lang in site.languages %}
+    {% for lang in available_languages %}
       {% assign lang_label = lang %}
       {% for mapping in label_map %}
         {% assign parts = mapping | split: ":" %}
@@ -9,14 +11,10 @@
           {% assign lang_label = parts[1] %}
         {% endif %}
       {% endfor %}
-      {% if lang == site.active_lang %}
+      {% if lang == page.lang %}
         <span class="lang-switcher__item lang-switcher__item--current">{{ lang_label }}</span>
-      {% elsif page.permalink %}
-        {% assign target_url = page.permalink | polyglot_link: lang %}
-        <a class="lang-switcher__item" href="{{ target_url | relative_url }}">{{ lang_label }}</a>
-      {% else %}
-        {% assign target_url = page.url | polyglot_link: lang %}
-        <a class="lang-switcher__item" href="{{ target_url | relative_url }}">{{ lang_label }}</a>
+      {% elsif translations[lang] %}
+        <a class="lang-switcher__item" href="{{ translations[lang] | relative_url }}">{{ lang_label }}</a>
       {% endif %}
     {% endfor %}
   </nav>

@@ -3,6 +3,8 @@ permalink: /publications/
 title: "研究業績"
 lang: 'ja'
 classes: wide
+translations:
+  en: /en/publications/
 ---
 
 {% include lang-switcher.html %}
