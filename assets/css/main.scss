@@ -31,6 +31,26 @@
   opacity: 1 !important;
 }
 
+figure.align-right,
+figure.align-left,
+figure.align-center {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+figure.align-right img,
+figure.align-left img,
+figure.align-center img {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
+
 .profile-hero {
   display: flex;
   flex-wrap: wrap;
