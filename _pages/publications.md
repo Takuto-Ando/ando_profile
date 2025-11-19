@@ -11,6 +11,7 @@ classes: wide
 
 |                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------|
+|**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA", IEEE Access (accepted), Nov 2025.|
 | **Takuto Ando**, Yusuke Inoue "DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System," *ICIC Express Letters 19 (4) 419 - 426*, April 2025. DOI: [10.24507/icicel.19.04.419](http://www.icicel.org/ell/contents/2025/4/el-19-04-07.pdf)|
 
 ---
@@ -28,7 +29,7 @@ classes: wide
 |                                                                                                         |
 |--------------------------------------------------------------------------------------------------------------|
 |**Takuto Ando**, Yu eto, Yasuhiko Nakashima "Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator", 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC) Dec 2025. DOI: [arXiv:2511.02530 [cs.AR]](https://arxiv.org/abs/2511.02530) |
-|**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA ", 2025 Thirteenth International Symposium on Computing and Networking (CANDAR 2025), Nov 2025.	DOI: [arXiv:2511.02269 [cs.AR]](https://arxiv.org/abs/2511.02269) <span style="color:red;">[Best Paper Award]</span>|
+|**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA", 2025 Thirteenth International Symposium on Computing and Networking (CANDAR 2025), Nov 2025.	DOI: [arXiv:2511.02269 [cs.AR]](https://arxiv.org/abs/2511.02269) <span style="color:red;">[Best Paper Award]</span>|
 |**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
 |Yu Eto, **Takuto Ando**, Ayumu Takeuchi, Yasuhiko Nakashima "LLM Performance Bottlenecks on CGLA", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
 |Ayumu Takeuchi, Yu Eto, **Takuto Ando**, Yasuhiko Nakashima "Energy-Efficient FlashAttention Acceleration on CGLA", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
