@@ -11,6 +11,7 @@ classes: wide
 
 |                                                                                                            |
 |--------------------------------------------------------------------------------------------------------------|
+|**Takuto Ando**, Iori Yamaguchi, Jun Shono, Takahiro Kawabe, Koji Uchida, Kosuke Shigematsu, Yusuke Inoue, "Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device", *ICIC Express Letters* 2026. (accepted)|
 |**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA", IEEE Access, vol. 13, pp. 199631 - 199646, Nov 2025. DOI: [10.1109/ACCESS.2025.3636266](https://ieeexplore.ieee.org/document/11264489)|
 | **Takuto Ando**, Yusuke Inoue "DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System," *ICIC Express Letters 19 (4) 419 - 426*, April 2025. DOI: [10.24507/icicel.19.04.419](http://www.icicel.org/ell/contents/2025/4/el-19-04-07.pdf)|
 
