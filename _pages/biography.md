@@ -36,6 +36,7 @@ classes: wide
 
 | 取得年月               |                                                                                      |
 |--------------------|----------------------------------------------------------------------------------------------|
+| **2026.03**        | ICISN 2026 Best Paper Award  |
 | **2025.11**        | CANDAR 2025 Best Paper Award  |
 | **2025.10**        | IEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award  |
 | **2025.03**        | 情報処理学会 第87回 情報処理学会全国大会 学生奨励賞 |
