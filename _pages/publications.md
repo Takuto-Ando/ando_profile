@@ -29,7 +29,7 @@ classes: wide
 
 |                                                                                                         |
 |--------------------------------------------------------------------------------------------------------------|
-|**Takuto Ando**, Ayumu Takeuchi, Yu eto, Yoshifumi Munakata, Yasuhiko Nakashima "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA", Sixth International Conference on Intelligent Systems and Networks (ICISN 2026) Mar 2026. |
+|**Takuto Ando**, Ayumu Takeuchi, Yu eto, Yoshifumi Munakata, Yasuhiko Nakashima "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA", Sixth International Conference on Intelligent Systems and Networks (ICISN 2026) Mar 2026. <span style="color:red;">[Best Paper Award]</span>|
 |**Takuto Ando**, Yu eto, Yasuhiko Nakashima "Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator", 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC) Dec 2025. DOI: [arXiv:2511.02530 [cs.AR]](https://arxiv.org/abs/2511.02530) |
 |**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA", 2025 Thirteenth International Symposium on Computing and Networking (CANDAR 2025), Nov 2025.	DOI: [arXiv:2511.02269 [cs.AR]](https://arxiv.org/abs/2511.02269) <span style="color:red;">[Best Paper Award]</span>|
 |**Takuto Ando**, Yu Eto, Ayumu Takeuchi, Yasuhiko Nakashima "Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels", 2025 IEEE 38th International System-on-Chip Conference (SOCC) - PhD and Master Forum, Sep 2025.|
