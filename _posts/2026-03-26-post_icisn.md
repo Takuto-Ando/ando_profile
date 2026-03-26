@@ -8,7 +8,7 @@ classes: wide
 
 　The Sixth International Conference on Intelligent Systems and Networks (ICISN 2026) は、インテリジェントシステムとネットワークに関する最新の研究成果を共有するための国際会議です。第6回となるICISN 2026は、ベトナム・ハノイにて開催されました。
 
-Best Paper Awardは、投稿された数多くの論文の中から、最も独創性、技術的貢献度、影響力の点で優れていると評価された論文に授与される権威ある賞です。本会議での研究発表が高く評価され、今回のBest Paper Awardに選ばれました。
+Best Paper Awardは、独創性、技術的な質、会議テーマとの関連性、そして研究コミュニティへの潜在的な影響といった点で、プログラム委員会および査読者から高く評価されました。この度、ICISN 2026のBest Paper Awardに選ばれ、表彰されました。
 
 <figure style="max-width: 60%; height: auto;" class="align-center">
   <img src="{{ site.url }}{{ site.baseurl }}/assets/images/ICISN_1.jpg" alt="">
