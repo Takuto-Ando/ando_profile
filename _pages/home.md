@@ -53,17 +53,6 @@ classes: wide
   <div class="bp-award"><span class="bp-award__mark">Award</span>Academic Encouragement Award — IEICE Kyushu Branch, 2025</div>
 </div>
 
-<div class="bp-sec" markdown="0">Gallery</div>
-
-<div class="bp-photo-grid" markdown="0">
-  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026">
-  <img src="{{ '/assets/images/ICISN_2.PNG' | relative_url }}" alt="ICISN 2026">
-  <img src="{{ '/assets/images/sasimi2025_photo.jpg' | relative_url }}" alt="SASIMI 2025">
-  <img src="{{ '/assets/images/sasimi_presen.jpg' | relative_url }}" alt="SASIMI presentation">
-  <img src="{{ '/assets/images/sasimi_award.jpg' | relative_url }}" alt="SASIMI Award">
-  <img src="{{ '/assets/images/zenkoku2025.jpg' | relative_url }}" alt="IPSJ 2025">
-</div>
-
 <div class="bp-sec" markdown="0">NAIST Research — 2025~</div>
 
 <div class="bp-grid" markdown="0">
@@ -147,6 +136,17 @@ classes: wide
   </div>
 </div>
 
+<div class="bp-sec" markdown="0">Gallery</div>
+
+<div class="bp-photo-grid" markdown="0">
+  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026">
+  <img src="{{ '/assets/images/ICISN_2.PNG' | relative_url }}" alt="ICISN 2026">
+  <img src="{{ '/assets/images/sasimi2025_photo.jpg' | relative_url }}" alt="SASIMI 2025">
+  <img src="{{ '/assets/images/sasimi_presen.jpg' | relative_url }}" alt="SASIMI presentation">
+  <img src="{{ '/assets/images/sasimi_award.jpg' | relative_url }}" alt="SASIMI Award">
+  <img src="{{ '/assets/images/zenkoku2025.jpg' | relative_url }}" alt="IPSJ 2025">
+</div>
+
 {% else %}
 
 <div class="bp-profile" markdown="0">
@@ -189,17 +189,6 @@ classes: wide
   <div class="bp-award"><span class="bp-award__mark">Award</span>奨励賞 優秀賞 — 日本高専学会（2025）</div>
   <div class="bp-award"><span class="bp-award__mark">Award</span>学生表彰 — 高専機構（2025）</div>
   <div class="bp-award"><span class="bp-award__mark">Award</span>学術奨励賞 — IEICE 九州支部（2025）</div>
-</div>
-
-<div class="bp-sec" markdown="0">ギャラリー</div>
-
-<div class="bp-photo-grid" markdown="0">
-  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026">
-  <img src="{{ '/assets/images/ICISN_2.PNG' | relative_url }}" alt="ICISN 2026">
-  <img src="{{ '/assets/images/sasimi2025_photo.jpg' | relative_url }}" alt="SASIMI 2025">
-  <img src="{{ '/assets/images/sasimi_presen.jpg' | relative_url }}" alt="SASIMI 発表">
-  <img src="{{ '/assets/images/sasimi_award.jpg' | relative_url }}" alt="SASIMI 受賞">
-  <img src="{{ '/assets/images/zenkoku2025.jpg' | relative_url }}" alt="情報処理学会 全国大会 2025">
 </div>
 
 <div class="bp-sec" markdown="0">NAIST での研究（2025年〜）</div>
@@ -280,6 +269,17 @@ classes: wide
       <span class="bp-tag">CANDARW 2024</span>
     </div>
   </div>
+</div>
+
+<div class="bp-sec" markdown="0">ギャラリー</div>
+
+<div class="bp-photo-grid" markdown="0">
+  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026">
+  <img src="{{ '/assets/images/ICISN_2.PNG' | relative_url }}" alt="ICISN 2026">
+  <img src="{{ '/assets/images/sasimi2025_photo.jpg' | relative_url }}" alt="SASIMI 2025">
+  <img src="{{ '/assets/images/sasimi_presen.jpg' | relative_url }}" alt="SASIMI 発表">
+  <img src="{{ '/assets/images/sasimi_award.jpg' | relative_url }}" alt="SASIMI 受賞">
+  <img src="{{ '/assets/images/zenkoku2025.jpg' | relative_url }}" alt="情報処理学会 全国大会 2025">
 </div>
 
 {% endif %}
