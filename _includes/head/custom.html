@@ -1,10 +1,12 @@
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  if (window.location.pathname.startsWith('/en/')) {
+  var base = '{{ site.baseurl }}';
+  var enPrefix = base + '/en';
+  if (window.location.pathname.startsWith(enPrefix + '/') || window.location.pathname === enPrefix + '/') {
     document.querySelectorAll('.greedy-nav .visible-links a, .greedy-nav .hidden-links a').forEach(function(a) {
       var href = a.getAttribute('href');
-      if (href && href.startsWith('/') && !href.startsWith('/en/')) {
-        a.setAttribute('href', '/en' + href);
+      if (href && href.startsWith(base + '/') && !href.startsWith(enPrefix + '/')) {
+        a.setAttribute('href', enPrefix + href.slice(base.length));
       }
     });
   }

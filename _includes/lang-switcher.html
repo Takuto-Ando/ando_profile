@@ -1,9 +1,9 @@
 <div class="lang-switcher" markdown="0">
   {% if site.active_lang == 'en' %}
-    <a href="{{ page.url | remove_first: '/en' }}" class="lang-switcher__inactive">🇯🇵 日本語</a>
+    <a href="{{ site.baseurl }}{{ page.url | remove_first: '/en' }}" class="lang-switcher__inactive">🇯🇵 日本語</a>
     <span class="lang-switcher__active">🇺🇸 English</span>
   {% else %}
     <span class="lang-switcher__active">🇯🇵 日本語</span>
-    <a href="/en{{ page.url }}" class="lang-switcher__inactive">🇺🇸 English</a>
+    <a href="{{ site.baseurl }}/en{{ page.url }}" class="lang-switcher__inactive">🇺🇸 English</a>
   {% endif %}
 </div>
