@@ -1,136 +1,126 @@
 ---
 permalink: /about/
-title: "研究内容"
-lang: 'ja'
 classes: wide
 ---
-## 研究キーワード
-### コンピュータアーキテクチャ
-- ドメイン特化アーキテクチャ
-- AIアクセラレータ
-- 非ノイマン型
-- ハードウェア・ソフトウェア協調設計
-- 省電力・高効率コンピューティング
 
-### 応用分野 / アプリケーション
-- 大規模言語モデル (Large Language Models, LLM)
-- 生成AI (Generative AI)
-    - 画像生成 (Image Generation)
-    - 音声認識 (Speech Recognition)
-- 深層学習 (Deep Learning)
-- エッジAI / エッジコンピューティング
-- 画像処理 / コンピュータビジョン
+{% include lang-switcher.html %}
 
-## 現在の研究
+{% if site.active_lang == 'en' %}
 
-近年、大規模言語モデル（LLM）や生成AIの急速な発展は、社会に大きな変革をもたらしています。この爆発的な計算需要を支えているのがGPUです。しかし、その驚異的な性能は、膨大な消費電力と引き換えに得られており、データセンターのエネルギー消費量は今や地球規模の社会課題となりつつあります。GPUは本質的に電力効率を突き詰めたアーキテクチャではなく、むしろ豪華なメモリバスといった力業で性能を稼いでいます。このアーキテクチャが、今後もAIの進化を支え続ける持続可能な基盤とは言えません。
+## Research
 
-現在、量子コンピュータや光コンピューティング、脳を模したニューロモルフィックチップなど、様々な未来のコンピュータが提案されています。その中で私は、最も現実的かつインパクトの大きい次の一手は、フォン・ノイマン・ボトルネックを構造的に排除した、効率的な非ノイマン型コンピュータが主流になることだと考えています。
+My research focuses on implementing and optimizing state-of-the-art AI workloads on **IMAX** (In-Memory Accelerator eXtension), a non-von Neumann CGLA (Coarse-Grained Logic Array) developed at NAIST's Computing Architecture Lab.
 
-私の研究は、まさにこれを実現するためのものです。ソフトウェアの最適化だけでは到達できない次元の効率性を、ニアメモリやインメモリといった次世代のハードウェアと、それを最大限に活かすソフトウェアとの協調設計によって実現し、持続可能なAI技術基盤の構築に貢献することが、私のモチベーションです。
+**Research Keywords**
 
-### IMAXを用いたAIアプリケーションの実装と評価
-現在は、奈良先端大 コンピューティング・アーキテクチャ研究室で開発された、CGRAベースのハードウェアアクセラレータであるIMAX (In-Memory Accelerator eXtension)に関わる研究に従事しています。IMAXは、以下の革新的な特徴を持っています。
+Computer Architecture · Domain-Specific Architecture · AI Accelerator · Non-von Neumann  
+Hardware/Software Co-design · Near-Memory Computing · Low-Power Computing  
+LLM · Generative AI · Image Generation · Speech Recognition · Deep Learning · Edge AI
 
+---
 
-IMAXの基本設計は、演算ユニットとキャッシュメモリを交互に配置する線形アレイ構造にあり、CGRAの柔軟性とシストリックアレイの効率性・高速コンパイルを融合しています。
-さらにニアメモリコンピューティングの思想を取り入れた非ノイマン型のアクセラレータです。IMAXは非ノイマン型でありながら、任意のアレイ上にノイマン型PEを配置することができます。これにより高いスループットに加えて、エネルギー効率を維持することができます。
+### Current Research at NAIST
 
-私はエッジ指向のIMAX3とサーバ指向のIMAX4のLLMやAIアプリケーション実装や評価、メモリアクセスの最適化をすることで、IMAXプロジェクトに貢献しています。
+The explosive growth in LLMs and generative AI has driven massive demand for GPU compute. However, GPUs are fundamentally not architected for energy efficiency — they rely on enormous memory bandwidth rather than intrinsic efficiency. This is not a sustainable foundation for AI's continued evolution.
 
+I believe the most impactful next step is the widespread adoption of **non-von Neumann computing** that structurally eliminates the von Neumann bottleneck. My research aims to realize this through hardware/software co-design combining near-memory and in-memory computing paradigms.
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax3andimax4.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
+#### LLM Acceleration on IMAX3/IMAX4
 
+Running Llama3, Qwen, and Flan-T5 on IMAX. Detailed bottleneck analysis revealed host CPU and PCIe bandwidth limitations. Based on this, I designed and evaluated IMAX4 with a high-performance server CPU and PCIe Gen5, demonstrating server-scale AI workload scalability.
 
-私は、このIMAXのポテンシャルを実証し、さらなる発展に貢献するため、現代のAIを代表する最先端モデルの実装と評価を行っています。修士課程では、世の中の人にIMAXの存在を知ってもらうために、論文投稿や学会発表を積極的に行います(査読付き国際会議4本採択 : 2025/04~10現在)。
-
-* **大規模言語モデル（LLM）の実行とボトルネック分析** (SASIMI 2025, SOCC 2025 採択):
-まず、エッジデバイス向けのIMAX3上でLLMを実行し、その性能特性を詳細に分析。ホストCPUの処理能力やデータ転送経路がボトルネックとなることを解析しました。この分析結果に基づき、サーバ向け高性能CPUと広帯域なPCIe Gen5インターフェースを搭載したIMAX4プロトタイプを設計・評価し、ホスト側のボトルネックを解消することで、IMAXアーキテクチャがサーバ環境における大規模なAIワークロードにもスケール可能であることを実証しました。
-* **多様な生成AIアプリケーションの実装と最適化** (MCSoC 2025, CANDAR 2025 採択):
-LLMに留まらず、画像生成モデル「Stable Diffusion」や音声認識モデル「Whisper」といった、計算特性の異なる多様なAIアプリケーションをIMAX上に実装しました。特に、Whisperモデルの実装では、IMAXのアーキテクチャ特性を活かしたFP16演算カーネルを新たに実装・評価し、性能と精度のバランスを最適化する知見を得ました。これらの取り組みを通じて、IMAXが特定の用途に縛られない、汎用性の高いAIアクセラレータであることを示しています。
-
-
-
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="image-center" style="display: block; margin: 0 auto; width: 700px;">
-
-VPK120x1とVPK180x4で構成されたIMAX4のプロトタイプ (掲載許可済み)
-
-これらの研究開発では、C言語を用いたプログラミングを通じて、メモリアクセスのパターンを最適化し、IMAXのハードウェア資源を最大限に活用する工夫が求められます。ハードウェアの深い理解に基づいたソフトウェアの作り込みも、ハードウェアの性能を引き出すポイントであることを、実践を通して学んでいます。
-
-
-
-
-
-
-## 高専での研究
-
-
-
-###  物体検出アルゴリズムの実応用
-
-高専５年次の卒業研究では、画像処理技術に関する研究に取り組み、効率的な小ねぎ調製のための小ねぎ分岐部検出アルゴリズムを開発しました。具体的には、小ねぎの外葉分岐部をエッジ検出により特徴量を抽出し、位置を特定するアプリケーションを開発しました。深層学習モデルを使う必要がないケースでは、古典的な画像処理を使うことで、高いフレームレートと低消費電力を実現できます。
-
-しかし実環境における検出では、より複雑な背景や照明条件、そして小ねぎの形状の多様性により、より高度な検出アルゴリズムが必要となります。そこで、YOLOやMask-RCNNといった深層学習モデルによる物体検出やセグメンテーションの実装と評価に取り組みました。ネットワーク削減による軽量化と実アプリケーションに対する最適化を行っています。
-
-
-<div style="
-  position: relative;
-  display:block;
-  margin:0 auto;
-  width: 100%;
-  max-width:780px;
-  max-height: 585px;
-  padding-bottom: 75%;
-  top: 50%;"
->
-  <iframe 
-    src="https://speakerdeck.com/player/f027bc23215946868b187e68bec91c37" title="小ねぎ調製位置検出のためのインスタンスセグメンテーション" 
-    style="
-      position: absolute;
-      top: 0;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-      max-width:780px;
-      max-height: 585px;
-      border: 0;
-    "
-  >
-  </iframe>
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.25rem 0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax3andimax4.jpg" alt="IMAX3 and IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="IMAX4 Prototype" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
+**Publications:** IEEE Access (2025), SOCC 2025, SASIMI 2025 [Young Researcher Award], ICISN 2026 [Best Paper]
 
-### AI推論処理のハードウェア実装
+#### Generative AI — Stable Diffusion on IMAX
 
-ロボットやIoTデバイスのようなリソースに制約のある環境では、AIの推論処理をいかに低消費電力で実行するかが重要です。私は、回路構成をプログラム可能なデバイスであるFPGAと、その上に実装されたDNNアクセラレータ（DPU）に着目しました。顔検出と表情認識という2つの異なるDNNモデルを、単一のDPU上で時分割に実行するシステムを実装しました。これにより、ハードウェア資源を効率的に共有しながら、組み込みCPUでは達成不可能な高いフレームレートと低消費電力を両立することに成功。エッジAIにおけるハードウェア実装の有効性を示しました。
+Implemented Stable Diffusion on IMAX, demonstrating that the CGLA architecture handles diverse generative AI workloads beyond text generation.
 
-<img src="{{ site.url }}{{ site.baseurl }}/assets/images/fpga_system_fig.png" alt="image-center" style="display: block; margin: 0 auto; width: 500px;">
+**Publication:** MCSoC 2025
 
+#### Speech Recognition — Whisper on IMAX
 
-<div style="
-  position: relative;
-  display:block;
-  margin:0 auto;
-  width: 100%;
-  max-width:780px;
-  max-height: 585px;
-  padding-bottom: 75%;
-  top: 50%;"
->
-  <iframe 
-    src="https://speakerdeck.com/player/31712b81ffbe4805832711d6c3b4f209" title="DPUを用いたマルチタスクDNN表情認識システムのFPGA実装" 
-    style="
-      position: absolute;
-      top: 0;
-      left: 0%;
-      width: 100%;
-      height: 100%;
-      max-width:780px;
-      max-height: 585px;
-      border: 0;
-    "
-  >
-  </iframe>
+Ported Whisper ASR to IMAX with a custom FP16 computational kernel. Achieved energy-efficient inference and demonstrated architectural versatility of CGLA.
+
+**Publication:** CANDAR 2025 [Best Paper]
+
+---
+
+### Past Research — College of Technology
+
+#### Object Detection — Green Onion Branching Point Detection
+
+Developed a branching-point detection algorithm for automated green onion trimming on edge devices. Combined classical edge detection with YOLO/Mask-RCNN deep learning for accuracy and lightweight execution on resource-constrained devices.
+
+#### AI Inference on FPGA — Facial Expression Recognition
+
+Implemented real-time facial expression recognition on FPGA using a DPU-based DNN accelerator with time-division multi-tasking of two DNN models on a single hardware unit. Demonstrated superior frame rate and power efficiency versus embedded CPU.
+
+<div markdown="0" style="margin:1.25rem 0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/fpga_system_fig.png" alt="FPGA System" style="max-width:480px;width:100%;border:1px solid #E2E8F0;">
 </div>
 
-<br>
+{% else %}
+
+## 研究内容
+
+私の研究は、NAIST コンピューティング・アーキテクチャ研究室で開発された非ノイマン型 CGLA（粗粒度再構成可能論理アレイ）**IMAX** 上での AI ワークロードの実装・最適化に焦点を当てています。
+
+**研究キーワード**
+
+コンピュータアーキテクチャ · ドメイン特化アーキテクチャ · AI アクセラレータ · 非ノイマン型  
+ハードウェア・ソフトウェア協調設計 · ニアメモリコンピューティング · 省電力・高効率コンピューティング  
+LLM · 生成AI · 画像生成 · 音声認識 · 深層学習 · エッジAI
+
+---
+
+### NAIST での現在の研究
+
+近年の LLM・生成AIの急速な発展はGPUへの需要を爆発的に増加させています。しかしGPUは本質的に電力効率を突き詰めた設計ではなく、膨大なメモリ帯域によって性能を確保しています。これはAIの持続的な発展を支える基盤として限界があります。
+
+私は、フォン・ノイマン・ボトルネックを構造的に排除した**非ノイマン型コンピューティング**の普及が最も現実的かつインパクトの大きい次の一手であると考えています。ニアメモリ・インメモリコンピューティングとソフトウェアの協調設計によってこれを実現することが研究の目標です。
+
+#### IMAX3/IMAX4 上での LLM 高速化
+
+IMAX 上で Llama3・Qwen・Flan-T5 を実行し、詳細なボトルネック分析を実施。ホスト CPU と PCIe 帯域の制約を特定し、高性能サーバ CPU と PCIe Gen5 を搭載した IMAX4 の設計・評価によりサーバ規模のAIワークロードへのスケーラビリティを実証。
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.25rem 0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax3andimax4.jpg" alt="IMAX3 と IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/imax4_proto.jpg" alt="IMAX4 プロトタイプ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+</div>
+
+**発表:** IEEE Access (2025), SOCC 2025, SASIMI 2025 [Young Researcher Award], ICISN 2026 [Best Paper]
+
+#### 生成AI — Stable Diffusion の IMAX 実装
+
+Stable Diffusion を IMAX 上に実装し、CGLA アーキテクチャがテキスト生成以外の多様な生成 AI ワークロードにも対応できることを実証。
+
+**発表:** MCSoC 2025
+
+#### 音声認識 — Whisper の IMAX 実装
+
+Whisper ASR を IMAX に実装し、独自の FP16 演算カーネルを開発。省電力推論を実現しながら CGLA の汎用性を実証。
+
+**発表:** CANDAR 2025 [Best Paper]
+
+---
+
+### 高専での研究
+
+#### 物体検出 — 小ねぎ分岐部検出
+
+エッジデバイス上での小ねぎ自動調製向け分岐部検出アルゴリズムを開発。古典的エッジ検出と YOLO・Mask-RCNN 深層学習を組み合わせ、リソース制約デバイス上での精度と軽量化を両立した。
+
+#### AI 推論の FPGA 実装 — 表情認識システム
+
+DPU ベースの DNN アクセラレータを用いた時分割マルチタスクにより、単一ハードウェア上で2つの DNN モデルを実行するシステムを実装。組み込み CPU と比較して優れたフレームレートと電力効率を実証。
+
+<div markdown="0" style="margin:1.25rem 0;">
+  <img src="{{ site.url }}{{ site.baseurl }}/assets/images/fpga_system_fig.png" alt="FPGA システム構成" style="max-width:480px;width:100%;border:1px solid #E2E8F0;">
+</div>
+
+{% endif %}

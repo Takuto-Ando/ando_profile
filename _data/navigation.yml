@@ -1,18 +1,16 @@
 main:
-  - title: "ホーム"
+  - title: "ホーム / Home"
     url: /home/
-  - title: "研究内容"
+  - title: "研究内容 / Research"
     url: /about/
-  - title: "経歴"
+  - title: "経歴 / Biography"
     url: /biography/
-  - title: "研究業績"
+  - title: "研究業績 / Publications"
     url: /publications/
-  - title: "資料"
+  - title: "資料 / Materials"
     url: /presentations/
-  - title: "趣味"
+  - title: "趣味 / Hobby"
     url: /hobby/
-  - title: "ポートフォリオ"
-    url: /categories/
-  - title: "投稿"
+  - title: "投稿 / Posts"
     url: /posts/
     target: _blank

@@ -1,56 +1,94 @@
 ---
 permalink: /biography/
-title: "経歴"
-lang: 'ja'
 classes: wide
 ---
-<div style="font-size: 1.1em;">
 
-## 学歴/進路
+{% include lang-switcher.html %}
 
-| 期間               | 所属                                                                                     |
-|--------------------|----------------------------------------------------------------------------------------------|
-| **2025.04 - 現在**      | 奈良先端科学技術大学院大学 先端科学技術研究科 先端科学技術専攻                                                      |
-| **2023.04 - 2025.03** | 大分工業高等専門学校 専攻科 電気電子情報工学専攻                                          |
-| **2018.04 - 2023.03** | 大分工業高等専門学校 情報工学科                                                              |
+{% if site.active_lang == 'en' %}
 
+## Biography
 
-## 職歴
+### Education
 
-| 期間               | 内容                                                                                     |
-|--------------------|----------------------------------------------------------------------------------------------|
-| **2025.12 - 現在** | LENZO 株式会社 |
-| **2025.03 - 現在** | IMAX用新規AIアプリケーションの開発 |
-| **2025.10 - 現在** | NAIST STELLAプログラム 学生メンター |
-| **2025.11**|  生駒市中学校特別授業・出前授業 ティーチングアシスタント|
-| **2025.03**|  令和6年度輪ギク生産省力化のための芽摘みロボットの実用化開発委託業務 に関する受託研究における研究補助 |
-| **2024.08** | 第2回ディジタル回路設計基礎講座における補助                                                  |
-| **2024.05 - 2025.03** | 大分工業高等専門学校 技術職員 演習室担当                                                    |
-| **2024.04 - 2025.03** | 調製作業効率化に向けた、画像からねぎの分岐部を認識する手法の研究 に関する受託研究における研究補助 |
-| **2024.04 - 2024.08** | 大分工業高等専門学校 ティーチングアシスタント (ディジタル回路演習)                          |
-| **2023.08** | 第1回ディジタル回路設計基礎講座における補助                                                  |
-| **2022.12 - 2023.03** | 画像解析技術を活用した高精度な小ネギの皮むき調製機の開発 に関する受託研究における研究補助   |
-| **2019.02 - 2024.12** | スイミングスクール 入水インストラクター (アルバイト)                                        |
+| Period | Institution |
+|--------|-------------|
+| **2025.04 – present** | Nara Institute of Science and Technology (NAIST), Graduate School of Science and Technology — Master's Program |
+| **2023.04 – 2025.03** | Oita National College of Technology, Advanced Course — Electrical, Electronic and Information Engineering |
+| **2018.04 – 2023.03** | Oita National College of Technology — Department of Information Engineering |
 
-## 表彰
+### Work Experience
 
-| 取得年月               |                                                                                      |
-|--------------------|----------------------------------------------------------------------------------------------|
-| **2026.03**        | ICISN 2026 Best Paper Award  |
-| **2025.11**        | CANDAR 2025 Best Paper Award  |
-| **2025.10**        | IEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award  |
-| **2025.03**        | 情報処理学会 第87回 情報処理学会全国大会 学生奨励賞 |
-| **2025.03**        | 日本高専学会 日本高専学会奨励賞 優秀賞|
-| **2025.03**        | 高専機構 学生表彰 |
-| **2025.03**        | 電子情報通信学会九州支部 学術奨励賞|
+| Period | Role |
+|--------|------|
+| **2025.12 – present** | LENZO Inc. — Engineer |
+| **2025.10 – present** | NAIST STELLA Program — Student Mentor |
+| **2025.03 – present** | IMAX AI Application Development |
+| **2024.05 – 2025.03** | Oita KOSEN — Technical Staff (Laboratory Assistant) |
+| **2019.02 – 2024.12** | Swimming School — Instructor (Part-time) |
 
+### Awards
 
-## 資格
+| Date | Award |
+|------|-------|
+| **2026.03** | ICISN 2026 Best Paper Award |
+| **2025.11** | CANDAR 2025 Best Paper Award |
+| **2025.10** | IEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award |
+| **2025.03** | IPSJ 87th National Convention Student Encouragement Award |
+| **2025.03** | Japan KOSEN Association Encouragement Award (Excellence) |
+| **2025.03** | KOSEN Organization Student Commendation |
+| **2025.03** | IEICE Kyushu Branch Academic Encouragement Award |
 
-|取得年月               | 資格                                                                                     |
-|--------------------|----------------------------------------------------------------------------------------------|
-| **2022.12**        | 普通自動車第一種運転免許 (AT 限定) 取得                                                  |
-| **2022.05**        | TOEIC (IP) 785点 取得                                                                     |
-| **2021.11**        | 基本情報技術者試験 合格                                                                   |
+### Qualifications
 
-</div>
+| Date | Qualification |
+|------|---------------|
+| **2022.12** | Japanese Driver's License (AT) |
+| **2022.05** | TOEIC (IP) 785 |
+| **2021.11** | Fundamental Information Technology Engineer Examination |
+
+{% else %}
+
+## 経歴
+
+### 学歴
+
+| 期間 | 所属 |
+|------|------|
+| **2025.04 – 現在** | 奈良先端科学技術大学院大学 先端科学技術研究科 博士前期課程 |
+| **2023.04 – 2025.03** | 大分工業高等専門学校 専攻科 電気電子情報工学専攻 |
+| **2018.04 – 2023.03** | 大分工業高等専門学校 情報工学科 |
+
+### 職歴
+
+| 期間 | 内容 |
+|------|------|
+| **2025.12 – 現在** | LENZO 株式会社 エンジニア |
+| **2025.10 – 現在** | NAIST STELLAプログラム 学生メンター |
+| **2025.03 – 現在** | IMAX 用新規 AI アプリケーション開発 |
+| **2025.11** | 生駒市中学校 出前授業 ティーチングアシスタント |
+| **2024.05 – 2025.03** | 大分工業高等専門学校 技術職員 演習室担当 |
+| **2024.04 – 2024.08** | 大分工業高等専門学校 ティーチングアシスタント（ディジタル回路演習） |
+| **2019.02 – 2024.12** | スイミングスクール 入水インストラクター |
+
+### 表彰
+
+| 取得年月 | 賞 |
+|----------|----|
+| **2026.03** | ICISN 2026 Best Paper Award |
+| **2025.11** | CANDAR 2025 Best Paper Award |
+| **2025.10** | IEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award |
+| **2025.03** | 情報処理学会 第87回全国大会 学生奨励賞 |
+| **2025.03** | 日本高専学会 奨励賞 優秀賞 |
+| **2025.03** | 高専機構 学生表彰 |
+| **2025.03** | 電子情報通信学会 九州支部 学術奨励賞 |
+
+### 資格
+
+| 取得年月 | 資格 |
+|----------|------|
+| **2022.12** | 普通自動車第一種運転免許（AT 限定） |
+| **2022.05** | TOEIC (IP) 785点 |
+| **2021.11** | 基本情報技術者試験 合格 |
+
+{% endif %}

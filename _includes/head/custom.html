@@ -1,0 +1,12 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.location.pathname.startsWith('/en/')) {
+    document.querySelectorAll('.greedy-nav .visible-links a, .greedy-nav .hidden-links a').forEach(function(a) {
+      var href = a.getAttribute('href');
+      if (href && href.startsWith('/') && !href.startsWith('/en/')) {
+        a.setAttribute('href', '/en' + href);
+      }
+    });
+  }
+});
+</script>
