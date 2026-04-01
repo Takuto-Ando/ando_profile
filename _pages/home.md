@@ -9,7 +9,7 @@ classes: wide
 {% if site.active_lang == 'en' %}
 
 <div class="bp-profile" markdown="0">
-  <img class="bp-profile__img" src="/assets/images/ando2.png" alt="Takuto ANDO" onerror="this.style.background='#f1f5f9'">
+  <img class="bp-profile__img" src="{{ '/assets/images/ando2.png' | relative_url }}" alt="Takuto ANDO" onerror="this.style.background='#f1f5f9'">
   <div>
     <div class="bp-profile__name">Takuto ANDO <span style="font-size:1rem;font-weight:400;color:#94A3B8">安藤 拓翔</span></div>
     <div class="bp-profile__en">M2, Computing Architecture Lab · NAIST</div>
@@ -139,7 +139,7 @@ classes: wide
 {% else %}
 
 <div class="bp-profile" markdown="0">
-  <img class="bp-profile__img" src="/assets/images/ando2.png" alt="安藤 拓翔" onerror="this.style.background='#f1f5f9'">
+  <img class="bp-profile__img" src="{{ '/assets/images/ando2.png' | relative_url }}" alt="安藤 拓翔" onerror="this.style.background='#f1f5f9'">
   <div>
     <div class="bp-profile__name">安藤 拓翔 <span style="font-size:1rem;font-weight:400;color:#94A3B8">Takuto ANDO</span></div>
     <div class="bp-profile__en">博士前期課程2年 · コンピューティング・アーキテクチャ研究室</div>
