@@ -209,6 +209,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   width: 90px;
   height: auto;
   flex-shrink: 0;
+  align-self: flex-start;
   border: 1px solid var(--line);
 }
 .bp-profile__name {
@@ -386,6 +387,22 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .bp-tag::before { content: '# '; }
 .bp-tag--award { color: var(--acc); font-weight: 700; }
 
+/* ── Photo Grid ── */
+.bp-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  margin: 0.75rem 0 1.5rem;
+}
+.bp-photo-grid img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  transition: opacity 0.15s;
+}
+.bp-photo-grid img:hover { opacity: 0.85; }
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
   .bp-profile {
@@ -402,6 +419,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   .bp-stat__l { font-size: 0.55rem; }
 
   .bp-grid { grid-template-columns: 1fr; }
+  .bp-photo-grid { grid-template-columns: repeat(2, 1fr); }
 
   .lang-switcher { margin-bottom: 1.25rem; }
   .lang-switcher a, .lang-switcher span { font-size: 0.72rem; padding: 0.25em 0.7em; }
