@@ -2,7 +2,10 @@
 document.addEventListener('DOMContentLoaded', function() {
   var base = '{{ site.baseurl }}';
   var enPrefix = base + '/en';
-  if (window.location.pathname.startsWith(enPrefix + '/') || window.location.pathname === enPrefix + '/') {
+  var isEn = window.location.pathname.startsWith(enPrefix + '/') || window.location.pathname === enPrefix + '/';
+
+  // Rewrite nav links on English pages
+  if (isEn) {
     document.querySelectorAll('.greedy-nav .visible-links a, .greedy-nav .hidden-links a').forEach(function(a) {
       var href = a.getAttribute('href');
       if (href && href.startsWith(base + '/') && !href.startsWith(enPrefix + '/')) {
@@ -10,5 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
+  // Make research cards clickable
+  document.querySelectorAll('.bp-card[data-href]').forEach(function(card) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', function() {
+      var path = card.getAttribute('data-href');
+      location.href = isEn ? (enPrefix + path) : (base + path);
+    });
+  });
 });
 </script>
