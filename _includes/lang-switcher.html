@@ -1,9 +1,27 @@
 <div class="lang-switcher" markdown="0">
   {% if site.active_lang == 'en' %}
-    <a href="{{ site.baseurl }}{{ page.url | remove_first: '/en' }}" class="lang-switcher__inactive">🇯🇵 日本語</a>
+    <a href="#" class="lang-switcher__inactive" id="lang-jp-link">🇯🇵 日本語</a>
     <span class="lang-switcher__active">🇺🇸 English</span>
   {% else %}
     <span class="lang-switcher__active">🇯🇵 日本語</span>
-    <a href="{{ site.baseurl }}/en{{ page.url }}" class="lang-switcher__inactive">🇺🇸 English</a>
+    <a href="#" class="lang-switcher__inactive" id="lang-en-link">🇺🇸 English</a>
   {% endif %}
 </div>
+<script>
+(function() {
+  var base = '{{ site.baseurl }}';
+  var jp = document.getElementById('lang-jp-link');
+  var en = document.getElementById('lang-en-link');
+  var path = window.location.pathname;
+  if (jp) {
+    // EN→JP: remove /en/ segment after baseurl
+    var jpPath = path.replace(base + '/en/', base + '/');
+    jp.href = jpPath;
+  }
+  if (en) {
+    // JP→EN: insert /en after baseurl
+    var enPath = path.replace(base + '/', base + '/en/');
+    en.href = enPath;
+  }
+})();
+</script>
