@@ -206,9 +206,8 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   margin-bottom: 1.5rem;
 }
 .bp-profile__img {
-  width: 82px;
-  height: 82px;
-  object-fit: cover;
+  width: 90px;
+  height: auto;
   flex-shrink: 0;
   border: 1px solid var(--line);
 }
@@ -394,7 +393,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
     gap: 1rem;
     padding: 1.25rem;
   }
-  .bp-profile__img { width: 70px; height: 70px; }
+  .bp-profile__img { width: 70px; height: auto; }
   .bp-profile__name { font-size: 1.3rem; }
 
   .bp-stats { flex-wrap: wrap; }
