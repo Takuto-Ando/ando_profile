@@ -24,6 +24,8 @@ classes: wide
     <div class="bp-profile__btns">
       <a class="bp-btn" href="https://researchmap.jp/takuto_ando">researchmap</a>
       <a class="bp-btn" href="https://github.com/Takuto-Ando">GitHub</a>
+      <a class="bp-btn" href="{{ '/publications/' | relative_url }}">Publications</a>
+      <a class="bp-btn" href="{{ '/presentations/' | relative_url }}">Slides</a>
     </div>
   </div>
 </div>
@@ -41,6 +43,42 @@ classes: wide
   a non-von Neumann accelerator that structurally eliminates the von Neumann bottleneck.
   I pursue sustainable high-performance AI computing through hardware/software co-design.
 </p>
+
+<div class="bp-keywords">
+  <span class="bp-keywords__ttl">Keywords</span>
+  <span class="bp-keyword">Computer Architecture</span>
+  <span class="bp-keyword">AI Accelerator</span>
+  <span class="bp-keyword">CGLA / CGRA</span>
+  <span class="bp-keyword">LLM</span>
+  <span class="bp-keyword">Speech Recognition</span>
+  <span class="bp-keyword">Image Generation</span>
+  <span class="bp-keyword">Hardware / Software Co-design</span>
+</div>
+
+<div class="bp-sec" markdown="0">Selected Results</div>
+
+<div class="bp-mini-grid" markdown="0">
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">44.4×</div>
+    <div class="bp-mini-card__ttl">PDP vs RTX 4090</div>
+    <div class="bp-mini-card__body">IEEE Access 2025: projected 28nm IMAX evaluation for Qwen-family LLM inference.</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">1.62×</div>
+    <div class="bp-mini-card__ttl">Prefill Speedup</div>
+    <div class="bp-mini-card__body">Q-Snap improved prefill throughput from 17.11 tok/s to 27.70 tok/s on IMAX.</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">10.48×</div>
+    <div class="bp-mini-card__ttl">ASR Energy Efficiency</div>
+    <div class="bp-mini-card__body">Wiley CCPE extension: Whisper tiny.en achieved strong PDP gain vs RTX 4090.</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">260×</div>
+    <div class="bp-mini-card__ttl">Host Time Reduction</div>
+    <div class="bp-mini-card__body">IMAX3 to IMAX4 migration reduced host-side processing overhead in server-scale evaluation.</div>
+  </div>
+</div>
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">Awards</div>
@@ -106,6 +144,23 @@ classes: wide
   </div>
 </div>
 
+<div class="bp-sec" markdown="0">Current Focus</div>
+
+<div class="bp-note-grid" markdown="0">
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">System-Level Bottleneck Analysis</div>
+    <p>I focus on what dominates end-to-end execution in practice: host CPU overhead, DMA transfer, chunk sizing, and runtime scheduling.</p>
+  </div>
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">Reusable Software Stack</div>
+    <p>Rather than isolated kernels, I am interested in building a software stack that supports multiple AI workloads on IMAX.</p>
+  </div>
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">From Edge to Server</div>
+    <p>My work compares IMAX3 and IMAX4 to understand how accelerator design and host infrastructure must co-evolve.</p>
+  </div>
+</div>
+
 <div class="bp-sec" markdown="0">Past Research — College of Technology (~2025)</div>
 
 <div class="bp-grid" markdown="0">
@@ -132,6 +187,17 @@ classes: wide
       <span class="bp-tag">CANDARW 2024</span>
     </div>
   </div>
+</div>
+
+<div class="bp-sec" markdown="0">For Collaboration / Contact</div>
+
+<div class="bp-contact-note">
+  I am especially interested in research collaboration and engineering discussions around AI systems,
+  energy-efficient acceleration, and practical deployment of emerging workloads.
+  For publication details, slide materials, and background information, please use the links above or see
+  <a href="{{ '/publications/' | relative_url }}">Publications</a>,
+  <a href="{{ '/presentations/' | relative_url }}">Materials</a>, and
+  <a href="{{ '/biography/' | relative_url }}">Biography</a>.
 </div>
 
 <div class="bp-sec" markdown="0">Gallery</div>
@@ -161,6 +227,8 @@ classes: wide
     <div class="bp-profile__btns">
       <a class="bp-btn" href="https://researchmap.jp/takuto_ando">researchmap</a>
       <a class="bp-btn" href="https://github.com/Takuto-Ando">GitHub</a>
+      <a class="bp-btn" href="{{ '/publications/' | relative_url }}">研究業績</a>
+      <a class="bp-btn" href="{{ '/presentations/' | relative_url }}">発表資料</a>
     </div>
   </div>
 </div>
@@ -177,6 +245,42 @@ classes: wide
   <strong>IMAX</strong> 上で LLM・Stable Diffusion・Whisper などの最先端AIアプリケーションを実装・最適化する研究を推進。
   ハードウェアとソフトウェアの協調設計によって持続可能な高性能AIコンピューティングの実現を追求している。
 </p>
+
+<div class="bp-keywords">
+  <span class="bp-keywords__ttl">研究キーワード</span>
+  <span class="bp-keyword">計算機アーキテクチャ</span>
+  <span class="bp-keyword">AIアクセラレータ</span>
+  <span class="bp-keyword">CGLA / CGRA</span>
+  <span class="bp-keyword">LLM</span>
+  <span class="bp-keyword">音声認識</span>
+  <span class="bp-keyword">画像生成</span>
+  <span class="bp-keyword">ハードウェア・ソフトウェア協調設計</span>
+</div>
+
+<div class="bp-sec" markdown="0">主要成果</div>
+
+<div class="bp-mini-grid" markdown="0">
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">44.4×</div>
+    <div class="bp-mini-card__ttl">PDP 改善</div>
+    <div class="bp-mini-card__body">IEEE Access 2025: Qwen 系 LLM 推論で IMAX 28nm 見積が RTX 4090 比 44.4 倍の PDP 改善。</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">1.62×</div>
+    <div class="bp-mini-card__ttl">Prefill 高速化</div>
+    <div class="bp-mini-card__body">Q-Snap により prefill throughput を 17.11 tok/s から 27.70 tok/s へ改善。</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">10.48×</div>
+    <div class="bp-mini-card__ttl">ASR 電力効率</div>
+    <div class="bp-mini-card__body">Wiley CCPE 拡張版で Whisper tiny.en が RTX 4090 比で高い PDP 改善を達成。</div>
+  </div>
+  <div class="bp-mini-card">
+    <div class="bp-mini-card__n">260×</div>
+    <div class="bp-mini-card__ttl">ホスト処理短縮</div>
+    <div class="bp-mini-card__body">IMAX3 から IMAX4 への移行により、サーバ志向評価でホスト処理オーバーヘッドを大幅に削減。</div>
+  </div>
+</div>
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">受賞歴</div>
@@ -241,6 +345,23 @@ classes: wide
   </div>
 </div>
 
+<div class="bp-sec" markdown="0">現在注力していること</div>
+
+<div class="bp-note-grid" markdown="0">
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">システム全体のボトルネック解析</div>
+    <p>カーネル単体ではなく、ホスト CPU、DMA 転送、chunk サイズ、ランタイム方針まで含めて end-to-end の支配要因を見ています。</p>
+  </div>
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">再利用可能なソフトウェアスタック</div>
+    <p>個別アプリ向けの実装にとどまらず、IMAX 上で複数の AI ワークロードを支えられるソフトウェア基盤の整理に関心があります。</p>
+  </div>
+  <div class="bp-note-card">
+    <div class="bp-note-card__ttl">エッジからサーバへの展開</div>
+    <p>IMAX3 と IMAX4 の比較を通じて、アクセラレータ本体とホストインフラがどう協調すべきかを検証しています。</p>
+  </div>
+</div>
+
 <div class="bp-sec" markdown="0">高専での研究（〜2025年）</div>
 
 <div class="bp-grid" markdown="0">
@@ -265,6 +386,17 @@ classes: wide
       <span class="bp-tag">CANDARW 2024</span>
     </div>
   </div>
+</div>
+
+<div class="bp-sec" markdown="0">共同研究・連絡について</div>
+
+<div class="bp-contact-note">
+  AI システム、低消費電力アクセラレーション、新規ワークロードの実装評価に関する共同研究や技術的な議論に関心があります。
+  詳細な業績や資料は
+  <a href="{{ '/publications/' | relative_url }}">研究業績</a>、
+  <a href="{{ '/presentations/' | relative_url }}">発表資料</a>、
+  <a href="{{ '/biography/' | relative_url }}">経歴</a>
+  からご覧ください。
 </div>
 
 <div class="bp-sec" markdown="0">ギャラリー</div>
