@@ -9,6 +9,8 @@ classes: wide
 
 ## Biography
 
+I study computer architecture and AI systems at NAIST while working across research, implementation, presentation, and mentoring activities. My background combines hands-on engineering experience with academic research on energy-efficient AI acceleration.
+
 ### Education
 
 | Period | Institution |
@@ -47,9 +49,17 @@ classes: wide
 | **2022.05** | TOEIC (IP) 785 |
 | **2021.11** | Fundamental Information Technology Engineer Examination |
 
+### Short Profile
+
+- Research focus: non-von Neumann AI acceleration, LLM / ASR / generative AI on CGLA
+- Strengths: implementation-driven research, performance analysis, bilingual presentation materials
+- Current roles: master's student, engineer, and student mentor
+
 {% else %}
 
 ## 経歴
+
+奈良先端科学技術大学院大学で計算機アーキテクチャと AI システムを研究しつつ、実装・評価・発表・メンタリングまで横断して取り組んでいます。実装に根ざした研究スタイルと、省電力 AI アクセラレーションに関するテーマを強みとしています。
 
 ### 学歴
 
@@ -90,5 +100,11 @@ classes: wide
 | **2022.12** | 普通自動車第一種運転免許（AT 限定） |
 | **2022.05** | TOEIC (IP) 785点 |
 | **2021.11** | 基本情報技術者試験 合格 |
+
+### プロフィール要約
+
+- 研究テーマ: 非ノイマン型 AI アクセラレーション、LLM / ASR / 生成AI の CGLA 実装
+- 強み: 実装起点の研究、性能解析、日英両言語での発表資料作成
+- 現在の役割: 大学院生、エンジニア、学生メンター
 
 {% endif %}

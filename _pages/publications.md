@@ -50,6 +50,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 ## Publications
 
+This page collects peer-reviewed journal papers, conference publications, and domestic presentations. My recent work is centered on AI acceleration on CGLA/IMAX, while earlier work includes FPGA-based inference and computer vision for agricultural applications.
+
+### Overview
+
+| Category | Focus |
+|---|---|
+| LLM / CGLA | Kernel mapping, runtime bottleneck analysis, chunking optimization |
+| ASR / Whisper | Custom FP16 kernel design, hybrid execution, energy efficiency |
+| Generative AI | Stable Diffusion execution on general-purpose CGLA |
+| FPGA / Vision | Facial expression recognition, green onion detection |
+
 ### International Journals (Peer-reviewed)
 
 | Publications | 
@@ -95,9 +106,25 @@ document.addEventListener('DOMContentLoaded', function () {
 | **安藤 拓翔**, 井上 優良, "FPGAによるリアルタイム表情認識システムの実装," *電子情報通信学会九州支部学生会講演会*, 2023. |
 | **安藤 拓翔**, 井上 優良, "エッジ検出を用いたこねぎ分岐部の検出," *情処ARC研究発表会*, 2023. |
 
+### Notes
+
+- Rows are clickable when a DOI, PDF, or external page is available.
+- For slide materials and posters, see the `Materials` page.
+
 {% else %}
 
 ## 研究業績
+
+このページでは、査読付き論文、国際会議、国内研究会での発表をまとめています。近年は CGLA / IMAX 上の AI アクセラレーション研究が中心で、以前の研究として FPGA 推論や農業向けコンピュータビジョンも含まれます。
+
+### 概要
+
+| 区分 | 主な内容 |
+|---|---|
+| LLM / CGLA | カーネルマッピング、ランタイムボトルネック解析、chunking 最適化 |
+| ASR / Whisper | 独自 FP16 カーネル、混合実行、電力効率評価 |
+| 生成AI | 汎用 CGLA 上での Stable Diffusion 実行 |
+| FPGA / Vision | 表情認識、小ねぎ分岐部検出 |
 
 ### 国際論文誌（査読付き）
 
@@ -143,5 +170,10 @@ document.addEventListener('DOMContentLoaded', function () {
 | **安藤 拓翔**, 井上 優良, "FPGAにおけるDPUを用いた表情認識システムの実装," *情処ARC研究発表会*, 2024.<a class="pub-row-target" href="{{ '/assets/pdfs/paper/ipsj_arc2024.pdf' | relative_url }}" aria-hidden="true" tabindex="-1">Open</a> |
 | **安藤 拓翔**, 井上 優良, "FPGAによるリアルタイム表情認識システムの実装," *電子情報通信学会九州支部学生会講演会*, 2023. |
 | **安藤 拓翔**, 井上 優良, "エッジ検出を用いたこねぎ分岐部の検出," *情処ARC研究発表会*, 2023. |
+
+### 補足
+
+- DOI、PDF、外部ページがある行はクリックで直接参照できます。
+- スライドやポスター資料は `資料 / Materials` ページにまとめています。
 
 {% endif %}
