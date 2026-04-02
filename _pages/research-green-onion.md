@@ -47,7 +47,9 @@ The detection pipeline runs on edge devices suitable for agricultural production
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2024 | **農業情報研究** | Edge-Device Object Detection for Green Onion Harvesting Automation |
+| 2024 | **Agricultural Information Research** | Edge-device real-time branching-point detection for green onions |
+| 2024 | **IEICE Kyushu Student Conference** | Instance segmentation for green onion trimming position detection |
+| 2023 | **IPSJ ARC Workshop** | Detection of Welsh onion branching points using edge detection |
 
 {% else %}
 
@@ -91,6 +93,8 @@ The detection pipeline runs on edge devices suitable for agricultural production
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2024 | **農業情報研究** | Edge-Device Object Detection for Green Onion Harvesting Automation |
+| 2024 | **農業情報研究** | エッジデバイス上におけるリアルタイム小ねぎ分岐部位置検出 |
+| 2024 | **電子情報通信学会九州支部学生会講演会** | 小ねぎ調製位置検出のためのインスタンスセグメンテーション |
+| 2023 | **情処ARC研究発表会** | エッジ検出を用いたこねぎ分岐部の検出 |
 
 {% endif %}
