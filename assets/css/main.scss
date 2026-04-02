@@ -40,12 +40,17 @@ body {
 .greedy-nav .site-title {
   color: var(--ink) !important;
   font-weight: 900 !important;
-  font-size: 0.92rem !important;
+  font-size: 0.85rem !important;
+  min-width: 120px !important;
+  margin-right: 2rem !important;
 }
 .greedy-nav a,
 .greedy-nav .visible-links a {
   color: var(--muted) !important;
   font-size: 0.78rem !important;
+}
+.greedy-nav .visible-links {
+  min-width: 450px !important;
 }
 .greedy-nav a:hover,
 .greedy-nav .visible-links a:hover {
