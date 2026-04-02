@@ -44,7 +44,6 @@ The successful Whisper port — requiring dedicated numeric format support — v
 | Year | Venue | Title |
 |------|-------|-------|
 | 2025 | **CANDAR 2025** 🏆 Best Paper | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
-| 2025 | **arXiv** 2511.02269 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
 
 {% else %}
 
@@ -85,6 +84,5 @@ IMAX 上でのエンドツーエンド推論性能と消費電力を評価し、
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
 | 2025 | **CANDAR 2025** 🏆 最優秀論文賞 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
-| 2025 | **arXiv** 2511.02269 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
 
 {% endif %}

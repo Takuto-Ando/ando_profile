@@ -44,13 +44,13 @@ classes: wide
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">Awards</div>
-  <div class="bp-award">Best Paper Award — ICISN 2026</div>
-  <div class="bp-award">Best Paper Award — CANDAR 2025</div>
-  <div class="bp-award">Young Researcher Award — SASIMI 2025 (IEEE CEDA All Japan Joint Chapter)</div>
-  <div class="bp-award">Student Encouragement Award — IPSJ 87th National Convention, 2025</div>
-  <div class="bp-award">Encouragement Award (Excellence) — Japan KOSEN Association, 2025</div>
-  <div class="bp-award">Student Commendation — KOSEN Organization, 2025</div>
-  <div class="bp-award">Academic Encouragement Award — IEICE Kyushu Branch, 2025</div>
+  <div class="bp-award">Best Paper Award — ICISN 2026 (March 2026)</div>
+  <div class="bp-award">Best Paper Award — CANDAR 2025 (November 2025)</div>
+  <div class="bp-award">Young Researcher Award — SASIMI 2025, IEEE CEDA All Japan Joint Chapter (October 2025)</div>
+  <div class="bp-award">Student Encouragement Award — IPSJ 87th National Convention (March 2025)</div>
+  <div class="bp-award">Encouragement Award (Excellence) — Japan KOSEN Association (March 2025)</div>
+  <div class="bp-award">Student Commendation — KOSEN Organization (March 2025)</div>
+  <div class="bp-award">Academic Encouragement Award — IEICE Kyushu Branch (March 2025)</div>
 </div>
 
 <div class="bp-sec" markdown="0">NAIST Research — 2025~</div>
@@ -181,13 +181,13 @@ classes: wide
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">受賞歴</div>
-  <div class="bp-award">Best Paper Award — ICISN 2026</div>
-  <div class="bp-award">Best Paper Award — CANDAR 2025</div>
-  <div class="bp-award">Young Researcher Award — SASIMI 2025（IEEE CEDA All Japan Joint Chapter）</div>
-  <div class="bp-award">学生奨励賞 — 情報処理学会 第87回全国大会（2025）</div>
-  <div class="bp-award">奨励賞 優秀賞 — 日本高専学会（2025）</div>
-  <div class="bp-award">学生表彰 — 高専機構（2025）</div>
-  <div class="bp-award">学術奨励賞 — IEICE 九州支部（2025）</div>
+  <div class="bp-award">Best Paper Award — ICISN 2026（2026年3月）</div>
+  <div class="bp-award">Best Paper Award — CANDAR 2025（2025年11月）</div>
+  <div class="bp-award">Young Researcher Award — SASIMI 2025, IEEE CEDA All Japan Joint Chapter（2025年10月）</div>
+  <div class="bp-award">学生奨励賞 — 情報処理学会 第87回全国大会（2025年3月）</div>
+  <div class="bp-award">奨励賞 優秀賞 — 日本高専学会（2025年3月）</div>
+  <div class="bp-award">理事長表彰 — 高専機構（2025年3月）</div>
+  <div class="bp-award">学術奨励賞 — 電子情報通信学会 九州支部（2025年3月）</div>
 </div>
 
 <div class="bp-sec" markdown="0">NAIST での研究（2025年〜）</div>
