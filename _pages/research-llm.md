@@ -49,6 +49,32 @@ Designed and evaluated **IMAX4** — featuring an Intel Xeon server CPU and PCIe
   <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
+### Results
+
+Energy efficiency comparison (Qwen3 LLM family, Q8_0 quantization):
+
+| Platform | Process | Power | PDP vs RTX 4090 | EDP vs RTX 4090 |
+|----------|---------|-------|-----------------|-----------------|
+| **IMAX (28nm proj.)** | **28nm** | **~6 W** | **44.4x better** | **11.5x better** |
+| Jetson AGX Orin | 8nm | 60 W | ~3x better | — |
+| GTX 1080 Ti | 16nm | 250 W | ~1.3x worse | — |
+| RTX 4090 | 4nm | 450 W | 1.0x (baseline) | 1.0x (baseline) |
+
+Q-Snap prefill performance (IMAX 28nm, Qwen3):
+
+| Metric | Baseline | Q-Snap | Improvement |
+|--------|----------|--------|-------------|
+| Prefill throughput | 17.11 tok/s | 27.70 tok/s | **1.62x** |
+| Decode throughput | 3.88 tok/s | 5.62 tok/s | 1.45x |
+
+IMAX3 → IMAX4 host bottleneck reduction (LLaMA3 8B, Q8_0):
+
+| Metric | IMAX3 | IMAX4 | Improvement |
+|--------|-------|-------|-------------|
+| CPU time | 1,462.4 s | 15.3 s | **95x** |
+| Weight transfer (CPYIN) | 350.9 s | 3.0 s | 117x |
+| E2E latency (2-lane) | 1,700 s | 112.3 s | 15x |
+
 ### Publications
 
 | Year | Venue | Title |
@@ -100,6 +126,32 @@ IMAX3 で特定したホスト側ボトルネックを解消するため、Intel
   <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX アーキテクチャ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
+
+### 実験結果
+
+エネルギー効率比較（Qwen3 LLM ファミリー、Q8_0 量子化）：
+
+| プラットフォーム | プロセス | 消費電力 | PDP vs RTX 4090 | EDP vs RTX 4090 |
+|----------|---------|-------|-----------------|-----------------|
+| **IMAX (28nm 見積)** | **28nm** | **~6 W** | **44.4倍改善** | **11.5倍改善** |
+| Jetson AGX Orin | 8nm | 60 W | ~3倍改善 | — |
+| GTX 1080 Ti | 16nm | 250 W | ~1.3倍劣勢 | — |
+| RTX 4090 | 4nm | 450 W | 1.0倍（基準） | 1.0倍（基準） |
+
+Q-Snap プリフィル性能（IMAX 28nm、Qwen3）：
+
+| メトリック | ベースライン | Q-Snap | 改善 |
+|--------|----------|--------|-------------|
+| プリフィルスループット | 17.11 tok/s | 27.70 tok/s | **1.62倍** |
+| デコードスループット | 3.88 tok/s | 5.62 tok/s | 1.45倍 |
+
+IMAX3 → IMAX4 ホストボトルネック低減（LLaMA3 8B、Q8_0）：
+
+| メトリック | IMAX3 | IMAX4 | 改善 |
+|--------|-------|-------|-------------|
+| CPU 時間 | 1,462.4 s | 15.3 s | **95倍** |
+| 重み転送（CPYIN） | 350.9 s | 3.0 s | 117倍 |
+| E2E レイテンシ（2レーン） | 1,700 s | 112.3 s | 15倍 |
 
 ### 発表論文
 

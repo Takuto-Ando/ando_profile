@@ -117,7 +117,6 @@ classes: wide
       with deep learning for accuracy and lightweight execution.
     </div>
     <div class="bp-tags">
-      <span class="bp-tag">ICIC Express Letters 2026</span>
       <span class="bp-tag">農業情報研究 2024</span>
     </div>
   </div>
@@ -252,7 +251,6 @@ classes: wide
       古典的画像処理と深層学習の組み合わせで精度と軽量化を両立した。
     </div>
     <div class="bp-tags">
-      <span class="bp-tag">ICIC Express Letters 2026</span>
       <span class="bp-tag">農業情報研究 2024</span>
     </div>
   </div>

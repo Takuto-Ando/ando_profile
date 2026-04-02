@@ -36,16 +36,23 @@ Key properties:
 
 ### IMAX3 vs IMAX4
 
+### Specifications
+
 | | IMAX3 | IMAX4 |
 |--|-------|-------|
 | **Target** | Edge devices | Server / data center |
-| **Host CPU** | Low-power embedded | High-performance server CPU |
-| **Interconnect** | PCIe Gen3/4 | PCIe Gen5 |
+| **Host CPU** | Dual-core ARM Cortex-A72 | Intel Xeon (16-core) |
+| **FPGA** | AMD Versal VPK180 | VPK120 (bridge) + 4x VPK180 |
+| **Clock** | 145 MHz | 145 MHz (FPGA) |
+| **Interconnect** | LPDDR4 (32-bit, 4 Gbps/lane) | PCIe Gen5 (2 links) |
+| **LMM per PE** | 32–512 KB (configurable) | 32–512 KB (configurable) |
+| **DMA Buffer** | Limited | 16 GB (CMA) |
+| **ASIC Projection** | 840 MHz @ 28nm | — |
 | **Use case** | On-device AI inference | Large-scale LLM / generative AI |
 
-**IMAX3** is optimized for deployment on edge devices with tight power budgets. My research revealed its host-side bottlenecks when running LLMs, which informed the design of IMAX4.
+**IMAX3** is optimized for edge devices with tight power budgets. My research running LLMs on IMAX3 revealed that the primary bottleneck is not the CGLA compute, but the host CPU's token generation and PCIe data transfer latency. For example, with Q8_0 quantization, the ARM CPU consumed **1,462 seconds** of the total 1,799-second latency — over 80% of execution time.
 
-**IMAX4** is a server-oriented prototype incorporating a high-performance CPU and wide PCIe Gen5 bandwidth. It was co-designed with the bottleneck analysis results and demonstrates server-scale AI workload capacity.
+**IMAX4** was designed to resolve these host-side bottlenecks. By upgrading to an Intel Xeon processor and PCIe Gen5 interconnect, CPU overhead dropped from 1,462s to **15.3s** — a **95x improvement**. Weight transfer (CPYIN) improved from 350.9s to **3.0s** (117x). This validated that IMAX scales to server-level workloads when paired with adequate host infrastructure.
 
 <div markdown="0" style="margin:1.5rem 0;">
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 Prototype" style="max-width:560px;width:100%;border:1px solid #E2E8F0;">
@@ -82,16 +89,23 @@ IMAX の核心的な革新は**交互配置線形アレイ**構造にありま�
 
 ### IMAX3 と IMAX4
 
+### 仕様
+
 | | IMAX3 | IMAX4 |
 |--|-------|-------|
 | **対象** | エッジデバイス | サーバ / データセンター |
-| **ホスト CPU** | 低消費電力組み込み | 高性能サーバ CPU |
-| **インターコネクト** | PCIe Gen3/4 | PCIe Gen5 |
+| **ホスト CPU** | デュアルコア ARM Cortex-A72 | Intel Xeon（16コア） |
+| **FPGA** | AMD Versal VPK180 | VPK120（ブリッジ）+ 4x VPK180 |
+| **クロック** | 145 MHz | 145 MHz（FPGA） |
+| **インターコネクト** | LPDDR4（32ビット、4 Gbps/レーン） | PCIe Gen5（2リンク） |
+| **PE あたり LMM** | 32〜512 KB（構成可能） | 32〜512 KB（構成可能） |
+| **DMA バッファ** | 限定的 | 16 GB（CMA） |
+| **ASIC 見積** | 840 MHz @ 28nm | — |
 | **用途** | デバイス上での AI 推論 | 大規模 LLM / 生成 AI |
 
-**IMAX3** は電力予算が厳しいエッジデバイスへの展開に最適化されています。私の研究でLLM実行時のホスト側ボトルネックを特定し、IMAX4 の設計指針となりました。
+**IMAX3** は電力予算が厳しいエッジデバイスへの展開に最適化されています。IMAX3 上での LLM 実行研究により、主なボトルネックが CGLA 演算ではなく、ホスト CPU のトークン生成と PCIe データ転送レイテンシにあることを特定しました。例えば Q8_0 量子化では、ARM CPU が全体1,799秒のうち **1,462秒** を消費 — 実行時間の80%以上を占めていました。
 
-**IMAX4** は高性能 CPU と広帯域 PCIe Gen5 を搭載したサーバ指向プロトタイプです。ボトルネック分析の結果を踏まえて共同設計され、サーバ規模のAIワークロード処理能力を実証しています。
+**IMAX4** はこのホスト側ボトルネックを解消するために設計されました。Intel Xeon プロセッサと PCIe Gen5 インターコネクトへのアップグレードにより、CPU オーバーヘッドが 1,462秒 から **15.3秒** に低減 — **95倍の改善**。重みデータ転送（CPYIN）も 350.9秒 から **3.0秒** に改善（117倍）。適切なホストインフラとの組み合わせにより、IMAX がサーバレベルのワークロードにスケールすることを実証しました。
 
 <div markdown="0" style="margin:1.5rem 0;">
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ" style="max-width:560px;width:100%;border:1px solid #E2E8F0;">

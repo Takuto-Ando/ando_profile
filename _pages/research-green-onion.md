@@ -10,32 +10,36 @@ classes: wide
 ## Green Onion Branching Point Detection
 
 <div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2026</span>
   <span class="bp-tag">農業情報研究 2024</span>
 </div>
 
 ### Overview
 
-Automated trimming of green onions (welsh onions) is a critical challenge in agricultural robotics. To cut at the correct position, a system must accurately detect **branching points** — the locations where outer leaves diverge from the main stalk. This is difficult due to the irregular, overlapping geometry of green onion bundles and the varying lighting conditions in production environments.
+Automated trimming of green onions (welsh onions) is a key challenge in agricultural robotics. The trimming machine must cut at the **branching point** where outer leaves diverge from the main stalk. Accurate detection of this point is essential, as positioning errors directly affect peeling success rates.
 
-This research developed a branching-point detection algorithm combining **classical image processing** with **deep learning object detection**, targeting deployment on resource-constrained edge devices.
+This research develops a detection system combining **classical image processing** with **deep learning object detection**, targeting deployment on resource-constrained edge devices in agricultural production lines.
 
-### Approach
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/negi_machine.jpg' | relative_url }}" alt="Green onion trimming machine" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/branch_example.png' | relative_url }}" alt="Branching point detection example" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+</div>
 
-**Stage 1: Classical Edge Detection**
+### Key Contributions
 
-For cases where background contrast is sufficient, edge detection (Canny / Sobel) combined with geometric feature extraction can locate branching points with high frame rate and low power. This avoids the overhead of neural network inference when simpler methods suffice.
+**Classical Edge Detection for Simple Backgrounds**
 
-**Stage 2: Deep Learning (YOLO / Mask-RCNN)**
+For cases where background contrast is sufficient, edge detection (Canny / Sobel) combined with geometric feature extraction can locate branching points with high frame rate and low power, avoiding unnecessary neural network inference overhead.
 
-When lighting and background conditions are complex, classical methods fail. I implemented and evaluated **YOLOv8** for bounding-box detection and **Mask-RCNN** for instance segmentation of individual leaves, enabling precise branching-point localization under real-world conditions.
+**Deep Learning Detection (YOLOX)**
 
-**Lightweight Edge Optimization**
+When lighting and background conditions are complex, classical methods fail. Implemented and evaluated YOLOX-based object detection for branching point localization under real-world production environments.
 
-Model pruning and quantization were applied to fit the deep learning pipeline within the compute budget of edge devices used in agricultural settings.
+**Edge Device Deployment**
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
-  <img src="{{ '/assets/images/negi_yolo.png' | relative_url }}" alt="YOLO detection result" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+The detection pipeline runs on edge devices suitable for agricultural production lines, balancing accuracy with low power consumption.
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/negi_yolo.png' | relative_url }}" alt="YOLOX detection result" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/negi_seg.png' | relative_url }}" alt="Segmentation result" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
@@ -43,7 +47,6 @@ Model pruning and quantization were applied to fit the deep learning pipeline wi
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2026 | **ICIC Express Letters** | Branching Point Detection for Automated Green Onion Trimming Using Instance Segmentation |
 | 2024 | **農業情報研究** | Edge-Device Object Detection for Green Onion Harvesting Automation |
 
 {% else %}
@@ -51,32 +54,36 @@ Model pruning and quantization were applied to fit the deep learning pipeline wi
 ## 小ねぎ分岐部検出
 
 <div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2026</span>
   <span class="bp-tag">農業情報研究 2024</span>
 </div>
 
 ### 概要
 
-小ねぎ（ねぎ）の自動調製における適切な切断位置の特定は農業ロボティクスの重要課題です。正確な切断には**分岐部**（外葉が主茎から分岐する位置）の検出が必要です。しかし、小ねぎ束の不規則で重なり合う形状や、生産環境での照明条件の変化により、これは困難な問題です。
+小ねぎの自動調製は農業ロボティクスの重要課題です。調製機は外葉が主茎から分岐する**分岐部**で切断する必要があり、位置誤差は直接的に皮むき成功率に影響します。
 
-本研究では、**古典的画像処理**と**深層学習物体検出**を組み合わせた分岐部検出アルゴリズムを開発し、リソース制約のあるエッジデバイスへの展開を目指しました。
+本研究では、**古典的画像処理**と**深層学習物体検出**を組み合わせた検出システムを開発し、農業生産ラインのリソース制約エッジデバイスへの展開を目指しました。
 
-### アプローチ
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/negi_machine.jpg' | relative_url }}" alt="小ねぎ調製機" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/branch_example.png' | relative_url }}" alt="分岐部検出例" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+</div>
 
-**Stage 1：古典的エッジ検出**
+### 主な成果
 
-背景コントラストが十分な場合、エッジ検出（Canny / Sobel）と幾何学的特徴抽出を組み合わせることで、高フレームレート・低消費電力での分岐部位置特定が可能です。ニューラルネットワーク推論の不要なシーンでは、より単純な手法で対応します。
+**シンプルな背景での古典的エッジ検出**
 
-**Stage 2：深層学習（YOLO / Mask-RCNN）**
+背景コントラストが十分な場合、エッジ検出（Canny / Sobel）と幾何学的特徴抽出を組み合わせることで、高フレームレート・低消費電力での分岐部位置特定が可能です。不必要なニューラルネットワーク推論のオーバーヘッドを回避します。
 
-照明や背景条件が複雑な場合は古典的手法では対応できません。バウンディングボックス検出に **YOLOv8**、葉のインスタンスセグメンテーションに **Mask-RCNN** を実装・評価し、実環境での正確な分岐部特定を実現しました。
+**深層学習検出（YOLOX）**
 
-**エッジ向け軽量化**
+照明や背景条件が複雑な場合は古典的手法では対応できません。実環境の生産現場を対象として YOLOX ベースの物体検出を実装・評価し、分岐部の正確な位置特定を実現しました。
 
-農業現場のエッジデバイスの演算予算に収めるため、モデルの剪定と量子化を適用しました。
+**エッジデバイスへの実装**
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
-  <img src="{{ '/assets/images/negi_yolo.png' | relative_url }}" alt="YOLO 検出結果" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+農業生産ラインに適したエッジデバイス上で検出パイプラインを実行し、精度と低消費電力のバランスを実現します。
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/negi_yolo.png' | relative_url }}" alt="YOLOX 検出結果" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/negi_seg.png' | relative_url }}" alt="セグメンテーション結果" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
@@ -84,7 +91,6 @@ Model pruning and quantization were applied to fit the deep learning pipeline wi
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2026 | **ICIC Express Letters** | Branching Point Detection for Automated Green Onion Trimming Using Instance Segmentation |
 | 2024 | **農業情報研究** | Edge-Device Object Detection for Green Onion Harvesting Automation |
 
 {% endif %}
