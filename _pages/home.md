@@ -167,7 +167,7 @@ classes: wide
 
 <div class="bp-stats" markdown="0">
   <div class="bp-stat"><div class="bp-stat__n">3</div><div class="bp-stat__l">国際論文誌</div></div>
-  <div class="bp-stat"><div class="bp-stat__n">10</div><div class="bp-stat__l">国際会議</div></div>
+  <div class="bp-stat"><div class="bp-stat__n">7</div><div class="bp-stat__l">国際会議</div></div>
   <div class="bp-stat"><div class="bp-stat__n">7</div><div class="bp-stat__l">受賞</div></div>
   <div class="bp-stat"><div class="bp-stat__n">6</div><div class="bp-stat__l">国内発表</div></div>
 </div>
