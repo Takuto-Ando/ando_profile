@@ -55,31 +55,6 @@ classes: wide
   <span class="bp-keyword">Hardware / Software Co-design</span>
 </div>
 
-<div class="bp-sec" markdown="0">Selected Results</div>
-
-<div class="bp-mini-grid" markdown="0">
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">44.4×</div>
-    <div class="bp-mini-card__ttl">PDP vs RTX 4090</div>
-    <div class="bp-mini-card__body">IEEE Access 2025: projected 28nm IMAX evaluation for Qwen-family LLM inference.</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">1.62×</div>
-    <div class="bp-mini-card__ttl">Prefill Speedup</div>
-    <div class="bp-mini-card__body">Q-Snap improved prefill throughput from 17.11 tok/s to 27.70 tok/s on IMAX.</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">10.48×</div>
-    <div class="bp-mini-card__ttl">ASR Energy Efficiency</div>
-    <div class="bp-mini-card__body">Wiley CCPE extension: Whisper tiny.en achieved strong PDP gain vs RTX 4090.</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">260×</div>
-    <div class="bp-mini-card__ttl">Host Time Reduction</div>
-    <div class="bp-mini-card__body">IMAX3 to IMAX4 migration reduced host-side processing overhead in server-scale evaluation.</div>
-  </div>
-</div>
-
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">Awards</div>
   <div class="bp-award">Best Paper Award — ICISN 2026 (March 2026)</div>
@@ -255,31 +230,6 @@ classes: wide
   <span class="bp-keyword">音声認識</span>
   <span class="bp-keyword">画像生成</span>
   <span class="bp-keyword">ハードウェア・ソフトウェア協調設計</span>
-</div>
-
-<div class="bp-sec" markdown="0">主要成果</div>
-
-<div class="bp-mini-grid" markdown="0">
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">44.4×</div>
-    <div class="bp-mini-card__ttl">PDP 改善</div>
-    <div class="bp-mini-card__body">IEEE Access 2025: Qwen 系 LLM 推論で IMAX 28nm 見積が RTX 4090 比 44.4 倍の PDP 改善。</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">1.62×</div>
-    <div class="bp-mini-card__ttl">Prefill 高速化</div>
-    <div class="bp-mini-card__body">Q-Snap により prefill throughput を 17.11 tok/s から 27.70 tok/s へ改善。</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">10.48×</div>
-    <div class="bp-mini-card__ttl">ASR 電力効率</div>
-    <div class="bp-mini-card__body">Wiley CCPE 拡張版で Whisper tiny.en が RTX 4090 比で高い PDP 改善を達成。</div>
-  </div>
-  <div class="bp-mini-card">
-    <div class="bp-mini-card__n">260×</div>
-    <div class="bp-mini-card__ttl">ホスト処理短縮</div>
-    <div class="bp-mini-card__body">IMAX3 から IMAX4 への移行により、サーバ志向評価でホスト処理オーバーヘッドを大幅に削減。</div>
-  </div>
 </div>
 
 <div class="bp-awards" markdown="0">
