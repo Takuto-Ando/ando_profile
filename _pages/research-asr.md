@@ -16,34 +16,35 @@ classes: wide
 
 ### Overview
 
-Automatic Speech Recognition (ASR) is a computationally intensive task that powers voice interfaces, transcription services, and accessibility tools. **Whisper**, OpenAI's state-of-the-art ASR model, combines a transformer encoder-decoder architecture with mel-spectrogram preprocessing — presenting unique challenges for non-GPU hardware.
+Automatic Speech Recognition (ASR) is a computationally intensive task powering voice interfaces and transcription services. **Whisper**, OpenAI's transformer-based ASR model, poses unique challenges for non-GPU hardware due to its encoder-decoder architecture and FP16 arithmetic requirements.
 
-This research ports **Whisper** to IMAX, demonstrating that CGLA can efficiently handle audio AI workloads in addition to text and image generation.
+This research implements **Whisper** on IMAX, demonstrating that the CGLA architecture can efficiently handle audio AI workloads in addition to LLM and image generation.
 
 ### Key Contributions
 
 **Custom FP16 Kernel Implementation**
 
-Whisper relies heavily on FP16 (half-precision floating-point) arithmetic, which is not natively supported by IMAX's default data path. I implemented a **custom FP16 computational kernel** optimized for the CGLA linear array, enabling accurate and efficient inference without sacrificing the energy benefits of the architecture.
+Whisper's inference relies heavily on half-precision floating-point (FP16) arithmetic. Implemented a custom FP16 computational kernel optimized for the CGLA linear array pipeline, enabling accurate inference without sacrificing the architecture's energy advantages.
 
 **Energy-Efficient ASR Inference**
 
-Compared to GPU-based Whisper deployment, the IMAX implementation achieves significant reductions in power consumption while maintaining transcription accuracy. This makes it suitable for edge deployment in power-constrained environments.
+Evaluated end-to-end inference performance and energy consumption on IMAX, demonstrating significant power reduction compared to GPU-based deployment while maintaining transcription accuracy.
 
-**Architectural Generality**
+**Architectural Versatility**
 
-The successful Whisper port — requiring custom numeric format support — demonstrates IMAX's architectural flexibility beyond fixed-datatype workloads, validating CGLA as a versatile AI acceleration platform.
+The successful Whisper port — requiring dedicated numeric format support — validates IMAX's generality as a platform for diverse AI workloads beyond transformers and vision models.
 
-<div markdown="0" style="margin:1.5rem 0;">
-  <img src="{{ '/assets/images/candar_award2.png' | relative_url }}" alt="CANDAR 2025 Best Paper Award" style="max-width:480px;width:100%;border:1px solid #E2E8F0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 and IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/candar_award2.png' | relative_url }}" alt="CANDAR 2025 Best Paper Award" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
 ### Publications
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2025 | **CANDAR 2025** 🏆 Best Paper | Whisper ASR on CGLA with Custom FP16 Kernel |
-| 2025 | **arXiv** 2511.02269 | Energy-Efficient Speech Recognition on Non-von Neumann Accelerator |
+| 2025 | **CANDAR 2025** 🏆 Best Paper | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
+| 2025 | **arXiv** 2511.02269 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
 
 {% else %}
 
@@ -56,33 +57,34 @@ The successful Whisper port — requiring custom numeric format support — demo
 
 ### 概要
 
-自動音声認識（ASR）は、音声インターフェース・文字起こし・アクセシビリティツールを支える計算負荷の高いタスクです。OpenAI の最先端 ASR モデル **Whisper** は、トランスフォーマーエンコーダ・デコーダ構造とメルスペクトログラム前処理を組み合わせており、GPU 以外のハードウェアへの実装には固有の課題があります。
+自動音声認識（ASR）は音声インターフェースや文字起こしサービスを支える計算負荷の高いタスクです。OpenAI のトランスフォーマーベース ASR モデル **Whisper** は、エンコーダ・デコーダ構造と FP16 演算への依存性から、GPU 以外のハードウェアへの実装に固有の課題があります。
 
-本研究では **Whisper** を IMAX 上に移植し、CGLA がテキスト・画像生成に加えて音声 AI ワークロードも効率的に処理できることを実証します。
+本研究では **Whisper** を IMAX 上に実装し、CGLA が LLM・画像生成に加えて音声 AI ワークロードも効率的に処理できることを実証します。
 
 ### 主な成果
 
 **独自 FP16 演算カーネルの実装**
 
-Whisper は FP16（半精度浮動小数点）演算に大きく依存していますが、IMAX のデフォルトデータパスでは直接サポートされていません。CGLA 線形アレイに最適化した **独自 FP16 演算カーネル** を実装し、アーキテクチャの省電力性を損なうことなく高精度な推論を実現しました。
+Whisper 推論は半精度浮動小数点（FP16）演算に大きく依存しています。CGLA 線形アレイパイプラインに最適化した独自 FP16 演算カーネルを実装し、アーキテクチャのエネルギー優位性を損なうことなく高精度な推論を実現しました。
 
 **省電力 ASR 推論**
 
-GPU ベースの Whisper と比較して、IMAX 実装は文字起こし精度を維持しながら大幅な消費電力削減を達成。電力制約のあるエッジ環境への展開に適しています。
+IMAX 上でのエンドツーエンド推論性能と消費電力を評価し、文字起こし精度を維持しながら GPU ベースと比較して大幅な省電力を達成。
 
 **アーキテクチャの汎用性実証**
 
-独自の数値フォーマットサポートを必要とする Whisper の移植成功により、IMAX が固定データ型ワークロードを超えた柔軟性を持つことを示し、汎用 AI アクセラレーションプラットフォームとしての価値を実証しました。
+専用の数値フォーマットサポートを必要とする Whisper の移植成功により、IMAX がトランスフォーマーや画像モデルを超えた多様な AI ワークロードへの対応力を持つことを実証しました。
 
-<div markdown="0" style="margin:1.5rem 0;">
-  <img src="{{ '/assets/images/candar_award2.png' | relative_url }}" alt="CANDAR 2025 最優秀論文賞" style="max-width:480px;width:100%;border:1px solid #E2E8F0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 と IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/candar_award2.png' | relative_url }}" alt="CANDAR 2025 最優秀論文賞" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
 ### 発表論文
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2025 | **CANDAR 2025** 🏆 最優秀論文賞 | Whisper ASR on CGLA with Custom FP16 Kernel |
-| 2025 | **arXiv** 2511.02269 | Energy-Efficient Speech Recognition on Non-von Neumann Accelerator |
+| 2025 | **CANDAR 2025** 🏆 最優秀論文賞 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
+| 2025 | **arXiv** 2511.02269 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
 
 {% endif %}

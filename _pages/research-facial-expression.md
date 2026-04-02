@@ -16,31 +16,26 @@ classes: wide
 
 ### Overview
 
-Real-time facial expression recognition is essential for human-robot interaction, affective computing, and accessibility applications. However, running two DNN models (face detection + expression classification) simultaneously on embedded CPUs is impractical — the compute demands exceed available resources.
+Real-time facial expression recognition requires running two DNN models in sequence — face detection followed by expression classification. Executing both on an embedded CPU is impractical due to compute constraints and poor power efficiency.
 
-This research implements a **time-division multi-tasking DNN system** on FPGA using a **DPU** (Deep Learning Processing Unit) accelerator, enabling real-time inference of two models on a single hardware unit with dramatically lower power than CPU-based solutions.
+This research implements a **stand-alone facial expression recognition system** on a SoC FPGA using a **DPU** (Deep Learning Processing Unit, a systolic array CNN accelerator), with a **multi-threading** technique enabling high DPU utilization across both models.
 
 ### System Design
 
-**Dual-DNN Time-Division Execution**
+The system consists of two inference stages running on a single DPU:
 
-Rather than instantiating two separate DPU cores (resource-intensive), I designed a single DPU that **time-multiplexes** between two DNN models:
-1. **Face detection model** (YOLO-based): locates faces in the camera frame
-2. **Expression classification model** (lightweight CNN): classifies detected faces into emotion categories
+1. **Face detection** (DenseBox-based): locates face regions in the camera frame
+2. **Expression classification** (lightweight CNN): classifies the detected region into emotion categories
 
-The two models alternate execution in each video frame, sharing the DPU hardware resources.
-
-**FPGA Implementation (Xilinx DPU)**
-
-Implemented on a Xilinx FPGA board using the Vitis AI DPU framework. The DPU provides fixed-function acceleration for convolutional operations, enabling high throughput without GPU-class power consumption.
+Rather than time-multiplexing at the frame level, a **multi-threading** approach is used to overlap DPU execution and CPU-side preprocessing, maximizing hardware utilization and overall system throughput.
 
 **Results**
 
-- Achieved **30+ FPS** end-to-end (face detection + expression classification)
-- Power consumption: significantly lower than embedded CPU baseline
-- Demonstrated viability of FPGA-based multi-task DNN for real-time edge AI
+- End-to-end throughput: **25 FPS**
+- Throughput-per-power: **2.4× improvement** over prior single-threaded implementation
+- Unified DPU design avoids duplication of FPGA resources
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
   <img src="{{ '/assets/images/fpga_system_fig.png' | relative_url }}" alt="FPGA system overview" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/fer_system.png' | relative_url }}" alt="Expression recognition system" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
@@ -49,8 +44,8 @@ Implemented on a Xilinx FPGA board using the Vitis AI DPU framework. The DPU pro
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2025 | **ICIC Express Letters** | Real-Time Facial Expression Recognition on FPGA Using Time-Division Multi-Tasking DPU |
-| 2024 | **CANDARW 2024** | DPU-Based Multi-Task DNN Inference for Edge AI on FPGA |
+| 2025 | **ICIC Express Letters** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
+| 2024 | **CANDARW 2024** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
 
 {% else %}
 
@@ -63,31 +58,26 @@ Implemented on a Xilinx FPGA board using the Vitis AI DPU framework. The DPU pro
 
 ### 概要
 
-リアルタイム表情認識は、ヒューマンロボットインタラクション・感情コンピューティング・アクセシビリティアプリケーションに不可欠です。しかし、2つの DNN モデル（顔検出＋表情分類）を組み込み CPU 上で同時実行することは実用上困難で、計算需要が利用可能リソースを超えてしまいます。
+リアルタイム表情認識では、顔検出と表情分類の2つの DNN モデルを逐次実行する必要があります。組み込み CPU 上での両モデル実行は、計算制約と電力効率の悪さから実用的ではありません。
 
-本研究では、**DPU**（ディープラーニング処理ユニット）アクセラレータを用いた FPGA 上での **時分割マルチタスク DNN システム**を実装し、単一ハードウェア上で2つのモデルのリアルタイム推論を CPU ベースのソリューションより大幅な省電力で実現します。
+本研究では、DPU（ディープラーニング処理ユニット、シストリックアレイ型 CNN アクセラレータ）を用いた SoC FPGA 上に**スタンドアロン表情認識システム**を実装し、**マルチスレッディング**手法により両モデルにまたがる高い DPU 利用率を実現します。
 
 ### システム設計
 
-**デュアル DNN 時分割実行**
+単一 DPU 上で動作する2段階推論パイプライン：
 
-2つの独立した DPU コアを用意する（リソース消費が大きい）代わりに、単一の DPU が2つの DNN モデルを**時分割多重**で実行するよう設計しました：
-1. **顔検出モデル**（YOLO ベース）：カメラフレーム中の顔を検出
-2. **表情分類モデル**（軽量 CNN）：検出した顔の感情カテゴリを分類
+1. **顔検出**（DenseBox ベース）：カメラフレーム中の顔領域を検出
+2. **表情分類**（軽量 CNN）：検出領域を感情カテゴリに分類
 
-2つのモデルが各ビデオフレームで交互に実行され、DPU ハードウェアリソースを共有します。
-
-**FPGA 実装（Xilinx DPU）**
-
-Vitis AI DPU フレームワークを使用して Xilinx FPGA ボード上に実装。DPU は畳み込み演算の固定機能アクセラレーションを提供し、GPU クラスの消費電力なしに高スループットを実現します。
+フレームレベルの時分割ではなく**マルチスレッディング**アプローチにより、DPU 実行と CPU 側前処理をオーバーラップさせてハードウェア利用率を最大化し、システム全体のスループットを向上させます。
 
 **結果**
 
-- エンドツーエンド（顔検出＋表情分類）で **30+ FPS** を達成
-- 消費電力：組み込み CPU ベースラインと比較して大幅に削減
-- リアルタイムエッジ AI のための FPGA ベースマルチタスク DNN の実現可能性を実証
+- エンドツーエンドスループット：**25 FPS**
+- スループット/消費電力：従来のシングルスレッド実装比 **2.4倍改善**
+- 統一 DPU 設計により FPGA リソースの重複を回避
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
   <img src="{{ '/assets/images/fpga_system_fig.png' | relative_url }}" alt="FPGA システム概要" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/fer_system.png' | relative_url }}" alt="表情認識システム" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
@@ -96,7 +86,7 @@ Vitis AI DPU フレームワークを使用して Xilinx FPGA ボード上に実
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2025 | **ICIC Express Letters** | Real-Time Facial Expression Recognition on FPGA Using Time-Division Multi-Tasking DPU |
-| 2024 | **CANDARW 2024** | DPU-Based Multi-Task DNN Inference for Edge AI on FPGA |
+| 2025 | **ICIC Express Letters** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
+| 2024 | **CANDARW 2024** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
 
 {% endif %}

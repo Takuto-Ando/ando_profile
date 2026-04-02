@@ -13,47 +13,49 @@ classes: wide
   <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
   <span class="bp-tag bp-tag--award">Young Researcher Award — SASIMI 2025</span>
   <span class="bp-tag">IEEE Access (2025)</span>
-  <span class="bp-tag">SOCC 2025</span>
 </div>
 
 ### Overview
 
-The explosive growth of LLMs (Large Language Models) has made GPUs the de facto standard for AI inference. However, GPUs suffer from severe energy inefficiency due to the von Neumann bottleneck — a fundamental mismatch between compute and memory access patterns in transformer models.
+Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, this research focuses on **IMAX** — a Coarse-Grained Linear Array (CGLA) accelerator developed at NAIST — as an effective alternative that provides a trade-off between energy efficiency and programmability.
 
-My research implements and optimizes state-of-the-art LLMs — **Llama3**, **Qwen**, and **Flan-T5** — on **IMAX** (In-Memory Accelerator eXtension), a non-von Neumann CGLA developed at NAIST. IMAX structurally eliminates the von Neumann bottleneck by interleaving compute units with cache memory in a linear array.
+IMAX's interleaved linear array structure places compute units and cache memory banks alternately, structurally reducing memory access latency and the von Neumann bottleneck.
 
-### Key Contributions
-
-**Bottleneck Analysis on IMAX3**
-
-Running LLMs on the edge-oriented IMAX3 prototype revealed that the primary performance bottleneck is not the IMAX hardware itself, but the host CPU's token generation logic and PCIe data transfer latency. This insight guided the design of next-generation hardware.
-
-**Q-snap: Quantization-Aware Dynamic Chunking**
-
-To maximize IMAX's compute efficiency, I proposed **Q-snap**, a novel data layout method that dynamically chunks weight matrices according to quantization granularity. Q-snap reduces memory access overhead and improves cache utilization on the CGLA pipeline.
-
-**Server-Scale Evaluation on IMAX4**
-
-Based on the IMAX3 analysis, I designed and evaluated **IMAX4** — a server-oriented platform equipped with a high-performance CPU and PCIe Gen5 interconnect. IMAX4 demonstrated that the IMAX architecture scales to server-level LLM workloads, matching or exceeding GPU baselines in energy efficiency.
-
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
   <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 and IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 Prototype" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
-  <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX demo" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
-  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026 presentation" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+### Key Contributions
+
+**Multi-Quantization Kernel Implementation**
+
+Implemented four distinct quantized kernel types for the Qwen LLM family on IMAX: FP16, Q8_0, Q3_K, and Q6_K. This hybrid execution model partitions tasks between host CPU and the CGLA accelerator, maximizing throughput across different model sizes and quantization configurations.
+
+**Bottleneck Analysis on IMAX3**
+
+Running LLMs on the edge-oriented IMAX3 prototype revealed that the primary performance bottleneck is host-accelerator data transfer latency, not the CGLA compute itself. This analysis directly informed the design of IMAX4.
+
+**Q-Snap: Quantization-Aware Dynamic Chunking**
+
+Identified that static workload chunking in existing frameworks exposes prohibitive data transfer overhead on CGLAs. Proposed **Q-Snap** — a scheduling strategy that dynamically determines chunk sizes based on runtime memory constraints and quantization alignment, achieving a **1.62× speedup** in the prefill phase over the unoptimized baseline.
+
+**Server-Scale Evaluation on IMAX4**
+
+Designed and evaluated **IMAX4** — featuring an Intel Xeon server CPU and PCIe Gen5 interconnect — to resolve the host-side bottlenecks identified on IMAX3. Demonstrated **44.4× PDP improvement** over RTX 4090 and **13.6× improvement** over Jetson AGX Orin.
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX architecture" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
 ### Publications
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2026 | **ICISN 2026** 🏆 Best Paper | LLM Inference on a Non-von Neumann CGLA with Q-snap |
-| 2025 | **IEEE Access** | Performance Analysis of LLM on IMAX |
-| 2025 | **SOCC 2025** | Scalable LLM Acceleration on CGLA: IMAX4 Evaluation |
-| 2025 | **SASIMI 2025** 🏆 Young Researcher Award | Bottleneck Analysis of LLM Inference on IMAX3 |
+| 2026 | **ICISN 2026** 🏆 Best Paper | Q-Snap: Quantization-Aware Dynamic Chunking for LLM Execution on a CGLA |
+| 2025 | **IEEE Access** | Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA |
+| 2025 | **SASIMI 2025** 🏆 Young Researcher Award | A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment |
 
 {% else %}
 
@@ -63,46 +65,48 @@ Based on the IMAX3 analysis, I designed and evaluated **IMAX4** — a server-ori
   <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
   <span class="bp-tag bp-tag--award">Young Researcher Award — SASIMI 2025</span>
   <span class="bp-tag">IEEE Access (2025)</span>
-  <span class="bp-tag">SOCC 2025</span>
 </div>
 
 ### 概要
 
-LLM（大規模言語モデル）の急速な発展により、AI推論におけるGPUへの依存が加速しています。しかし、GPUはトランスフォーマーモデルのメモリアクセスパターンとの根本的なミスマッチにより、エネルギー効率に大きな課題を抱えています。
+LLM（大規模言語モデル）は膨大な計算資源を要求し、GPU における高エネルギー消費の問題が顕在化しています。本研究では、エネルギー効率とプログラマビリティのトレードオフを提供する有効な代替手段として、NAIST で開発された CGLA（粗粒度再構成可能論理アレイ）アクセラレータ **IMAX** に着目します。
 
-本研究では、NAIST コンピューティング・アーキテクチャ研究室で開発された非ノイマン型 CGLA **IMAX**（In-Memory Accelerator eXtension）上で、**Llama3**・**Qwen**・**Flan-T5** などの最先端 LLM を実装・最適化しています。IMAX は演算ユニットとキャッシュメモリを交互配置した線形アレイ構造により、フォン・ノイマン・ボトルネックを構造的に排除しています。
+IMAX の交互配置線形アレイ構造は演算ユニットとキャッシュメモリバンクを交互に配置し、メモリアクセスレイテンシとフォン・ノイマン・ボトルネックを構造的に削減します。
 
-### 主な成果
-
-**IMAX3 上でのボトルネック分析**
-
-エッジ指向プロトタイプ IMAX3 上で LLM を実行し、主なボトルネックが IMAX ハードウェア自体でなく、ホスト CPU のトークン生成処理と PCIe データ転送レイテンシにあることを特定しました。この知見が次世代ハードウェア設計の指針となりました。
-
-**Q-snap：量子化対応動的チャンキング**
-
-IMAX の演算効率を最大化するため、量子化粒度に応じて重み行列を動的にチャンク分割する **Q-snap** 手法を提案。メモリアクセスオーバーヘッドを削減し、CGLA パイプライン上のキャッシュ利用効率を改善します。
-
-**IMAX4 によるサーバスケール評価**
-
-IMAX3 の分析に基づき、高性能サーバ CPU と PCIe Gen5 インターフェースを搭載したサーバ指向プラットフォーム **IMAX4** を設計・評価。IMAX アーキテクチャがサーバ規模の LLM ワークロードにスケールすることを実証しました。
-
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
   <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 と IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
-<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;">
-  <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX デモ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
-  <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="ICISN 2026 発表" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+### 主な成果
+
+**マルチ量子化カーネル実装**
+
+Qwen LLM ファミリーに対して、FP16・Q8_0・Q3_K・Q6_K の4種の量子化カーネルを IMAX 上に実装。ホスト CPU と CGLA アクセラレータ間でタスクを分割するハイブリッド実行モデルにより、様々なモデルサイズと量子化設定でスループットを最大化しました。
+
+**IMAX3 上でのボトルネック分析**
+
+エッジ指向プロトタイプ IMAX3 上で LLM を実行し、主なボトルネックが CGLA 演算ではなくホスト・アクセラレータ間のデータ転送レイテンシにあることを特定。この分析が IMAX4 設計の直接的な指針となりました。
+
+**Q-Snap：量子化対応動的チャンキング**
+
+既存フレームワークの静的チャンク分割が CGLA 上で過大なデータ転送オーバーヘッドをもたらすことを特定。実行時のメモリ制約と量子化アライメントに基づいてチャンクサイズを動的決定する **Q-Snap** スケジューリング戦略を提案し、プリフィルフェーズで未最適化ベースラインに対して **1.62倍の高速化** を達成しました。
+
+**IMAX4 によるサーバスケール評価**
+
+IMAX3 で特定したホスト側ボトルネックを解消するため、Intel Xeon サーバ CPU と PCIe Gen5 インターコネクトを搭載した **IMAX4** を設計・評価。RTX 4090 比 **44.4倍の PDP 改善**、Jetson AGX Orin 比 **13.6倍の改善** を実証しました。
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX アーキテクチャ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/llama-web.png' | relative_url }}" alt="LLM on IMAX" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
 ### 発表論文
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2026 | **ICISN 2026** 🏆 Best Paper | LLM Inference on a Non-von Neumann CGLA with Q-snap |
-| 2025 | **IEEE Access** | Performance Analysis of LLM on IMAX |
-| 2025 | **SOCC 2025** | Scalable LLM Acceleration on CGLA: IMAX4 Evaluation |
-| 2025 | **SASIMI 2025** 🏆 若手研究賞 | Bottleneck Analysis of LLM Inference on IMAX3 |
+| 2026 | **ICISN 2026** 🏆 最優秀論文賞 | Q-Snap: Quantization-Aware Dynamic Chunking for LLM Execution on a CGLA |
+| 2025 | **IEEE Access** | Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA |
+| 2025 | **SASIMI 2025** 🏆 若手研究賞 | A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment |
 
 {% endif %}

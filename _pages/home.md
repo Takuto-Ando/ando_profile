@@ -44,13 +44,13 @@ classes: wide
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">Awards</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Best Paper Award — ICISN 2026</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Best Paper Award — CANDAR 2025</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Young Researcher Award — SASIMI 2025 (IEEE CEDA All Japan Joint Chapter)</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Student Encouragement Award — IPSJ 87th National Convention, 2025</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Encouragement Award (Excellence) — Japan KOSEN Association, 2025</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Student Commendation — KOSEN Organization, 2025</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Academic Encouragement Award — IEICE Kyushu Branch, 2025</div>
+  <div class="bp-award">Best Paper Award — ICISN 2026</div>
+  <div class="bp-award">Best Paper Award — CANDAR 2025</div>
+  <div class="bp-award">Young Researcher Award — SASIMI 2025 (IEEE CEDA All Japan Joint Chapter)</div>
+  <div class="bp-award">Student Encouragement Award — IPSJ 87th National Convention, 2025</div>
+  <div class="bp-award">Encouragement Award (Excellence) — Japan KOSEN Association, 2025</div>
+  <div class="bp-award">Student Commendation — KOSEN Organization, 2025</div>
+  <div class="bp-award">Academic Encouragement Award — IEICE Kyushu Branch, 2025</div>
 </div>
 
 <div class="bp-sec" markdown="0">NAIST Research — 2025~</div>
@@ -67,7 +67,6 @@ classes: wide
       <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
       <span class="bp-tag bp-tag--award">Young Researcher — SASIMI 2025</span>
       <span class="bp-tag">IEEE Access</span>
-      <span class="bp-tag">SOCC 2025</span>
     </div>
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">
@@ -182,13 +181,13 @@ classes: wide
 
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">受賞歴</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Best Paper Award — ICISN 2026</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Best Paper Award — CANDAR 2025</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>Young Researcher Award — SASIMI 2025（IEEE CEDA All Japan Joint Chapter）</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>学生奨励賞 — 情報処理学会 第87回全国大会（2025）</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>奨励賞 優秀賞 — 日本高専学会（2025）</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>学生表彰 — 高専機構（2025）</div>
-  <div class="bp-award"><span class="bp-award__mark">Award</span>学術奨励賞 — IEICE 九州支部（2025）</div>
+  <div class="bp-award">Best Paper Award — ICISN 2026</div>
+  <div class="bp-award">Best Paper Award — CANDAR 2025</div>
+  <div class="bp-award">Young Researcher Award — SASIMI 2025（IEEE CEDA All Japan Joint Chapter）</div>
+  <div class="bp-award">学生奨励賞 — 情報処理学会 第87回全国大会（2025）</div>
+  <div class="bp-award">奨励賞 優秀賞 — 日本高専学会（2025）</div>
+  <div class="bp-award">学生表彰 — 高専機構（2025）</div>
+  <div class="bp-award">学術奨励賞 — IEICE 九州支部（2025）</div>
 </div>
 
 <div class="bp-sec" markdown="0">NAIST での研究（2025年〜）</div>
@@ -205,7 +204,6 @@ classes: wide
       <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
       <span class="bp-tag bp-tag--award">Young Researcher — SASIMI 2025</span>
       <span class="bp-tag">IEEE Access</span>
-      <span class="bp-tag">SOCC 2025</span>
     </div>
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">

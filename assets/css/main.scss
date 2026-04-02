@@ -396,8 +396,9 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 }
 .bp-photo-grid img {
   width: 100%;
-  aspect-ratio: 4/3;
-  object-fit: cover;
+  height: 180px;
+  object-fit: contain;
+  background: var(--bg);
   border: 1px solid var(--line);
   transition: opacity 0.15s;
 }

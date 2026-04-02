@@ -15,29 +15,34 @@ classes: wide
 
 ### Overview
 
-Generative AI has rapidly expanded beyond text — image generation models like **Stable Diffusion** now require massive compute and memory bandwidth, making them a prime candidate for hardware acceleration.
+Image generation models like **Stable Diffusion** demand massive compute and memory bandwidth, making them prime candidates for hardware acceleration. Unlike LLMs which are dominated by matrix-vector multiplications, Stable Diffusion involves a U-Net denoising loop, cross-attention, and VAE decoding — presenting distinct data flow challenges for CGLA execution.
 
-This research implements **Stable Diffusion** on IMAX, demonstrating that the CGLA architecture is not limited to LLM workloads. Stable Diffusion involves a fundamentally different computational pattern (U-Net + attention + VAE decode), requiring tailored data flow optimization for the CGLA linear array.
+This research presents the first implementation and evaluation of the primary computational kernels from the **stable-diffusion.cpp** framework on **IMAX3**, assessing its capabilities for demanding image generation workloads.
 
 ### Key Contributions
 
-**Full Pipeline Implementation**
+**Kernel Reuse from LLM Framework**
 
-Implemented the complete Stable Diffusion inference pipeline — text encoder, U-Net denoising loop, and VAE decoder — on IMAX, mapping each component to the CGLA dataflow model.
+Reused and adapted quantized dot-product kernels (Q8_0, Q3_K) developed for LLM inference, demonstrating that IMAX's kernel library is transferable across AI domains. This validates the architectural versatility of CGLA beyond text-generation workloads.
 
-**End-to-End Energy Efficiency**
+**Dual-Model Evaluation**
 
-Evaluated image generation throughput and energy consumption, demonstrating that IMAX achieves comparable quality to GPU while significantly reducing power draw. This confirms CGLA's viability for diverse generative AI workloads beyond transformers.
+Evaluated both Q3_K and Q8_0 quantization configurations, analyzing the performance-accuracy tradeoff for image generation on CGLA hardware.
 
-**Architectural Versatility**
+**Cross-Domain Versatility**
 
-The successful port of Stable Diffusion alongside LLMs and Whisper demonstrates IMAX's generality as an AI accelerator — a key step toward CGLA becoming a universal platform for edge and server AI.
+Demonstrates IMAX's capability across both vision (Stable Diffusion) and language (LLM) domains using a common hardware substrate, confirming CGLA as a general-purpose AI acceleration platform.
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX architecture" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+</div>
 
 ### Publications
 
 | Year | Venue | Title |
 |------|-------|-------|
-| 2025 | **MCSoC 2025** | Stable Diffusion Inference on CGLA: IMAX Implementation and Evaluation |
+| 2025 | **MCSoC 2025** | Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator |
 
 {% else %}
 
@@ -49,28 +54,33 @@ The successful port of Stable Diffusion alongside LLMs and Whisper demonstrates 
 
 ### 概要
 
-生成AIはテキスト生成にとどまらず、**Stable Diffusion** のような画像生成モデルへと急速に拡大しています。これらのモデルは大規模な演算とメモリ帯域を要求するため、ハードウェアアクセラレーションの主要な対象となっています。
+**Stable Diffusion** のような画像生成モデルは膨大な演算とメモリ帯域を要求し、ハードウェアアクセラレーションの主要な対象となっています。LLM が行列ベクトル乗算に支配されているのとは異なり、Stable Diffusion は U-Net デノイジングループ・クロスアテンション・VAE デコードを含み、CGLA 実行において異なるデータフロー設計が必要です。
 
-本研究では **Stable Diffusion** を IMAX 上に実装し、CGLA アーキテクチャが LLM ワークロードに限らない汎用性を持つことを実証します。Stable Diffusion は U-Net・アテンション・VAE デコードという根本的に異なる計算パターンを持ち、CGLA 線形アレイへの最適なデータフロー設計が必要です。
+本研究では、**stable-diffusion.cpp** フレームワークの主要演算カーネルを **IMAX3** 上に初めて実装・評価し、要求の高い画像生成ワークロードに対するCGLA の性能を検証します。
 
 ### 主な成果
 
-**フルパイプライン実装**
+**LLM フレームワークからのカーネル再利用**
 
-テキストエンコーダ・U-Net デノイジングループ・VAE デコーダという Stable Diffusion の完全な推論パイプラインを IMAX 上に実装し、各コンポーネントを CGLA データフローモデルにマッピングしました。
+LLM 推論向けに開発した量子化ドット積カーネル（Q8_0・Q3_K）を再利用・適用し、IMAX のカーネルライブラリが AI ドメインをまたいで転用可能であることを実証。テキスト生成を超えた CGLA の汎用性を確認しました。
 
-**エンドツーエンドのエネルギー効率**
+**デュアルモデル評価**
 
-画像生成スループットと消費電力を評価。IMAX が GPU と同等の品質を維持しながら大幅な省電力を実現することを実証しました。
+Q3_K と Q8_0 の2つの量子化設定を評価し、CGLA ハードウェア上での画像生成における性能・精度トレードオフを分析しました。
 
-**アーキテクチャの汎用性**
+**ドメイン横断の汎用性**
 
-LLM・Whisper に続く Stable Diffusion の移植成功により、IMAX がトランスフォーマーを超えた多様な生成 AI ワークロードに対応可能な汎用アクセラレータであることを示しました。
+共通ハードウェア基盤上での画像生成（Stable Diffusion）と言語処理（LLM）の両対応を実証し、CGLA を汎用 AI アクセラレーションプラットフォームとして確立しました。
+
+<div markdown="0" style="display:flex;flex-wrap:wrap;gap:1.5rem;margin:1.5rem 0;align-items:flex-start;">
+  <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+  <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX アーキテクチャ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
+</div>
 
 ### 発表論文
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
-| 2025 | **MCSoC 2025** | Stable Diffusion Inference on CGLA: IMAX Implementation and Evaluation |
+| 2025 | **MCSoC 2025** | Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator |
 
 {% endif %}
