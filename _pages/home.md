@@ -84,9 +84,9 @@ classes: wide
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/llm/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 prototype">
+      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="IMAX LLM demo">
     </div>
-    <div class="bp-card__media-caption">LLM performance analysis</div>
+    <div class="bp-card__media-caption">LLM GUI chat</div>
     <div class="bp-card__ttl">LLM Acceleration on CGLA</div>
     <div class="bp-card__body">
       Running Llama3, Qwen, and Flan-T5 on IMAX. Identified host-side bottlenecks and proposed
@@ -101,9 +101,9 @@ classes: wide
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="Generative AI on IMAX">
+      <img src="{{ '/assets/images/MCSOC_imagegen.png' | relative_url }}" alt="MCSoC generative AI">
     </div>
-    <div class="bp-card__media-caption">Stable Diffusion on IMAX</div>
+    <div class="bp-card__media-caption">MCSoC 2025 evaluation</div>
     <div class="bp-card__ttl">Generative AI on CGLA</div>
     <div class="bp-card__body">
       Implemented <strong>Stable Diffusion</strong> on IMAX, demonstrating CGLA's versatility
@@ -116,9 +116,9 @@ classes: wide
   </div>
   <div class="bp-card" data-href="/research/asr/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="Speech recognition on IMAX">
+      <img src="{{ '/assets/images/CANDAR_process.png' | relative_url }}" alt="ASR processing on IMAX">
     </div>
-    <div class="bp-card__media-caption">Whisper ASR acceleration</div>
+    <div class="bp-card__media-caption">CANDAR 2025 process</div>
     <div class="bp-card__ttl">Speech Recognition (ASR) on CGLA</div>
     <div class="bp-card__body">
       Ported <strong>Whisper</strong> ASR to IMAX with a custom FP16 kernel implementation.
@@ -169,6 +169,10 @@ classes: wide
 
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/green-onion/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/negi_machine.jpg' | relative_url }}" alt="Green onion detection">
+    </div>
+    <div class="bp-card__media-caption">Autonomous trimming pipeline</div>
     <div class="bp-card__ttl">Computer Vision — Green Onion Detection</div>
     <div class="bp-card__body">
       Developed a branching-point detection algorithm for automated green onion trimming
@@ -180,6 +184,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/facial-expression/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/fpga_system2.png' | relative_url }}" alt="Facial expression FPGA">
+    </div>
+    <div class="bp-card__media-caption">FPGA multi-task stack</div>
     <div class="bp-card__ttl">FPGA / Edge AI — Facial Expression Recognition</div>
     <div class="bp-card__body">
       Implemented real-time facial expression recognition on FPGA using a DPU-based
@@ -287,9 +295,9 @@ classes: wide
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/llm/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ">
+      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="LLM デモ">
     </div>
-    <div class="bp-card__media-caption">LLM 高速化の実証</div>
+    <div class="bp-card__media-caption">LLM GUI チャット</div>
     <div class="bp-card__ttl">LLM の CGLA 上での高速化</div>
     <div class="bp-card__body">
       IMAX 上で Llama3・Qwen・Flan-T5 を実行し、ホスト側ボトルネックを解析。
@@ -304,9 +312,9 @@ classes: wide
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="生成 AI 実装">
+      <img src="{{ '/assets/images/MCSOC_imagegen.png' | relative_url }}" alt="MCSoC 生成 AI">
     </div>
-    <div class="bp-card__media-caption">生成 AI 実装</div>
+    <div class="bp-card__media-caption">MCSoC 2025 評価</div>
     <div class="bp-card__ttl">生成 AI の CGLA 上での実装</div>
     <div class="bp-card__body">
       画像生成モデル <strong>Stable Diffusion</strong> を IMAX 上に実装。
@@ -318,9 +326,9 @@ classes: wide
   </div>
   <div class="bp-card" data-href="/research/asr/">
     <div class="bp-card__media">
-      <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="Whisper ASR">
+      <img src="{{ '/assets/images/CANDAR_process.png' | relative_url }}" alt="CANDAR ASR">
     </div>
-    <div class="bp-card__media-caption">Whisper 推論最適化</div>
+    <div class="bp-card__media-caption">CANDAR 2025 ワークフロー</div>
     <div class="bp-card__ttl">音声認識（ASR）の高効率実装</div>
     <div class="bp-card__body">
       音声認識モデル <strong>Whisper</strong> を IMAX 上に実装し、独自の FP16 演算カーネルを開発。
@@ -371,6 +379,10 @@ classes: wide
 
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/green-onion/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/negi_machine.jpg' | relative_url }}" alt="小ねぎ検出">
+    </div>
+    <div class="bp-card__media-caption">自動調製パイプライン</div>
     <div class="bp-card__ttl">コンピュータビジョン — 小ねぎ分岐部検出</div>
     <div class="bp-card__body">
       エッジデバイス上で YOLO・Mask-RCNN を活用した小ねぎ自動調製向け分岐部検出アルゴリズムを開発。
@@ -381,6 +393,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/facial-expression/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/fpga_system2.png' | relative_url }}" alt="表情認識FPGA">
+    </div>
+    <div class="bp-card__media-caption">FPGA 多目的スタック</div>
     <div class="bp-card__ttl">FPGA / エッジ AI — 表情認識</div>
     <div class="bp-card__body">
       DPU ベースの DNN アクセラレータによる時分割マルチタスクで、
