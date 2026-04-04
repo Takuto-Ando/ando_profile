@@ -55,6 +55,16 @@ classes: wide
   <span class="bp-keyword">Hardware / Software Co-design</span>
 </div>
 
+<div class="bp-posts" markdown="0">
+  <div class="bp-posts__ttl">Recent Posts</div>
+  {% for post in site.posts limit:5 %}
+    <a class="bp-post" href="{{ post.url | relative_url }}">
+      <span class="bp-post__title">{{ post.title }}</span>
+      <span class="bp-post__meta">{{ post.date | date: "%Y.%m.%d" }}</span>
+    </a>
+  {% endfor %}
+</div>
+
 <div class="bp-awards" markdown="0">
   <div class="bp-awards__ttl">Awards</div>
   <div class="bp-award">Best Paper Award — ICISN 2026 (March 2026)</div>
@@ -230,6 +240,16 @@ classes: wide
   <span class="bp-keyword">音声認識</span>
   <span class="bp-keyword">画像生成</span>
   <span class="bp-keyword">ハードウェア・ソフトウェア協調設計</span>
+</div>
+
+<div class="bp-posts" markdown="0">
+  <div class="bp-posts__ttl">最近の投稿</div>
+  {% for post in site.posts limit:5 %}
+    <a class="bp-post" href="{{ post.url | relative_url }}">
+      <span class="bp-post__title">{{ post.title }}</span>
+      <span class="bp-post__meta">{{ post.date | date: "%Y.%m.%d" }}</span>
+    </a>
+  {% endfor %}
 </div>
 
 <div class="bp-awards" markdown="0">

@@ -326,6 +326,47 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   padding: 0.25rem 0.55rem;
 }
 
+/* ── Recent Posts ── */
+.bp-posts {
+  margin-bottom: 2rem;
+}
+.bp-posts__ttl {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+.bp-post {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.72rem 0.1rem;
+  border-bottom: 1px solid var(--line);
+  color: var(--sub) !important;
+  text-decoration: none !important;
+  transition: background 0.15s, color 0.15s;
+}
+.bp-post:first-of-type {
+  border-top: 1px solid var(--line);
+}
+.bp-post:hover {
+  background: var(--acc-light);
+  color: var(--acc) !important;
+}
+.bp-post__title {
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+.bp-post__meta {
+  flex-shrink: 0;
+  font-size: 0.68rem;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
 /* ── Awards ── */
 .bp-awards {
   margin-bottom: 2.25rem;
@@ -505,6 +546,11 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   .lang-switcher { margin-bottom: 1.25rem; }
   .lang-switcher a, .lang-switcher span { font-size: 0.72rem; padding: 0.25em 0.7em; }
 
+  .bp-post {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
   .bp-award { font-size: 0.78rem; }
   .bp-overview { font-size: 0.8rem; }
 }
