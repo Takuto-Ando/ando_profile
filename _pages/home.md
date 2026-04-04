@@ -83,6 +83,10 @@ classes: wide
 
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/llm/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 prototype">
+    </div>
+    <div class="bp-card__media-caption">LLM performance analysis</div>
     <div class="bp-card__ttl">LLM Acceleration on CGLA</div>
     <div class="bp-card__body">
       Running Llama3, Qwen, and Flan-T5 on IMAX. Identified host-side bottlenecks and proposed
@@ -96,6 +100,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="Generative AI on IMAX">
+    </div>
+    <div class="bp-card__media-caption">Stable Diffusion on IMAX</div>
     <div class="bp-card__ttl">Generative AI on CGLA</div>
     <div class="bp-card__body">
       Implemented <strong>Stable Diffusion</strong> on IMAX, demonstrating CGLA's versatility
@@ -107,6 +115,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/asr/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="Speech recognition on IMAX">
+    </div>
+    <div class="bp-card__media-caption">Whisper ASR acceleration</div>
     <div class="bp-card__ttl">Speech Recognition (ASR) on CGLA</div>
     <div class="bp-card__body">
       Ported <strong>Whisper</strong> ASR to IMAX with a custom FP16 kernel implementation.
@@ -118,6 +130,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/imax/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX architecture">
+    </div>
+    <div class="bp-card__media-caption">Non-von Neumann architecture</div>
     <div class="bp-card__ttl">IMAX Architecture</div>
     <div class="bp-card__body">
       <strong>IMAX</strong> (In-Memory Accelerator eXtension) is a non-von Neumann CGLA
@@ -270,6 +286,10 @@ classes: wide
 
 <div class="bp-grid" markdown="0">
   <div class="bp-card" data-href="/research/llm/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ">
+    </div>
+    <div class="bp-card__media-caption">LLM 高速化の実証</div>
     <div class="bp-card__ttl">LLM の CGLA 上での高速化</div>
     <div class="bp-card__body">
       IMAX 上で Llama3・Qwen・Flan-T5 を実行し、ホスト側ボトルネックを解析。
@@ -283,6 +303,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/generative-ai/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/LLMchat_demo.gif' | relative_url }}" alt="生成 AI 実装">
+    </div>
+    <div class="bp-card__media-caption">生成 AI 実装</div>
     <div class="bp-card__ttl">生成 AI の CGLA 上での実装</div>
     <div class="bp-card__body">
       画像生成モデル <strong>Stable Diffusion</strong> を IMAX 上に実装。
@@ -293,6 +317,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/asr/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/ICISN_1.jpg' | relative_url }}" alt="Whisper ASR">
+    </div>
+    <div class="bp-card__media-caption">Whisper 推論最適化</div>
     <div class="bp-card__ttl">音声認識（ASR）の高効率実装</div>
     <div class="bp-card__body">
       音声認識モデル <strong>Whisper</strong> を IMAX 上に実装し、独自の FP16 演算カーネルを開発。
@@ -304,6 +332,10 @@ classes: wide
     </div>
   </div>
   <div class="bp-card" data-href="/research/imax/">
+    <div class="bp-card__media">
+      <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX アーキテクチャ">
+    </div>
+    <div class="bp-card__media-caption">IMAX アーキテクチャ</div>
     <div class="bp-card__ttl">IMAX アーキテクチャ</div>
     <div class="bp-card__body">
       演算ユニットとキャッシュメモリを交互配置した非ノイマン型 CGLA。

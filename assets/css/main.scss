@@ -434,6 +434,26 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   padding: 1.25rem;
   transition: background 0.15s;
 }
+.bp-card__media {
+  width: 100%;
+  height: 150px;
+  margin-bottom: 0.6rem;
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--line);
+}
+.bp-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.bp-card__media-caption {
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.35rem;
+}
 .bp-card:hover { background: var(--acc-light); }
 .bp-card__ttl {
   font-size: 0.88rem;
@@ -558,4 +578,5 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   }
   .bp-award { font-size: 0.78rem; }
   .bp-overview { font-size: 0.8rem; }
+  .bp-card__media { height: 140px; }
 }
