@@ -4,6 +4,9 @@ title: ""
 classes: wide
 ---
 
+{% assign sorted_posts = site.posts | sort: "date" | reverse %}
+{% assign recent_posts = sorted_posts | slice: 0, 5 %}
+
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -57,7 +60,7 @@ classes: wide
 
 <div class="bp-posts" markdown="0">
   <div class="bp-posts__ttl">Recent Posts</div>
-  {% for post in site.posts limit:5 %}
+  {% for post in recent_posts %}
     <a class="bp-post" href="{{ post.url | relative_url }}">
       <span class="bp-post__title">{{ post.title }}</span>
       <span class="bp-post__meta">{{ post.date | date: "%Y.%m.%d" }}</span>
@@ -244,7 +247,7 @@ classes: wide
 
 <div class="bp-posts" markdown="0">
   <div class="bp-posts__ttl">最近の投稿</div>
-  {% for post in site.posts limit:5 %}
+  {% for post in recent_posts %}
     <a class="bp-post" href="{{ post.url | relative_url }}">
       <span class="bp-post__title">{{ post.title }}</span>
       <span class="bp-post__meta">{{ post.date | date: "%Y.%m.%d" }}</span>

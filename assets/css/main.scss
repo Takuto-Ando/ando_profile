@@ -345,12 +345,17 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   gap: 1rem;
   padding: 0.72rem 0.1rem;
   border-bottom: 1px solid var(--line);
+  margin-bottom: 0.65rem;
   color: var(--sub) !important;
   text-decoration: none !important;
   transition: background 0.15s, color 0.15s;
 }
 .bp-post:first-of-type {
   border-top: 1px solid var(--line);
+}
+.bp-post:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
 }
 .bp-post:hover {
   background: var(--acc-light);
