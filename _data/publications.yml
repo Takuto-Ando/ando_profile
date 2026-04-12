@@ -319,7 +319,7 @@ sections:
             me: true
           - name: 井上 優良
         title: FPGAにおけるDPUを用いた表情認識システムの実装
-        venue: 情処ARC研究発表会
+        venue: 情報処理学会システムアーキテクチャ研究会
         citation: 2024
         links:
           - label: PDF
@@ -336,5 +336,33 @@ sections:
             me: true
           - name: 井上 優良
         title: エッジ検出を用いたこねぎ分岐部の検出
-        venue: 情処ARC研究発表会
+        venue: 情報処理学会システムアーキテクチャ研究会
         citation: 2023
+        abstractJa: 近年，こねぎ生産における最低賃金の上昇等雇用環境が変化しており，人件費を抑えるために人手の不要なこねぎ調製機の開発が求められている．現行の調製機では一度に不要な葉を全て除去できず，二次処理のために多くの人手を要する．正確な調製を行うためには，外葉最上部の分岐部位置に調製用ノズル位置を合わせることが有効であることが分かっている．したがって，こねぎ分岐部の位置を検出し，ノズルの位置を自動で合わせることができれば二次処理を必要としない調製機を開発できる．そこで本稿は，分岐部を検出するためにこねぎ分岐部における特有の斜線を抽出する手法を提案する．本手法は，エッジ検出による斜線抽出とラベリング処理を行うことで頑健な検出を行う．本手法を実際のこねぎ画像に適用した結果，分岐部斜線の検出率は 92%であり，分岐部位置を検出できた．
+        links:
+          - label: PDF
+            url: /assets/pdfs/paper/ipsj_arc2024.pdf
+  - key: student_theses
+    title_en: Student Theses
+    title_ja: 学位論文
+    lead_en: Final thesis documents from the KOSEN regular course and advanced course.
+    lead_ja: 高専本科の卒業論文と、専攻科における特別研究論文です。
+    items:
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+        title: 高専本科 卒業論文
+        venue: 大分工業高等専門学校 情報工学科
+        citation: 卒業研究論文
+        links:
+          - label: PDF
+            url: /assets/pdfs/sotsuken_thesis.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+        title: 専攻科 特別研究論文
+        venue: 大分工業高等専門学校 専攻科 電気電子情報工学専攻
+        citation: 特別研究論文
+        links:
+          - label: PDF
+            url: /assets/pdfs/tokukenn_thesis.pdf

@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
   var enPrefix = base + '/en';
   var isEn = window.location.pathname.startsWith(enPrefix + '/') || window.location.pathname === enPrefix + '/';
 
+  function resolveCardPath(path) {
+    if (!path) return path;
+    if (path.startsWith('http://') || path.startsWith('https://')) return path;
+    if (path.startsWith(enPrefix + '/') || path === enPrefix) return path;
+    if (path.startsWith(base + '/') || path === base) {
+      if (isEn && !path.startsWith(enPrefix + '/')) {
+        return enPrefix + path.slice(base.length);
+      }
+      return path;
+    }
+    return isEn ? (enPrefix + path) : (base + path);
+  }
+
   // Rewrite nav links on English pages
   if (isEn) {
     document.querySelectorAll('.greedy-nav .visible-links a, .greedy-nav .hidden-links a').forEach(function(a) {
@@ -17,9 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
   // Make research cards clickable
   document.querySelectorAll('.bp-card[data-href]').forEach(function(card) {
     card.style.cursor = 'pointer';
-    card.addEventListener('click', function() {
+    card.addEventListener('click', function(event) {
+      if (event.target.closest('a, button')) return;
       var path = card.getAttribute('data-href');
-      location.href = isEn ? (enPrefix + path) : (base + path);
+      location.href = resolveCardPath(path);
     });
   });
 });
