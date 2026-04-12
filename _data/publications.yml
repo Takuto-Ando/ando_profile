@@ -1,0 +1,332 @@
+sections:
+  - key: international_journals
+    title_en: International Journals
+    title_ja: 国際論文誌
+    lead_en: Peer-reviewed journal papers on edge AI, agricultural vision, and CGLA-based acceleration.
+    lead_ja: エッジ AI、農業画像認識、CGLA アクセラレーションに関する査読付き論文です。
+    items:
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Iori Yamaguchi
+          - name: Jun Shono
+          - name: Takahiro Kawabe
+          - name: Koji Uchida
+          - name: Kosuke Shigematsu
+          - name: Yusuke Inoue
+        title: Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device
+        venue: ICIC Express Letters
+        citation: accepted, 2026
+        bibtexText: |-
+          @article{ando2026lightweight,
+            author  = {Takuto Ando and Iori Yamaguchi and Jun Shono and Takahiro Kawabe and Koji Uchida and Kosuke Shigematsu and Yusuke Inoue},
+            title   = {Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device},
+            journal = {ICIC Express Letters},
+            year    = {2026},
+            note    = {accepted}
+          }
+        badges:
+          - label: Accepted
+            type: neutral
+          - label: "Impact Factor: 0.72 (2026)"
+            type: impact
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Ayumu Takeuchi
+          - name: Yasuhiko Nakashima
+        title: Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA
+        venue: IEEE Access
+        citation: vol. 13, pp. 199631-199646, 2025
+        bibtexText: |-
+          @article{ando2025efficient,
+            author  = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
+            title   = {Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA},
+            journal = {IEEE Access},
+            volume  = {13},
+            pages   = {199631--199646},
+            year    = {2025},
+            doi     = {10.1109/ACCESS.2025.3636266}
+          }
+        bibtex: https://api.crossref.org/works/10.1109/ACCESS.2025.3636266/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: https://ieeexplore.ieee.org/document/11264489
+        pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11264489
+        badges:
+          - label: "Impact Factor: 3.6 (2026)"
+            type: impact
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yusuke Inoue
+        title: DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System
+        venue: ICIC Express Letters
+        citation: vol. 19, no. 4, pp. 419-426, 2025
+        bibtexText: |-
+          @article{ando2025dpu,
+            author  = {Takuto Ando and Yusuke Inoue},
+            title   = {DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System},
+            journal = {ICIC Express Letters},
+            volume  = {19},
+            number  = {4},
+            pages   = {419--426},
+            year    = {2025},
+            doi     = {10.24507/icicel.19.04.419}
+          }
+        bibtex: https://api.crossref.org/works/10.24507/icicel.19.04.419/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: http://www.icicel.org/ell/contents/2025/4/el-19-04-07.pdf
+          - label: PDF
+            url: /assets/pdfs/paper/icic_express.pdf
+        badges:
+          - label: "Impact Factor: 0.72 (2026)"
+            type: impact
+
+  - key: domestic_journals
+    title_en: Domestic Journals
+    title_ja: 国内論文誌
+    lead_en: Japanese-language journal publications with peer review and application-oriented evaluation.
+    lead_ja: 応用評価を含む日本語の査読付き論文です。
+    items:
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: エッジデバイス上におけるリアルタイム小ねぎ分岐部位置検出
+        venue: 農業情報研究
+        citation: vol. 33, no. 2, pp. 73-80, 2024
+        abstractJa: 近年，小ねぎ生産における農業従事者の不足が深刻な課題となっており，人手を減らす小ねぎ調製機の開発が求められている．現行の調製機では一度に不要な葉を全て除去できず，小ねぎを調製機に通した後に，人手による不要な葉を取り除く作業を行う必要がある．二次処理の不要な調製を行うためには，小ねぎの最上部の分岐部位置にノズルを合わせて調製機へ投入することが有効であると分かっている．これを行うには，分岐部の位置は個体によって異なるため分岐部の位置を判別し，位置を揃えて調製機に投入する必要がある．したがって，画像認識により小ねぎ分岐部の位置を検出し，ノズルの位置を自動で合わせることが正確な調製につながると考えた．そこで本稿では，分岐部の検出を目的として，小ねぎ分岐部における特有の斜線を抽出する手法を提案する．本手法は，低消費電力で演算能力の低いエッジデバイスでの実装を目標として，エッジ検出による画像処理をベースとした軽量なアルゴリズムを用いる．本手法を実際の小ねぎ画像に適用して，Raspberry Pi 3で評価した結果，分岐部斜線の検出率は90.6%であり．処理時間は455 msを達成した．この結果より，本手法が分岐部の検出に対して有効であることが明らかとなり，実環境にて応用できる可能性が示された．
+        bibtexText: |-
+          @article{ando2024greenonion,
+            author  = {安藤 拓翔 and 井上 優良},
+            title   = {エッジデバイス上におけるリアルタイム小ねぎ分岐部位置検出},
+            journal = {農業情報研究},
+            volume  = {33},
+            number  = {2},
+            pages   = {73--80},
+            year    = {2024},
+            doi     = {10.3173/air.33.73}
+          }
+        bibtex: https://api.crossref.org/works/10.3173/air.33.73/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: https://doi.org/10.3173/air.33.73
+
+  - key: international_conferences
+    title_en: International Conferences
+    title_ja: 国際会議
+    lead_en: International conference papers, forums, and workshop presentations related to CGLA, IMAX, and edge-AI systems.
+    lead_ja: CGLA、IMAX、エッジ AI システムに関する国際会議・フォーラム発表です。
+    items:
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Ayumu Takeuchi
+          - name: Yu Eto
+          - name: Yoshifumi Munakata
+          - name: Yasuhiko Nakashima
+        title: "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA"
+        venue: ICISN 2026
+        citation: March 2026
+        badges:
+          - label: Best Paper Award
+            type: award
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Yasuhiko Nakashima
+        title: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
+        venue: MCSoC 2025
+        citation: 2025
+        abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized Coarse-Grained Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
+        bibtexText: |-
+          @inproceedings{ando2025stablediffusion,
+            author    = {Takuto Ando and Yu Eto and Yasuhiko Nakashima},
+            title     = {Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator},
+            booktitle = {2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)},
+            year      = {2025},
+            doi       = {10.1109/MCSoC67473.2025.00120}
+          }
+        bibtex: https://arxiv.org/bibtex/2511.02530
+        links:
+          - label: Links
+            url: https://doi.org/10.1109/MCSoC67473.2025.00120
+          - label: PDF
+            url: https://arxiv.org/pdf/2511.02530
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Ayumu Takeuchi
+          - name: Yasuhiko Nakashima
+        title: Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA
+        venue: CANDAR 2025
+        citation: 2025
+        abstractEn: The rise of generative AI for tasks like Automatic Speech Recognition (ASR) has created a critical energy consumption challenge. While ASICs offer high efficiency, they lack the programmability to adapt to evolving algorithms. To address this trade-off, we implement and evaluate Whisper's core computational kernel on the IMAX, a general-purpose Coarse-Grained Linear Arrays (CGLAs) accelerator. To our knowledge, this is the first work to execute a Whisper kernel on a CGRA and compare its performance against CPUs and GPUs. Using hardware/software co-design, we evaluate our system via an FPGA prototype and project performance for a 28 nm ASIC. Our results demonstrate superior energy efficiency. The projected ASIC is 1.90x more energy-efficient than the NVIDIA Jetson AGX Orin and 9.83x more than an NVIDIA RTX 4090 for the Q8_0 model. This work positions CGLA as a promising platform for sustainable ASR on power-constrained edge devices.
+        bibtexText: |-
+          @inproceedings{ando2025whisper,
+            author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
+            title     = {Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA},
+            booktitle = {2025 13th International Symposium on Computing and Networking (CANDAR)},
+            year      = {2025},
+            doi       = {10.1109/CANDAR68384.2025.00018}
+          }
+        bibtex: https://arxiv.org/bibtex/2511.02269
+        badges:
+          - label: Best Paper Award
+            type: award
+        links:
+          - label: Links
+            url: https://doi.org/10.1109/CANDAR68384.2025.00018
+          - label: PDF
+            url: https://arxiv.org/pdf/2511.02269
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Ayumu Takeuchi
+          - name: Yasuhiko Nakashima
+        title: Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels
+        venue: SOCC 2025 PhD/Master Forum
+        citation: 2025
+        bibtexText: |-
+          @inproceedings{ando2025llama3forum,
+            author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
+            title     = {Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels},
+            booktitle = {2025 IEEE 38th International System-on-Chip Conference (SOCC) PhD/Master Forum},
+            year      = {2025},
+            doi       = {10.1109/SOCC66126.2025.11235407}
+          }
+        bibtex: https://api.crossref.org/works/10.1109/SOCC66126.2025.11235407/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: https://doi.org/10.1109/SOCC66126.2025.11235407
+      - authors:
+          - name: Yu Eto
+          - name: Takuto Ando
+            me: true
+          - name: Ayumu Takeuchi
+          - name: Yasuhiko Nakashima
+        title: LLM Performance Bottlenecks on CGLA
+        venue: SOCC 2025 PhD/Master Forum
+        citation: 2025
+      - authors:
+          - name: Ayumu Takeuchi
+          - name: Yu Eto
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
+        title: Energy-Efficient FlashAttention Acceleration on CGLA
+        venue: SOCC 2025 PhD/Master Forum
+        citation: 2025
+      - authors:
+          - name: Yu Eto
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
+        title: Performance Evaluation of Flan-T5 in CGLA Based Accelerators
+        venue: SOCC 2025 Special Session
+        citation: 2025
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Yasuhiko Nakashima
+        title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
+        venue: SASIMI 2025
+        citation: 2025
+        badges:
+          - label: Young Researcher Award
+            type: award
+        links:
+          - label: PDF
+            url: https://sasimi.jp/new/sasimi2025/files/archive/pdf/p8_R1-2.pdf
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yusuke Inoue
+        title: Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA
+        venue: CANDARW 2024
+        citation: pp. 103-109, 2024
+        bibtexText: |-
+          @inproceedings{ando2024multithreading,
+            author    = {Takuto Ando and Yusuke Inoue},
+            title     = {Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA},
+            booktitle = {2024 12th International Symposium on Computing and Networking Workshops (CANDARW)},
+            pages     = {103--109},
+            year      = {2024},
+            doi       = {10.1109/CANDARW64572.2024.00025}
+          }
+        bibtex: https://api.crossref.org/works/10.1109/CANDARW64572.2024.00025/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: https://ieeexplore.ieee.org/document/10817888
+          - label: PDF
+            url: /assets/pdfs/paper/candar2024gca.pdf
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yusuke Inoue
+        title: FPGA Implementation of a DPU-Based Facial Expression Recognition System
+        venue: SASIMI 2024
+        citation: March 2024
+        links:
+          - label: PDF
+            url: https://sasimi.jp/new/sasimi2024/files/archive/pdf/p8_R1-2.pdf
+
+  - key: domestic_conferences
+    title_en: Domestic Conferences
+    title_ja: 国内研究会
+    lead_en: Domestic conferences and workshop papers that document implementation details and system evaluation.
+    lead_ja: 実装詳細やシステム評価を整理した国内研究会・大会発表です。
+    items:
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: DNNアクセラレータを用いた表情認識システムにおける電力効率の向上
+        venue: 情処全国大会 第87回
+        citation: 2025
+        badges:
+          - label: 学生奨励賞
+        links:
+          - label: PDF
+            url: /assets/pdfs/paper/ipsj87_takuto_ando.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
+        venue: 電子情報通信学会九州支部学生会講演会
+        citation: 2024
+        links:
+          - label: PDF
+            url: /assets/pdfs/ieice_kyusyu_ando.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: FPGAにおけるDPUを用いた表情認識システムの実装
+        venue: 情処ARC研究発表会
+        citation: 2024
+        links:
+          - label: PDF
+            url: /assets/pdfs/paper/ipsj_arc2024.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: FPGAによるリアルタイム表情認識システムの実装
+        venue: 電子情報通信学会九州支部学生会講演会
+        citation: 2023
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+          - name: 井上 優良
+        title: エッジ検出を用いたこねぎ分岐部の検出
+        venue: 情処ARC研究発表会
+        citation: 2023

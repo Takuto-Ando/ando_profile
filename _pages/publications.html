@@ -1,0 +1,109 @@
+---
+permalink: /publications/
+classes: wide
+---
+
+{% include lang-switcher.html %}
+
+{% if site.active_lang == 'en' %}
+  {% assign pub_title = 'Publications' %}
+  {% assign pub_lead = 'A structured list of journal papers and conference publications. Titles are emphasized first, author order is preserved, and links are shown only when materials are available.' %}
+  {% assign pub_note = 'Abstract, BibTeX, and Links expand inline under each item. PDF remains a direct link.' %}
+{% else %}
+  {% assign pub_title = '研究業績' %}
+  {% assign pub_lead = '論文誌と会議発表を、題目を主役にした縦並びレイアウトで整理しています。著者順を保ちつつ、資料がある項目だけ補助ボタンを表示します。' %}
+  {% assign pub_note = 'Abstract・BibTeX・Links は項目直下でインライン展開し、PDF はそのまま遷移します。' %}
+{% endif %}
+
+<div class="pub-page">
+  <header class="pub-page__hero">
+    <p class="pub-page__eyebrow">Publications / Research Outputs</p>
+    <h1 class="pub-page__title">{{ pub_title }}</h1>
+    <p class="pub-page__lead">{{ pub_lead }}</p>
+    <p class="pub-page__note">{{ pub_note }}</p>
+  </header>
+
+  <nav class="pub-page__nav" aria-label="Publication Sections">
+    {% for section in site.data.publications.sections %}
+      {% if site.active_lang == 'en' %}
+        {% assign section_title = section.title_en %}
+      {% else %}
+        {% assign section_title = section.title_ja %}
+      {% endif %}
+      <a href="#{{ section.key }}">{{ section_title }}</a>
+    {% endfor %}
+  </nav>
+
+  {% for section in site.data.publications.sections %}
+    {% if site.active_lang == 'en' %}
+      {% assign section_title = section.title_en %}
+      {% assign section_lead = section.lead_en %}
+    {% else %}
+      {% assign section_title = section.title_ja %}
+      {% assign section_lead = section.lead_ja %}
+    {% endif %}
+
+    <section class="pub-section" id="{{ section.key }}">
+      <header class="pub-section__head">
+        <p class="pub-section__label">{{ forloop.index }}</p>
+        <div class="pub-section__heading">
+          <h2>{{ section_title }}</h2>
+          <p>{{ section_lead }}</p>
+        </div>
+      </header>
+
+      <div class="pub-section__list">
+        {% for publication in section.items %}
+          {% assign publication_uid = section.key | append: '-' | append: forloop.index %}
+          {% include PublicationItem.html publication=publication index=forloop.index uid=publication_uid %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  function closePanel(panel, button) {
+    if (!panel) return;
+    panel.hidden = true;
+    panel.classList.remove('is-open');
+    if (button) button.setAttribute('aria-expanded', 'false');
+  }
+
+  document.querySelectorAll('[data-panel-toggle]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var item = button.closest('.pub-item');
+      if (!item) return;
+      var panelId = button.getAttribute('aria-controls');
+      var panel = document.getElementById(panelId);
+      if (!panel) return;
+      var shouldOpen = panel.hidden;
+      item.querySelectorAll('.pub-panel').forEach(function (otherPanel) {
+        if (otherPanel !== panel) {
+          var otherButton = item.querySelector('[data-panel-toggle][aria-controls="' + otherPanel.id + '"]');
+          closePanel(otherPanel, otherButton);
+        }
+      });
+
+      if (shouldOpen) {
+        panel.hidden = false;
+        panel.classList.add('is-open');
+        button.setAttribute('aria-expanded', 'true');
+      } else {
+        closePanel(panel, button);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-panel-close]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var panel = button.closest('.pub-panel');
+      if (!panel) return;
+      var item = panel.closest('.pub-item');
+      var toggle = item ? item.querySelector('[data-panel-toggle][aria-controls="' + panel.id + '"]') : null;
+      closePanel(panel, toggle);
+    });
+  });
+});
+</script>
