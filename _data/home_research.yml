@@ -1,0 +1,95 @@
+- href: /research/q-snap/
+  image: /assets/images/LLMchat_demo.gif
+  caption_ja: LLM GUI チャット
+  caption_en: LLM GUI chat
+  title_ja: CGLA向けLLM実行最適化
+  title_en: Q-snap for LLM Execution on CGLA
+  body_ja: 静的なチャンク分割で顕在化する転送オーバーヘッドに着目し、量子化条件に応じてチャンクサイズを動的に決める Q-snap を提案した。プリフィルで 1.62 倍の高速化を確認している。
+  body_en: I focused on transfer overhead caused by static chunking and proposed Q-snap, which dynamically adjusts chunk sizes with quantization constraints. It achieved a 1.62x speedup in the prefill phase.
+  tags:
+    - label: Best Paper - ICISN 2026
+      kind: award
+    - label: Young Researcher - SASIMI 2025
+      kind: award
+    - label: IEEE Access
+      kind: neutral
+- href: /research/generative-ai/
+  image: /assets/images/MCSOC_imagegen.png
+  caption_ja: MCSoC 2025 評価
+  caption_en: MCSoC 2025 evaluation
+  title_ja: 生成 AI の CGLA 上での実装
+  title_en: Generative AI on CGLA
+  body_ja: Stable Diffusion を IMAX 上に実装し、LLM 以外の生成 AI ワークロードにも適用できることを評価した。エンドツーエンドの性能と電力効率を確認している。
+  body_en: I implemented Stable Diffusion on IMAX and evaluated end-to-end performance and energy efficiency, showing that the platform can support generative AI workloads beyond LLMs.
+  tags:
+    - label: MCSoC 2025
+      kind: neutral
+- href: /research/asr/
+  image: /assets/images/CANDAR_process.png
+  caption_ja: CANDAR 2025 ワークフロー
+  caption_en: CANDAR 2025 workflow
+  title_ja: 音声認識（ASR）の高効率実装
+  title_en: Speech Recognition on CGLA
+  body_ja: Whisper を IMAX 上に実装し、独自の FP16 演算カーネルを開発した。省電力推論を実現しながら、CGLA の汎用性を示している。
+  body_en: I ported Whisper to IMAX and implemented a custom FP16 kernel, achieving energy-efficient inference while demonstrating the architectural versatility of CGLA.
+  tags:
+    - label: Best Paper - CANDAR 2025
+      kind: award
+    - label: arXiv:2511.02269
+      kind: neutral
+- href: /research/imax/
+  image: /assets/images/imax3andimax4.jpg
+  caption_ja: IMAX アーキテクチャ
+  caption_en: IMAX architecture
+  title_ja: IMAX アーキテクチャの評価と実装
+  title_en: IMAX Architecture
+  body_ja: 演算ユニットとキャッシュメモリを交互配置した非ノイマン型 CGLA。エッジ向け IMAX3 とサーバ向け IMAX4 の比較評価やアプリケーション実装に取り組んでいる。
+  body_en: IMAX is a non-von Neumann CGLA that alternates processing elements and local memories. My work includes comparative evaluation of edge-oriented IMAX3 and server-oriented IMAX4.
+  tags:
+    - label: CGRA / CGLA
+      kind: neutral
+    - label: Near-Memory Computing
+      kind: neutral
+    - label: Edge and Server
+      kind: neutral
+- href: /research/facial-expression/
+  image: /assets/images/fpga_system2.png
+  caption_ja: FPGA マルチタスク構成
+  caption_en: FPGA multi-task stack
+  title_ja: FPGA による表情認識システム
+  title_en: FPGA Facial Expression Recognition
+  body_ja: DPU ベースの DNN アクセラレータを用いて、FPGA 上でリアルタイム表情認識システムを実装した。マルチスレッド化と低消費電力化を両立している。
+  body_en: I implemented a real-time facial expression recognition system on FPGA using a DPU-based DNN accelerator, targeting both multi-threaded execution and low power operation.
+  tags:
+    - label: ICIC Express Letters 2025
+      kind: neutral
+    - label: CANDARW 2024
+      kind: neutral
+    - label: 情処全国大会 2025
+      kind: neutral
+- href: /research/green-onion-dnn/
+  image: /assets/images/negi_yolo.png
+  caption_ja: YOLOX 検出結果
+  caption_en: YOLOX detection result
+  title_ja: DNNベースの小ねぎ分岐部検出
+  title_en: DNN-Based Green Onion Branching Point Detection
+  body_ja: 背景や照明条件が複雑な環境に対応するため、YOLOX ベースの検出とインスタンスセグメンテーションを用いた分岐部検出を検討した。自動調製機への実応用を見据えた認識系として整理している。
+  body_en: To handle complex backgrounds and lighting conditions, I studied branching-point detection based on YOLOX and instance segmentation. This line of work targets practical deployment in automated green-onion peeling systems.
+  tags:
+    - label: ICIC Express Letters 2026
+      kind: neutral
+    - label: 電子情報通信学会九州支部学生会講演会 2024
+      kind: neutral
+- href: /research/green-onion-edge/
+  image: /assets/images/negi_machine.jpg
+  caption_ja: 自動調製パイプライン
+  caption_en: Autonomous trimming pipeline
+  title_ja: エッジ検出による小ねぎ分岐部検出
+  title_en: Edge-Detection-Based Green Onion Branching Point Detection
+  body_ja: 小ねぎ分岐部に現れる斜線に着目し、エッジ検出ベースの軽量アルゴリズムを構成した。Raspberry Pi 3 上で検出率 90.6%、処理時間 455 ms を確認している。
+  body_en: I designed a lightweight edge-detection-based method that extracts branching-line patterns in green onions. On Raspberry Pi 3, it achieved 90.6% detection rate with 455 ms processing time.
+  tags:
+    - label: ICIC Express Letters 2026
+      kind: neutral
+    - label: 農業情報研究 2024
+      kind: neutral
