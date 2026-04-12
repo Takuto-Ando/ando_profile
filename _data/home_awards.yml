@@ -1,28 +1,21 @@
 - date: "2026.03"
   title: Best Paper Award
   organizer: ICISN 2026
-  description: Q-Snap による LLM 実行最適化の発表が評価された。
 - date: "2025.11"
   title: Best Paper Award
   organizer: CANDAR 2025
-  description: Whisper の高効率アクセラレーション研究が最優秀論文として選ばれた。
 - date: "2025.10"
-  title: Young Researcher Award
+  title: IEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award 
   organizer: SASIMI 2025
-  description: IMAX3 / IMAX4 における LLM 実行のボトルネック解析が評価された。
 - date: "2025.03"
   title: 学生奨励賞
   organizer: 情報処理学会 第87回全国大会
-  description: 表情認識システムの電力効率改善に関する発表が対象。
 - date: "2025.03"
-  title: 奨励賞 優秀賞
+  title: 日本高専学会奨励賞 優秀賞
   organizer: 日本高専学会
-  description: 高専在学中の研究成果と対外発表実績に基づく表彰。
 - date: "2025.03"
   title: 理事長表彰
   organizer: 高専機構
-  description: 学業と研究活動の成果に対する表彰。
 - date: "2025.03"
   title: 学術奨励賞
   organizer: 電子情報通信学会 九州支部
-  description: 高専での研究活動と外部発表実績に基づく表彰。
