@@ -330,3 +330,27 @@ sections:
         title: エッジ検出を用いたこねぎ分岐部の検出
         venue: 情処ARC研究発表会
         citation: 2023
+  - key: student_theses
+    title_en: Student Theses
+    title_ja: 学生論文
+    lead_en: Final thesis documents from the KOSEN regular course and advanced course.
+    lead_ja: 高専本科の卒業論文と、専攻科における特別研究論文です。
+    items:
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+        title: 高専本科 卒業論文
+        venue: 奈良工業高等専門学校
+        citation: 卒業研究論文
+        links:
+          - label: PDF
+            url: /assets/pdfs/sotsuken_thesis.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
+        title: 専攻科 特別研究論文
+        venue: 奈良工業高等専門学校 専攻科
+        citation: 特別研究論文
+        links:
+          - label: PDF
+            url: /assets/pdfs/tokukenn_thesis.pdf

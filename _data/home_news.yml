@@ -1,0 +1,48 @@
+- date: "2026.04.03"
+  category: Update
+  image: /assets/images/ICISN_1.jpg
+  title: 修士1年の研究成果
+  summary: 国際会議発表、国際ジャーナル採択、受賞を含む 1 年間の成果を整理した。
+  href: /announcement/master-year-review-2026-04-03/
+- date: "2026.03.26"
+  category: Award
+  image: /assets/images/ICISN_2.PNG
+  title: ICISN 2026 Best Paper Award
+  summary: Q-Snap に関する研究発表が Best Paper Award に選ばれた。
+  href: /posts/2026/03/26/post_icisn/
+- date: "2025.11.29"
+  category: Award
+  image: /assets/images/20251128_ando-1.jpg
+  title: CANDAR 2025 Best Paper Award
+  summary: Whisper ASR の CGLA 実装研究が最優秀論文として表彰された。
+  href: /posts/2025/11/29/post_/
+- date: "2025.11.22"
+  category: Publication
+  image: /assets/images/access_image.png
+  title: IEEE Access 採択
+  summary: CGLA 上での LLM 推論実装とシステム評価に関する論文が採択された。
+  href: /posts/2025/11/22/post/
+- date: "2025.10.10"
+  category: Update
+  image: /assets/images/sasimi2025_photo.jpg
+  title: SASIMI 2025 Young Researcher Award
+  summary: IMAX3 / IMAX4 における LLM 実行解析に関する発表が若手研究者賞を受賞した。
+  href: /posts/2025/10/10/post/
+- date: "2025.03.24"
+  category: Award
+  image: /assets/images/kosengakkai_award.jpg
+  title: 日本高専学会 研究奨励賞
+  summary: FPGA 表情認識と農業画像認識の実績に基づき研究奨励賞を受賞した。
+  href: /posts/2025/03/24/post_5/
+- date: "2025.03.24"
+  category: Award
+  image: /assets/images/zenkoku2025.jpg
+  title: 情報処理学会 全国大会 学生奨励賞
+  summary: FPGA 上の表情認識システムの電力効率改善に関する発表が評価された。
+  href: /posts/2025/03/24/post_3/
+- date: "2025.03.24"
+  category: Award
+  image: /assets/images/ando_1.jpg
+  title: 高専機構 学生表彰
+  summary: 高専在学中の研究実績と対外発表に基づき学生表彰を受賞した。
+  href: /posts/2025/03/24/post_2/
