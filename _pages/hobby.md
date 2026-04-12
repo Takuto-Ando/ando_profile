@@ -7,9 +7,6 @@ classes: wide
 
 {% if site.active_lang == 'en' %}
 
-## Hobbies & Personal
-
-This page is intentionally lighter than the research sections. I think a portfolio should show not only publications and technical outputs, but also continuity, balance, and the kind of person behind the work.
 
 ### Interests
 
@@ -18,10 +15,6 @@ This page is intentionally lighter than the research sections. I think a portfol
 - Baseball (Chunichi Dragons fan)
 - Anime & drama
 - Fandom activities
-
-### Personal Note
-
-Outside research and engineering, I value activities that require repetition and steady improvement. That mindset carries over into my research style as well: building, measuring, refining, and continuing over time.
 
 ### Photos
 
@@ -37,9 +30,6 @@ Outside research and engineering, I value activities that require repetition and
 
 {% else %}
 
-## 趣味
-
-このページは、研究や実装のページより少し柔らかい内容です。ポートフォリオには論文や成果だけでなく、継続性や人柄、その人がどのように日々を積み重ねているかも伝わることが大切だと考えています。
 
 ### 好きなこと
 
@@ -49,9 +39,7 @@ Outside research and engineering, I value activities that require repetition and
 - アニメ・ドラマ鑑賞
 - 推し活
 
-### ひとこと
 
-研究以外では、反復して少しずつ積み上げるタイプの活動が好きです。そうした姿勢は研究や実装にもつながっていて、作って、測って、改善して、続けることを大事にしています。
 
 ### 写真
 
