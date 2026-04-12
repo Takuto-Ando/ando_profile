@@ -9,7 +9,6 @@ classes: wide
 
 ## Biography
 
-I study computer architecture and AI systems at NAIST while working across research, implementation, presentation, and mentoring activities. My background combines hands-on engineering experience with academic research on energy-efficient AI acceleration.
 
 ### Education
 
@@ -54,8 +53,6 @@ I study computer architecture and AI systems at NAIST while working across resea
 {% else %}
 
 ## 経歴
-
-奈良先端科学技術大学院大学で計算機アーキテクチャと AI システムを研究しつつ、実装・評価・発表・メンタリングまで横断して取り組んでいます。実装に根ざした研究スタイルと、省電力 AI アクセラレーションに関するテーマを強みとしています。
 
 ### 学歴
 
