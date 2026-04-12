@@ -23,9 +23,10 @@ I study computer architecture and AI systems at NAIST while working across resea
 
 | Period | Role |
 |--------|------|
+| **2026.04 – present** | Nara Institute of Science and Technology — Teaching Assistant (Introduction to Information Science, Green Computing Infrastructure) |
 | **2025.12 – present** | LENZO Inc. — Engineer |
-| **2025.10 – present** | NAIST STELLA Program — Student Mentor |
 | **2025.03 – present** | IMAX AI Application Development |
+| **2025.10 – 2026.03** | NAIST STELLA Program — Student Mentor |
 | **2024.05 – 2025.03** | Oita KOSEN — Technical Staff (Laboratory Assistant) |
 | **2019.02 – 2024.12** | Swimming School — Instructor (Part-time) |
 
@@ -49,11 +50,6 @@ I study computer architecture and AI systems at NAIST while working across resea
 | **2022.05** | TOEIC (IP) 785 |
 | **2021.11** | Fundamental Information Technology Engineer Examination |
 
-### Short Profile
-
-- Research focus: non-von Neumann AI acceleration, LLM / ASR / generative AI on CGLA
-- Strengths: implementation-driven research, performance analysis, bilingual presentation materials
-- Current roles: master's student, engineer, and student mentor
 
 {% else %}
 
@@ -73,9 +69,10 @@ I study computer architecture and AI systems at NAIST while working across resea
 
 | 期間 | 内容 |
 |------|------|
+| **2026.04 – 現在** | 奈良先端科学技術大学院大学 ティーチングアシスタント (情報理工学序論, グリーンコンピューティング基盤) |
 | **2025.12 – 現在** | LENZO 株式会社 エンジニア |
-| **2025.10 – 現在** | NAIST STELLAプログラム 学生メンター |
 | **2025.03 – 現在** | IMAX 用新規 AI アプリケーション開発 |
+| **2025.10 – 2026.03** | NAIST STELLAプログラム 学生メンター |
 | **2025.11** | 生駒市中学校 出前授業 ティーチングアシスタント |
 | **2024.05 – 2025.03** | 大分工業高等専門学校 技術職員 演習室担当 |
 | **2024.04 – 2024.08** | 大分工業高等専門学校 ティーチングアシスタント（ディジタル回路演習） |
@@ -101,10 +98,5 @@ I study computer architecture and AI systems at NAIST while working across resea
 | **2022.05** | TOEIC (IP) 785点 |
 | **2021.11** | 基本情報技術者試験 合格 |
 
-### プロフィール要約
-
-- 研究テーマ: 非ノイマン型 AI アクセラレーション、LLM / ASR / 生成AI の CGLA 実装
-- 強み: 実装起点の研究、性能解析、日英両言語での発表資料作成
-- 現在の役割: 大学院生、エンジニア、学生メンター
 
 {% endif %}

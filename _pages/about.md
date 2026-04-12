@@ -17,13 +17,10 @@ classes: wide
       <h1 class="about-card__name">Takuto Ando</h1>
       <p class="about-card__role">Master's Student, Computing Architecture Laboratory, NAIST</p>
       <p class="about-card__text">
-        I study computer architecture and AI systems at NAIST, with a focus on implementing practical AI workloads on energy-efficient accelerators. My work spans research design, software implementation, performance analysis, and presentation.
+        At NAIST, I am working on "building an energy-efficient AI computing infrastructure using next-generation AI accelerators." As AI models grow increasingly massive, the power consumption of data centers has become a significant social issue. While existing GPUs offer high performance, they suffer from a structural challenge known as the "von Neumann bottleneck," where the energy required to move data from memory exceeds the energy used for the computation itself. To address this, I focused on a unique architecture called CGLA, which integrates memory and arithmetic units in close proximity. The core of my research lies not simply in using new hardware, but in developing custom software that fully exploits its physical characteristics. Specifically, when implementing state-of-the-art models like Llama and speech recognition models, I employ "Hardware/Software Co-design"—partitioning data according to hardware memory capacity and bandwidth, and streaming it to keep the computational pipeline from stalling.
       </p>
       <p class="about-card__text">
-        I am particularly interested in how hardware and software should be designed together so that AI systems remain both efficient and usable. In addition to current work on IMAX and CGLA-based acceleration, I also value experience gained from FPGA implementation and edge-AI projects during my college years.
-      </p>
-      <p class="about-card__text">
-        This site is intended to give a concise overview of who I am, what I work on, and how I approach research and implementation.
+        Currently, my main focus is developing applications designed to run on future computers. Ultimately, I hope to leverage the experience gained through my research to become an engineer capable of solving fundamental problems, serving as a bridge between technology and society.
       </p>
     </div>
   </div>
@@ -39,15 +36,12 @@ classes: wide
     <div class="about-card__body">
       <p class="about-card__eyebrow">About</p>
       <h1 class="about-card__name">安藤 拓翔</h1>
-      <p class="about-card__role">奈良先端科学技術大学院大学 博士前期課程 / コンピューティング・アーキテクチャ研究室</p>
+      <p class="about-card__role">奈良先端科学技術大学院大学 博士前期課程2年 / コンピューティング・アーキテクチャ研究室</p>
       <p class="about-card__text">
-        奈良先端大で計算機アーキテクチャと AI システムを研究しています。実際に動く AI ワークロードを対象に、アクセラレータ上での実装、性能解析、システム評価まで一貫して取り組むことを大切にしています。
+        奈良先端大で『次世代AIアクセラレータによる、省電力なAI計算基盤の構築』に取り組んでいます。現在、AIのモデルは巨大化し、データセンターの消費電力が社会問題になっています。 既存のGPUは高性能ですが、『フォン・ノイマン・ボトルネック』と呼ばれる構造上の課題があり、メモリからデータを読み出す移動エネルギーが、計算そのもののエネルギーよりも大きくなっています。そこで私は、メモリと演算器を一体化に近い形で配置したCGLAという独自アーキテクチャに着目しました。私の研究の核心は、単に新しいハードを使うだけでなく、『ハードウェアの物理的な特徴を活かし切るソフトウェア』を自作した点にあります。具体的には、Llamaなどの最新のLLMや音声認識モデルを実装する際、ハードウェアのメモリ容量や帯域に合わせてデータを分割し、パイプラインが止まらないようにデータを流し込む『HW/SW協調設計』を行いました。
       </p>
       <p class="about-card__text">
-        関心があるのは、ハードウェアとソフトウェアを別々に最適化するのではなく、全体としてどう設計すれば効率的で使いやすい計算基盤になるかという点です。現在は IMAX や CGLA を用いた研究を進めつつ、高専時代に取り組んだ FPGA 実装やエッジ AI の経験も研究の土台になっています。
-      </p>
-      <p class="about-card__text">
-        このページでは、研究者・実装者としての全体像が自然に伝わるように、自分の関心や取り組み方を簡潔にまとめています。
+        現在は未来のコンピュータで動くアプリケーション開発を主に行っています。将来的にはこの研究での経験を活かして、実社会と技術のインターフェースとなるような本質的な問題解決ができるエンジニアになりたいです。
       </p>
     </div>
   </div>
