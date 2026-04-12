@@ -1,0 +1,167 @@
+{% assign publication = include.publication %}
+{% assign item_index = include.index %}
+{% if item_index < 10 %}
+  {% assign item_label = '0' | append: item_index %}
+{% else %}
+  {% assign item_label = item_index %}
+{% endif %}
+{% assign abstract_url = publication.abstract %}
+{% assign bibtex_url = publication.bibtex %}
+{% assign links_url = publication.links_url %}
+{% assign pdf_url = publication.pdf %}
+{% assign has_inline_abstract = false %}
+{% assign has_inline_bibtex = false %}
+{% assign has_inline_links = false %}
+{% assign bibtex_text = publication.bibtexText %}
+{% if publication.abstractJa or publication.abstractEn %}
+  {% assign has_inline_abstract = true %}
+{% endif %}
+{% if bibtex_text %}
+  {% assign has_inline_bibtex = true %}
+{% elsif publication.bibtex and publication.bibtex contains '@' %}
+  {% assign bibtex_text = publication.bibtex %}
+  {% assign has_inline_bibtex = true %}
+{% endif %}
+{% if publication.links %}
+  {% for action in publication.links %}
+    {% assign action_label = action.label | downcase %}
+    {% if action_label == 'abstract' %}
+      {% assign abstract_url = action.url %}
+    {% elsif action_label == 'bibtex' %}
+      {% assign bibtex_url = action.url %}
+    {% elsif action_label == 'links' %}
+      {% assign links_url = action.url %}
+    {% elsif action_label == 'pdf' %}
+      {% assign pdf_url = action.url %}
+    {% else %}
+      {% assign has_inline_links = true %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% if publication.linkItems and publication.linkItems.size > 0 %}
+  {% assign has_inline_links = true %}
+{% endif %}
+{% if links_url %}
+  {% assign has_inline_links = true %}
+{% endif %}
+
+<article class="pub-item">
+  <div class="pub-item__index">{{ item_label }}.</div>
+  <div class="pub-item__body">
+    <div class="pub-item__authors">
+      {% for author in publication.authors %}
+        <span class="pub-item__author{% if author.me %} pub-item__author--me{% endif %}">{{ author.name }}</span>{% unless forloop.last %}<span class="pub-item__separator">, </span>{% endunless %}
+      {% endfor %}
+    </div>
+
+    <h3 class="pub-item__title">"{{ publication.title }}"</h3>
+
+    <div class="pub-item__meta">
+      <span class="pub-item__venue">{{ publication.venue }}</span>
+      <span class="pub-item__citation">{{ publication.citation }}</span>
+    </div>
+
+    {% if publication.badges and publication.badges.size > 0 %}
+      <div class="pub-item__badges">
+        {% for badge in publication.badges %}
+          {% assign badge_label = badge.label %}
+          {% assign badge_type = badge.type %}
+          {% unless badge_type %}
+            {% if badge_label contains 'Best Paper' or badge_label contains 'Young Researcher' or badge_label contains '学生奨励賞' %}
+              {% assign badge_type = 'award' %}
+            {% elsif badge_label contains 'Impact Factor' %}
+              {% assign badge_type = 'impact' %}
+            {% else %}
+              {% assign badge_type = 'neutral' %}
+            {% endif %}
+          {% endunless %}
+          <span class="pub-badge pub-badge--{{ badge_type }}">{{ badge_label }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="pub-item__actions">
+      {% if has_inline_abstract %}
+        <button class="pub-action" type="button" data-panel-toggle="abstract" aria-expanded="false" aria-controls="pub-panel-abstract-{{ include.uid }}">Abstract</button>
+      {% else %}
+        <span class="pub-action is-disabled">Abstract</span>
+      {% endif %}
+
+      {% if has_inline_bibtex %}
+        <button class="pub-action" type="button" data-panel-toggle="bibtex" aria-expanded="false" aria-controls="pub-panel-bibtex-{{ include.uid }}">BibTeX</button>
+      {% else %}
+        <span class="pub-action is-disabled">BibTeX</span>
+      {% endif %}
+
+      {% if has_inline_links %}
+        <button class="pub-action" type="button" data-panel-toggle="links" aria-expanded="false" aria-controls="pub-panel-links-{{ include.uid }}">Links</button>
+      {% else %}
+        <span class="pub-action is-disabled">Links</span>
+      {% endif %}
+
+      {% if pdf_url %}
+        {% assign pdf_href = pdf_url %}
+        {% unless pdf_url contains '://' %}{% assign pdf_href = pdf_url | relative_url %}{% endunless %}
+        <a class="pub-action" href="{{ pdf_href }}">PDF</a>
+      {% else %}
+        <span class="pub-action is-disabled">PDF</span>
+      {% endif %}
+    </div>
+
+    {% if has_inline_abstract %}
+      <div class="pub-panel pub-panel--abstract" id="pub-panel-abstract-{{ include.uid }}" hidden>
+        <button class="pub-panel__close" type="button" aria-label="Close" data-panel-close>&times;</button>
+        {% if publication.abstractJa %}
+          <div class="pub-panel__row">
+            <div class="pub-panel__label">[ja]</div>
+            <div class="pub-panel__body">{{ publication.abstractJa }}</div>
+          </div>
+        {% endif %}
+        {% if publication.abstractEn %}
+          <div class="pub-panel__row">
+            <div class="pub-panel__label">[en]</div>
+            <div class="pub-panel__body">{{ publication.abstractEn }}</div>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if has_inline_bibtex %}
+      <div class="pub-panel pub-panel--bibtex" id="pub-panel-bibtex-{{ include.uid }}" hidden>
+        <button class="pub-panel__close" type="button" aria-label="Close" data-panel-close>&times;</button>
+        <pre class="pub-panel__code">{{ bibtex_text }}</pre>
+      </div>
+    {% endif %}
+
+    {% if has_inline_links %}
+      <div class="pub-panel pub-panel--links" id="pub-panel-links-{{ include.uid }}" hidden>
+        <button class="pub-panel__close" type="button" aria-label="Close" data-panel-close>&times;</button>
+        <div class="pub-panel__heading">{{ publication.title }}</div>
+        <div class="pub-panel__body">
+          <ul class="pub-links">
+            {% if publication.linkItems %}
+              {% for item in publication.linkItems %}
+                {% assign item_href = item.url %}
+                {% unless item_href contains '://' %}{% assign item_href = item_href | relative_url %}{% endunless %}
+                <li><a href="{{ item_href }}">{{ item.label }}</a></li>
+              {% endfor %}
+            {% elsif publication.links %}
+              {% for item in publication.links %}
+                {% assign item_label = item.label | downcase %}
+                {% unless item_label == 'pdf' %}
+                  {% assign item_href = item.url %}
+                  {% unless item_href contains '://' %}{% assign item_href = item_href | relative_url %}{% endunless %}
+                  <li><a href="{{ item_href }}">{% if item.label == 'Links' %}{{ publication.title }}{% else %}{{ item.label }}{% endif %}</a></li>
+                {% endunless %}
+              {% endfor %}
+            {% elsif links_url %}
+              {% assign links_href = links_url %}
+              {% unless links_href contains '://' %}{% assign links_href = links_href | relative_url %}{% endunless %}
+              <li><a href="{{ links_href }}">{{ publication.title }}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</article>
