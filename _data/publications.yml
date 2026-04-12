@@ -37,6 +37,7 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA
+        abstractEn: Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, we focus on Coarse-Grained Reconfigurable Arrays (CGRAs) as an effective alternative that provides a trade-off between energy efficiency and programmability. This paper presents the first comprehensive, end-to-end evaluation of a non-AI-specialized Coarse-Grained Linear Array (CGLA) accelerator for the state-of-the-art Qwen3 LLM family. The architecture has a general-purpose, task-agnostic design, yet its flexible instruction set allows for domain-specific adaptations. This flexibility enables the architecture to achieve high efficiency for sustainable LLM inference. We assess the performance of our architecture on an FPGA prototype using the widely adopted llama.cpp framework. We then project its potential as a 28 nm ASIC and compare it against a high-performance GPU (NVIDIA RTX 4090) and an edge AI device (NVIDIA Jetson AGX Orin). While GPUs exhibit lower latency, our non-AI-specific accelerator achieves higher energy efficiency, improving the Power-Delay Product (PDP) by up to 44.4× and 13.6× compared with the RTX 4090 and Jetson, respectively. Similarly, it reduces the Energy-Delay Product (EDP) by up to 11.5× compared to the high-performance GPU, demonstrating a favorable performance-energy trade-off. Critically, our system-level analysis identifies host-accelerator data transfer as the primary performance bottleneck, a factor often overlooked in kernel-level studies. These findings provide design guidance for next-generation LLM accelerators. This work validates CGRAs as a suitable platform for LLM inference in power-constrained environments, without being confined to specific algorithms.
         venue: IEEE Access
         citation: vol. 13, pp. 199631-199646, 2025
         bibtexText: |-
@@ -64,6 +65,7 @@ sections:
         title: DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System
         venue: ICIC Express Letters
         citation: vol. 19, no. 4, pp. 419-426, 2025
+        abstractEn: In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. The system consists of a face detection step and a facial expression recognition step. In conventional FPGA-based facial expression recognition systems, the Haar Cascade detector is run on the CPU due to FPGA (Field Programmable Gate Array) resource limitations in the face detection step. However, the Haar Cascade detector is less accurate than DNN (Deep Neutral Network)-based face detection for images of profile faces and images with changing lighting conditions. Onthe other hand, face detection using a DNN such as YOLO requires a long latency when executed on a CPU with low computing performance. Therefore, we offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA,to speed up the processing. In this work, we combined face detection with DenseBox andCNN-based facial expression recognition on the same DPU. The same DPU was used toimplement the facial expression recognition system, which enabled efficient use of FPGAresources while keeping the size of the circuitry
         bibtexText: |-
           @article{ando2025dpu,
             author  = {Takuto Ando and Yusuke Inoue},
@@ -114,6 +116,7 @@ sections:
         links:
           - label: Links
             url: https://doi.org/10.3173/air.33.73
+        pdf: https://www.jstage.jst.go.jp/article/air/33/2/33_73/_pdf/-char/ja
 
   - key: international_conferences
     title_en: International Conferences
@@ -193,6 +196,7 @@ sections:
         title: Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels
         venue: SOCC 2025 PhD/Master Forum
         citation: 2025
+        abstractEn: The evolution of Large Language Models (LLMs) has led to a substantial increase in energy consumption, making energy-efficient accelerator technologies essential. We propose a method to maximize the performance of the Llama3 LLM on IMAX3, a CGRA-based accelerator. We conducted a detailed analysis of the Q3_K_S quantization method. Based on this analysis, we implemented a new custom kernel to offload the Q6_K operations to the hardware. In previous work, this operation was processed on the host CPU. This targeted optimization reduced the end-to-end latency by approximately 11%. Furthermore, an evaluation of a projected ASIC implementation showed that the absolute performance does not match that of a GPU. In contrast, our approach achieves superior power efficiency, as measured by the Power-Delay Product (PDP).
         bibtexText: |-
           @inproceedings{ando2025llama3forum,
             author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
@@ -239,6 +243,7 @@ sections:
         title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
         venue: SASIMI 2025
         citation: 2025
+        abstractEn: In this paper, we present a detailed analysis of the IMAX3 CGRA-based accelerator and the IMAX4 prototype with an upgraded host CPU. To address the host CPU bottlenecks of its predecessor, IMAX3, IMAX4 incorporates a server-oriented Intel Xeon processor and PCIe Gen5 connectivity, realizing IMAX scalability. We implemented and evaluated the IMAX4 prototype using microbenchmarks and the LLaMA3 8B quantized model. The results demonstrate significantly reduced host-side overheads and improved data transfer compared to IMAX3. While performance characteristics vary by quantization, IMAX4 demonstrates significant potential by shifting bottlenecks from the host to data pathways, highlighting the viability of CGRA for server-based LLM acceleration.
         badges:
           - label: Young Researcher Award
             type: award
@@ -252,6 +257,7 @@ sections:
         title: Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA
         venue: CANDARW 2024
         citation: pp. 103-109, 2024
+        abstractEn: In this paper, we implement a stand-alone facial expression recognition system on an SoC FPGA with multi-threading using a Deep learning Processor Unit (DPU). The system consists of two steps: one for face detection step and one for facial expression recognition. In the previous work, the Haar Cascade detector was run on a CPU in the face detection step due to FPGA resource limitations, but this detector is less accurate for profile and variable illumination condition images. Moreover, the previous work used a dedicated circuit accelerator, so running a second DNN inference for face detection on the FPGA would require the addition of a new accelerator. As an alternative to this approach, we run the two inferences by DNN on a DPU, which is a general-purpose CNN accelerator of the systolic array type. Our method for face detection using DenseBox and facial expression recognition using CNN on the same DPU enables the efficient use of FPGA resources while maintaining a small circuit size. We also developed a multi-threading technique that improves the overall throughput while increasing the DPU utilization efficiency. With this approach, we achieved an overall system throughput of 25 FPS and a throughput per power consumption of 2.4 times.
         bibtexText: |-
           @inproceedings{ando2024multithreading,
             author    = {Takuto Ando and Yusuke Inoue},
@@ -274,6 +280,7 @@ sections:
         title: FPGA Implementation of a DPU-Based Facial Expression Recognition System
         venue: SASIMI 2024
         citation: March 2024
+        abstractEn: In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. In conventional FPGA-based systems, the Haar Cascade detector is run on the CPU for face detection due to FPGA resource limitations. We offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA. The same DPU was used to implement the facial expression recognition system, which enabled efficient use of FPGA resources while minimizing the size of the circuitry.
         links:
           - label: PDF
             url: https://sasimi.jp/new/sasimi2024/files/archive/pdf/p8_R1-2.pdf
@@ -291,6 +298,7 @@ sections:
         title: DNNアクセラレータを用いた表情認識システムにおける電力効率の向上
         venue: 情処全国大会 第87回
         citation: 2025
+        abstractJa: 本研究ではDPUを用いた表情認識システムをSoC FPGA上に実装する．先行研究のFPGAで実装された表情認識システムでは，顔検出の処理をFPGAリソースの制約からCascade検出器を用いてCPU上で実行していた．しかし，この手法ではDNNベースの顔検出よりも精度が劣る．そこで本研究では，DNNによる顔検出と表情認識を同一のDPUで時分割実行することで，リソースを抑えつつFPGAで実行可能なハードウェア構成を提案する．また，全体の消費電力とスループットを向上させるためにマルチスレッドを活用した手法を提案する．本システムは先行研究より消費電力あたりのスループットは約2.4倍の向上を達成した．
         badges:
           - label: 学生奨励賞
         links:
