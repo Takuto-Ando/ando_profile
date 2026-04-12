@@ -1,6 +1,7 @@
 <div class="bp-home" markdown="0">
   <div id="hero" class="bp-profile">
-    <img class="bp-profile__img" src="{{ '/assets/images/ando2.png' | relative_url }}" alt="Takuto Ando" onerror="this.style.background='#f1f5f9'">
+    <img class="bp-profile__img" src="{{ '/assets/images/ando2.png' | relative_url }}" alt="Takuto Ando"
+      onerror="this.style.background='#f1f5f9'">
     <div>
       <div class="bp-profile__name">
         安藤 拓翔 <span style="font-size:1rem;font-weight:400;color:#94A3B8">Takuto ANDO</span>
@@ -8,7 +9,8 @@
       <div class="bp-profile__en">博士前期課程2年 · コンピューティング・アーキテクチャ研究室</div>
       <div class="bp-profile__aff">奈良先端科学技術大学院大学</div>
       <div class="bp-profile__bio">
-        AI や画像処理技術を計算機アーキテクチャの視点から探求し、持続可能で高効率な AI 計算基盤の構築を目指しています。近年は非ノイマン型アクセラレータ IMAX 上での LLM・生成 AI・音声認識の実装と最適化に取り組み、高専時代には FPGA 推論や農業画像認識の研究も進めてきました。
+        AI や画像処理技術を計算機アーキテクチャの視点から探求し、持続可能で高効率な AI 計算基盤の構築を目指しています。近年は非ノイマン型アクセラレータ IMAX 上での LLM・生成
+        AI・音声認識の実装と最適化に取り組み、高専時代には FPGA 推論や農業画像認識の研究も進めてきました。
       </div>
       <div class="bp-profile__btns">
         <a class="bp-btn" href="https://researchmap.jp/takuto_ando">researchmap</a>
@@ -21,14 +23,27 @@
   </div>
 
   <div class="bp-stats">
-    <div class="bp-stat"><div class="bp-stat__n">3</div><div class="bp-stat__l">国際論文誌</div></div>
-    <div class="bp-stat"><div class="bp-stat__n">7</div><div class="bp-stat__l">国際会議</div></div>
-    <div class="bp-stat"><div class="bp-stat__n">7</div><div class="bp-stat__l">受賞</div></div>
-    <div class="bp-stat"><div class="bp-stat__n">6</div><div class="bp-stat__l">国内発表</div></div>
+    <div class="bp-stat">
+      <div class="bp-stat__n">3</div>
+      <div class="bp-stat__l">国際論文誌</div>
+    </div>
+    <div class="bp-stat">
+      <div class="bp-stat__n">7</div>
+      <div class="bp-stat__l">国際会議</div>
+    </div>
+    <div class="bp-stat">
+      <div class="bp-stat__n">7</div>
+      <div class="bp-stat__l">受賞</div>
+    </div>
+    <div class="bp-stat">
+      <div class="bp-stat__n">6</div>
+      <div class="bp-stat__l">国内発表</div>
+    </div>
   </div>
 
   <p class="bp-overview">
-    アクセラレータ設計、ランタイムのボトルネック解析、アプリケーション実装を横断しながら、IMAX を中心とした CGLA 系計算基盤で実用的な AI ワークロードをどう支えるかを研究しています。エッジからサーバまでを視野に、ハードウェアとソフトウェアの接点を重視しています。
+    アクセラレータ設計、ランタイムのボトルネック解析、アプリケーション実装を横断しながら、IMAX を中心とした CGLA 系計算基盤で実用的な AI
+    ワークロードをどう支えるかを研究しています。エッジからサーバまでを視野に、ハードウェアとソフトウェアの接点を重視しています。
   </p>
 
   <div class="bp-keywords">
@@ -52,42 +67,45 @@
     <div class="bp-strip__viewport" data-strip-viewport>
       <div class="bp-strip__track bp-strip__track--cards">
         {% for post in latest_posts %}
-          {% assign post_date = post.last_modified_at | default: post.date %}
-          {% assign post_category = post.categories | first | default: 'post' %}
-          {% assign post_category_down = post_category | downcase %}
-          {% if post_category_down == 'award' %}
-            {% assign post_category_label = '受賞' %}
-          {% elsif post_category_down == 'announcement' %}
-            {% assign post_category_label = 'お知らせ' %}
-          {% elsif post_category_down == 'research' or post_category_down == 'reserch' %}
-            {% assign post_category_label = '研究' %}
-          {% else %}
-            {% assign post_category_label = '記事' %}
-          {% endif %}
-          {% assign post_has_image = false %}
-          {% assign post_image = '' %}
-          {% assign image_parts = post.content | split: 'src="' %}
-          {% if image_parts.size > 1 %}
-            {% assign post_image = image_parts[1] | split: '"' | first %}
-            {% assign post_image_down = post_image | downcase %}
-            {% if post_image_down contains '.png' or post_image_down contains '.jpg' or post_image_down contains '.jpeg' or post_image_down contains '.gif' or post_image_down contains '.webp' or post_image_down contains '.svg' or post_image_down contains '.avif' %}
-              {% assign post_has_image = true %}
-            {% endif %}
-          {% endif %}
-          <div class="bp-strip__card">
-            <a class="bp-news-card" href="{{ post.url | relative_url }}">
-              <div class="bp-news-card__image">
-                {% if post_has_image %}
-                  <img src="{{ post_image }}" alt="{{ post.title }}">
-                {% else %}
-                  <div class="bp-news-card__placeholder" aria-hidden="true">TAKUTO ANDO</div>
-                {% endif %}
-              </div>
-              <div class="bp-news-card__meta">{{ post_date | date: "%Y.%m.%d" }} / {{ post_category_label }}</div>
-              <div class="bp-news-card__title">{{ post.title }}</div>
-              <div class="bp-news-card__body">{{ post.excerpt | strip_html | strip_newlines | replace: '  ', ' ' | truncate: 90 }}</div>
-            </a>
-          </div>
+        {% assign post_date = post.last_modified_at | default: post.date %}
+        {% assign post_category = post.categories | first | default: 'post' %}
+        {% assign post_category_down = post_category | downcase %}
+        {% if post_category_down == 'award' %}
+        {% assign post_category_label = '受賞' %}
+        {% elsif post_category_down == 'announcement' %}
+        {% assign post_category_label = 'お知らせ' %}
+        {% elsif post_category_down == 'research' or post_category_down == 'reserch' %}
+        {% assign post_category_label = '研究' %}
+        {% else %}
+        {% assign post_category_label = '記事' %}
+        {% endif %}
+        {% assign post_has_image = false %}
+        {% assign post_image = '' %}
+        {% assign image_parts = post.content | split: 'src="' %}
+        {% if image_parts.size > 1 %}
+        {% assign post_image = image_parts[1] | split: '"' | first %}
+        {% assign post_image_down = post_image | downcase %}
+        {% if post_image_down contains '.png' or post_image_down contains '.jpg' or post_image_down contains '.jpeg' or
+        post_image_down contains '.gif' or post_image_down contains '.webp' or post_image_down contains '.svg' or
+        post_image_down contains '.avif' %}
+        {% assign post_has_image = true %}
+        {% endif %}
+        {% endif %}
+        <div class="bp-strip__card">
+          <a class="bp-news-card" href="{{ post.url | relative_url }}">
+            <div class="bp-news-card__image">
+              {% if post_has_image %}
+              <img src="{{ post_image }}" alt="{{ post.title }}">
+              {% else %}
+              <div class="bp-news-card__placeholder" aria-hidden="true">TAKUTO ANDO</div>
+              {% endif %}
+            </div>
+            <div class="bp-news-card__meta">{{ post_date | date: "%Y.%m.%d" }} / {{ post_category_label }}</div>
+            <div class="bp-news-card__title">{{ post.title }}</div>
+            <div class="bp-news-card__body">{{ post.excerpt | strip_html | strip_newlines | replace: ' ', ' ' |
+              truncate: 90 }}</div>
+          </a>
+        </div>
         {% endfor %}
       </div>
     </div>
@@ -102,22 +120,25 @@
     <div class="bp-strip__viewport" data-strip-viewport>
       <div class="bp-strip__track">
         {% for item in site.data.home_research %}
-          {% assign mod = forloop.index0 | modulo: 6 %}
-          {% if mod == 0 %}<div class="bp-strip__page"><div class="bp-grid bp-grid--page">{% endif %}
-          <div class="bp-card" data-href="{{ item.href | relative_url }}">
-            <div class="bp-card__media">
-              <img src="{{ item.image | relative_url }}" alt="{{ item.title_ja }}">
-            </div>
-            <div class="bp-card__media-caption">{{ item.caption_ja }}</div>
-            <div class="bp-card__ttl">{{ item.title_ja }}</div>
-            <div class="bp-card__body">{{ item.body_ja }}</div>
-            <div class="bp-tags">
-              {% for tag in item.tags %}
+        {% assign mod = forloop.index0 | modulo: 6 %}
+        {% if mod == 0 %}<div class="bp-strip__page">
+          <div class="bp-grid bp-grid--page">{% endif %}
+            <div class="bp-card" data-href="{{ item.href | relative_url }}">
+              <div class="bp-card__media">
+                <img src="{{ item.image | relative_url }}" alt="{{ item.title_ja }}">
+              </div>
+              <div class="bp-card__media-caption">{{ item.caption_ja }}</div>
+              <div class="bp-card__ttl">{{ item.title_ja }}</div>
+              <div class="bp-card__body">{{ item.body_ja }}</div>
+              <div class="bp-tags">
+                {% for tag in item.tags %}
                 <span class="bp-tag{% if tag.kind == 'award' %} bp-tag--award{% endif %}">{{ tag.label }}</span>
-              {% endfor %}
+                {% endfor %}
+              </div>
             </div>
+            {% if mod == 5 or forloop.last %}
           </div>
-          {% if mod == 5 or forloop.last %}</div></div>{% endif %}
+        </div>{% endif %}
         {% endfor %}
       </div>
     </div>
@@ -127,14 +148,14 @@
     <div class="bp-awards__ttl">受賞歴</div>
     <div class="bp-award-detail-list">
       {% for item in site.data.home_awards %}
-        <div class="bp-award-detail">
-          <div class="bp-award-detail__date">{{ item.date }}</div>
-          <div class="bp-award-detail__body">
-            <div class="bp-award-detail__title">{{ item.title }}</div>
-            <div class="bp-award-detail__org">{{ item.organizer }}</div>
-            <div class="bp-award-detail__desc">{{ item.description }}</div>
-          </div>
+      <div class="bp-award-detail">
+        <div class="bp-award-detail__date">{{ item.date }}</div>
+        <div class="bp-award-detail__body">
+          <div class="bp-award-detail__title">{{ item.title }}</div>
+          <div class="bp-award-detail__org">{{ item.organizer }}</div>
+          <div class="bp-award-detail__desc">{{ item.description }}</div>
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>
@@ -164,10 +185,13 @@
     <div class="bp-strip__viewport" data-strip-viewport>
       <div class="bp-strip__track">
         {% for item in site.data.home_gallery %}
-          {% assign mod = forloop.index0 | modulo: 6 %}
-          {% if mod == 0 %}<div class="bp-strip__page"><div class="bp-photo-grid bp-photo-grid--page">{% endif %}
-          <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
-          {% if mod == 5 or forloop.last %}</div></div>{% endif %}
+        {% assign mod = forloop.index0 | modulo: 6 %}
+        {% if mod == 0 %}<div class="bp-strip__page">
+          <div class="bp-photo-grid bp-photo-grid--page">{% endif %}
+            <img src="{{ item.image | relative_url }}" alt="{{ item.alt }}">
+            {% if mod == 5 or forloop.last %}
+          </div>
+        </div>{% endif %}
         {% endfor %}
       </div>
     </div>
@@ -175,71 +199,71 @@
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  document.querySelectorAll('[data-strip]').forEach(function (strip) {
-    var viewport = strip.querySelector('[data-strip-viewport]');
-    var prev = strip.querySelector('[data-strip-prev]');
-    var next = strip.querySelector('[data-strip-next]');
-    if (!viewport || !prev || !next) return;
-    var autoTimer = null;
-    var shouldAuto = strip.getAttribute('data-strip-auto') === 'true';
-    var stepMode = strip.getAttribute('data-strip-step') || 'page';
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-strip]').forEach(function (strip) {
+      var viewport = strip.querySelector('[data-strip-viewport]');
+      var prev = strip.querySelector('[data-strip-prev]');
+      var next = strip.querySelector('[data-strip-next]');
+      if (!viewport || !prev || !next) return;
+      var autoTimer = null;
+      var shouldAuto = strip.getAttribute('data-strip-auto') === 'true';
+      var stepMode = strip.getAttribute('data-strip-step') || 'page';
 
-    function getStepAmount() {
-      if (stepMode !== 'card') return viewport.clientWidth;
-      var firstCard = strip.querySelector('.bp-strip__card');
-      if (!firstCard) return viewport.clientWidth;
-      var track = strip.querySelector('.bp-strip__track');
-      var gap = 0;
-      if (track) {
-        gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0') || 0;
+      function getStepAmount() {
+        if (stepMode !== 'card') return viewport.clientWidth;
+        var firstCard = strip.querySelector('.bp-strip__card');
+        if (!firstCard) return viewport.clientWidth;
+        var track = strip.querySelector('.bp-strip__track');
+        var gap = 0;
+        if (track) {
+          gap = parseFloat(window.getComputedStyle(track).columnGap || window.getComputedStyle(track).gap || '0') || 0;
+        }
+        return firstCard.getBoundingClientRect().width + gap;
       }
-      return firstCard.getBoundingClientRect().width + gap;
-    }
 
-    function updateButtons() {
-      var maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
-      prev.disabled = viewport.scrollLeft <= 0;
-      next.disabled = viewport.scrollLeft >= maxScroll;
-    }
-
-    function goNext() {
-      var maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
-      if (maxScroll <= 0) return;
-      var stepAmount = getStepAmount();
-      if (viewport.scrollLeft >= maxScroll) {
-        viewport.scrollTo({ left: 0, behavior: 'smooth' });
-      } else {
-        viewport.scrollBy({ left: stepAmount, behavior: 'smooth' });
+      function updateButtons() {
+        var maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
+        prev.disabled = viewport.scrollLeft <= 0;
+        next.disabled = viewport.scrollLeft >= maxScroll;
       }
-    }
 
-    function resetAuto() {
-      if (autoTimer) clearInterval(autoTimer);
-      if (shouldAuto && viewport.scrollWidth - viewport.clientWidth > 8) {
-        autoTimer = setInterval(goNext, 5000);
+      function goNext() {
+        var maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
+        if (maxScroll <= 0) return;
+        var stepAmount = getStepAmount();
+        if (viewport.scrollLeft >= maxScroll) {
+          viewport.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          viewport.scrollBy({ left: stepAmount, behavior: 'smooth' });
+        }
       }
-    }
 
-    prev.addEventListener('click', function () {
-      viewport.scrollBy({ left: -getStepAmount(), behavior: 'smooth' });
-      resetAuto();
-    });
-    next.addEventListener('click', function () {
-      goNext();
-      resetAuto();
-    });
-    viewport.addEventListener('scroll', updateButtons, { passive: true });
-    viewport.addEventListener('mouseenter', function () {
-      if (autoTimer) clearInterval(autoTimer);
-    });
-    viewport.addEventListener('mouseleave', resetAuto);
-    window.addEventListener('resize', function () {
+      function resetAuto() {
+        if (autoTimer) clearInterval(autoTimer);
+        if (shouldAuto && viewport.scrollWidth - viewport.clientWidth > 8) {
+          autoTimer = setInterval(goNext, 5000);
+        }
+      }
+
+      prev.addEventListener('click', function () {
+        viewport.scrollBy({ left: -getStepAmount(), behavior: 'smooth' });
+        resetAuto();
+      });
+      next.addEventListener('click', function () {
+        goNext();
+        resetAuto();
+      });
+      viewport.addEventListener('scroll', updateButtons, { passive: true });
+      viewport.addEventListener('mouseenter', function () {
+        if (autoTimer) clearInterval(autoTimer);
+      });
+      viewport.addEventListener('mouseleave', resetAuto);
+      window.addEventListener('resize', function () {
+        updateButtons();
+        resetAuto();
+      });
       updateButtons();
       resetAuto();
     });
-    updateButtons();
-    resetAuto();
   });
-});
 </script>
