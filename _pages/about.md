@@ -34,7 +34,7 @@ classes: wide
 <div class="about-page" markdown="0">
   <div class="about-card">
     <div class="about-card__photo">
-      <img src="{{ '/assets/images/ando2.png' | relative_url }}" alt="安藤 拓翔">
+      <img src="{{ '/assets/images/ando_main.jpg' | relative_url }}" alt="安藤 拓翔">
     </div>
     <div class="about-card__body">
       <p class="about-card__eyebrow">About</p>
