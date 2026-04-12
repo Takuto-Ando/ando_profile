@@ -7,13 +7,9 @@ author_profile: false
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
-  {% assign pub_title = 'Publications' %}
-  {% assign pub_lead = 'Journal papers, conference papers, and domestic presentations are organized by category for quick reference.' %}
-  {% assign pub_note = 'Available materials such as abstracts, bibliographic information, related links, and PDFs are provided for each item when possible.' %}
+{% assign pub_title = 'Publications' %}
 {% else %}
-  {% assign pub_title = '研究業績' %}
-  {% assign pub_lead = '論文誌、国際会議、国内発表を種別ごとに整理しています。' %}
-  {% assign pub_note = '公開されている要旨、書誌情報、関連資料、PDF への導線を、項目ごとに参照できる構成にしています。' %}
+{% assign pub_title = '研究業績' %}
 {% endif %}
 
 <div class="pub-page">
@@ -26,85 +22,85 @@ author_profile: false
 
   <nav class="pub-page__nav" aria-label="Publication Sections">
     {% for section in site.data.publications.sections %}
-      {% if site.active_lang == 'en' %}
-        {% assign section_title = section.title_en %}
-      {% else %}
-        {% assign section_title = section.title_ja %}
-      {% endif %}
-      <a href="#{{ section.key }}">{{ section_title }}</a>
+    {% if site.active_lang == 'en' %}
+    {% assign section_title = section.title_en %}
+    {% else %}
+    {% assign section_title = section.title_ja %}
+    {% endif %}
+    <a href="#{{ section.key }}">{{ section_title }}</a>
     {% endfor %}
   </nav>
 
   {% for section in site.data.publications.sections %}
-    {% if site.active_lang == 'en' %}
-      {% assign section_title = section.title_en %}
-      {% assign section_lead = section.lead_en %}
-    {% else %}
-      {% assign section_title = section.title_ja %}
-      {% assign section_lead = section.lead_ja %}
-    {% endif %}
+  {% if site.active_lang == 'en' %}
+  {% assign section_title = section.title_en %}
+  {% assign section_lead = section.lead_en %}
+  {% else %}
+  {% assign section_title = section.title_ja %}
+  {% assign section_lead = section.lead_ja %}
+  {% endif %}
 
-    <section class="pub-section" id="{{ section.key }}">
-      <header class="pub-section__head">
-        <p class="pub-section__label">{{ forloop.index }}</p>
-        <div class="pub-section__heading">
-          <h2>{{ section_title }}</h2>
-          <p>{{ section_lead }}</p>
-        </div>
-      </header>
-
-      <div class="pub-section__list">
-        {% for publication in section.items %}
-          {% assign publication_uid = section.key | append: '-' | append: forloop.index %}
-          {% include PublicationItem.html publication=publication index=forloop.index uid=publication_uid %}
-        {% endfor %}
+  <section class="pub-section" id="{{ section.key }}">
+    <header class="pub-section__head">
+      <p class="pub-section__label">{{ forloop.index }}</p>
+      <div class="pub-section__heading">
+        <h2>{{ section_title }}</h2>
+        <p>{{ section_lead }}</p>
       </div>
-    </section>
+    </header>
+
+    <div class="pub-section__list">
+      {% for publication in section.items %}
+      {% assign publication_uid = section.key | append: '-' | append: forloop.index %}
+      {% include PublicationItem.html publication=publication index=forloop.index uid=publication_uid %}
+      {% endfor %}
+    </div>
+  </section>
   {% endfor %}
 </div>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-  function closePanel(panel, button) {
-    if (!panel) return;
-    panel.hidden = true;
-    panel.classList.remove('is-open');
-    if (button) button.setAttribute('aria-expanded', 'false');
-  }
-
-  document.querySelectorAll('[data-panel-toggle]').forEach(function (button) {
-    button.addEventListener('click', function () {
-      var item = button.closest('.pub-item');
-      if (!item) return;
-      var panelId = button.getAttribute('aria-controls');
-      var panel = document.getElementById(panelId);
+  document.addEventListener('DOMContentLoaded', function () {
+    function closePanel(panel, button) {
       if (!panel) return;
-      var shouldOpen = panel.hidden;
-      item.querySelectorAll('.pub-panel').forEach(function (otherPanel) {
-        if (otherPanel !== panel) {
-          var otherButton = item.querySelector('[data-panel-toggle][aria-controls="' + otherPanel.id + '"]');
-          closePanel(otherPanel, otherButton);
+      panel.hidden = true;
+      panel.classList.remove('is-open');
+      if (button) button.setAttribute('aria-expanded', 'false');
+    }
+
+    document.querySelectorAll('[data-panel-toggle]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var item = button.closest('.pub-item');
+        if (!item) return;
+        var panelId = button.getAttribute('aria-controls');
+        var panel = document.getElementById(panelId);
+        if (!panel) return;
+        var shouldOpen = panel.hidden;
+        item.querySelectorAll('.pub-panel').forEach(function (otherPanel) {
+          if (otherPanel !== panel) {
+            var otherButton = item.querySelector('[data-panel-toggle][aria-controls="' + otherPanel.id + '"]');
+            closePanel(otherPanel, otherButton);
+          }
+        });
+
+        if (shouldOpen) {
+          panel.hidden = false;
+          panel.classList.add('is-open');
+          button.setAttribute('aria-expanded', 'true');
+        } else {
+          closePanel(panel, button);
         }
       });
+    });
 
-      if (shouldOpen) {
-        panel.hidden = false;
-        panel.classList.add('is-open');
-        button.setAttribute('aria-expanded', 'true');
-      } else {
-        closePanel(panel, button);
-      }
+    document.querySelectorAll('[data-panel-close]').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var panel = button.closest('.pub-panel');
+        if (!panel) return;
+        var item = panel.closest('.pub-item');
+        var toggle = item ? item.querySelector('[data-panel-toggle][aria-controls="' + panel.id + '"]') : null;
+        closePanel(panel, toggle);
+      });
     });
   });
-
-  document.querySelectorAll('[data-panel-close]').forEach(function (button) {
-    button.addEventListener('click', function () {
-      var panel = button.closest('.pub-panel');
-      if (!panel) return;
-      var item = panel.closest('.pub-item');
-      var toggle = item ? item.querySelector('[data-panel-toggle][aria-controls="' + panel.id + '"]') : null;
-      closePanel(panel, toggle);
-    });
-  });
-});
 </script>
