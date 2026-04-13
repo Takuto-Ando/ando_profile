@@ -666,6 +666,27 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 
 /* ── Responsive ── */
 @media (max-width: 640px) {
+  html, body {
+    overflow-x: hidden;
+  }
+  .masthead,
+  .masthead__inner-wrap,
+  .greedy-nav {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+  .greedy-nav .site-title {
+    min-width: 0 !important;
+    margin-right: 0.5rem !important;
+    font-size: 0.8rem !important;
+  }
+  .greedy-nav .visible-links {
+    min-width: 0 !important;
+  }
+  .greedy-nav button {
+    margin-left: auto !important;
+    padding-right: 0.15rem !important;
+  }
   .bp-profile {
     flex-direction: column;
     gap: 1rem;
