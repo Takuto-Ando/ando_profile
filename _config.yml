@@ -123,6 +123,11 @@ tag_archive:
 
 
 google_analytics: GT-WRF24CXG
+analytics:
+  provider: google-gtag
+  google:
+    tracking_id: GT-WRF24CXG
+    anonymize_ip: false
 
 languages: ['ja', 'en']
 default_lang: 'ja'
