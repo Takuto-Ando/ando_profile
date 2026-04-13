@@ -1,6 +1,8 @@
 ---
 permalink: /home/
 title: ""
+lang: ja
+locale: ja
 classes: wide
 author_profile: false
 ---
