@@ -1,4 +1,7 @@
 {% assign is_en = site.active_lang == 'en' %}
+{% if page.lang == 'ja' %}
+{% assign is_en = false %}
+{% endif %}
 {% if is_en %}
 {% assign profile_name = 'Takuto Ando' %}
 {% assign profile_subname = '安藤 拓翔' %}
