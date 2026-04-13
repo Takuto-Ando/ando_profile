@@ -352,18 +352,18 @@ sections:
       - authors:
           - name: 安藤 拓翔
             me: true
-        title: 高専本科 卒業論文
+        title: エッジ検出を用いたこねぎ分岐部の抽出
         venue: 大分工業高等専門学校 情報工学科
-        citation: 卒業研究論文
+        citation: "卒業研究論文 / 指導教員: 井上 優良"
         links:
           - label: PDF
             url: /assets/pdfs/sotsuken_thesis.pdf
       - authors:
           - name: 安藤 拓翔
             me: true
-        title: 専攻科 特別研究論文
+        title: DPUを用いたマルチタスクDNN表情認識システムのFPGA実装
         venue: 大分工業高等専門学校 専攻科 電気電子情報工学専攻
-        citation: 特別研究論文
+        citation: "特別研究論文 / 指導教員: 井上 優良"
         links:
           - label: PDF
             url: /assets/pdfs/tokukenn_thesis.pdf

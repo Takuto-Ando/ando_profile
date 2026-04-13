@@ -14,6 +14,7 @@ classes: wide
 
 | Period | Institution |
 |--------|-------------|
+| **2026.10 – planned** | Nara Institute of Science and Technology (NAIST), Graduate School of Science and Technology — Doctoral Program (planned) |
 | **2025.04 – present** | Nara Institute of Science and Technology (NAIST), Graduate School of Science and Technology — Master's Program |
 | **2023.04 – 2025.03** | Oita National College of Technology, Advanced Course — Electrical, Electronic and Information Engineering |
 | **2018.04 – 2023.03** | Oita National College of Technology — Department of Information Engineering |
@@ -58,6 +59,7 @@ classes: wide
 
 | 期間 | 所属 |
 |------|------|
+| **2026.10 – 予定** | 奈良先端科学技術大学院大学 先端科学技術研究科 博士後期課程 |
 | **2025.04 – 現在** | 奈良先端科学技術大学院大学 先端科学技術研究科 博士前期課程 |
 | **2023.04 – 2025.03** | 大分工業高等専門学校 専攻科 電気電子情報工学専攻 |
 | **2018.04 – 2023.03** | 大分工業高等専門学校 情報工学科 |
