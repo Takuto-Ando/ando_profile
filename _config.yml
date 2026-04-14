@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 安藤 拓翔 (ANDO takuto)のプロフィール
+title: Ando Takuto
 email: antaku7585@gmail.com
 url: "https://takuto-ando.github.io"
 baseurl: "/ando_profile"
