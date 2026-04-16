@@ -1,6 +1,6 @@
 main:
   - title: "ホーム / Home"
-    url: /home/
+    url: /
   - title: "自己紹介 / About"
     url: /about/
   - title: "研究内容 / Research"

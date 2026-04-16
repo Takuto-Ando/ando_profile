@@ -1,5 +1,5 @@
 ---
-permalink: /home/
+permalink: /
 title: ""
 lang: ja
 locale: ja
