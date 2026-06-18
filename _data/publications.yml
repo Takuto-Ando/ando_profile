@@ -36,8 +36,27 @@ sections:
           - name: Yu Eto
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
+        title: Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture
+        venue: Concurrency and Computation: Practice and Experience
+        citation: "2026"
+        bibtexText: |-
+          @article{ando2026whisper,
+            author  = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
+            title   = {Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture},
+            journal = {Concurrency and Computation: Practice and Experience},
+            year    = {2026}
+          }
+        badges:
+          - label: "2026"
+            type: neutral
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Ayumu Takeuchi
+          - name: Yasuhiko Nakashima
         title: Efficient Kernel Mapping and Comprehensive System Evaluation of LLM Acceleration on a CGLA
-        abstractEn: Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, we focus on Coarse-Grained Reconfigurable Arrays (CGRAs) as an effective alternative that provides a trade-off between energy efficiency and programmability. This paper presents the first comprehensive, end-to-end evaluation of a non-AI-specialized Coarse-Grained Linear Array (CGLA) accelerator for the state-of-the-art Qwen3 LLM family. The architecture has a general-purpose, task-agnostic design, yet its flexible instruction set allows for domain-specific adaptations. This flexibility enables the architecture to achieve high efficiency for sustainable LLM inference. We assess the performance of our architecture on an FPGA prototype using the widely adopted llama.cpp framework. We then project its potential as a 28 nm ASIC and compare it against a high-performance GPU (NVIDIA RTX 4090) and an edge AI device (NVIDIA Jetson AGX Orin). While GPUs exhibit lower latency, our non-AI-specific accelerator achieves higher energy efficiency, improving the Power-Delay Product (PDP) by up to 44.4× and 13.6× compared with the RTX 4090 and Jetson, respectively. Similarly, it reduces the Energy-Delay Product (EDP) by up to 11.5× compared to the high-performance GPU, demonstrating a favorable performance-energy trade-off. Critically, our system-level analysis identifies host-accelerator data transfer as the primary performance bottleneck, a factor often overlooked in kernel-level studies. These findings provide design guidance for next-generation LLM accelerators. This work validates CGRAs as a suitable platform for LLM inference in power-constrained environments, without being confined to specific algorithms.
+        abstractEn: Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, we focus on Coarse-Grained Reconfigurable Arrays (CGRAs) as an effective alternative that provides a trade-off between energy efficiency and programmability. This paper presents the first comprehensive, end-to-end evaluation of a non-AI-specialized CPU-Grounded Linear Array (CGLA) accelerator for the state-of-the-art Qwen3 LLM family. The architecture has a general-purpose, task-agnostic design, yet its flexible instruction set allows for domain-specific adaptations. This flexibility enables the architecture to achieve high efficiency for sustainable LLM inference. We assess the performance of our architecture on an FPGA prototype using the widely adopted llama.cpp framework. We then project its potential as a 28 nm ASIC and compare it against a high-performance GPU (NVIDIA RTX 4090) and an edge AI device (NVIDIA Jetson AGX Orin). While GPUs exhibit lower latency, our non-AI-specific accelerator achieves higher energy efficiency, improving the Power-Delay Product (PDP) by up to 44.4× and 13.6× compared with the RTX 4090 and Jetson, respectively. Similarly, it reduces the Energy-Delay Product (EDP) by up to 11.5× compared to the high-performance GPU, demonstrating a favorable performance-energy trade-off. Critically, our system-level analysis identifies host-accelerator data transfer as the primary performance bottleneck, a factor often overlooked in kernel-level studies. These findings provide design guidance for next-generation LLM accelerators. This work validates CGRAs as a suitable platform for LLM inference in power-constrained environments, without being confined to specific algorithms.
         venue: IEEE Access
         citation: vol. 13, pp. 199631-199646, 2025
         bibtexText: |-
@@ -145,7 +164,7 @@ sections:
         title: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
         venue: MCSoC 2025
         citation: 2025
-        abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized Coarse-Grained Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
+        abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized CPU-Grounded Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
         bibtexText: |-
           @inproceedings{ando2025stablediffusion,
             author    = {Takuto Ando and Yu Eto and Yasuhiko Nakashima},
@@ -169,7 +188,7 @@ sections:
         title: Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA
         venue: CANDAR 2025
         citation: 2025
-        abstractEn: The rise of generative AI for tasks like Automatic Speech Recognition (ASR) has created a critical energy consumption challenge. While ASICs offer high efficiency, they lack the programmability to adapt to evolving algorithms. To address this trade-off, we implement and evaluate Whisper's core computational kernel on the IMAX, a general-purpose Coarse-Grained Linear Arrays (CGLAs) accelerator. To our knowledge, this is the first work to execute a Whisper kernel on a CGRA and compare its performance against CPUs and GPUs. Using hardware/software co-design, we evaluate our system via an FPGA prototype and project performance for a 28 nm ASIC. Our results demonstrate superior energy efficiency. The projected ASIC is 1.90x more energy-efficient than the NVIDIA Jetson AGX Orin and 9.83x more than an NVIDIA RTX 4090 for the Q8_0 model. This work positions CGLA as a promising platform for sustainable ASR on power-constrained edge devices.
+        abstractEn: The rise of generative AI for tasks like Automatic Speech Recognition (ASR) has created a critical energy consumption challenge. While ASICs offer high efficiency, they lack the programmability to adapt to evolving algorithms. To address this trade-off, we implement and evaluate Whisper's core computational kernel on the IMAX, a general-purpose CPU-Grounded Linear Arrays (CGLAs) accelerator. To our knowledge, this is the first work to execute a Whisper kernel on a CGRA and compare its performance against CPUs and GPUs. Using hardware/software co-design, we evaluate our system via an FPGA prototype and project performance for a 28 nm ASIC. Our results demonstrate superior energy efficiency. The projected ASIC is 1.90x more energy-efficient than the NVIDIA Jetson AGX Orin and 9.83x more than an NVIDIA RTX 4090 for the Q8_0 model. This work positions CGLA as a promising platform for sustainable ASR on power-constrained edge devices.
         bibtexText: |-
           @inproceedings{ando2025whisper,
             author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
@@ -301,18 +320,16 @@ sections:
           - name: 宗片 吉史
           - name: 中島 康彦
         title: CGLA上の多様なAIワークロードに向けた統合ソフトウェアスタックの実装と今後の展望
-        venue: 情報処理学会第258回 システム・アーキテクチャ研究発表会
-        citation: 2026
-        # abstractJa: 本研究ではDPUを用いた表情認識システムをSoC FPGA上に実装する．先行研究のFPGAで実装された表情認識システムでは，顔検出の処理をFPGAリソースの制約からCascade検出器を用いてCPU上で実行していた．しかし，この手法ではDNNベースの顔検出よりも精度が劣る．そこで本研究では，DNNによる顔検出と表情認識を同一のDPUで時分割実行することで，リソースを抑えつつFPGAで実行可能なハードウェア構成を提案する．また，全体の消費電力とスループットを向上させるためにマルチスレッドを活用した手法を提案する．本システムは先行研究より消費電力あたりのスループットは約2.4倍の向上を達成した．
+        venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
+        citation: 2026年6月
       - authors:
           - name: 宗片 吉史
           - name: 安藤 拓翔
             me: true
           - name: 中島 康彦
-        title: 3D積層DRAMを用いたCGLAのLLM向けスケーラビリティ評価
-        venue: 情報処理学会第258回 システム・アーキテクチャ研究発表会
-        citation: 2026
-      
+        title: 広帯域メモリを用いたCGLAのLLM向けスケーラビリティ評価
+        venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
+        citation: 2026年6月
       - authors:
           - name: 安藤 拓翔
             me: true
