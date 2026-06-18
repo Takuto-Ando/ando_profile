@@ -37,7 +37,7 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture
-        venue: Concurrency and Computation: Practice and Experience
+        venue: "Concurrency and Computation: Practice and Experience"
         citation: "2026"
         bibtexText: |-
           @article{ando2026whisper,
