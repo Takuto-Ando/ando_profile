@@ -49,6 +49,9 @@ sections:
         badges:
           - label: "2026"
             type: neutral
+          - label: "Impact Factor: 1.50 (2026)"
+            type: impact
+            
       - authors:
           - name: Takuto Ando
             me: true
