@@ -146,6 +146,13 @@ sections:
       - authors:
           - name: Takuto Ando
             me: true
+          - name: Yasuhiko Nakashima
+        title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
+        venue: APCCAS 2026
+        citation: October 2026
+      - authors:
+          - name: Takuto Ando
+            me: true
           - name: Ayumu Takeuchi
           - name: Yu Eto
           - name: Yoshifumi Munakata
