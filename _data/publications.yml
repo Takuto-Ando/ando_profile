@@ -147,6 +147,16 @@ sections:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
+        title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
+        venue: IEEE MCSoC 2026
+        citation: December 14-17, 2026
+        badges:
+          - label: Accepted
+            type: neutral
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
         title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
         venue: APCCAS 2026
         citation: October 2026
