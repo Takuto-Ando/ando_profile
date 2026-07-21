@@ -38,14 +38,21 @@ sections:
           - name: Yasuhiko Nakashima
         title: Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture
         venue: "Concurrency and Computation: Practice and Experience"
-        citation: "2026"
+        citation: vol. 38, e70826, 2026
         bibtexText: |-
           @article{ando2026whisper,
             author  = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
             title   = {Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture},
             journal = {Concurrency and Computation: Practice and Experience},
-            year    = {2026}
+            volume  = {38},
+            pages   = {e70826},
+            year    = {2026},
+            doi     = {10.1002/cpe.70826}
           }
+        bibtex: https://api.crossref.org/works/10.1002/cpe.70826/transform/application/x-bibtex
+        links:
+          - label: Links
+            url: https://doi.org/10.1002/cpe.70826
         badges:
           - label: "2026"
             type: neutral
