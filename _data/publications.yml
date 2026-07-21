@@ -16,18 +16,18 @@ sections:
           - name: Yusuke Inoue
         title: Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device
         venue: ICIC Express Letters
-        citation: accepted, 2026
+        citation: vol. 20, no. 8, pp. 811-819, August 2026
         bibtexText: |-
           @article{ando2026lightweight,
             author  = {Takuto Ando and Iori Yamaguchi and Jun Shono and Takahiro Kawabe and Koji Uchida and Kosuke Shigematsu and Yusuke Inoue},
             title   = {Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device},
             journal = {ICIC Express Letters},
-            year    = {2026},
-            note    = {accepted}
+            volume  = {20},
+            number  = {8},
+            pages   = {811--819},
+            year    = {2026}
           }
         badges:
-          - label: Accepted
-            type: neutral
           - label: "Impact Factor: 0.72 (2026)"
             type: impact
       - authors:
@@ -146,6 +146,13 @@ sections:
     lead_en: International conference papers, forums, and workshop presentations related to CGLA, IMAX, and edge-AI systems.
     lead_ja: CGLA、IMAX、エッジ AI システムに関する国際会議・フォーラム発表です。
     items:
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
+        title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
+        venue: IEEE MCSoC 2026
+        citation: December 14-17, 2026
       - authors:
           - name: Takuto Ando
             me: true
