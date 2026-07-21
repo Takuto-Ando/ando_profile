@@ -150,9 +150,6 @@ sections:
         title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
         venue: IEEE MCSoC 2026
         citation: December 14-17, 2026
-        badges:
-          - label: Accepted
-            type: neutral
       - authors:
           - name: Takuto Ando
             me: true
