@@ -155,14 +155,14 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
-        venue: IEEE MCSoC 2026
+        venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)
         citation: December 14-17, 2026
       - authors:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
         title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
-        venue: APCCAS 2026
+        venue: 2026 IEEE Asia Pacific Conference on Circuits and Systems (APCCAS 2026)
         citation: October 2026
       - authors:
           - name: Takuto Ando
@@ -172,7 +172,7 @@ sections:
           - name: Yoshifumi Munakata
           - name: Yasuhiko Nakashima
         title: "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA"
-        venue: ICISN 2026
+        venue: Sixth International Conference on Intelligent Systems and Networks (ICISN 2026)
         citation: March 2026
         badges:
           - label: Best Paper Award
@@ -183,7 +183,7 @@ sections:
           - name: Yu Eto
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
-        venue: MCSoC 2025
+        venue: 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)
         citation: 2025
         abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized CPU-Grounded Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
         bibtexText: |-
@@ -207,7 +207,7 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA
-        venue: CANDAR 2025
+        venue: 2025 Thirteenth International Symposium on Computing and Networking (CANDAR 2025)
         citation: 2025
         abstractEn: The rise of generative AI for tasks like Automatic Speech Recognition (ASR) has created a critical energy consumption challenge. While ASICs offer high efficiency, they lack the programmability to adapt to evolving algorithms. To address this trade-off, we implement and evaluate Whisper's core computational kernel on the IMAX, a general-purpose CPU-Grounded Linear Arrays (CGLAs) accelerator. To our knowledge, this is the first work to execute a Whisper kernel on a CGRA and compare its performance against CPUs and GPUs. Using hardware/software co-design, we evaluate our system via an FPGA prototype and project performance for a 28 nm ASIC. Our results demonstrate superior energy efficiency. The projected ASIC is 1.90x more energy-efficient than the NVIDIA Jetson AGX Orin and 9.83x more than an NVIDIA RTX 4090 for the Q8_0 model. This work positions CGLA as a promising platform for sustainable ASR on power-constrained edge devices.
         bibtexText: |-
@@ -234,7 +234,7 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels
-        venue: SOCC 2025 PhD/Master Forum
+        venue: 2025 IEEE 38th International System-on-Chip Conference (SOCC) PhD and Master Forum
         citation: 2025
         abstractEn: The evolution of Large Language Models (LLMs) has led to a substantial increase in energy consumption, making energy-efficient accelerator technologies essential. We propose a method to maximize the performance of the Llama3 LLM on IMAX3, a CGRA-based accelerator. We conducted a detailed analysis of the Q3_K_S quantization method. Based on this analysis, we implemented a new custom kernel to offload the Q6_K operations to the hardware. In previous work, this operation was processed on the host CPU. This targeted optimization reduced the end-to-end latency by approximately 11%. Furthermore, an evaluation of a projected ASIC implementation showed that the absolute performance does not match that of a GPU. In contrast, our approach achieves superior power efficiency, as measured by the Power-Delay Product (PDP).
         bibtexText: |-
@@ -256,7 +256,7 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: LLM Performance Bottlenecks on CGLA
-        venue: SOCC 2025 PhD/Master Forum
+        venue: 2025 IEEE 38th International System-on-Chip Conference (SOCC) PhD and Master Forum
         citation: 2025
       - authors:
           - name: Ayumu Takeuchi
@@ -265,7 +265,7 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Energy-Efficient FlashAttention Acceleration on CGLA
-        venue: SOCC 2025 PhD/Master Forum
+        venue: 2025 IEEE 38th International System-on-Chip Conference (SOCC) PhD and Master Forum
         citation: 2025
       - authors:
           - name: Yu Eto
@@ -273,7 +273,7 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Performance Evaluation of Flan-T5 in CGLA Based Accelerators
-        venue: SOCC 2025 Special Session
+        venue: 2025 IEEE 38th International System-on-Chip Conference (SOCC)
         citation: 2025
       - authors:
           - name: Takuto Ando
@@ -281,7 +281,7 @@ sections:
           - name: Yu Eto
           - name: Yasuhiko Nakashima
         title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
-        venue: SASIMI 2025
+        venue: The 26th Workshop on Synthesis And System Integration of Mixed Information technologies (SASIMI 2025)
         citation: 2025
         abstractEn: In this paper, we present a detailed analysis of the IMAX3 CGRA-based accelerator and the IMAX4 prototype with an upgraded host CPU. To address the host CPU bottlenecks of its predecessor, IMAX3, IMAX4 incorporates a server-oriented Intel Xeon processor and PCIe Gen5 connectivity, realizing IMAX scalability. We implemented and evaluated the IMAX4 prototype using microbenchmarks and the LLaMA3 8B quantized model. The results demonstrate significantly reduced host-side overheads and improved data transfer compared to IMAX3. While performance characteristics vary by quantization, IMAX4 demonstrates significant potential by shifting bottlenecks from the host to data pathways, highlighting the viability of CGRA for server-based LLM acceleration.
         badges:
@@ -295,7 +295,7 @@ sections:
             me: true
           - name: Yusuke Inoue
         title: Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA
-        venue: CANDARW 2024
+        venue: 2024 Twelfth International Symposium on Computing and Networking Workshops (CANDARW 2024)
         citation: pp. 103-109, 2024
         abstractEn: >-
           In this paper, we implement a stand-alone facial expression recognition system on an SoC FPGA with multi-threading using a Deep learning Processor Unit (DPU). The system consists of two steps: one for face detection step and one for facial expression recognition. In the previous work, the Haar Cascade detector was run on a CPU in the face detection step due to FPGA resource limitations, but this detector is less accurate for profile and variable illumination condition images. Moreover, the previous work used a dedicated circuit accelerator, so running a second DNN inference for face detection on the FPGA would require the addition of a new accelerator. As an alternative to this approach, we run the two inferences by DNN on a DPU, which is a general-purpose CNN accelerator of the systolic array type. Our method for face detection using DenseBox and facial expression recognition using CNN on the same DPU enables the efficient use of FPGA resources while maintaining a small circuit size. We also developed a multi-threading technique that improves the overall throughput while increasing the DPU utilization efficiency. With this approach, we achieved an overall system throughput of 25 FPS and a throughput per power consumption of 2.4 times.
@@ -319,7 +319,7 @@ sections:
             me: true
           - name: Yusuke Inoue
         title: FPGA Implementation of a DPU-Based Facial Expression Recognition System
-        venue: SASIMI 2024
+        venue: The 25th Workshop on Synthesis And System Integration of Mixed Information technologies (SASIMI 2024)
         citation: March 2024
         abstractEn: In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. In conventional FPGA-based systems, the Haar Cascade detector is run on the CPU for face detection due to FPGA resource limitations. We offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA. The same DPU was used to implement the facial expression recognition system, which enabled efficient use of FPGA resources while minimizing the size of the circuitry.
         links:
