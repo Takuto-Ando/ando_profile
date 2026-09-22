@@ -157,23 +157,23 @@ sections:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
+        title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
+        venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
+        citation: Regular Paper; December 14-17, 2026
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
-        venue: The 14th International Symposium on Computing and Networking, 13th International Workshop on Information and Communication Security
-        citation: Regular Paper
+        venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
+        citation: November 2026
       - authors:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
-        venue: The 14th International Symposium on Computing and Networking, 14th International Workshop on Computer Systems and Architectures
-        citation: Regular Paper
-      - authors:
-          - name: Takuto Ando
-            me: true
-          - name: Yasuhiko Nakashima
-        title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
-        venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
-        citation: Regular Paper; December 14-17, 2026
+        venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
+        citation: November 2026
       - authors:
           - name: Takuto Ando
             me: true
@@ -201,7 +201,7 @@ sections:
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
         venue: 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
-        citation: 2025
+        citation: December 15-18, 2025
         abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized CPU-Grounded Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
         bibtexText: |-
           @inproceedings{ando2025stablediffusion,
@@ -244,6 +244,21 @@ sections:
             url: https://doi.org/10.1109/CANDAR68384.2025.00018
           - label: PDF
             url: https://arxiv.org/pdf/2511.02269
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yu Eto
+          - name: Yasuhiko Nakashima
+        title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
+        venue: The 26th Workshop on Synthesis And System Integration of Mixed Information Technologies
+        citation: October 9-10, 2025
+        abstractEn: In this paper, we present a detailed analysis of the IMAX3 CGRA-based accelerator and the IMAX4 prototype with an upgraded host CPU. To address the host CPU bottlenecks of its predecessor, IMAX3, IMAX4 incorporates a server-oriented Intel Xeon processor and PCIe Gen5 connectivity, realizing IMAX scalability. We implemented and evaluated the IMAX4 prototype using microbenchmarks and the LLaMA3 8B quantized model. The results demonstrate significantly reduced host-side overheads and improved data transfer compared to IMAX3. While performance characteristics vary by quantization, IMAX4 demonstrates significant potential by shifting bottlenecks from the host to data pathways, highlighting the viability of CGRA for server-based LLM acceleration.
+        badges:
+          - label: Young Researcher Award
+            type: award
+        links:
+          - label: PDF
+            url: https://sasimi.jp/new/sasimi2025/files/archive/pdf/p8_R1-2.pdf
       - authors:
           - name: Takuto Ando
             me: true
@@ -292,21 +307,6 @@ sections:
         title: Performance Evaluation of Flan-T5 in CGLA Based Accelerators
         venue: 2025 IEEE 38th International System-on-Chip Conference
         citation: 2025
-      - authors:
-          - name: Takuto Ando
-            me: true
-          - name: Yu Eto
-          - name: Yasuhiko Nakashima
-        title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
-        venue: The 26th Workshop on Synthesis And System Integration of Mixed Information Technologies
-        citation: 2025
-        abstractEn: In this paper, we present a detailed analysis of the IMAX3 CGRA-based accelerator and the IMAX4 prototype with an upgraded host CPU. To address the host CPU bottlenecks of its predecessor, IMAX3, IMAX4 incorporates a server-oriented Intel Xeon processor and PCIe Gen5 connectivity, realizing IMAX scalability. We implemented and evaluated the IMAX4 prototype using microbenchmarks and the LLaMA3 8B quantized model. The results demonstrate significantly reduced host-side overheads and improved data transfer compared to IMAX3. While performance characteristics vary by quantization, IMAX4 demonstrates significant potential by shifting bottlenecks from the host to data pathways, highlighting the viability of CGRA for server-based LLM acceleration.
-        badges:
-          - label: Young Researcher Award
-            type: award
-        links:
-          - label: PDF
-            url: https://sasimi.jp/new/sasimi2025/files/archive/pdf/p8_R1-2.pdf
       - authors:
           - name: Takuto Ando
             me: true
