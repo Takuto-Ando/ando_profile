@@ -198,7 +198,7 @@ sections:
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
         venue: 2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
-        citation: 2025
+        citation: December 15-18, 2025
         abstractEn: This paper presents the first implementation and in-depth evaluation of the primary computational kernels from the stable-diffusion.cpp image generation framework on IMAX3, a general-purpose Coarse-Grained Reconfigurable Array (CGRA) accelerator. We designed IMAX3 as a versatile computational platform, and this work assesses its capabilities by executing a demanding image generation workload. We evaluate its performance on a current Field-Programmable Gate Array (FPGA) prototype to establish a baseline and project its potential for a future Application-Specific Integrated Circuit (ASIC) implementation. Our results demonstrate that, despite its general-purpose architecture, IMAX3 achieves promising performance and power efficiency, particularly in its projected ASIC form. This work provides concrete guidelines for future IMAX architectural designs and establishes a foundation for developing next-generation, AI-specialized CPU-Grounded Linear Array (CGLA) accelerators by refining this versatile platform. Ultimately, this achievement contributes to the realization of energy-efficient, on-device, multi-modal AI platforms.
         bibtexText: |-
           @inproceedings{ando2025stablediffusion,
