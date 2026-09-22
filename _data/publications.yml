@@ -154,16 +154,42 @@ sections:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
+        title: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
+        venue: The 14th International Symposium on Computing and Networking (CANDAR 2026), WICS Workshop
+        citation: Regular Paper, accepted
+        badges:
+          - label: "Accepted 2026"
+            type: neutral
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
+        title: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
+        venue: The 14th International Symposium on Computing and Networking (CANDAR 2026), CSA Workshop
+        citation: Regular Paper, accepted
+        badges:
+          - label: "Accepted 2026"
+            type: neutral
+      - authors:
+          - name: Takuto Ando
+            me: true
+          - name: Yasuhiko Nakashima
         title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
         venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)
-        citation: December 14-17, 2026
+        citation: Regular Paper, accepted; December 14-17, 2026
+        badges:
+          - label: "Accepted 2026"
+            type: neutral
       - authors:
           - name: Takuto Ando
             me: true
           - name: Yasuhiko Nakashima
         title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
         venue: 2026 IEEE Asia Pacific Conference on Circuits and Systems (APCCAS 2026)
-        citation: October 2026
+        citation: Poster Paper, accepted; October 25-28, 2026
+        badges:
+          - label: "Accepted 2026"
+            type: neutral
       - authors:
           - name: Takuto Ando
             me: true
