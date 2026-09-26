@@ -1,7 +1,12 @@
 _site
 .sass-cache
 .jekyll-metadata
-Gemfile.lock
 .bundle
 vendor/
 .codex
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
