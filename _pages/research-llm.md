@@ -17,7 +17,7 @@ classes: wide
 
 ### Overview
 
-Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, this research focuses on **IMAX** — a Coarse-Grained Linear Array (CGLA) accelerator developed at NAIST — as an effective alternative that provides a trade-off between energy efficiency and programmability.
+Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, this research focuses on **IMAX** — a CPU-Grounded Linear Array (CGLA) accelerator developed at NAIST — as an effective alternative that provides a trade-off between energy efficiency and programmability.
 
 IMAX's interleaved linear array structure places compute units and cache memory banks alternately, structurally reducing memory access latency and the von Neumann bottleneck.
 
