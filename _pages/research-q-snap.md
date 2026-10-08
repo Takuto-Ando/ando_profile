@@ -4,7 +4,7 @@ classes: wide
 project_key: q-snap
 ---
 
-{% if site.technical_preview %}
+{% if site.technical_preview or site.technical_enabled %}
 {% include technical-project.html show_title=true %}
 {% else %}
 {% include lang-switcher.html %}

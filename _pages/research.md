@@ -3,7 +3,7 @@ permalink: /research/
 classes: wide
 ---
 
-{% if site.technical_preview %}
+{% if site.technical_preview or site.technical_enabled %}
 {% include technical-hub.html %}
 {% else %}
 {% include lang-switcher.html %}
@@ -13,7 +13,7 @@ classes: wide
 <div class="pub-page" markdown="0">
   <div class="pub-page__hero">
     <p class="pub-page__eyebrow">Technology</p>
-    <h1 class="pub-page__title">技術/Technology</h1>
+    <h1 class="pub-page__title">Technology</h1>
     <p class="pub-page__lead">
       This page summarizes my research themes from recent CGLA and IMAX work to earlier edge-AI and FPGA projects.
     </p>
@@ -43,8 +43,7 @@ classes: wide
 
 <div class="pub-page" markdown="0">
   <div class="pub-page__hero">
-    <p class="pub-page__eyebrow">Technology</p>
-    <h1 class="pub-page__title">技術/Technology</h1>
+    <h1 class="pub-page__title">技術</h1>
     <p class="pub-page__lead">
       現在進めている CGLA / IMAX 研究から、高専時代に取り組んだエッジ AI・FPGA 実装まで、主な研究テーマをまとめています。
     </p>

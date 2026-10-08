@@ -328,29 +328,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   line-height: 1.8;
 }
 
-/* ── Keywords ── */
-.bp-keywords {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin: -0.4rem 0 1.6rem;
-}
-.bp-keywords__ttl {
-  font-size: 0.64rem;
-  font-weight: 700;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.1rem 0.25rem 0;
-}
-.bp-keyword {
-  font-size: 0.68rem;
-  color: var(--sub);
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 0.25rem 0.55rem;
-}
-
 /* ── Recent Posts ── */
 .bp-posts {
   margin-bottom: 2rem;
@@ -400,14 +377,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 /* ── Awards ── */
 .bp-awards {
   margin-bottom: 2.25rem;
-}
-.bp-awards__ttl {
-  font-size: 0.62rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 0.4rem;
 }
 .bp-award {
   display: flex;
@@ -510,8 +479,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .bp-tag--award { color: var(--acc); font-weight: 700; }
 
 /* ── Mini Grid / Notes ── */
-.bp-mini-grid,
-.bp-note-grid {
+.bp-mini-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1px;
@@ -519,8 +487,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   border: 1px solid var(--line);
   margin: 0.75rem 0 1.5rem;
 }
-.bp-mini-card,
-.bp-note-card {
+.bp-mini-card {
   background: var(--surface);
   padding: 1rem 1.05rem;
 }
@@ -534,15 +501,13 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   color: var(--acc);
   margin-bottom: 0.35rem;
 }
-.bp-mini-card__ttl,
-.bp-note-card__ttl {
+.bp-mini-card__ttl {
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--ink);
   margin-bottom: 0.4rem;
 }
-.bp-mini-card__body,
-.bp-note-card p {
+.bp-mini-card__body {
   font-size: 0.77rem;
   color: var(--sub);
   line-height: 1.72;
@@ -725,7 +690,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   .bp-stat__l { font-size: 0.55rem; }
 
   .bp-mini-grid,
-  .bp-note-grid,
   .bp-grid,
   .bp-grid--page { grid-template-columns: 1fr; }
   .about-card {
