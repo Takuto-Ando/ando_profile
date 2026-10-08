@@ -161,6 +161,14 @@ sections:
         title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
         venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
         citation: Regular Paper; December 14-17, 2026
+        bibtexText: |-
+          @inproceedings{ando2026mamba,
+            author = {Takuto Ando and Yasuhiko Nakashima},
+            title = {{Mamba-Family State-Space Model Kernels on a Programmable CGLA}},
+            booktitle = {2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip},
+            year = {2026},
+            url = {https://arxiv.org/abs/2609.27437}
+          }
         links:
           - label: Links
             url: https://arxiv.org/abs/2609.27437
@@ -173,6 +181,14 @@ sections:
         title: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
         venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
         citation: November 2026
+        bibtexText: |-
+          @inproceedings{ando2026ntt,
+            author = {Takuto Ando and Yasuhiko Nakashima},
+            title = {{Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA}},
+            booktitle = {2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)},
+            year = {2026},
+            url = {https://arxiv.org/abs/2609.28904}
+          }
         links:
           - label: Links
             url: https://arxiv.org/abs/2609.28904
@@ -185,6 +201,14 @@ sections:
         title: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
         venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
         citation: November 2026
+        bibtexText: |-
+          @inproceedings{ando2026bitnet,
+            author = {Takuto Ando and Yasuhiko Nakashima},
+            title = {{Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions}},
+            booktitle = {2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)},
+            year = {2026},
+            url = {https://arxiv.org/abs/2609.27453}
+          }
         links:
           - label: Links
             url: https://arxiv.org/abs/2609.27453
@@ -197,6 +221,15 @@ sections:
         title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
         venue: 2026 IEEE Asia Pacific Conference on Circuits and Systems
         citation: Poster Paper; October 25-28, 2026
+        bibtexText: |-
+          @inproceedings{ando2026dpd,
+            author = {Takuto Ando and Yasuhiko Nakashima},
+            title = {{Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel}},
+            booktitle = {2026 IEEE Asia Pacific Conference on Circuits and Systems},
+            year = {2026},
+            note = {Poster Paper},
+            url = {https://arxiv.org/abs/2609.27438}
+          }
         links:
           - label: Links
             url: https://arxiv.org/abs/2609.27438
@@ -212,6 +245,13 @@ sections:
         title: "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA"
         venue: Sixth International Conference on Intelligent Systems and Networks
         citation: March 2026
+        bibtexText: |-
+          @inproceedings{ando2026qsnap,
+            author = {Takuto Ando and Ayumu Takeuchi and Yu Eto and Yoshifumi Munakata and Yasuhiko Nakashima},
+            title = {{Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA}},
+            booktitle = {Sixth International Conference on Intelligent Systems and Networks},
+            year = {2026}
+          }
         badges:
           - label: Best Paper Award
             type: award
@@ -273,6 +313,13 @@ sections:
         title: A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment
         venue: The 26th Workshop on Synthesis And System Integration of Mixed Information Technologies
         citation: October 9-10, 2025
+        bibtexText: |-
+          @inproceedings{ando2025imaxevaluation,
+            author = {Takuto Ando and Yu Eto and Yasuhiko Nakashima},
+            title = {{A Detailed Analysis of LLM Execution on IMAX3 and Initial Evaluation of IMAX4 Prototype for Server Environment}},
+            booktitle = {The 26th Workshop on Synthesis And System Integration of Mixed Information Technologies},
+            year = {2025}
+          }
         abstractEn: In this paper, we present a detailed analysis of the IMAX3 CGRA-based accelerator and the IMAX4 prototype with an upgraded host CPU. To address the host CPU bottlenecks of its predecessor, IMAX3, IMAX4 incorporates a server-oriented Intel Xeon processor and PCIe Gen5 connectivity, realizing IMAX scalability. We implemented and evaluated the IMAX4 prototype using microbenchmarks and the LLaMA3 8B quantized model. The results demonstrate significantly reduced host-side overheads and improved data transfer compared to IMAX3. While performance characteristics vary by quantization, IMAX4 demonstrates significant potential by shifting bottlenecks from the host to data pathways, highlighting the viability of CGRA for server-based LLM acceleration.
         badges:
           - label: Young Researcher Award
@@ -311,6 +358,13 @@ sections:
         title: LLM Performance Bottlenecks on CGLA
         venue: 2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum
         citation: 2025
+        bibtexText: |-
+          @inproceedings{eto2025bottlenecks,
+            author = {Yu Eto and Takuto Ando and Yasuhiko Nakashima},
+            title = {{LLM Performance Bottlenecks on CGLA}},
+            booktitle = {2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum},
+            year = {2025}
+          }
       - authors:
           - name: Ayumu Takeuchi
           - name: Yu Eto
@@ -320,6 +374,13 @@ sections:
         title: Energy-Efficient FlashAttention Acceleration on CGLA
         venue: 2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum
         citation: 2025
+        bibtexText: |-
+          @inproceedings{takeuchi2025flashattention,
+            author = {Ayumu Takeuchi and Yu Eto and Takuto Ando and Yasuhiko Nakashima},
+            title = {{Energy-Efficient FlashAttention Acceleration on CGLA}},
+            booktitle = {2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum},
+            year = {2025}
+          }
       - authors:
           - name: Yu Eto
           - name: Takuto Ando
@@ -328,6 +389,13 @@ sections:
         title: Performance Evaluation of Flan-T5 in CGLA Based Accelerators
         venue: 2025 IEEE 38th International System-on-Chip Conference
         citation: 2025
+        bibtexText: |-
+          @inproceedings{eto2025flant5,
+            author = {Yu Eto and Takuto Ando and Yasuhiko Nakashima},
+            title = {{Performance Evaluation of Flan-T5 in CGLA Based Accelerators}},
+            booktitle = {2025 IEEE 38th International System-on-Chip Conference},
+            year = {2025}
+          }
       - authors:
           - name: Takuto Ando
             me: true
@@ -359,6 +427,13 @@ sections:
         title: FPGA Implementation of a DPU-Based Facial Expression Recognition System
         venue: The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies
         citation: March 2024
+        bibtexText: |-
+          @inproceedings{ando2024fpgadpu,
+            author = {Takuto Ando and Yusuke Inoue},
+            title = {{FPGA Implementation of a DPU-Based Facial Expression Recognition System}},
+            booktitle = {The 25th Workshop on Synthesis And System Integration of Mixed Information Technologies},
+            year = {2024}
+          }
         abstractEn: In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. In conventional FPGA-based systems, the Haar Cascade detector is run on the CPU for face detection due to FPGA resource limitations. We offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA. The same DPU was used to implement the facial expression recognition system, which enabled efficient use of FPGA resources while minimizing the size of the circuitry.
         links:
           - label: PDF
@@ -381,6 +456,13 @@ sections:
         title: CGLA上の多様なAIワークロードに向けた統合ソフトウェアスタックの実装と今後の展望
         venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
         citation: 2026年6月
+        bibtexText: |-
+          @inproceedings{ando2026softwarestack,
+            author = {安藤 拓翔 and 宗片 吉史 and 中島 康彦},
+            title = {CGLA上の多様なAIワークロードに向けた統合ソフトウェアスタックの実装と今後の展望},
+            booktitle = {第257回情報処理学会 システム・アーキテクチャ研究発表会},
+            year = {2026}
+          }
       - authors:
           - name: 宗片 吉史
           - name: 安藤 拓翔
@@ -389,6 +471,13 @@ sections:
         title: 広帯域メモリを用いたCGLAのLLM向けスケーラビリティ評価
         venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
         citation: 2026年6月
+        bibtexText: |-
+          @inproceedings{munakata2026scalability,
+            author = {宗片 吉史 and 安藤 拓翔 and 中島 康彦},
+            title = {広帯域メモリを用いたCGLAのLLM向けスケーラビリティ評価},
+            booktitle = {第257回情報処理学会 システム・アーキテクチャ研究発表会},
+            year = {2026}
+          }
       - authors:
           - name: 安藤 拓翔
             me: true
@@ -396,6 +485,13 @@ sections:
         title: DNNアクセラレータを用いた表情認識システムにおける電力効率の向上
         venue: 情報処理学会第87回全国大会
         citation: 2025
+        bibtexText: |-
+          @inproceedings{ando2025expressionpower,
+            author = {安藤 拓翔 and 井上 優良},
+            title = {DNNアクセラレータを用いた表情認識システムにおける電力効率の向上},
+            booktitle = {情報処理学会第87回全国大会},
+            year = {2025}
+          }
         abstractJa: 本研究ではDPUを用いた表情認識システムをSoC FPGA上に実装する．先行研究のFPGAで実装された表情認識システムでは，顔検出の処理をFPGAリソースの制約からCascade検出器を用いてCPU上で実行していた．しかし，この手法ではDNNベースの顔検出よりも精度が劣る．そこで本研究では，DNNによる顔検出と表情認識を同一のDPUで時分割実行することで，リソースを抑えつつFPGAで実行可能なハードウェア構成を提案する．また，全体の消費電力とスループットを向上させるためにマルチスレッドを活用した手法を提案する．本システムは先行研究より消費電力あたりのスループットは約2.4倍の向上を達成した．
         badges:
           - label: 学生奨励賞
@@ -409,6 +505,13 @@ sections:
         title: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
         venue: 電子情報通信学会九州支部学生会講演会
         citation: 2024
+        bibtexText: |-
+          @inproceedings{ando2024onionsegmentation,
+            author = {安藤 拓翔 and 井上 優良},
+            title = {小ねぎ調製位置検出のためのインスタンスセグメンテーション},
+            booktitle = {電子情報通信学会九州支部学生会講演会},
+            year = {2024}
+          }
         links:
           - label: PDF
             url: /assets/pdfs/ieice_kyusyu_ando.pdf
@@ -419,6 +522,13 @@ sections:
         title: FPGAにおけるDPUを用いた表情認識システムの実装
         venue: 情報処理学会第249回 システム・アーキテクチャ研究発表会
         citation: 2024
+        bibtexText: |-
+          @inproceedings{ando2024expressionimplementation,
+            author = {安藤 拓翔 and 井上 優良},
+            title = {FPGAにおけるDPUを用いた表情認識システムの実装},
+            booktitle = {情報処理学会第249回 システム・アーキテクチャ研究発表会},
+            year = {2024}
+          }
         links:
           - label: PDF
             url: /assets/pdfs/paper/ipsj_arc2024.pdf
@@ -429,6 +539,13 @@ sections:
         title: FPGAによるリアルタイム表情認識システムの実装
         venue: 電子情報通信学会九州支部学生会講演会
         citation: 2023
+        bibtexText: |-
+          @inproceedings{ando2023expression,
+            author = {安藤 拓翔 and 井上 優良},
+            title = {FPGAによるリアルタイム表情認識システムの実装},
+            booktitle = {電子情報通信学会九州支部学生会講演会},
+            year = {2023}
+          }
       - authors:
           - name: 安藤 拓翔
             me: true
@@ -436,6 +553,13 @@ sections:
         title: エッジ検出を用いたこねぎ分岐部の検出
         venue: 情報処理学会第243回 システム・アーキテクチャ研究発表会
         citation: 2023
+        bibtexText: |-
+          @inproceedings{ando2023onionedges,
+            author = {安藤 拓翔 and 井上 優良},
+            title = {エッジ検出を用いたこねぎ分岐部の検出},
+            booktitle = {情報処理学会第243回 システム・アーキテクチャ研究発表会},
+            year = {2023}
+          }
         abstractJa: 近年，こねぎ生産における最低賃金の上昇等雇用環境が変化しており，人件費を抑えるために人手の不要なこねぎ調製機の開発が求められている．現行の調製機では一度に不要な葉を全て除去できず，二次処理のために多くの人手を要する．正確な調製を行うためには，外葉最上部の分岐部位置に調製用ノズル位置を合わせることが有効であることが分かっている．したがって，こねぎ分岐部の位置を検出し，ノズルの位置を自動で合わせることができれば二次処理を必要としない調製機を開発できる．そこで本稿は，分岐部を検出するためにこねぎ分岐部における特有の斜線を抽出する手法を提案する．本手法は，エッジ検出による斜線抽出とラベリング処理を行うことで頑健な検出を行う．本手法を実際のこねぎ画像に適用した結果，分岐部斜線の検出率は 92%であり，分岐部位置を検出できた．
         links:
           - label: PDF
@@ -452,6 +576,13 @@ sections:
         title: エッジ検出を用いたこねぎ分岐部の抽出
         venue: 大分工業高等専門学校 情報工学科
         citation: "卒業研究論文 / 指導教員: 井上 優良"
+        bibtexText: |-
+          @misc{andoonionthesis,
+            author = {安藤 拓翔},
+            title = {エッジ検出を用いたこねぎ分岐部の抽出},
+            howpublished = {大分工業高等専門学校 情報工学科},
+            note = {卒業研究論文 / 指導教員: 井上 優良}
+          }
         links:
           - label: PDF
             url: /assets/pdfs/sotsuken_thesis.pdf
@@ -461,6 +592,13 @@ sections:
         title: DPUを用いたマルチタスクDNN表情認識システムのFPGA実装
         venue: 大分工業高等専門学校 専攻科 電気電子情報工学専攻
         citation: "特別研究論文 / 指導教員: 井上 優良"
+        bibtexText: |-
+          @misc{andoexpressionthesis,
+            author = {安藤 拓翔},
+            title = {DPUを用いたマルチタスクDNN表情認識システムのFPGA実装},
+            howpublished = {大分工業高等専門学校 専攻科 電気電子情報工学専攻},
+            note = {特別研究論文 / 指導教員: 井上 優良}
+          }
         links:
           - label: PDF
             url: /assets/pdfs/tokukenn_thesis.pdf

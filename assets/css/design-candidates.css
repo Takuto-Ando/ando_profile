@@ -56,9 +56,9 @@ body[data-design="link-accent"] .poc-card h3 a {
 
 body[data-design="section-band"] .technical h1,
 body[data-design="section-band"] .page__title {
-  font-size: clamp(1.7rem, 3vw, 2rem);
+  font-size: 1.15rem;
   color: var(--ink) !important;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.35;
 }
 
@@ -206,5 +206,9 @@ body[data-design="gallery"] .poc-card h3 {
   body[data-design="gallery"] .technical h1,
   body[data-design="notebook"] .technical h1 {
     font-size: 1.5rem;
+  }
+  body[data-design="section-band"] .technical h1,
+  body[data-design="section-band"] .page__title {
+    font-size: 1.05rem;
   }
 }

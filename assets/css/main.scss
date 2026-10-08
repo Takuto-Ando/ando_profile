@@ -554,12 +554,12 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .about-card__name {
   margin: 0;
   color: var(--ink);
-  font-size: 1.55rem;
+  font-size: 1.05rem;
   line-height: 1.2;
 }
 .about-card__role {
   margin: 0.45rem 0 0;
-  color: var(--acc);
+  color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.7;
 }
@@ -831,11 +831,10 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   margin-top: 0.5rem;
 }
 .pub-page__hero {
-  padding: 0.95rem 1.05rem;
+  padding: 0 0 1rem;
   margin-bottom: 0.85rem;
-  border-top: 2px solid #23496d;
-  border-bottom: 1px solid #d7dee7;
-  background: #fbfcfe;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg);
 }
 .pub-page__eyebrow {
   margin: 0 0 0.35rem;
@@ -843,7 +842,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #526173;
+  color: var(--muted);
 }
 .pub-page__title {
   margin: 0;
@@ -854,7 +853,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .pub-page__lead,
 .pub-page__note {
   max-width: 880px;
-  color: #4f5e6d;
+  color: var(--sub);
   line-height: 1.7;
 }
 .pub-page__lead {
@@ -1101,7 +1100,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 
 @media (max-width: 640px) {
   .pub-page__hero {
-    padding: 0.85rem 0.9rem;
+    padding: 0 0 1rem;
   }
   .pub-page__title {
     font-size: 1.18rem;
@@ -1132,5 +1131,133 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   .pub-panel__row {
     grid-template-columns: 1fr;
     gap: 0.2rem;
+  }
+}
+
+.page__content .page-heading {
+  margin: 0 0 1rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+.page-intro {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--line);
+}
+.page-intro p {
+  font-size: .8rem;
+  color: var(--sub);
+  line-height: 1.8;
+}
+.page-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.25rem;
+  font-size: .75rem;
+}
+.page__content .page-section-title,
+.profile-page h3 {
+  margin: 1.8rem 0 1rem;
+  padding: .6rem .8rem;
+  background: var(--acc-light);
+  border: 0;
+  font-size: .9rem;
+  font-weight: 700;
+}
+.profile-page table {
+  display: table;
+  width: 100%;
+  font-size: .76rem;
+  line-height: 1.8;
+}
+.profile-page th,
+.profile-page td {
+  padding: .75rem .6rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+.profile-page th:first-child,
+.profile-page td:first-child {
+  width: 27%;
+}
+.material-slide {
+  margin: 0 0 2rem;
+}
+.material-heading span {
+  color: var(--muted);
+  font-size: .65rem;
+}
+.page__content .material-heading h3 {
+  margin: .3rem 0 1rem;
+  padding: 0;
+  border: 0;
+  font-size: .86rem;
+  line-height: 1.6;
+}
+.material-embed {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  margin-bottom: .65rem;
+  background: var(--acc-light);
+}
+.material-embed iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--line);
+}
+.material-slide > a,
+.material-poster > a {
+  font-size: .75rem;
+}
+.material-posters {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.material-poster__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  padding: .6rem;
+  margin-bottom: .65rem;
+  background: var(--acc-light);
+}
+.material-poster__image img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.bibtex-copy-status {
+  margin-left: .5rem;
+  font-size: .7rem;
+  color: var(--muted);
+}
+.pub-panel__code {
+  margin-top: .75rem;
+}
+.pub-links a,
+.pub-page__nav a {
+  color: var(--link) !important;
+}
+@media (max-width: 640px) {
+  .page__content .page-heading {
+    font-size: 1.05rem;
+  }
+  .about-card {
+    padding: .85rem;
+  }
+  .material-posters {
+    grid-template-columns: 1fr;
+  }
+  .material-poster__image {
+    height: auto;
+  }
+  .material-poster__image img {
+    max-height: 440px;
   }
 }

@@ -8,13 +8,13 @@ classes: wide
 {% if site.active_lang == 'en' %}
 
 <div class="about-page" markdown="0">
+  <h1 class="page-heading">About</h1>
   <div class="about-card">
     <div class="about-card__photo">
       <img src="{{ '/assets/images/ando2.png' | relative_url }}" alt="Takuto Ando">
     </div>
     <div class="about-card__body">
-      <p class="about-card__eyebrow">About</p>
-      <h1 class="about-card__name">Takuto Ando</h1>
+      <h2 class="about-card__name">Takuto Ando</h2>
       <p class="about-card__role">First-year Doctoral Student (D1), Computing Architecture Laboratory, NAIST</p>
       <p class="about-card__text">
         At NAIST, I am working on "building an energy-efficient AI computing infrastructure using next-generation AI accelerators." As AI models grow increasingly massive, the power consumption of data centers has become a significant social issue. While existing GPGPUs offer high performance, they suffer from a structural challenge known as the "von Neumann bottleneck," where the energy required to move data from memory exceeds the energy used for the computation itself. To address this, I focused on a unique architecture called CGLA, which integrates memory and arithmetic units in close proximity. The core of my research lies not simply in using new hardware, but in developing custom software that fully exploits its physical characteristics. Specifically, when implementing state-of-the-art models like Llama and speech recognition models, I employ "Hardware/Software Co-design" partitioning data according to hardware memory capacity and bandwidth, and streaming it to keep the computational pipeline from stalling. 　
@@ -29,13 +29,13 @@ classes: wide
 {% else %}
 
 <div class="about-page" markdown="0">
+  <h1 class="page-heading">自己紹介</h1>
   <div class="about-card">
     <div class="about-card__photo">
       <img src="{{ '/assets/images/ando_main.jpg' | relative_url }}" alt="安藤 拓翔">
     </div>
     <div class="about-card__body">
-      <p class="about-card__eyebrow">About</p>
-      <h1 class="about-card__name">安藤 拓翔</h1>
+      <h2 class="about-card__name">安藤 拓翔</h2>
       <p class="about-card__role">奈良先端科学技術大学院大学 博士後期課程1年 / コンピューティング・アーキテクチャ研究室</p>
       <p class="about-card__text">
         奈良先端大で次世代AIアクセラレータによる、省電力なAI計算基盤の構築に取り組んでいます。現在AIのモデルは巨大化し、データセンターの消費電力が社会問題になっています。 既存のGPUは高性能ですが、フォン・ノイマン・ボトルネックと呼ばれる構造上の課題があり、メモリからデータを読み出す移動エネルギーが計算そのもののエネルギーよりも大きくなっています。そこで私は、メモリと演算器を一体化に近い形で配置したCGLAという独自アーキテクチャに着目しました。具体的な研究内容としては、Llamaなどの最新のLLMや音声認識モデルを実装や、これら実装においてハードウェアのメモリ容量や帯域に合わせてデータを分割し、パイプラインが止まらないようにデータを流し込むHW/SW協調設計を行いました。

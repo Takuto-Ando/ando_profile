@@ -11,8 +11,6 @@ main:
     url: /publications/
   - title: "資料 / Materials"
     url: /presentations/
-  - title: "趣味 / Hobby"
-    url: /hobby/
   - title: "投稿 / Posts"
     url: /posts/
     target: _blank

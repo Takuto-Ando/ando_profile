@@ -151,7 +151,8 @@
 
 .technical h1 {
   margin: 0 0 .8rem;
-  font-size: 1.6rem;
+  font-size: 1.15rem;
+  font-weight: 700;
 }
 
 .technical-draft {
@@ -253,6 +254,6 @@
   }
 
   .technical h1 {
-    font-size: 1.4rem;
+    font-size: 1.05rem;
   }
 }
