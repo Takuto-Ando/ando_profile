@@ -41,6 +41,15 @@ kramdown:
 include:
   - _pages
 
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - _site-local
+  - assets/portfolio-evidence
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.

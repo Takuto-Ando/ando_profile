@@ -1,0 +1,231 @@
+reviewed_on: "2026-10-08"
+groups:
+  - title: Industrial Embedded
+    description: 個人PoCの経験は既存ページに記載。今回のローカル資料探索ではFirmware・回路図・測定生ログを特定できていません。
+    items:
+      - id: digital-input
+        title: 24V Digital Input
+        href: /poc/24v-digital-input/
+        status: 本人申告 / 証拠未添付
+        work: 24V入力、LM393、PC817、74HC14、MSPM0のGPIO IRQとデバウンスを接続。
+        sources:
+          - path: ando_profile/_pages/poc-24v-di.html
+            kind: 既存の経験記録。測定証拠ではない
+        next: 部品値とGND境界を示す自作回路図、Firmware、入力上昇・下降時の波形、検知ログ。
+      - id: rs485
+        title: RS-485
+        href: /poc/rs485/
+        status: 本人申告 / 生ログ未添付
+        work: MAX3485、UART、120Ω終端とバイアスを含む通信と長時間試験。
+        sources:
+          - path: ando_profile/_pages/poc-rs485.html
+            kind: 既存の経験記録。測定証拠ではない
+        next: 対向ノード、baud rate、配線長、DE/RE制御、試験時間、総frame数と異常の定義。
+      - id: mspm0
+        title: MSPM0 Peripheral Control
+        href: /poc/mspm0-peripheral-control/
+        status: 本人申告 / ソース未添付
+        work: PA25 Falling Edge、TimerG、UARTイベントカウント、PA24 ADC12連続変換と__WFI。
+        sources:
+          - path: ando_profile/_pages/poc-mspm0.html
+            kind: 既存の経験記録。24V DIと一部重複
+        next: MCU型番とSDK版、割込みとTimer設定、ADC条件、ビルド手順とUARTログ。
+      - id: motor
+        title: DRV8835 Motor Control
+        href: /poc/drv8835-motor-control/
+        status: 本人申告 / 原因照合待ち
+        work: MCUによるモータ駆動とMODE設定、誤配線時の不調と復旧の記録。
+        sources:
+          - path: ando_profile/_pages/poc-drv8835.html
+            kind: 既存の経験記録。故障原因の証明ではない
+        next: 正常配線、制御信号、電源とモータ仕様、修正前後の観測。USB不調の原因は未確認。
+  - title: Advanced Digital / HW–SW Co-design
+    description: 研究原稿と過去の集計データを確認した項目。掲載・公開許可と、今回の実機再試験は別です。
+    items:
+      - id: ntt
+        title: NTT over the ML-KEM Modulus
+        href: /research/ntt/
+        status: 原稿を確認 / 公開許可未確認
+        work: q=3329の演算分解、段間データ配置、CPU参照との比較と転送境界の評価。
+        sources:
+          - path: cgla_research/papers/candar_2026_ntt/abstract.txt
+            kind: 評価対象と原稿記載の結果を確認
+          - path: cgla_research/papers/candar_2026_ntt/main.tex
+            kind: 詳細原稿の所在
+        next: 原稿と対応するコード・生ログの版を固定し、公開可能な範囲を確認。
+        limit: 標準ML-KEM全体ではなく8段cyclic driverの評価。ASICは投影。
+      - id: bitnet
+        title: BitNet Kernel & Runtime Integration
+        href: /research/bitnet/
+        status: 原稿を確認 / 公開許可未確認
+        work: 三値重みとint8活性をsigned-int4 laneへ対応付け、BitNet C++へ接続。
+        sources:
+          - path: cgla_research/papers/candar_2026_bitnet/abstract.txt
+            kind: mappingと原稿記載のdecode結果を確認
+        next: 対象呼出し、exact/近似path、host残存範囲と測定境界が分かる公開用実行記録。
+        limit: 全layerのoffloadやモデル全体のASIC実測ではない。
+      - id: ssm
+        title: Mamba-family SSM
+        href: /research/ssm/
+        status: 原稿・過去CSVを確認 / 実機再試験なし
+        work: Projection、SSD、再帰state updateとtoken integrationの境界を整理。
+        sources:
+          - path: cgla_research/papers/mcsoc_2026_ssm_full/abstract.txt
+            kind: projection GEMVのボトルネック記述を確認
+          - path: cgla_research/papers/mcsoc_2026_ssm_full/alice110_experiments/results/step2_real_20260417_rep_q64_live/step2_real_sweep_summary.csv
+            kind: 2026-04-17のq64 Step-2過去集計。必要列をローカル添付
+        attachment: /assets/portfolio-evidence/ssm-step2-q64.csv
+        attachment_label: 過去集計CSVを見る
+        next: 元の実行ログ、測定区間、反復回数と許容誤差を対応付ける。
+        limit: head_aggregatedのStep-2条件。モデル名はkernel形状の識別用で、モデル全体の推論性能ではない。
+      - id: dpd
+        title: Memory-Polynomial DPD
+        href: /research/dpd/
+        status: 原稿を確認 / 公開許可未確認
+        work: 15項complex-MAC、係数local reuse、33-stage pipelineと測定境界を整理。
+        sources:
+          - path: cgla_research/papers/icecs_2026_dpd/abstract.txt
+            kind: FPGA時間とASIC投影の区別を確認
+        next: 公開可能な構成図、実行条件、CPU参照比較、合成PA評価の再現手順。
+        limit: 実PAのRF試験ではない。エネルギーは電力仮定によるモデル評価。
+  - title: Edge AI / Processors & Software
+    description: 既存サイトの図・デモとローカル実装を、ポートフォリオへ使える資料として整理。
+    items:
+      - id: fpga-vision
+        title: 高専専攻科 / FPGA表情認識
+        kosen: true
+        href: /research/facial-expression/
+        status: 専攻科論文・学会原稿を確認 / 生ログ未照合
+        work: DPUによる顔検出と表情分類、CPU前処理とのマルチスレッド実行。
+        sources:
+          - path: ando_profile/_pages/research-facial-expression.md
+            kind: 既存の研究紹介
+          - path: ando_profile/assets/images/fpga_system_fig.png
+            kind: 既存の構成図
+          - path: ando_profile/assets/pdfs/tokukenn_thesis.pdf
+            kind: 2025年1月の専攻科特別研究II論文
+          - path: 安藤拓翔_主著_採録済みPDF集約/2024_sasimi_fpga_dpu_facial_expression_recognition.pdf
+            kind: 2024年の初期DPU実装。顔検出モデルはYOLOv2 tiny
+          - path: ando_profile/assets/pdfs/paper/candar2024gca.pdf
+            kind: 2024年のマルチスレッド実装原稿
+        image: /assets/images/fpga_system_fig.png
+        gallery:
+          - src: /assets/images/fer_system.png
+            caption: 表情認識システムの既存図
+        documents:
+          - href: /assets/pdfs/tokukenn_thesis.pdf
+            label: 専攻科特別研究論文（2025）
+          - href: /assets/pdfs/paper/candar2024gca.pdf
+            label: マルチスレッド実装原稿（CANDARW 2024）
+          - href: /assets/pdfs/paper/icic_express.pdf
+            label: 表情認識の論文PDF（既存資料）
+        results:
+          - 初期のSASIMI 2024実装はYOLOv2 tinyによる顔検出。後続のマルチスレッド実装とモデル・DPU構成を分けて扱う。
+          - 顔検出と表情分類を同じDPUで実行し、後続研究ではCPU前処理とDPU実行の重なりを評価。
+        next: ボード・DPU構成・モデル版と測定方法を照合。既存ページの数値を新たな実測として転記しない。
+      - id: onion-yolox
+        title: 小ねぎ / YOLOXによる分岐部検出
+        kosen: true
+        href: /research/green-onion-dnn/
+        status: 高専での研究と継続原稿を確認 / 公開版未照合
+        work: YOLOX-nanoを軽量化し、分岐部のFirst・Other・Aging分類と選択処理から調製位置を推定。
+        sources:
+          - path: cgla_research/papers/01_already_submitted_manuscripts/ICIC_negi/icicel-paper.pdf
+            kind: 集約manifestの正本。Jetson Orin Nano評価を記載する継続原稿
+          - path: ando_profile/_pages/research-green-onion-dnn.md
+            kind: 既存の研究紹介
+          - path: ando_profile/assets/images/negi_yolo.png
+            kind: 既存の検出結果図
+        image: /assets/images/negi_yolo.png
+        gallery:
+          - src: /assets/images/yolox_archi.png
+            caption: YOLOX構成の既存図
+        documents:
+          - href: /assets/portfolio-evidence/kosen-yolox-manuscript.pdf
+            label: YOLOX継続原稿（ローカル限定）
+        results:
+          - 原稿のAbstractでは第2分岐部のdetection score 0.929、Jetson Orin Nanoの処理時間46 msを記載。今回の再測定ではない。
+        limit: 原稿PDFのヘッダには旧template年が残る。採録・刊行年はヘッダから断定しない。Mask R-CNNやエッジ検出と異なる評価条件。
+        next: 学習コード、annotation、分割、モデル版、scoreの定義と処理時間の測定区間を対応付ける。
+      - id: onion-segmentation
+        title: 高専専攻科 / 小ねぎインスタンスセグメンテーション
+        kosen: true
+        href: /research/green-onion-dnn/
+        status: 2024年発表スライドを確認 / 生ログ未照合
+        work: コントラスト補正後にMask R-CNNで芯と葉を分割し、葉の位置・枚数が変わる箇所から分岐部のy座標を推定。
+        sources:
+          - path: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf
+            kind: 電子情報通信学会九州支部学生会2024の発表スライド。提案手法と全体/遮蔽時の比較
+          - path: ando_profile/assets/images/negi_seg.png
+            kind: 既存のセグメンテーション結果図
+        image: /assets/images/negi_seg.png
+        documents:
+          - href: /assets/pdfs/ieice_kyusyu_ando.pdf
+            label: セグメンテーション発表スライド（2024）
+        results:
+          - 発表資料の遮蔽画像評価はMask R-CNN 89%、比較YOLOX 38%。全画像評価はMask R-CNN 72%、YOLOX 89%と記載。
+          - 遮蔽時の改善と全体精度の低下を分けて記録。遮蔽のない画像への改善と検出モデルとの組合せを課題としている。
+        limit: スライドには430枚の撮影画像と正解y座標との差50px未満の成功基準を記載。各評価subsetの枚数と学習/評価分割は今回未照合。ねぎ調製機全体の成功率ではない。
+        next: Detectron2/Mask R-CNNの学習設定、芯/葉annotation、遮蔽subsetと全体の予測ログを照合。
+      - id: onion-edge
+        title: 高専本科 / エッジ検出による小ねぎ分岐部抽出
+        kosen: true
+        href: /research/green-onion-edge/
+        status: 本科卒論・2023/2024論文を確認 / 生ログ未照合
+        work: 色と輪郭のmask、分岐部推定領域の抽出、Sobel filter、labelingとエッジ特徴量による斜線抽出。
+        sources:
+          - path: ando_profile/assets/pdfs/sotsuken_thesis.pdf
+            kind: 2023年1月24日の本科卒業研究論文
+          - path: ando_profile/assets/pdfs/paper/IPSJ-ARC23251004.pdf
+            kind: 2023年ARC研究報告。分岐部斜線検出率92%を記載
+          - path: ando_profile/assets/pdfs/paper/33_73.pdf
+            kind: 農業情報研究33巻2号（2024）。Raspberry Pi 3評価
+        image: /assets/images/branch_example.png
+        gallery:
+          - src: /assets/images/negi_machine.jpg
+            caption: 小ねぎ調製機の既存写真
+        documents:
+          - href: /assets/pdfs/sotsuken_thesis.pdf
+            label: 本科卒業研究論文（2023）
+          - href: /assets/pdfs/sotsuken_slide.pdf
+            label: 本科卒業研究スライド
+          - href: /assets/pdfs/paper/IPSJ-ARC23251004.pdf
+            label: エッジ検出のARC研究報告（2023）
+          - href: /assets/pdfs/paper/33_73.pdf
+            label: 農業情報研究の論文（2024）
+        results:
+          - 2023年卒論・研究報告は分岐部斜線の検出率92%を記載。
+          - 2024年論文の要旨はRaspberry Pi 3で検出率90.6%、処理時間455 msを記載。2023年の評価と混ぜない。
+        limit: 評価は分岐部斜線の検出。実機の皮むき成功率や、YOLOXとの同条件比較ではない。
+        next: 元の画像処理コード、mask/特徴量の設定値、入力画像と誤検出例、Raspberry Pi計測ログを整理。
+      - id: q-snap
+        title: Q-snap / LLM Chunking
+        href: /research/q-snap/
+        status: 既存ページ・デモあり / 元評価ログは未照合
+        work: 量子化アライメントとruntimeメモリ制約に応じたchunk選択。
+        sources:
+          - path: ando_profile/_pages/research-q-snap.md
+            kind: 既存の研究紹介
+          - path: ando_profile/assets/images/LLMchat_demo.gif
+            kind: 既存の動作デモ。性能測定ログではない
+        next: baselineと同じモデル・量子化・prompt条件で測ったログを対応付ける。
+      - id: software-stack
+        title: CGLA Software Stack
+        status: ローカル実装候補 / 公開許可未確認
+        work: C runtime、backend区分、run-scoped phase profilerとCPU fallbackの構成。
+        sources:
+          - path: cgla_sw_stack/README.md
+            kind: 目標APIと実装説明。例示値は実測として使わない
+          - path: cgla_sw_stack/CMakeLists.txt
+            kind: runtimeとtest_gemmのbuild定義を確認
+        next: CPU fallbackの再現例と実機backendを分けた技術紹介を作る。
+        limit: build定義の確認のみ。今回build・実機検証は行っていない。
+planned:
+  - title: CAN / CAN FD
+    next: 対応MCUとtransceiverを決め、終端・bit rate・異常時のログを残す。
+  - title: EtherCAT
+    next: 実機構成、packet capture、解決した問題と周期・jitterの記録を揃える。
+  - title: C2000 / AM2x / AM62x Linux / RTOS
+    next: 起動・周辺I/O・リアルタイム処理の再現手順から1件ずつ整理する。
+  - title: Functional Safety / PCIe / DDR / SerDes
+    next: 本人が担当した範囲と評価証拠があるものから追加する。研究機器での使用だけで設計経験とはしない。

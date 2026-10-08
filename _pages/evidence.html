@@ -1,0 +1,44 @@
+---
+title: "ポートフォリオ資料庫（仮）"
+permalink: /research/evidence/
+published: false
+author_profile: false
+classes: wide
+---
+<link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
+{% assign evidence = site.data.portfolio_evidence %}
+<div class="poc technical" markdown="0">
+  <a class="poc-back" href="{{ '/research/' | relative_url }}">← 技術/Technology</a>
+  <p class="poc-lead">何を作り、どこまで確かめ、何を見せられるか。既存の研究・個人PoCに対応する資料を集めたローカルの索引です。</p>
+  <p class="poc-note">資料確認日 {{ evidence.reviewed_on }}。出典パスはResearch_projectからの相対パスです。原稿の確認と実機検証を区別し、顧客回路・社内資料は取り込みません。</p>
+  <nav class="technical-categories" aria-label="資料カテゴリ">
+    {% for group in evidence.groups %}<a href="#evidence-{{ forloop.index }}">{{ group.title }}</a>{% endfor %}
+    <a href="#planned">今後のテーマ</a>
+  </nav>
+  {% for group in evidence.groups %}
+  <section id="evidence-{{ forloop.index }}" class="technical-section">
+    <h2>{{ group.title }}</h2>
+    <p>{{ group.description }}</p>
+    {% for item in group.items %}
+    {% include portfolio-entry.html item=item %}
+    {% endfor %}
+  </section>
+  {% endfor %}
+  <section id="planned" class="technical-section">
+    <h2>今後のテーマ</h2>
+    <p>以下は実績に含めず、実装と観測が揃ってから追加します。</p>
+    {% for item in evidence.planned %}<article class="poc-card"><h3>{{ item.title }}</h3><span class="poc-status">計画 / 実績未確認</span><p>{{ item.next }}</p></article>{% endfor %}
+  </section>
+  <section class="technical-section">
+    <h2>経験を追加するときの1ページ</h2>
+    <ol>
+      <li>解決したい問題と、自分が担当した範囲。</li>
+      <li>自作回路図・構成図、部品・ソフトウェアの版、実行手順。</li>
+      <li>入力条件、測定方法、時間区間、参照実装と許容誤差。</li>
+      <li>実測結果と生ログ。推定値は別に記載。</li>
+      <li>起きた問題、観測、原因の根拠、修正後の再試験。</li>
+      <li>評価していない範囲と、公開可能な図・コード・データ。</li>
+    </ol>
+    <p class="poc-note">自分で取得したデータでも、業務・顧客・未公開デバイスに関わる場合は公開可否を確認します。この資料庫とCSVは通常buildには含めません。</p>
+  </section>
+</div>

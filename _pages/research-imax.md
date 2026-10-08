@@ -1,8 +1,12 @@
 ---
 permalink: /research/imax/
 classes: wide
+project_key: imax
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -18,6 +22,8 @@ classes: wide
 ### What is IMAX?
 
 **IMAX** (In-Memory Accelerator eXtension) is a non-von Neumann **CGLA** (Coarse-Grained Logic Array) developed at NAIST's Computing Architecture Laboratory. It is designed to structurally eliminate the von Neumann bottleneck — the fundamental performance wall caused by repeatedly moving data between processing units and main memory.
+
+{% include article-materials.html %}
 
 ### Architecture Design
 
@@ -72,6 +78,8 @@ Key properties:
 
 **IMAX**（In-Memory Accelerator eXtension）は、奈良先端科学技術大学院大学 コンピューティング・アーキテクチャ研究室が開発した非ノイマン型 **CGLA**（粗粒度再構成可能論理アレイ）です。演算ユニットとメインメモリ間のデータ転送が引き起こす根本的な性能の壁、「フォン・ノイマン・ボトルネック」を構造的に排除するために設計されています。
 
+{% include article-materials.html %}
+
 ### アーキテクチャ設計
 
 IMAX の核心的な革新は**交互配置線形アレイ**構造にあります。演算ユニット（PE）とキャッシュメモリバンクが1次元上に交互に配置され、あるPEで処理されたデータが隣接するメモリバンクに直接アクセスできます。これによりメモリアクセスレイテンシを大幅に削減します。
@@ -111,4 +119,5 @@ IMAX の核心的な革新は**交互配置線形アレイ**構造にありま�
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ" style="max-width:560px;width:100%;border:1px solid #E2E8F0;">
 </div>
 
+{% endif %}
 {% endif %}

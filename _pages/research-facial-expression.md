@@ -1,8 +1,12 @@
 ---
 permalink: /research/facial-expression/
 classes: wide
+project_key: facial-expression
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -19,6 +23,8 @@ classes: wide
 Real-time facial expression recognition requires running two DNN models in sequence — face detection followed by expression classification. Executing both on an embedded CPU is impractical due to compute constraints and poor power efficiency.
 
 This research implements a **stand-alone facial expression recognition system** on a SoC FPGA using a **DPU** (Deep Learning Processing Unit, a systolic array CNN accelerator), with a **multi-threading** technique that dramatically improves DPU utilization from 22.85% to 78.44%.
+
+{% include article-materials.html %}
 
 ### Key Contributions
 
@@ -77,6 +83,8 @@ The multi-threading technique enables **25 FPS** at only 2.7 W, achieving **2.4x
 
 本研究では、DPU（ディープラーニング処理ユニット、シストリックアレイ型 CNN アクセラレータ）を用いた SoC FPGA 上に**スタンドアロン表情認識システム**を実装し、**マルチスレッディング**手法により DPU 利用率を 22.85% から 78.44% に大幅改善します。
 
+{% include article-materials.html %}
+
 ### 主な成果
 
 **DenseBox ベースの DPU 顔検出**
@@ -119,4 +127,5 @@ The multi-threading technique enables **25 FPS** at only 2.7 W, achieving **2.4x
 | 2025 | **ICIC Express Letters** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
 | 2024 | **CANDARW 2024** | Facial Expression Recognition System Using DNN Accelerator with Multi-threading on FPGA |
 
+{% endif %}
 {% endif %}

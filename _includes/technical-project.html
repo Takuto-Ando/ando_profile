@@ -1,0 +1,27 @@
+{% assign project = site.data.technical_projects.projects[page.project_key] %}
+<link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/design-candidates.css' | relative_url }}">
+<div class="poc technical" markdown="0">
+  {% assign category = project.category | default: 'accelerator' %}
+  {% capture back_path %}/research/#{{ category }}{% endcapture %}
+  <a class="poc-back" href="{{ back_path | relative_url }}">← 技術/Technology</a>
+  {% if include.show_title %}<h1>{{ project.title }}</h1>{% endif %}
+  <span class="poc-status">{{ project.venue }} / ローカル下書き</span>
+  <p class="poc-lead">{{ project.overview }}</p>
+  {% include article-materials.html title=project.paper %}
+  <div class="bp-tags">{% for tag in project.tags %}<span class="bp-tag">{{ tag }}</span>{% endfor %}</div>
+  <h2>実装・評価した内容</h2>
+  <ul>{% for text in project.work %}<li>{{ text }}</li>{% endfor %}</ul>
+  {% if project.work_figures %}
+    {% for figure_index in project.work_figures %}{% include article-materials.html figure=figure_index %}{% endfor %}
+  {% else %}
+    {% include article-materials.html figure=0 %}
+  {% endif %}
+  <h2>論文にまとめた結果</h2>
+  {% for text in project.results %}<p>{{ text }}</p>{% endfor %}
+  {% unless project.skip_result_figure %}{% include article-materials.html figure=1 %}{% endunless %}
+  <h2>評価の範囲</h2>
+  <ul>{% for text in project.limits %}<li>{{ text }}</li>{% endfor %}</ul>
+  <p><a href="{{ '/research/evidence/' | relative_url }}{% if project.evidence_id %}#{{ project.evidence_id }}{% endif %}">出典と実験記録の整理状況 →</a></p>
+  <p class="poc-note">公開状況・公開許可を確認するまではローカル下書きとして扱います。採録済み・公開済みであることをこのページから断定しません。</p>
+</div>

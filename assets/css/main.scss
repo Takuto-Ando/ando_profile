@@ -5,19 +5,22 @@
 @import "minimal-mistakes";
 
 /* ============================================================
-   B2 Theme — Slate × Emerald
+   B2 Theme — Slate × Red
    ============================================================ */
 
 /* ── Variables ── */
 :root {
-  --acc:       #059669;
-  --acc-light: #ECFDF5;
-  --acc-mid:   #6EE7B7;
-  --ink:       #0F172A;
-  --sub:       #334155;
-  --muted:     #94A3B8;
-  --line:      #E2E8F0;
-  --bg:        #F8FAFC;
+  --acc:       #CC0000;
+  --acc-hover: #A40000;
+  --acc-light: #F7F7F7;
+  --acc-mid:   #E5E5E5;
+  --link:      #007C8C;
+  --link-hover: #005F6B;
+  --ink:       #333333;
+  --sub:       #333333;
+  --muted:     #666666;
+  --line:      #E5E5E5;
+  --bg:        #FFFFFF;
   --surface:   #FFFFFF;
 }
 
@@ -46,7 +49,7 @@ body {
 }
 .greedy-nav a,
 .greedy-nav .visible-links a {
-  color: var(--muted) !important;
+  color: var(--ink) !important;
   font-size: 0.78rem !important;
 }
 .greedy-nav .visible-links {
@@ -72,14 +75,15 @@ body {
 .sidebar { background: transparent !important; }
 .author__avatar,
 .author__avatar img { display: none !important; }
-.author__name {
-  color: var(--acc) !important;
+.author__name,
+.author__name a {
+  color: var(--ink) !important;
   font-weight: 700 !important;
 }
 .author__bio { color: var(--sub) !important; font-size: 0.8rem !important; }
 .author__location, .author__email { color: var(--muted) !important; }
-.author__urls a { color: var(--sub) !important; font-size: 0.8rem !important; }
-.author__urls a:hover { color: var(--acc) !important; }
+.author__urls a { color: var(--link) !important; font-size: 0.8rem !important; }
+.author__urls a:hover { color: var(--link-hover) !important; }
 .author__avatar,
 .author__avatar img { border-radius: 0 !important; border: 1px solid var(--line) !important; box-shadow: none !important; }
 
@@ -88,8 +92,8 @@ body {
 .page__content { color: var(--sub) !important; }
 .page__content p, .page__content li { color: var(--sub) !important; }
 .page__content strong { color: var(--ink) !important; }
-.page__content a { color: var(--acc) !important; }
-.page__content a:hover { color: #047857 !important; }
+.page__content a { color: var(--link) !important; }
+.page__content a:hover { color: var(--link-hover) !important; }
 
 /* ── Headings ── */
 h1, h2, h3 { color: var(--ink) !important; }
@@ -99,8 +103,8 @@ h2 {
 }
 
 /* ── Links ── */
-a { color: var(--acc) !important; }
-a:hover { color: #047857 !important; }
+a { color: var(--link) !important; }
+a:hover { color: var(--link-hover) !important; }
 
 /* ── Tables ── */
 table { border-collapse: collapse !important; width: 100% !important; font-size: 0.88rem !important; }
@@ -111,7 +115,7 @@ tr:hover td { background: var(--acc-light) !important; }
 
 /* ── Blockquote ── */
 blockquote {
-  border-left: 3px solid var(--acc) !important;
+  border-left: 0 !important;
   background: var(--acc-light) !important;
   color: var(--sub) !important;
   padding: 0.75rem 1rem !important;
@@ -129,8 +133,8 @@ blockquote {
   transition: all 0.15s !important;
 }
 .btn:hover {
-  border-color: var(--acc) !important;
-  color: var(--acc) !important;
+  border-color: var(--link) !important;
+  color: var(--link) !important;
   background: var(--acc-light) !important;
 }
 .btn--inverse {
@@ -150,8 +154,8 @@ blockquote {
   color: var(--muted) !important;
   font-size: 0.75rem !important;
 }
-.page__footer a { color: var(--muted) !important; }
-.page__footer a:hover { color: var(--acc) !important; }
+.page__footer a { color: var(--link) !important; }
+.page__footer a:hover { color: var(--link-hover) !important; }
 
 /* ── Figure / Image ── */
 figure { background: transparent !important; border: none !important; box-shadow: none !important; padding: 0 !important; }
@@ -192,11 +196,11 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .lang-switcher__inactive {
   background: #fff !important;
   border: 1.5px solid var(--line) !important;
-  color: var(--muted) !important;
+  color: var(--link) !important;
 }
 .lang-switcher__inactive:hover {
-  border-color: var(--acc) !important;
-  color: var(--acc) !important;
+  border-color: var(--link) !important;
+  color: var(--link-hover) !important;
 }
 
 /* ── Profile Header ── */
@@ -232,7 +236,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 }
 .bp-profile__aff {
   font-size: 0.8rem;
-  color: var(--acc);
+  color: var(--ink);
   font-weight: 600;
   margin-bottom: 0.5rem;
 }
@@ -245,6 +249,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .bp-profile__btns {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.4rem;
 }
 .bp-btn {
@@ -259,8 +264,32 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   transition: all 0.15s;
 }
 .bp-btn:hover {
-  border-color: var(--acc);
-  color: var(--acc) !important;
+  border-color: var(--link);
+  color: var(--link-hover) !important;
+}
+
+.page__content a.action-primary {
+  display: inline-block;
+  padding: .65rem 1rem;
+  border: 1px solid var(--acc);
+  border-radius: 2px;
+  background: var(--acc);
+  color: var(--surface) !important;
+  font-size: .8rem;
+  font-weight: 600;
+  text-decoration: none;
+  line-height: 1.5;
+}
+
+.page__content a.action-primary:hover {
+  border-color: var(--acc-hover);
+  background: var(--acc-hover);
+  color: var(--surface) !important;
+}
+
+.page__content a.action-primary:focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 3px;
 }
 
 /* ── Stats ── */
@@ -280,7 +309,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .bp-stat__n {
   font-size: 2rem;
   font-weight: 900;
-  color: var(--acc);
+  color: var(--ink);
   line-height: 1;
 }
 .bp-stat__l {
@@ -291,17 +320,13 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   letter-spacing: 0.07em;
 }
 
-/* ── Overview ── */
-.bp-overview {
-  font-size: 0.84rem;
-  color: var(--sub);
+.preview-note {
+  padding: .75rem 1rem;
+  border: 1px solid var(--line);
   background: var(--acc-light);
-  border-left: 3px solid var(--acc);
-  padding: 0.9rem 1.1rem;
-  margin-bottom: 1.75rem;
-  line-height: 1.85;
+  font-size: .75rem;
+  line-height: 1.8;
 }
-.bp-overview strong { color: var(--ink) !important; }
 
 /* ── Keywords ── */
 .bp-keywords {
@@ -414,7 +439,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.13em;
-  color: var(--acc);
+  color: var(--ink);
   margin: 2rem 0 0;
 }
 .bp-sec::after { content: ''; flex: 1; height: 1px; background: var(--line); }
@@ -434,7 +459,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 }
 .bp-card {
   background: var(--surface);
-  border-left: 3px solid var(--acc);
   padding: 1.25rem;
   transition: background 0.15s;
 }
@@ -533,7 +557,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   line-height: 1.8;
   color: var(--sub);
 }
-.bp-contact-note a { color: var(--acc) !important; }
+.bp-contact-note a { color: var(--link) !important; }
 
 /* ── About ── */
 .about-page {
@@ -718,7 +742,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
     gap: 0.25rem;
   }
   .bp-award { font-size: 0.78rem; }
-  .bp-overview { font-size: 0.8rem; }
   .bp-card__media { height: 140px; }
   .bp-strip__page {
     flex-basis: 100%;
@@ -747,7 +770,6 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   display: block;
   background: var(--surface);
   padding: 0.9rem;
-  border-left: 3px solid #4C6CB3;
   text-decoration: none !important;
 }
 .bp-news-card__image {
@@ -771,7 +793,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   height: 100%;
   padding: 0.8rem;
   background: linear-gradient(135deg, #f8fafc 0%, #eef3f8 100%);
-  color: #4C6CB3;
+  color: var(--link);
   font-family: "Avenir Next", "Helvetica Neue", "Futura", sans-serif;
   font-size: 1.05rem;
   font-weight: 800;

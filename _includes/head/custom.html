@@ -1,3 +1,7 @@
+{% if site.technical_preview %}
+<script src="{{ '/assets/js/technical-nav.js' | relative_url }}" defer></script>
+<script src="{{ '/assets/js/design-candidates.js' | relative_url }}" defer></script>
+{% endif %}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   var base = '{{ site.baseurl }}';
