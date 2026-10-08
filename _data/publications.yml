@@ -51,6 +51,8 @@ sections:
           - label: Links
             url: https://doi.org/10.1002/cpe.70826
         badges:
+          - label: "2026"
+            type: neutral
           - label: "Impact Factor: 2.2 (2025)"
             type: impact
             source: https://onlinelibrary.wiley.com/journal/15320634/journal-metrics
