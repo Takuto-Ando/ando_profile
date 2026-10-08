@@ -129,7 +129,9 @@
     {% if has_inline_bibtex %}
       <div class="pub-panel pub-panel--bibtex" id="pub-panel-bibtex-{{ include.uid }}" hidden>
         <button class="pub-panel__close" type="button" aria-label="Close" data-panel-close>&times;</button>
-        <pre class="pub-panel__code">{{ bibtex_text }}</pre>
+        <button class="pub-action" type="button" data-bibtex-copy>{% if site.active_lang == 'en' %}Copy BibTeX{% else %}BibTeXをコピー{% endif %}</button>
+        <span class="bibtex-copy-status" role="status" aria-live="polite"></span>
+        <pre class="pub-panel__code" tabindex="0">{{ bibtex_text | escape }}</pre>
       </div>
     {% endif %}
 

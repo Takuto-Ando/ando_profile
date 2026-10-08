@@ -21,7 +21,7 @@ author_profile: false
 <div class="pub-page">
   <header class="pub-page__hero">
     <p class="pub-page__eyebrow">{{ pub_eyebrow }}</p>
-    <h1 class="pub-page__title">{{ pub_title }}</h1>
+    <h1 class="pub-page__title page-heading">{{ pub_title }}</h1>
     <p class="pub-page__lead">{{ pub_lead }}</p>
     <p class="pub-page__note">{{ pub_note }}</p>
   </header>
@@ -65,6 +65,7 @@ author_profile: false
   {% endfor %}
 </div>
 
+<script src="{{ '/assets/js/bibtex-copy.js' | relative_url }}" defer></script>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     function closePanel(panel, button) {

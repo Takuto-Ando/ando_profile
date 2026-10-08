@@ -1,0 +1,22 @@
+slides:
+  - label: IMAX3 / IMAX4
+    title_ja: IMAX3・IMAX4 性能評価
+    title_en: IMAX3 & IMAX4 Performance Evaluation
+    deck: 1b0060b0e2974a659464493d58e16eb0
+  - label: Image Processing
+    title_ja: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
+    title_en: Green Onion Branching Point Segmentation
+    deck: f027bc23215946868b187e68bec91c37
+posters:
+  - label: SOCC 2025
+    title_ja: CGLAによるLLM推論
+    title_en: LLM Inference on a CGLA
+    image: /assets/images/socc_poster.png
+  - label: SASIMI 2025
+    title_ja: IMAX3・IMAX4 の評価
+    title_en: IMAX3 / IMAX4 Evaluation
+    image: /assets/images/sasimi2025_poster.png
+  - label: SASIMI 2024
+    title_ja: FPGAによる表情認識
+    title_en: Facial Expression Recognition on FPGA
+    image: /assets/images/sasimi_poster.png

@@ -45,6 +45,10 @@ NTT/BitNetの保存済みPDFは現行本文との版差を明記する。PoCの�
 
 # Minimal Mistakes remote theme starter
 
+研究業績のBibTeXは `_data/publications.yml` の `bibtexText` に保存する。
+既存の書誌情報を使い、未確認のDOI・巻号・ページ・学位論文の年は補完しない。「BibTeXをコピー」で取得でき、clipboardが使えない場合は本文を選択して手動コピーする。
+発表資料は `_data/presentations.yml` で既存のスライド・ポスターを管理する。趣味ページは保持し、ナビゲーションからだけ除外している。
+
 ## ポートフォリオ資料庫（ローカル限定）
 
 高専研究の入口は `http://127.0.0.1:4000/research/kosen/`。

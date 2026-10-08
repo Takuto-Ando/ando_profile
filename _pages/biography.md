@@ -5,9 +5,10 @@ classes: wide
 
 {% include lang-switcher.html %}
 
+<div class="profile-page" markdown="1">
 {% if site.active_lang == 'en' %}
 
-## Biography
+<h1 class="page-heading">Biography</h1>
 
 
 ### Education
@@ -53,7 +54,7 @@ classes: wide
 
 {% else %}
 
-## 経歴
+<h1 class="page-heading">経歴</h1>
 
 ### 学歴
 
@@ -99,3 +100,4 @@ classes: wide
 
 
 {% endif %}
+</div>
