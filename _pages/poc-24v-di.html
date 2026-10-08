@@ -31,6 +31,10 @@ classes: wide
   <h2>回路とFirmwareで取り組んだこと</h2>
   <h3>入力からロジック信号までの接続</h3>
   <p>24V入力を分圧してLM393へ渡し、PC817、74HC14を経由してMSPM0へ接続しました。入力の比較、フォトカプラを介した信号伝達、波形整形を段ごとに分けた構成です。</p>
+  <figure class="article-figure">
+    <a href="{{ '/assets/images/mspm0-24v-di.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/mspm0-24v-di.jpg' | relative_url }}" alt="MSPM0を使った24V入力PoCの実機配線とオシロスコープ" loading="lazy"></a>
+    <figcaption>24V入力PoCの実機配線と、オシロスコープによる観測の様子。</figcaption>
+  </figure>
   <p>設計記録では、各段の電源と信号レベル、LM393の出力側接続、PC817両側のGND、74HC14を通した信号の極性を回路図に対応付けます。抵抗値や保護回路の詳細は、実際の配線と照合して追記します。</p>
   <h3>MSPM0での割込みとデバウンス</h3>
   <p>回路から得られる信号をMSPM0のGPIO割込みで検知し、デバウンスを含む入力処理まで動作させました。回路の出力をFirmwareのイベントへつなぐ部分が、このPoCで実装した範囲です。</p>
@@ -60,6 +64,6 @@ classes: wide
   <h3>経験の紹介文</h3>
   <blockquote>個人PoCとして、24V入力をLM393、PC817、74HC14経由でMSPM0へ接続し、GPIO割込みとデバウンスによる検知まで実装しました。現在は、回路図・Firmware・測定記録を整理しています。</blockquote>
   <h2>次に揃える成果物</h2>
-  <ul><li>部品値・電源・GND境界を示した回路図と配線写真</li><li>型番・ツール環境・割込み設定を含むFirmware</li><li>閾値、各段波形、デバウンス試験の生記録</li><li>実際のトラブルシュート事例</li></ul>
+  <ul><li>実機写真に対応する部品値・電源・GND境界を示した回路図</li><li>型番・ツール環境・割込み設定を含むFirmware</li><li>閾値、各段波形、デバウンス試験の生記録</li><li>実際のトラブルシュート事例</li></ul>
   <p class="poc-note">個人のPrototype / PoC experienceとして記載しています。IEC 61131-2適合、保護性能、安全な絶縁、量産条件での信頼性は検証していません。フォトカプラの使用だけではシステムの絶縁性能を保証できません。</p>
 </div>
