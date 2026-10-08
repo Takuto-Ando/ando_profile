@@ -5,23 +5,31 @@
 {% if include.figure != nil %}
 {% assign figure = materials.figures[include.figure] %}
 {% if figure %}
-{% if site.technical_preview or figure.src contains '/assets/images/' %}
+{% assign figure_src = figure.public_src | default: figure.src %}
+{% assign figure_caption = figure.public_caption | default: figure.caption %}
+{% if site.technical_preview %}
+{% assign figure_src = figure.src %}
+{% assign figure_caption = figure.caption %}
+{% endif %}
+{% if site.technical_preview or figure_src contains '/assets/images/' %}
 <figure class="article-figure" markdown="0">
-  <a href="{{ figure.src | relative_url }}" target="_blank" rel="noopener"><img src="{{ figure.src | relative_url }}" alt="{{ figure.caption }}" loading="lazy"></a>
-  <figcaption>{{ figure.caption }}</figcaption>
+  <a href="{{ figure_src | relative_url }}" target="_blank" rel="noopener"><img src="{{ figure_src | relative_url }}" alt="{{ figure_caption }}" loading="lazy"></a>
+  <figcaption>{{ figure_caption }}{% if figure.public_source and site.technical_preview != true %} <a href="{{ figure.public_source }}" target="_blank" rel="noopener">出典</a>{% endif %}</figcaption>
 </figure>
 {% endif %}
 {% endif %}
 {% else %}
 {% assign documents = materials.documents %}
 {% unless site.technical_preview %}
-{% assign documents = documents | where_exp: 'document', "document.href contains '/assets/pdfs/'" %}
+{% assign documents = documents | where_exp: 'document', "document.href contains '/assets/pdfs/' or document.public_href" %}
 {% endunless %}
 {% if documents.size > 0 %}
 <div class="article-citation" markdown="0">
   <p>{% if site.active_lang == 'en' %}The method and evaluation are described in {% else %}手法と評価条件の詳細は、{% endif %}
     {% for document in documents %}
-      <a href="{{ document.href | relative_url }}" target="_blank" rel="noopener">{{ include.title | default: document.label }}</a>{% unless forloop.last %}、{% endunless %}
+      {% assign document_href = document.public_href | default: document.href %}
+      {% if site.technical_preview %}{% assign document_href = document.href %}{% endif %}
+      <a href="{{ document_href | relative_url }}" target="_blank" rel="noopener">{{ include.title | default: document.label }}</a>{% unless forloop.last %}、{% endunless %}
     {% endfor %}
     {% if site.active_lang == 'en' %}.{% else %}にまとめています。{% endif %}</p>
   {% if site.technical_preview and materials.note %}<p class="poc-note">{{ materials.note }}</p>{% endif %}

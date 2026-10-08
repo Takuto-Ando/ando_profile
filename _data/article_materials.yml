@@ -2,50 +2,78 @@
   note: 保存済みPDFは現行本文と著者表記・Abstractに版差があります。添付図は現行main_ntt.texで参照する図です。
   documents:
     - href: /assets/portfolio-evidence/article-media/ntt-manuscript-saved.pdf
+      public_href: https://arxiv.org/abs/2609.28904
       label: NTT論文の保存済みPDF（現行本文と版差あり）
       source: cgla_research/papers/candar_2026_ntt/main_ntt.pdf
   figures:
     - src: /assets/portfolio-evidence/article-media/ntt-mapping.png
+      public_src: /assets/images/technical/ntt-mapping.png
+      public_caption: NTTの演算分解と41/47-PE mapping（arXiv公開版）。
+      public_source: https://arxiv.org/abs/2609.28904
       caption: NTTの演算分解と41/47-PE mapping。現行原稿の構成図。
       source: cgla_research/papers/candar_2026_ntt/fig_fullstage_mapping.pdf
     - src: /assets/portfolio-evidence/article-media/ntt-offload.png
+      public_src: /assets/images/technical/ntt-offload.png
+      public_caption: Batch 8でのoffload深度比較。FPGA実測時間と、PE gatingを含むASIC system energyの投影（arXiv公開版）。
+      public_source: https://arxiv.org/abs/2609.28904
       caption: Batch 8でのoffload深度比較。左はFPGA実測時間、右はPE gatingを含むASIC system energyの投影です。
       source: cgla_research/papers/candar_2026_ntt/fig_offload_ablation.pdf
 /research/bitnet/:
   note: 保存済みPDFのAbstractには現行本文との版差があります。1呼出しのoffloadという評価範囲は記事本文を参照してください。添付図は現行main_bitnet.texで参照する図です。
   documents:
     - href: /assets/portfolio-evidence/article-media/bitnet-manuscript-saved.pdf
+      public_href: https://arxiv.org/abs/2609.27453
       label: BitNet論文の保存済みPDF（現行本文と版差あり）
       source: cgla_research/papers/candar_2026_bitnet/main_bitnet.pdf
   figures:
     - src: /assets/portfolio-evidence/article-media/bitnet-mapping.png
+      public_src: /assets/images/technical/bitnet-mapping.png
+      public_caption: 三値重み・int8活性のsigned-int4 mapping（arXiv公開版）。
+      public_source: https://arxiv.org/abs/2609.27453
       caption: 三値重み・int8活性のsigned-int4 mapping。現行原稿の図。
       source: cgla_research/papers/candar_2026_bitnet/fig_sma4_mapping.pdf
     - src: /assets/portfolio-evidence/article-media/bitnet-error.png
+      public_src: /assets/images/technical/bitnet-error.png
+      public_caption: Exact pathと活性量子化pathの時間・partial-dot誤差（arXiv公開版）。モデル精度の図ではありません。
+      public_source: https://arxiv.org/abs/2609.27453
       caption: Exact pathと活性のみを量子化する比較pathの時間・partial-dot誤差。モデル精度の図ではありません。
       source: cgla_research/papers/candar_2026_bitnet/fig_dotaware_altA_pareto.pdf
 /research/ssm/:
   documents:
     - href: /assets/portfolio-evidence/article-media/ssm-manuscript.pdf
+      public_href: https://arxiv.org/abs/2609.27437
       label: MCSoC SSM論文のローカル保存PDF
       source: cgla_research/papers/mcsoc_2026_ssm_full/main.pdf
   figures:
     - src: /assets/portfolio-evidence/article-media/ssm-mapping.png
+      public_src: /assets/images/technical/ssm-mapping.png
+      public_caption: ProjectionとSSD Step-1のPE-stage構成（arXiv公開版）。
+      public_source: https://arxiv.org/abs/2609.27437
       caption: ProjectionとSSD Step-1のPE-stage構成。MCSoC原稿の図。
       source: cgla_research/papers/mcsoc_2026_ssm_full/figures/pe_stage_map_topconf_4_navy_green.pdf
     - src: /assets/portfolio-evidence/article-media/ssm-decode.png
+      public_src: /assets/images/technical/ssm-decode.png
+      public_caption: Mamba-130M decode時間の内訳（arXiv公開版）。モデル全体の同条件CPU/GPU高速化比較ではありません。
+      public_source: https://arxiv.org/abs/2609.27437
       caption: Mamba-130M decode時間の内訳。モデル全体の同条件CPU/GPU高速化比較ではありません。
       source: cgla_research/papers/mcsoc_2026_ssm_full/figures/mamba130m_decode_breakdown.png
 /research/dpd/:
   documents:
     - href: /assets/portfolio-evidence/article-media/dpd-manuscript.pdf
+      public_href: https://arxiv.org/abs/2609.27438
       label: DPD論文のローカル保存PDF
       source: cgla_research/papers/icecs_2026_dpd/main.pdf
   figures:
     - src: /assets/portfolio-evidence/article-media/dpd-mapping.png
+      public_src: /assets/images/technical/dpd-mapping.png
+      public_caption: Memory-polynomial DPD reductionの33-stage mapping（arXiv公開版）。
+      public_source: https://arxiv.org/abs/2609.27438
       caption: Memory-polynomial DPD reductionの33-stage mapping。原稿のdataflow図。
       source: cgla_research/papers/icecs_2026_dpd/fig_dpd_dataflow.pdf
     - src: /assets/portfolio-evidence/article-media/dpd-evaluation.png
+      public_src: /assets/images/technical/dpd-evaluation.png
+      public_caption: Platform比較の評価図（arXiv公開版）。時間の測定境界と、モデル電力に基づくエネルギー評価を分けて読みます。
+      public_source: https://arxiv.org/abs/2609.27438
       caption: Platform比較の評価図。時間の測定境界と、モデル電力に基づくエネルギー評価を分けて読みます。
       source: cgla_research/papers/icecs_2026_dpd/fig_dpd_platform_compare.pdf
 /research/q-snap/:

@@ -38,7 +38,8 @@ NTT / BitNet / SSM / DPDの紹介ページも通常buildで出力する。未公
 元ファイルのパスとキャプションは同じYAMLに残す。
 研究11記事は `_data/technical_projects.yml` と共通テンプレートで執筆する。
 旧研究7記事も新構成へ切り替え、元のMarkdown本文は両方の技術フラグを無効にした場合の互換表示として残している。
-公開buildの本文には既存の `assets/images/` の図と `assets/pdfs/` の論文リンクだけを差し込む。
+公開buildの本文には `assets/images/` の図、`assets/pdfs/` の論文、`public_href` に指定した公開論文リンクを差し込む。
+ローカル資料の `public_src`・`public_caption`・`public_source` は公開用の図・説明・出典。NTT / BitNet / SSM / DPDはarXiv公開ソース由来の図を `assets/images/technical/` に保存し、ローカル確認時は従来の資料を表示する。
 新しい添付ファイルは `assets/portfolio-evidence/article-media/` に保存し、通常buildでは既存のexclude設定で出力しない。
 `assets/portfolio-evidence/` はGit管理からも除外する。論文PDF・評価資料はローカルに保持し、pushに含めない。
 NTT/BitNetの保存済みPDFは現行本文との版差を明記する。PoCの写真・回路図・ログは未特定のため代用品を添付しない。
