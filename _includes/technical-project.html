@@ -17,11 +17,9 @@
   {% else %}
     {% include article-materials.html figure=0 %}
   {% endif %}
-  <h2>論文にまとめた結果</h2>
+  <h2>結果</h2>
   {% for text in project.results %}<p>{{ text }}</p>{% endfor %}
   {% unless project.skip_result_figure %}{% include article-materials.html figure=1 %}{% endunless %}
-  <h2>評価の範囲</h2>
-  <ul>{% for text in project.limits %}<li>{{ text }}</li>{% endfor %}</ul>
   {% if site.technical_preview %}
   <p><a href="{{ '/research/evidence/' | relative_url }}{% if project.evidence_id %}#{{ project.evidence_id }}{% endif %}">出典と実験記録の整理状況 →</a></p>
   <p class="poc-note">公開状況・公開許可を確認するまではローカル下書きとして扱います。採録済み・公開済みであることをこのページから断定しません。</p>
