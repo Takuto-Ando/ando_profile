@@ -1,8 +1,12 @@
 ---
 permalink: /research/generative-ai/
 classes: wide
+project_key: generative-ai
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -18,6 +22,8 @@ classes: wide
 Image generation models like **Stable Diffusion** demand massive compute and memory bandwidth, making them prime candidates for hardware acceleration. Unlike LLMs which are dominated by matrix-vector multiplications, Stable Diffusion involves a U-Net denoising loop, cross-attention, and VAE decoding — presenting distinct data flow challenges for CGLA execution.
 
 This research presents the **first implementation and evaluation** of the primary computational kernels from the **stable-diffusion.cpp** framework on **IMAX3**, a general-purpose CGLA accelerator. We evaluate image generation performance on an FPGA prototype and project ASIC-level performance at 28nm.
+
+{% include article-materials.html %}
 
 ### Key Contributions
 
@@ -51,6 +57,8 @@ End-to-end latency for 512x512 image generation (SD-Turbo, single denoising step
 
 The high latency on IMAX is primarily due to the limited kernel coverage (~10–16%); FP16/FP32 operations fall back to the host CPU. Despite this, Q3_K on IMAX ASIC achieves competitive **PDP (Power-Delay Product)** against the GPU baseline, demonstrating that even partial CGLA offloading provides energy advantages for compute-bound kernels.
 
+{% include article-materials.html figure=0 %}
+
 ### Publications
 
 | Year | Venue | Title |
@@ -70,6 +78,8 @@ The high latency on IMAX is primarily due to the limited kernel coverage (~10–
 **Stable Diffusion** のような画像生成モデルは膨大な演算とメモリ帯域を要求し、ハードウェアアクセラレーションの主要な対象です。LLM が行列ベクトル乗算に支配されるのとは異なり、Stable Diffusion は U-Net デノイジングループ・クロスアテンション・VAE デコードを含み、CGLA 実行において異なるデータフロー設計が必要です。
 
 本研究では、**stable-diffusion.cpp** フレームワークの主要演算カーネルを汎用 CGLA アクセラレータ **IMAX3** 上に**初めて実装・評価**しました。FPGA プロトタイプでの画像生成性能を評価し、28nm ASIC レベルの性能を見積もります。
+
+{% include article-materials.html %}
 
 ### 主な成果
 
@@ -103,10 +113,13 @@ Stable Diffusion の U-Net アーキテクチャにおける FP16/FP32 演算の
 
 IMAX での高レイテンシは主にカーネルカバレッジの限界（~10–16%）に起因し、FP16/FP32 演算がホスト CPU にフォールバックします。それでも、IMAX ASIC 上の Q3_K は GPU ベースラインに対して競争力のある **PDP（電力遅延積）**を達成しており、部分的な CGLA オフロードでも演算バウンドカーネルにおけるエネルギー優位性があることを示しています。
 
+{% include article-materials.html figure=0 %}
+
 ### 発表論文
 
 | 年 | 発表先 | タイトル |
 |----|--------|----------|
 | 2025 | **MCSoC 2025** | Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator |
 
+{% endif %}
 {% endif %}

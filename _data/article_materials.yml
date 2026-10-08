@@ -1,0 +1,140 @@
+/research/ntt/:
+  note: 保存済みPDFは現行本文と著者表記・Abstractに版差があります。添付図は現行main_ntt.texで参照する図です。
+  documents:
+    - href: /assets/portfolio-evidence/article-media/ntt-manuscript-saved.pdf
+      label: NTT論文の保存済みPDF（現行本文と版差あり）
+      source: cgla_research/papers/candar_2026_ntt/main_ntt.pdf
+  figures:
+    - src: /assets/portfolio-evidence/article-media/ntt-mapping.png
+      caption: NTTの演算分解と41/47-PE mapping。現行原稿の構成図。
+      source: cgla_research/papers/candar_2026_ntt/fig_fullstage_mapping.pdf
+    - src: /assets/portfolio-evidence/article-media/ntt-offload.png
+      caption: Batch 8でのoffload深度比較。左はFPGA実測時間、右はPE gatingを含むASIC system energyの投影です。
+      source: cgla_research/papers/candar_2026_ntt/fig_offload_ablation.pdf
+/research/bitnet/:
+  note: 保存済みPDFのAbstractには現行本文との版差があります。1呼出しのoffloadという評価範囲は記事本文を参照してください。添付図は現行main_bitnet.texで参照する図です。
+  documents:
+    - href: /assets/portfolio-evidence/article-media/bitnet-manuscript-saved.pdf
+      label: BitNet論文の保存済みPDF（現行本文と版差あり）
+      source: cgla_research/papers/candar_2026_bitnet/main_bitnet.pdf
+  figures:
+    - src: /assets/portfolio-evidence/article-media/bitnet-mapping.png
+      caption: 三値重み・int8活性のsigned-int4 mapping。現行原稿の図。
+      source: cgla_research/papers/candar_2026_bitnet/fig_sma4_mapping.pdf
+    - src: /assets/portfolio-evidence/article-media/bitnet-error.png
+      caption: Exact pathと活性のみを量子化する比較pathの時間・partial-dot誤差。モデル精度の図ではありません。
+      source: cgla_research/papers/candar_2026_bitnet/fig_dotaware_altA_pareto.pdf
+/research/ssm/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/ssm-manuscript.pdf
+      label: MCSoC SSM論文のローカル保存PDF
+      source: cgla_research/papers/mcsoc_2026_ssm_full/main.pdf
+  figures:
+    - src: /assets/portfolio-evidence/article-media/ssm-mapping.png
+      caption: ProjectionとSSD Step-1のPE-stage構成。MCSoC原稿の図。
+      source: cgla_research/papers/mcsoc_2026_ssm_full/figures/pe_stage_map_topconf_4_navy_green.pdf
+    - src: /assets/portfolio-evidence/article-media/ssm-decode.png
+      caption: Mamba-130M decode時間の内訳。モデル全体の同条件CPU/GPU高速化比較ではありません。
+      source: cgla_research/papers/mcsoc_2026_ssm_full/figures/mamba130m_decode_breakdown.png
+/research/dpd/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/dpd-manuscript.pdf
+      label: DPD論文のローカル保存PDF
+      source: cgla_research/papers/icecs_2026_dpd/main.pdf
+  figures:
+    - src: /assets/portfolio-evidence/article-media/dpd-mapping.png
+      caption: Memory-polynomial DPD reductionの33-stage mapping。原稿のdataflow図。
+      source: cgla_research/papers/icecs_2026_dpd/fig_dpd_dataflow.pdf
+    - src: /assets/portfolio-evidence/article-media/dpd-evaluation.png
+      caption: Platform比較の評価図。時間の測定境界と、モデル電力に基づくエネルギー評価を分けて読みます。
+      source: cgla_research/papers/icecs_2026_dpd/fig_dpd_platform_compare.pdf
+/research/q-snap/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/q-snap-paper.pdf
+      label: Q-snap論文PDF（集約資料から添付）
+      source: 安藤拓翔_主著_採録済みPDF集約/2026_icisn_qsnap_on_cgla.pdf
+  figures:
+    - src: /assets/portfolio-evidence/article-media/q-snap-algorithm.png
+      caption: 量子化条件とメモリ制約に基づくchunk選択。保存原稿のアルゴリズム図。
+      source: cgla_research/papers/01_already_submitted_manuscripts/icisn_2026_ID_91/figure/proposed_algorithm.pdf
+    - src: /assets/images/LLMchat_demo.gif
+      caption: 既存サイトのLLMチャット動作デモ。性能測定ログではありません。
+      source: ando_profile/assets/images/LLMchat_demo.gif
+/research/asr/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/whisper-paper.pdf
+      label: Whisper ASR論文PDF（CANDAR 2025）
+      source: 安藤拓翔_主著_採録済みPDF集約/2025_candar_whisper_asr_on_cgla.pdf
+  figures:
+    - src: /assets/images/CANDAR_process.png
+      caption: 既存サイトに掲載しているCANDAR研究紹介図。
+      source: ando_profile/assets/images/CANDAR_process.png
+/research/generative-ai/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/stable-diffusion-paper.pdf
+      label: Stable Diffusion論文PDF（集約資料のarXiv保存版）
+      source: 安藤拓翔_主著_採録済みPDF集約/2025_mcsoc_stable_diffusion_on_cgla.pdf
+  figures:
+    - src: /assets/images/MCSOC_imagegen.png
+      caption: 既存サイトに掲載しているMCSoC研究紹介図。
+      source: ando_profile/assets/images/MCSOC_imagegen.png
+/research/imax/:
+  documents:
+    - href: /assets/portfolio-evidence/article-media/imax-analysis-paper.pdf
+      label: IMAX3/IMAX4分析論文PDF（SASIMI 2025）
+      source: 安藤拓翔_主著_採録済みPDF集約/2025_sasimi_imax3_imax4_analysis.pdf
+    - href: /assets/portfolio-evidence/article-media/llm-evaluation-paper.pdf
+      label: LLM kernel mappingとsystem評価の論文PDF（IEEE Access）
+      source: 安藤拓翔_主著_採録済みPDF集約/2025_ieee_access_llm_acceleration_on_cgla.pdf
+  figures:
+    - src: /assets/images/imax3andimax4.jpg
+      caption: 既存サイトのIMAX3/IMAX4構成図。
+      source: ando_profile/assets/images/imax3andimax4.jpg
+    - src: /assets/images/imax4_proto.jpg
+      caption: 既存サイトのIMAX4プロトタイプ写真。
+      source: ando_profile/assets/images/imax4_proto.jpg
+/research/facial-expression/:
+  documents:
+    - href: /assets/pdfs/tokukenn_thesis.pdf
+      label: 専攻科特別研究論文（2025）
+      source: ando_profile/assets/pdfs/tokukenn_thesis.pdf
+    - href: /assets/pdfs/paper/candar2024gca.pdf
+      label: マルチスレッド実装原稿（CANDARW 2024）
+      source: ando_profile/assets/pdfs/paper/candar2024gca.pdf
+  figures:
+    - src: /assets/images/fpga_system_fig.png
+      caption: 表情認識システムの既存構成図。
+      source: ando_profile/assets/images/fpga_system_fig.png
+    - src: /assets/images/fer_system.png
+      caption: 表情認識システムの既存図。
+      source: ando_profile/assets/images/fer_system.png
+/research/green-onion-dnn/:
+  documents:
+    - href: /assets/portfolio-evidence/kosen-yolox-manuscript.pdf
+      label: YOLOX継続原稿（資料庫のローカル保存版）
+      source: cgla_research/papers/01_already_submitted_manuscripts/ICIC_negi/icicel-paper.pdf
+    - href: /assets/pdfs/ieice_kyusyu_ando.pdf
+      label: インスタンスセグメンテーション発表資料（2024）
+      source: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf
+  figures:
+    - src: /assets/images/negi_yolo.png
+      caption: YOLOXによる分岐部検出の既存結果図。
+      source: ando_profile/assets/images/negi_yolo.png
+    - src: /assets/images/negi_seg.png
+      caption: インスタンスセグメンテーションの既存結果図。YOLOXとは別の実装です。
+      source: ando_profile/assets/images/negi_seg.png
+/research/green-onion-edge/:
+  documents:
+    - href: /assets/pdfs/sotsuken_thesis.pdf
+      label: 本科卒業研究論文（2023）
+      source: ando_profile/assets/pdfs/sotsuken_thesis.pdf
+    - href: /assets/pdfs/paper/33_73.pdf
+      label: 農業情報研究の論文PDF（2024）
+      source: ando_profile/assets/pdfs/paper/33_73.pdf
+  figures:
+    - src: /assets/images/branch_example.png
+      caption: エッジ検出で扱う分岐部の既存画像。
+      source: ando_profile/assets/images/branch_example.png
+    - src: /assets/images/negi_machine.jpg
+      caption: 小ねぎ調製機の既存写真。
+      source: ando_profile/assets/images/negi_machine.jpg

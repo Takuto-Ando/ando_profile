@@ -1,8 +1,12 @@
 ---
 permalink: /research/q-snap/
 classes: wide
+project_key: q-snap
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -26,6 +30,8 @@ This work targets quantized LLM execution, where chunk boundaries and memory ali
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 prototype" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
+{% include article-materials.html %}
+
 ### Key Points
 
 **Problem Setting**
@@ -35,6 +41,8 @@ Static workload chunking exposes large data-transfer overhead on CGLA-based LLM 
 **Method**
 
 Q-snap determines chunk sizes dynamically from runtime memory constraints and quantization alignment. This keeps the execution practical without relying on a fixed partition chosen in advance.
+
+{% include article-materials.html figure=0 %}
 
 **Observed Effect**
 
@@ -67,6 +75,8 @@ Q-snap は、CGLA 上で LLM を実行するときのスケジューリングを
   <img src="{{ '/assets/images/imax4_proto.jpg' | relative_url }}" alt="IMAX4 プロトタイプ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
+{% include article-materials.html %}
+
 ### 主なポイント
 
 **課題設定**
@@ -76,6 +86,8 @@ Q-snap は、CGLA 上で LLM を実行するときのスケジューリングを
 **手法**
 
 Q-snap は、実行時のメモリ制約と量子化アライメントを見ながらチャンクサイズを動的に決めます。あらかじめ固定した分割に頼らず、実行条件に応じてより自然なサイズに調整できるのが特徴です。
+
+{% include article-materials.html figure=0 %}
 
 **確認できた効果**
 
@@ -87,4 +99,5 @@ IMAX 環境において、プリフィルスループットは **17.11 tok/s** �
 |----|--------|----------|
 | 2026 | **ICISN 2026** | Q-snap: Quantization-Aware Dynamic Chunking for LLM Execution on a CGLA |
 
+{% endif %}
 {% endif %}

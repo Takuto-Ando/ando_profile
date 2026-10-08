@@ -15,10 +15,9 @@
 {% assign stat_conference = 'International Conferences' %}
 {% assign stat_award = 'Awards' %}
 {% assign stat_domestic = 'Domestic Presentations' %}
-{% assign overview_text = 'My main focus is software-stack implementation across runtime bottleneck analysis and application deployment. I study how practical AI workloads can be sustained on CGLA platforms centered on IMAX, with attention to the interface between hardware and software from edge to server systems.' %}
 {% assign keywords_title = 'Research Keywords' %}
 {% assign news_title = 'News' %}
-{% assign featured_title = 'Research Themes' %}
+{% assign featured_title = 'Technology' %}
 {% assign awards_title = 'Awards' %}
 {% assign focus_title = 'Current Focus' %}
 {% assign focus_1_title = 'System-level bottleneck analysis' %}
@@ -33,7 +32,7 @@
 {% assign profile_subname = 'Takuto ANDO' %}
 {% assign profile_role = '博士後期課程1年 · コンピューティング・アーキテクチャ研究室' %}
 {% assign profile_affiliation = '奈良先端科学技術大学院大学' %}
-{% assign profile_bio = 'AI や画像処理技術を計算機アーキテクチャの視点から探求し、持続可能で高効率な AI 計算基盤の構築を目指しています。近年は非ノイマン型アクセラレータ IMAX 上での LLM・生成 AI・音声認識の実装と最適化に取り組み、高専時代には FPGA 推論や農業画像認識の研究も進めてきました。' %}
+{% assign profile_bio = 'AI・画像処理技術を中心に、計算機アーキテクチャから組込みシステムまで幅広い技術領域を探求。ハードウェアとソフトウェアの両面から、性能・消費電力・コストの最適化と先端技術の社会実装を志向する。 奈良先端大では、非ノイマン型アクセラレータ IMAX 上で、LLM・音声認識・耐量子計算機暗号・無線信号処理に関わる行列演算・多項式演算の実装と最適化に従事し、研究成果を国際会議やジャーナルにて発表。高専時代には、FPGAを用いた表情認識・物体検出・農業画像認識の研究に取り組んだ。' %}
 {% assign publications_label = '研究業績' %}
 {% assign presentations_label = '発表資料' %}
 {% assign biography_label = '経歴' %}
@@ -41,10 +40,9 @@
 {% assign stat_conference = '国際会議' %}
 {% assign stat_award = '受賞' %}
 {% assign stat_domestic = '国内発表' %}
-{% assign overview_text = '主にソフトウェアスタックの実装を行っています。ランタイムのボトルネック解析、アプリケーション実装を横断し、IMAX を中心とした CGLA 系計算基盤で実用的な AI ワークロードをどう支えるかを研究しています。エッジからサーバまでを視野に、ハードウェアとソフトウェアの接点を重視しています。' %}
 {% assign keywords_title = '研究キーワード' %}
 {% assign news_title = 'ニュース' %}
-{% assign featured_title = '研究テーマ' %}
+{% assign featured_title = '技術/Technology' %}
 {% assign awards_title = '受賞歴' %}
 {% assign focus_title = '現在注力していること' %}
 {% assign focus_1_title = 'システム全体のボトルネック解析' %}
@@ -62,7 +60,7 @@
       onerror="this.style.background='#f1f5f9'">
     <div>
       <div class="bp-profile__name">
-        {{ profile_name }} <span style="font-size:1rem;font-weight:400;color:#94A3B8">{{ profile_subname }}</span>
+        {{ profile_name }} <span style="font-size:1rem;font-weight:400;color:var(--muted)">{{ profile_subname }}</span>
       </div>
       <div class="bp-profile__en">{{ profile_role }}</div>
       <div class="bp-profile__aff">{{ profile_affiliation }}</div>
@@ -96,7 +94,6 @@
     </div>
   </div>
 
-  <p class="bp-overview">{{ overview_text }}</p>
 
   <div class="bp-keywords">
     <span class="bp-keywords__ttl">{{ keywords_title }}</span>

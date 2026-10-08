@@ -1,0 +1,24 @@
+---
+title: "高専での研究・画像認識（仮）"
+permalink: /research/kosen/
+published: false
+author_profile: false
+classes: wide
+---
+<link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
+<div class="poc technical" markdown="0">
+  <a class="poc-back" href="{{ '/research/' | relative_url }}">← 技術/Technology</a>
+  <p class="poc-lead">大分高専の本科・専攻科で取り組んだ、FPGAによる表情認識と小ねぎの調製位置検出。論文・発表スライド・構成図・認識結果をまとめています。</p>
+  <p>ねぎの認識は、斜線を抽出するエッジ検出、分岐部を検出するYOLOX、葉ごとの領域から位置を推定するMask R-CNNの3系統です。表情認識は、顔検出と表情分類をFPGAのDPUへ載せ、後続研究でマルチスレッド実行を評価しています。</p>
+  <p class="poc-note">本科のエッジ検出卒論は2023年、専攻科のセグメンテーション発表は2024年、表情認識特別研究論文は2025年です。YOLOXの継続原稿も収集していますが、その刊行年と公開版は未照合です。</p>
+  <nav class="technical-categories" aria-label="高専研究テーマ">
+    <a href="#fpga-vision">FPGA表情認識</a><a href="#onion-yolox">YOLOX</a><a href="#onion-segmentation">Mask R-CNN</a><a href="#onion-edge">エッジ検出</a>
+  </nav>
+  {% for group in site.data.portfolio_evidence.groups %}
+    {% for item in group.items %}
+      {% if item.kosen %}{% include portfolio-entry.html item=item %}{% endif %}
+    {% endfor %}
+  {% endfor %}
+  <p class="poc-note">結果は確認した原稿・発表資料の記載です。今回の再測定ではありません。元コード、学習済みモデル、評価生ログは未照合です。論文PDFや画像の外部公開・再配布可否は別途確認します。</p>
+  <p><a href="{{ '/research/evidence/' | relative_url }}">全研究・PoCの資料庫へ →</a></p>
+</div>

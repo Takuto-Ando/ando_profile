@@ -3,7 +3,7 @@ main:
     url: /
   - title: "自己紹介 / About"
     url: /about/
-  - title: "研究内容 / Research"
+  - title: "技術/Technology"
     url: /research/
   - title: "経歴 / Biography"
     url: /biography/

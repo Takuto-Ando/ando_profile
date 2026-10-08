@@ -1,8 +1,12 @@
 ---
 permalink: /research/asr/
 classes: wide
+project_key: asr
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -18,6 +22,8 @@ classes: wide
 Automatic Speech Recognition (ASR) powers voice interfaces, transcription services, and accessibility tools. **Whisper**, OpenAI's transformer-based ASR model, poses unique challenges for non-GPU hardware due to its encoder-decoder architecture and heavy reliance on FP16 arithmetic.
 
 This research presents the **first implementation of Whisper ASR kernels on a CGRA** (IMAX), demonstrating energy-efficient inference with a custom FP16 computational kernel. The Whisper-tiny.en model is evaluated on an FPGA prototype with 28nm ASIC projections.
+
+{% include article-materials.html %}
 
 ### Key Contributions
 
@@ -37,6 +43,8 @@ Compared to GPU-based deployment, the IMAX implementation achieves significantly
   <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 and IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX architecture" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
+
+{% include article-materials.html figure=0 %}
 
 ### Results
 
@@ -78,6 +86,8 @@ Energy efficiency (PDP): IMAX achieves **1.90x** better energy than Jetson AGX O
 
 本研究では、**Whisper ASR カーネルの CGRA（IMAX）上への初実装**を行い、独自 FP16 演算カーネルによる省電力推論を実証しました。Whisper-tiny.en モデルを FPGA プロトタイプ上で評価し、28nm ASIC 性能を見積もります。
 
+{% include article-materials.html %}
+
 ### 主な成果
 
 **独自 FP16 カーネル設計**
@@ -96,6 +106,8 @@ GPU ベースの実装と比較して、IMAX は文字起こし精度を維持�
   <img src="{{ '/assets/images/imax3andimax4.jpg' | relative_url }}" alt="IMAX3 と IMAX4" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/imax.jpg' | relative_url }}" alt="IMAX アーキテクチャ" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
+
+{% include article-materials.html figure=0 %}
 
 ### 実験結果
 
@@ -123,4 +135,5 @@ Whisper-tiny.en のエンドツーエンドレイテンシとエネルギー効�
 |----|--------|----------|
 | 2025 | **CANDAR 2025** 🏆 最優秀論文賞 | Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA |
 
+{% endif %}
 {% endif %}

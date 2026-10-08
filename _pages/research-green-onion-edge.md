@@ -1,8 +1,12 @@
 ---
 permalink: /research/green-onion-edge/
 classes: wide
+project_key: green-onion-edge
 ---
 
+{% if site.technical_preview %}
+{% include technical-project.html show_title=true %}
+{% else %}
 {% include lang-switcher.html %}
 
 {% if site.active_lang == 'en' %}
@@ -25,6 +29,8 @@ The idea is to detect characteristic diagonal line patterns around the branching
   <img src="{{ '/assets/images/negi_machine.jpg' | relative_url }}" alt="Green onion trimming machine" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
   <img src="{{ '/assets/images/branch_example.png' | relative_url }}" alt="Branching point example" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
+
+{% include article-materials.html %}
 
 ### Key Points
 
@@ -68,6 +74,8 @@ Evaluation on Raspberry Pi 3 achieved **90.6%** detection rate for branching-poi
   <img src="{{ '/assets/images/branch_example.png' | relative_url }}" alt="分岐部の例" style="width:48%;min-width:220px;border:1px solid #E2E8F0;">
 </div>
 
+{% include article-materials.html %}
+
 ### 主なポイント
 
 **手法**
@@ -89,4 +97,5 @@ Raspberry Pi 3 における評価では、分岐部斜線の検出率 **90.6%**�
 | 2024 | **農業情報研究** | エッジデバイス上におけるリアルタイム小ねぎ分岐部位置検出 |
 | 2023 | **情処ARC研究発表会** | エッジ検出を用いたこねぎ分岐部の検出 |
 
+{% endif %}
 {% endif %}

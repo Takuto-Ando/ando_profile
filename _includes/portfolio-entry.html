@@ -1,0 +1,17 @@
+{% assign item = include.item %}
+<article id="{{ item.id }}" class="poc-card">
+  {% if item.image %}<img class="technical-image" src="{{ item.image | relative_url }}" alt="{{ item.title }}の既存資料" loading="lazy">{% endif %}
+  <h3>{% if item.href %}<a href="{{ item.href | relative_url }}">{{ item.title }}</a>{% else %}{{ item.title }}{% endif %}</h3>
+  <span class="poc-status">{{ item.status }}</span>
+  <p>{{ item.work }}</p>
+  {% if item.results %}<ul>{% for result in item.results %}<li>{{ result }}</li>{% endfor %}</ul>{% endif %}
+  {% if item.gallery %}<div class="portfolio-gallery">{% for figure in item.gallery %}<figure><a href="{{ figure.src | relative_url }}"><img src="{{ figure.src | relative_url }}" alt="{{ figure.caption }}" loading="lazy"></a><figcaption>{{ figure.caption }}</figcaption></figure>{% endfor %}</div>{% endif %}
+  {% if item.limit %}<p class="poc-note">評価範囲：{{ item.limit }}</p>{% endif %}
+  {% if item.documents %}<ul>{% for document in item.documents %}<li><a href="{{ document.href | relative_url }}">{{ document.label }} →</a></li>{% endfor %}</ul>{% endif %}
+  {% if item.attachment %}<p><a href="{{ item.attachment | relative_url }}">{{ item.attachment_label }} →</a></p>{% endif %}
+  <details class="technical-draft">
+    <summary>出典と次に揃える証拠</summary>
+    <ul>{% for source in item.sources %}<li><code>{{ source.path | escape }}</code><br>{{ source.kind }}</li>{% endfor %}</ul>
+    <p><strong>次に揃える証拠：</strong>{{ item.next }}</p>
+  </details>
+</article>

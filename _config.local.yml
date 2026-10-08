@@ -1,0 +1,15 @@
+url: "http://127.0.0.1:4000"
+baseurl: ""
+unpublished: true
+local_poc_preview: true
+technical_preview: true
+google_analytics: null
+analytics:
+  provider: false
+exclude:
+  - vendor
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - scripts
+  - _site-local

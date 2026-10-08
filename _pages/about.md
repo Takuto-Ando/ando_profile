@@ -17,10 +17,10 @@ classes: wide
       <h1 class="about-card__name">Takuto Ando</h1>
       <p class="about-card__role">First-year Doctoral Student (D1), Computing Architecture Laboratory, NAIST</p>
       <p class="about-card__text">
-        At NAIST, I am working on "building an energy-efficient AI computing infrastructure using next-generation AI accelerators." As AI models grow increasingly massive, the power consumption of data centers has become a significant social issue. While existing GPUs offer high performance, they suffer from a structural challenge known as the "von Neumann bottleneck," where the energy required to move data from memory exceeds the energy used for the computation itself. To address this, I focused on a unique architecture called CGLA, which integrates memory and arithmetic units in close proximity. The core of my research lies not simply in using new hardware, but in developing custom software that fully exploits its physical characteristics. Specifically, when implementing state-of-the-art models like Llama and speech recognition models, I employ "Hardware/Software Co-design"—partitioning data according to hardware memory capacity and bandwidth, and streaming it to keep the computational pipeline from stalling.
-      </p>
+        At NAIST, I am working on "building an energy-efficient AI computing infrastructure using next-generation AI accelerators." As AI models grow increasingly massive, the power consumption of data centers has become a significant social issue. While existing GPGPUs offer high performance, they suffer from a structural challenge known as the "von Neumann bottleneck," where the energy required to move data from memory exceeds the energy used for the computation itself. To address this, I focused on a unique architecture called CGLA, which integrates memory and arithmetic units in close proximity. The core of my research lies not simply in using new hardware, but in developing custom software that fully exploits its physical characteristics. Specifically, when implementing state-of-the-art models like Llama and speech recognition models, I employ "Hardware/Software Co-design" partitioning data according to hardware memory capacity and bandwidth, and streaming it to keep the computational pipeline from stalling. 　
+      </p>　
       <p class="about-card__text">
-        Currently, my main focus is developing applications designed to run on future computers. Ultimately, I hope to leverage the experience gained through my research to become an engineer capable of solving fundamental problems, serving as a bridge between technology and society.
+        Currently, my main focus is developing applications designed to run on future computers. Ultimately, I hope to leverage the experience gained through my research to become an engineer capable of solving fundamental problems, serving as a bridge between technology and society.　
       </p>
     </div>
   </div>
@@ -38,7 +38,7 @@ classes: wide
       <h1 class="about-card__name">安藤 拓翔</h1>
       <p class="about-card__role">奈良先端科学技術大学院大学 博士後期課程1年 / コンピューティング・アーキテクチャ研究室</p>
       <p class="about-card__text">
-        奈良先端大で次世代AIアクセラレータによる、省電力なAI計算基盤の構築に取り組んでいます。現在、AIのモデルは巨大化し、データセンターの消費電力が社会問題になっています。 既存のGPUは高性能ですが、フォン・ノイマン・ボトルネックと呼ばれる構造上の課題があり、メモリからデータを読み出す移動エネルギーが計算そのもののエネルギーよりも大きくなっています。そこで私は、メモリと演算器を一体化に近い形で配置したCGLAという独自アーキテクチャに着目しました。具体的な研究内容としては、Llamaなどの最新のLLMや音声認識モデルを実装や、これら実装においてハードウェアのメモリ容量や帯域に合わせてデータを分割し、パイプラインが止まらないようにデータを流し込むHW/SW協調設計を行いました。
+        奈良先端大で次世代AIアクセラレータによる、省電力なAI計算基盤の構築に取り組んでいます。現在AIのモデルは巨大化し、データセンターの消費電力が社会問題になっています。 既存のGPUは高性能ですが、フォン・ノイマン・ボトルネックと呼ばれる構造上の課題があり、メモリからデータを読み出す移動エネルギーが計算そのもののエネルギーよりも大きくなっています。そこで私は、メモリと演算器を一体化に近い形で配置したCGLAという独自アーキテクチャに着目しました。具体的な研究内容としては、Llamaなどの最新のLLMや音声認識モデルを実装や、これら実装においてハードウェアのメモリ容量や帯域に合わせてデータを分割し、パイプラインが止まらないようにデータを流し込むHW/SW協調設計を行いました。
       </p>
       <p class="about-card__text">
         現在は未来のコンピュータで動くアプリケーション開発を主に行っています。将来的にはこの研究での経験を活かして、実社会と技術のインターフェースとなるような本質的な問題解決ができるエンジニアになりたいです。

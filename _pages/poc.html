@@ -1,0 +1,63 @@
+---
+title: "組込み・産業I/O PoC"
+permalink: /poc/
+published: false
+author_profile: false
+classes: wide
+---
+<link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
+<div class="poc">
+  <p class="poc-eyebrow">HANDS-ON / PROTOTYPE EXPERIENCE</p>
+  <p class="poc-lead">回路とFirmwareをつなぎ、実機で動作を確かめる。個人で取り組んだ組込みPoCを、構成・評価・デバッグの観点からまとめています。</p>
+  <p class="poc-note">ローカル確認用の下書きです。動作経験は本人申告に基づき、測定ログ・波形・回路図との照合はこれから行います。製品開発実績や規格適合の証明としては扱いません。</p>
+  <p><a href="{{ '/research/evidence/#evidence-1' | relative_url }}">各PoCの出典と証拠整理状況を見る →</a></p>
+  <div class="poc-grid">
+    <article class="poc-card">
+      <span class="poc-status">動作経験あり / 証拠整理中</span>
+      <h2><a href="{{ '/poc/24v-digital-input/' | relative_url }}">24V Industrial Digital Input</a></h2>
+      <p>24V入力をコンパレータ・フォトカプラ・Schmitt Triggerを通してMSPM0へ接続。割込みとデバウンスまでの信号経路を整理します。</p>
+      <p>LM393 / PC817 / 74HC14 / MSPM0</p>
+      <a class="btn" href="{{ '/poc/24v-digital-input/' | relative_url }}">構成と評価項目を見る →</a>
+    </article>
+    <article class="poc-card">
+      <span class="poc-status">長時間試験の経験あり / ログ整理中</span>
+      <h2><a href="{{ '/poc/rs485/' | relative_url }}">RS-485 Communication</a></h2>
+      <p>UARTとMAX3485を使ったRS-485通信。120Ω終端・バイアスを含む構成と、長時間通信試験の記録をまとめます。</p>
+      <p>MAX3485 / UART / Termination / Bias</p>
+      <a class="btn" href="{{ '/poc/rs485/' | relative_url }}">構成と評価項目を見る →</a>
+    </article>
+    <article class="poc-card">
+      <span class="poc-status">実装・動作経験あり / 記録整理中</span>
+      <h2><a href="{{ '/poc/mspm0-peripheral-control/' | relative_url }}">MSPM0 Peripheral Control</a></h2>
+      <p>PA25のFalling Edge割込み、TimerGによるデバウンス、UARTイベントカウント、__WFI、PA24のADC12連続変換をまとめたFirmware PoC。</p>
+      <p>GPIO IRQ / TimerG / ADC12 / UART / WFI</p>
+      <a class="btn" href="{{ '/poc/mspm0-peripheral-control/' | relative_url }}">実装内容を見る →</a>
+    </article>
+    <article class="poc-card">
+      <span class="poc-status">駆動・復旧経験あり / 原因記録整理中</span>
+      <h2><a href="{{ '/poc/drv8835-motor-control/' | relative_url }}">DRV8835 Motor Control &amp; Troubleshooting</a></h2>
+      <p>MCUからのモータ駆動とMODE設定。誤配線時のUSB側の不調、BOOTSEL＋Resetによる復旧、設定修正後の動作を整理します。</p>
+      <p>DRV8835 / MODE / Wiring / Debugging</p>
+      <a class="btn" href="{{ '/poc/drv8835-motor-control/' | relative_url }}">実装とトラブルシュートを見る →</a>
+    </article>
+  </div>
+  <h2>Debug / Engineering Notes</h2>
+  <p>主要4本とは別に、実際に動かした基礎実験と調査経験を補足として残します。</p>
+  <div class="poc-table"><table>
+    <thead><tr><th>テーマ</th><th>実装・観測した内容</th><th>次に整理する証拠</th></tr></thead>
+    <tbody>
+      <tr><td>74HC595 Shift Register Control</td><td>PicoからDATA / CLK / LATCHを制御。8bit転送、LED全ON/OFF、ビットをシフトさせる動作を実装</td><td>配線図、Firmware、信号波形、動作写真。ハードウェアSPI使用の有無は未整理</td></tr>
+      <tr><td>Pico 2 W GPIO Pull-down Investigation</td><td>内部Pull-up / Pull-downの挙動に問題を感じた個体で、外付け4.7kΩ pull-downにより改善を観測</td><td>GPIO設定、配線、入力電圧、対策前後の比較。内部抵抗や個体故障への原因帰属は未確認</td></tr>
+    </tbody>
+  </table></div>
+  <h2>これから取り組むPoC</h2>
+  <ol>
+    <li><strong>主要4本の証拠整理：</strong>回路図・Firmware・測定条件・生ログ・波形・デバッグ事例を揃える。</li>
+    <li><strong>産業用センサノードの統合：</strong>24V電源、保護、Buck/LDO、MCU、ADC、RS-485、Watchdogを一つの動作系にまとめる。</li>
+    <li><strong>CAN / CAN FDと絶縁通信：</strong>対応MCU・transceiverを確認して構成を決め、終端・異常時の挙動・電源境界を評価する。</li>
+    <li><strong>C2000リアルタイム制御：</strong>PWM、ADC同期サンプリング、電流計測を統合する。</li>
+    <li><strong>産業Ethernet / Embedded Linux：</strong>EtherCATのPoC、AM62xの起動とDevice Tree・周辺I/Oへ広げる。</li>
+    <li><strong>Edge AI / Wireless：</strong>組込み推論のLatency・負荷測定、無線センサ通信へ広げる。</li>
+  </ol>
+  <p>今後の項目は計画であり、実装済みの実績には含めません。</p>
+</div>

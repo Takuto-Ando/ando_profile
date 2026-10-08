@@ -1,0 +1,65 @@
+<link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
+<link rel="stylesheet" href="{{ '/assets/css/design-candidates.css' | relative_url }}">
+<div class="poc technical" markdown="0">
+  <details class="technical-draft">
+    <summary>デザイン比較</summary>
+    <nav class="design-options" aria-label="デザイン候補">
+      <a href="?design=hierarchy" data-design="hierarchy">A 大きさで区別</a>
+      <a href="?design=link-accent" data-design="link-accent">B 記事タイトルにアクセント</a>
+      <a href="?design=section-band" data-design="section-band">C カテゴリを帯で区別</a>
+      <a href="{{ '/research/' | relative_url }}">採用デザイン（C）</a>
+    </nav>
+  </details>
+  <h1>技術/Technology</h1>
+  <p class="poc-lead">研究で実装・評価したアクセラレータや画像処理と、個人で動かした回路・Firmwareの記録です。</p>
+  <div class="technical-actions">
+    <a class="action-primary" href="{{ '/research/evidence/' | relative_url }}">ポートフォリオ資料庫を見る</a>
+    <a href="{{ '/research/kosen/' | relative_url }}">高専での研究を見る →</a>
+  </div>
+  <details class="technical-draft">
+    <summary>ローカル下書きについて</summary>
+    <p>研究の整理範囲はMCSoC 2026 SSM、CANDARW 2026 BitNet・NTTまでの論文原稿と既存掲載研究です。新しい原稿の公開状況・公開許可は掲載前に確認します。</p>
+  </details>
+  <nav class="technical-categories" aria-label="技術カテゴリ">
+    {% for section in site.data.technical_projects.sections %}
+      <a href="#{{ section.id }}">{{ section.title_ja }}</a>
+    {% endfor %}
+    <a href="#engineering-notes">技術ノート</a>
+  </nav>
+  {% for section in site.data.technical_projects.sections %}
+    <section id="{{ section.id }}" class="technical-section">
+      <h2>{{ section.title_ja }}</h2>
+      <p>{{ section.description }}</p>
+      <div class="poc-grid">
+        {% for entry in section.items %}
+          {% if entry.legacy %}
+            {% assign item = site.data.home_research | where: 'href', entry.legacy | first %}
+            <article class="poc-card">
+              <img class="technical-image" src="{{ item.image | relative_url }}" alt="{{ item.caption_ja }}" loading="lazy">
+              <h3><a href="{{ item.href | relative_url }}">{{ item.title_ja }}</a></h3>
+              <p>{{ item.body_ja }}</p>
+              <div class="bp-tags">{% for tag in item.tags %}<span class="bp-tag">{{ tag.label | replace: 'CGRA / CGLA', 'CGLA / Programmable ASIC' }}</span>{% endfor %}</div>
+            </article>
+          {% else %}
+            {% if entry.project %}
+              {% assign item = site.data.technical_projects.projects[entry.project] %}
+            {% else %}
+              {% assign item = entry %}
+            {% endif %}
+            <article class="poc-card">
+              <h3><a href="{{ item.href | relative_url }}">{{ item.title }}</a></h3>
+              {% if entry.project %}<span class="poc-status">{{ item.venue }}</span>{% endif %}
+              <p>{{ item.body }}</p>
+              <div class="bp-tags">{% for tag in item.tags %}<span class="bp-tag">{{ tag }}</span>{% endfor %}</div>
+            </article>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </section>
+  {% endfor %}
+  <section id="engineering-notes" class="technical-section">
+    <h2>技術ノート</h2>
+    <p>74HC595のシリアル転送とLED制御、Pico 2 Wの外付け4.7kΩ pull-downによる改善を、基礎実験と調査の記録として整理しています。</p>
+    <p><a href="{{ '/poc/' | relative_url }}">PoC一覧・補足ノート・今後の計画を見る →</a></p>
+  </section>
+</div>
