@@ -15,24 +15,16 @@
 {% assign stat_conference = 'International Conferences' %}
 {% assign stat_award = 'Awards' %}
 {% assign stat_domestic = 'Domestic Presentations' %}
-{% assign keywords_title = 'Research Keywords' %}
 {% assign news_title = 'News' %}
 {% assign featured_title = 'Technology' %}
 {% assign awards_title = 'Awards' %}
-{% assign focus_title = 'Current Focus' %}
-{% assign focus_1_title = 'System-level bottleneck analysis' %}
-{% assign focus_1_body = 'I analyze end-to-end bottlenecks including the host CPU, DMA transfers, chunk sizes, and runtime policies instead of focusing only on individual kernels.' %}
-{% assign focus_2_title = 'Reusable software stacks' %}
-{% assign focus_2_body = 'Beyond application-specific implementations, I am interested in software foundations that can support multiple AI workloads on IMAX.' %}
-{% assign focus_3_title = 'Scaling from edge to server' %}
-{% assign focus_3_body = 'Through comparative studies of IMAX3 and IMAX4, I examine how accelerator design and host-side infrastructure should cooperate.' %}
 {% assign gallery_title = 'Gallery' %}
 {% else %}
 {% assign profile_name = '安藤 拓翔' %}
 {% assign profile_subname = 'Takuto ANDO' %}
 {% assign profile_role = '博士後期課程1年 · コンピューティング・アーキテクチャ研究室' %}
 {% assign profile_affiliation = '奈良先端科学技術大学院大学' %}
-{% assign profile_bio = 'AI・画像処理技術を中心に、計算機アーキテクチャから組込みシステムまで幅広い技術領域を探求。ハードウェアとソフトウェアの両面から、性能・消費電力・コストの最適化と先端技術の社会実装を志向する。 奈良先端大では、非ノイマン型アクセラレータ IMAX 上で、LLM・音声認識・耐量子計算機暗号・無線信号処理に関わる行列演算・多項式演算の実装と最適化に従事し、研究成果を国際会議やジャーナルにて発表。高専時代には、FPGAを用いた表情認識・物体検出・農業画像認識の研究に取り組んだ。' %}
+{% assign profile_bio = 'AI・画像処理技術を中心に、計算機アーキテクチャから組込みシステムまで幅広い技術を探求。 奈良先端大では、非ノイマン型アクセラレータ IMAX 上で、LLM・音声認識・耐量子計算機暗号・無線信号処理に関わる行列演算・多項式演算の実装と最適化に従事し、研究成果を国際会議やジャーナルにて発表。高専時代には、FPGAを用いた表情認識・物体検出・農業画像認識の研究に取り組んだ。' %}
 {% assign publications_label = '研究業績' %}
 {% assign presentations_label = '発表資料' %}
 {% assign biography_label = '経歴' %}
@@ -40,17 +32,9 @@
 {% assign stat_conference = '国際会議' %}
 {% assign stat_award = '受賞' %}
 {% assign stat_domestic = '国内発表' %}
-{% assign keywords_title = '研究キーワード' %}
 {% assign news_title = 'ニュース' %}
-{% assign featured_title = '技術/Technology' %}
+{% assign featured_title = '技術' %}
 {% assign awards_title = '受賞歴' %}
-{% assign focus_title = '現在注力していること' %}
-{% assign focus_1_title = 'システム全体のボトルネック解析' %}
-{% assign focus_1_body = 'カーネル単体ではなく、ホスト CPU、DMA 転送、chunk サイズ、ランタイム方針まで含めて end-to-end の支配要因を見ています。' %}
-{% assign focus_2_title = '再利用可能なソフトウェアスタック' %}
-{% assign focus_2_body = '個別アプリ向けの実装にとどまらず、IMAX 上で複数の AI ワークロードを支えられるソフトウェア基盤の整理に関心があります。' %}
-{% assign focus_3_title = 'エッジからサーバへの展開' %}
-{% assign focus_3_body = 'IMAX3 と IMAX4 の比較を通じて、アクセラレータ本体とホストインフラがどう協調すべきかを検証しています。' %}
 {% assign gallery_title = 'ギャラリー' %}
 {% endif %}
 
@@ -94,27 +78,6 @@
     </div>
   </div>
 
-
-  <div class="bp-keywords">
-    <span class="bp-keywords__ttl">{{ keywords_title }}</span>
-    {% if is_en %}
-    <span class="bp-keyword">Computer Architecture</span>
-    <span class="bp-keyword">AI Accelerator</span>
-    <span class="bp-keyword">CGLA / CGRA</span>
-    <span class="bp-keyword">LLM</span>
-    <span class="bp-keyword">Speech Recognition</span>
-    <span class="bp-keyword">Generative AI</span>
-    <span class="bp-keyword">Hardware/Software Co-design</span>
-    {% else %}
-    <span class="bp-keyword">計算機アーキテクチャ</span>
-    <span class="bp-keyword">AI アクセラレータ</span>
-    <span class="bp-keyword">CGLA / CGRA</span>
-    <span class="bp-keyword">LLM</span>
-    <span class="bp-keyword">音声認識</span>
-    <span class="bp-keyword">画像生成</span>
-    <span class="bp-keyword">ハードウェア・ソフトウェア協調設計</span>
-    {% endif %}
-  </div>
 
   <div id="news" class="bp-sec">{{ news_title }}</div>
   {% assign latest_posts = site.posts | sort: "date" | reverse %}
@@ -225,7 +188,7 @@
   </div>
 
   <div id="awards" class="bp-awards">
-    <div class="bp-awards__ttl">{{ awards_title }}</div>
+    <div class="bp-sec">{{ awards_title }}</div>
     <div class="bp-award-detail-list">
       {% for item in site.data.home_awards %}
       {% if is_en %}
@@ -249,23 +212,7 @@
     </div>
   </div>
 
-  <div class="bp-sec">{{ focus_title }}</div>
-  <div class="bp-note-grid">
-    <div class="bp-note-card">
-      <div class="bp-note-card__ttl">{{ focus_1_title }}</div>
-      <p>{{ focus_1_body }}</p>
-    </div>
-    <div class="bp-note-card">
-      <div class="bp-note-card__ttl">{{ focus_2_title }}</div>
-      <p>{{ focus_2_body }}</p>
-    </div>
-    <div class="bp-note-card">
-      <div class="bp-note-card__ttl">{{ focus_3_title }}</div>
-      <p>{{ focus_3_body }}</p>
-    </div>
-  </div>
-
-  <div class="bp-sec">{{ gallery_title }}</div>
+  <div id="gallery" class="bp-sec">{{ gallery_title }}</div>
   <div class="bp-strip" data-strip data-strip-auto="true">
     <div class="bp-strip__controls">
       <button class="bp-strip__btn" type="button" data-strip-prev aria-label="Previous">&lt;</button>

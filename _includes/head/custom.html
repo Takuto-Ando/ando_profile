@@ -1,4 +1,4 @@
-{% if site.technical_preview %}
+{% if site.technical_preview or site.technical_enabled %}
 <script src="{{ '/assets/js/technical-nav.js' | relative_url }}" defer></script>
 <script src="{{ '/assets/js/design-candidates.js' | relative_url }}" defer></script>
 {% endif %}

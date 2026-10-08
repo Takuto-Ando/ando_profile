@@ -1,24 +1,34 @@
-{% if site.technical_preview %}
+{% if site.technical_preview or site.technical_enabled %}
 {% assign materials = site.data.article_materials[page.permalink] %}
 {% if materials %}
 <link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
 {% if include.figure != nil %}
 {% assign figure = materials.figures[include.figure] %}
 {% if figure %}
+{% if site.technical_preview or figure.src contains '/assets/images/' %}
 <figure class="article-figure" markdown="0">
   <a href="{{ figure.src | relative_url }}" target="_blank" rel="noopener"><img src="{{ figure.src | relative_url }}" alt="{{ figure.caption }}" loading="lazy"></a>
   <figcaption>{{ figure.caption }}</figcaption>
 </figure>
 {% endif %}
+{% endif %}
 {% else %}
+{% assign documents = materials.documents %}
+{% unless site.technical_preview %}
+{% assign documents = documents | where_exp: 'document', "document.href contains '/assets/pdfs/'" %}
+{% endunless %}
+{% if documents.size > 0 %}
 <div class="article-citation" markdown="0">
   <p>{% if site.active_lang == 'en' %}The method and evaluation are described in {% else %}手法と評価条件の詳細は、{% endif %}
-    {% for document in materials.documents %}
+    {% for document in documents %}
       <a href="{{ document.href | relative_url }}" target="_blank" rel="noopener">{{ include.title | default: document.label }}</a>{% unless forloop.last %}、{% endunless %}
     {% endfor %}
     {% if site.active_lang == 'en' %}.{% else %}にまとめています。{% endif %}</p>
-  {% if materials.note %}<p class="poc-note">{{ materials.note }}</p>{% endif %}
+  {% if site.technical_preview and materials.note %}<p class="poc-note">{{ materials.note }}</p>{% endif %}
 </div>
+{% elsif include.title %}
+<p class="article-citation">{{ include.title | escape }}</p>
+{% endif %}
 {% endif %}
 {% endif %}
 {% endif %}

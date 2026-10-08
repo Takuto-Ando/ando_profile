@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
 <link rel="stylesheet" href="{{ '/assets/css/design-candidates.css' | relative_url }}">
 <div class="poc technical" markdown="0">
+  {% if site.technical_preview %}
   <details class="technical-draft">
     <summary>デザイン比較</summary>
     <nav class="design-options" aria-label="デザイン候補">
@@ -10,16 +11,24 @@
       <a href="{{ '/research/' | relative_url }}">採用デザイン（C）</a>
     </nav>
   </details>
-  <h1>技術/Technology</h1>
+  {% endif %}
+  <h1>技術</h1>
   <p class="poc-lead">研究で実装・評価したアクセラレータや画像処理と、個人で動かした回路・Firmwareの記録です。</p>
   <div class="technical-actions">
+    {% if site.technical_preview %}
     <a class="action-primary" href="{{ '/research/evidence/' | relative_url }}">ポートフォリオ資料庫を見る</a>
     <a href="{{ '/research/kosen/' | relative_url }}">高専での研究を見る →</a>
+    {% else %}
+    <a class="action-primary" href="{{ '/poc/' | relative_url }}">組込みPoCを見る</a>
+    <a href="#edge-ai">Edge AI・画像処理を見る →</a>
+    {% endif %}
   </div>
+  {% if site.technical_preview %}
   <details class="technical-draft">
     <summary>ローカル下書きについて</summary>
     <p>研究の整理範囲はMCSoC 2026 SSM、CANDARW 2026 BitNet・NTTまでの論文原稿と既存掲載研究です。新しい原稿の公開状況・公開許可は掲載前に確認します。</p>
   </details>
+  {% endif %}
   <nav class="technical-categories" aria-label="技術カテゴリ">
     {% for section in site.data.technical_projects.sections %}
       <a href="#{{ section.id }}">{{ section.title_ja }}</a>

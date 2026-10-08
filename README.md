@@ -8,23 +8,24 @@ Githubがgoogle探索に引っかかるようにテスト
 停止はターミナルで `Ctrl+C`。
 既存Gemfileの依存が必要で、`bundle` または `bundle3.2` を使用する。
 
-24V DI / RS-485 / MSPM0 Peripheral Control / DRV8835のページは `published: false` の下書きで、通常のJekyll buildでは出力しない。
-ローカルconfigで下書きを有効にし、analyticsを無効化する。
+24V DI / RS-485 / MSPM0 Peripheral Control / DRV8835の紹介ページは通常のJekyll buildでも出力する。
+ローカルconfigで資料庫などの下書きを有効にし、analyticsを無効化する。
 生成先は `_site-local/`、待受は `127.0.0.1` のみ。公開・push・deployは実行しない。
 会話で共有された動作経験と、未整理の測定値・証拠を区別して記載している。
 ログ・波形・回路図を照合してから結果欄を更新する。
 
-## 技術/Technologyのローカル確認
+## 技術ページのローカル確認
 
 同じ起動手順で `http://127.0.0.1:4000/research/` を開く。
-ローカルconfigの `technical_preview: true` のとき、研究ページとナビ表示を技術ページへ切り替える。
+通常configの `technical_enabled: true` で、公開サイトにも同じ技術ページ構成を使用する。
+ローカルconfigの `technical_preview: true` は比較用UI・下書き注記・ローカル添付資料を有効にする。
 Accelerator / Edge AI / Industrial PoC / Engineering Notesのカテゴリで既存研究とPoCをまとめる。
-NTT / BitNet / SSM / DPDの新詳細は `published: false` で、通常buildの研究ページは従来の表示を維持する。
+NTT / BitNet / SSM / DPDの紹介ページも通常buildで出力する。未公開PDF・評価資料は出力しない。
 研究の整理範囲はMCSoC 2026 SSM・CANDARW 2026 BitNet/NTTまでの原稿と、それ以前の既存研究。
-新詳細の公開前には論文の公開状況・公開許可を確認する。
+論文PDF・評価資料の公開前には公開状況・公開許可を確認する。
 
 デザイン候補は `/research/?design=notebook`（A ノート型）、`?design=index`（B 目次型）、`?design=gallery`（C 作品集型）。
-ページ上部の「デザイン比較」を開いて切り替える。同じ内容と既存の配色を使用する。
+ローカルページ上部の「デザイン比較」を開いて切り替える。同じ内容と既存の配色を使用する。
 
 現在の1列一覧を維持した見出し候補は `?design=hierarchy`（A 大きさで区別）、`?design=link-accent`（B 記事タイトルにアクセント）、`?design=section-band`（C カテゴリ帯）。
 以前のレイアウト候補も各URLから確認できる。
@@ -35,8 +36,9 @@ NTT / BitNet / SSM / DPDの新詳細は `published: false` で、通常buildの�
 各研究記事の添付資料は `_data/article_materials.yml` で管理する。
 論文PDFは紹介文中のリンク、構成図は実装説明、評価図は結果説明に組み込む。画像クリックで原寸を開く。
 元ファイルのパスとキャプションは同じYAMLに残す。
-ローカルの研究11記事は `_data/technical_projects.yml` と共通テンプレートで執筆する。
-旧研究7記事も新構成へ切り替え、元のMarkdown本文は通常buildの互換表示として残している。
+研究11記事は `_data/technical_projects.yml` と共通テンプレートで執筆する。
+旧研究7記事も新構成へ切り替え、元のMarkdown本文は両方の技術フラグを無効にした場合の互換表示として残している。
+公開buildの本文には既存の `assets/images/` の図と `assets/pdfs/` の論文リンクだけを差し込む。
 新しい添付ファイルは `assets/portfolio-evidence/article-media/` に保存し、通常buildでは既存のexclude設定で出力しない。
 `assets/portfolio-evidence/` はGit管理からも除外する。論文PDF・評価資料はローカルに保持し、pushに含めない。
 NTT/BitNetの保存済みPDFは現行本文との版差を明記する。PoCの写真・回路図・ログは未特定のため代用品を添付しない。
