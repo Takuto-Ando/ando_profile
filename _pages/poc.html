@@ -46,10 +46,14 @@ classes: wide
   <div class="poc-table"><table>
     <thead><tr><th>テーマ</th><th>実装・観測した内容</th><th>次に整理する証拠</th></tr></thead>
     <tbody>
-      <tr><td>74HC595 Shift Register Control</td><td>PicoからDATA / CLK / LATCHを制御。8bit転送、LED全ON/OFF、ビットをシフトさせる動作を実装</td><td>配線図、Firmware、信号波形、動作写真。ハードウェアSPI使用の有無は未整理</td></tr>
+      <tr><td>74HC595 Shift Register Control</td><td>PicoからDATA / CLK / LATCHを制御。8bit転送、LED全ON/OFF、ビットをシフトさせる動作を実装</td><td>実機写真は掲載済み。配線図、Firmware、信号波形、ハードウェアSPI使用の有無は未整理</td></tr>
       <tr><td>Pico 2 W GPIO Pull-down Investigation</td><td>内部Pull-up / Pull-downの挙動に問題を感じた個体で、外付け4.7kΩ pull-downにより改善を観測</td><td>GPIO設定、配線、入力電圧、対策前後の比較。内部抵抗や個体故障への原因帰属は未確認</td></tr>
     </tbody>
   </table></div>
+  <figure class="article-figure">
+    <a href="{{ '/assets/images/shift-register-led.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/shift-register-led.jpg' | relative_url }}" alt="Picoと8bitシフトレジスタを接続した8個のLEDの実機写真" loading="lazy"></a>
+    <figcaption>74HC595の8bitシフトレジスタLED制御。Picoから接続した基板と、8個のLEDが点灯している様子。</figcaption>
+  </figure>
   <h2>これから取り組むPoC</h2>
   <ol>
     <li><strong>主要4本の証拠整理：</strong>回路図・Firmware・測定条件・生ログ・波形・デバッグ事例を揃える。</li>

@@ -1,3 +1,7 @@
+- image: /assets/images/graduation.jpg
+  alt: 修了時の写真 / Graduation
+- image: /assets/images/master-thesis-presentation.jpg
+  alt: 修論発表 / Master's thesis presentation
 - image: /assets/images/ICISN_1.jpg
   alt: ICISN 2026
 - image: /assets/images/ICISN_2.PNG
@@ -16,6 +20,5 @@
   alt: MCSoC 2025 presentation
 - image: /assets/images/ikoma_relay_ando.jpg
   alt: Ikoma Relay Marathon 2025
-
 
 
