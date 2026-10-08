@@ -27,9 +27,6 @@ sections:
             pages   = {811--819},
             year    = {2026}
           }
-        badges:
-          - label: "Impact Factor: 0.72 (2026)"
-            type: impact
       - authors:
           - name: Takuto Ando
             me: true
@@ -54,8 +51,9 @@ sections:
           - label: Links
             url: https://doi.org/10.1002/cpe.70826
         badges:
-          - label: "2026"
-            type: neutral
+          - label: "Impact Factor: 2.2 (2025)"
+            type: impact
+            source: https://onlinelibrary.wiley.com/journal/15320634/journal-metrics
       - authors:
           - name: Takuto Ando
             me: true
@@ -82,8 +80,9 @@ sections:
             url: https://ieeexplore.ieee.org/document/11264489
         pdf: https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=11264489
         badges:
-          - label: "Impact Factor: 3.6 (2026)"
+          - label: "Impact Factor: 4.2 (2025)"
             type: impact
+            source: https://ieeeaccess.ieee.org/about/bibliometrics/
       - authors:
           - name: Takuto Ando
             me: true
@@ -109,9 +108,6 @@ sections:
             url: http://www.icicel.org/ell/contents/2025/4/el-19-04-07.pdf
           - label: PDF
             url: /assets/pdfs/paper/icic_express.pdf
-        badges:
-          - label: "Impact Factor: 0.72 (2026)"
-            type: impact
 
   - key: domestic_journals
     title_en: Domestic Journals
