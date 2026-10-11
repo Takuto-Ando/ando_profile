@@ -1,8 +1,8 @@
 sections:
   - id: accelerator
     title: Accelerator / Hardware–Software Co-design
-    title_ja: アクセラレータ・HW/SW協調実装
-    description: 演算のmapping、runtimeへの組込み、正しさの検証と性能分析。CGLAはCPU-Grounded Linear Arrayというprogrammable ASICで、研究ではそのFPGAプロトタイプ上の測定とASIC投影を区別しています。
+    title_ja: アクセラレータ・ハードウェアとソフトウェアの協調実装
+    description: 演算の割当て、実行環境への組込み、正しさの検証と性能分析。CGLAはプログラム可能なASICで、研究ではFPGA試作機での測定とASICへの性能予測を区別しています。
     items:
       - project: ntt
       - project: bitnet
@@ -13,8 +13,8 @@ sections:
       - legacy: /research/generative-ai/
       - legacy: /research/imax/
   - id: edge-ai
-    title: Edge AI / Image Processing
-    title_ja: Edge AI・画像処理
+    title: エッジAI / 画像処理
+    title_ja: エッジAI・画像処理
     description: FPGAを使った認識システムと、実機への応用を見据えた画像処理。既存の研究テーマもこのカテゴリへまとめています。
     items:
       - legacy: /research/facial-expression/
@@ -23,173 +23,173 @@ sections:
   - id: industrial
     title: Industrial Embedded Systems / PoC
     title_ja: 組込みシステム・PoC
-    description: 個人で実際に動かした回路・Firmwareの経験。研究成果とは別に、構成、評価条件、デバッグの記録を残しています。
+    description: 個人で実際に動かした回路・ファームウェアの経験。研究成果とは別に、構成、評価条件、デバッグの記録を残しています。
     items:
-      - title: 24V Industrial Digital Input
+      - title: 24V産業用デジタル入力
         href: /poc/24v-digital-input/
         body: LM393、PC817、74HC14からMSPM0の割込み・デバウンスまでをつなぐ入力回路PoC。
-        tags: [24V Input, Comparator, Isolation, MSPM0]
-      - title: RS-485 Communication
+        tags: [24V入力, コンパレータ, 絶縁, MSPM0]
+      - title: RS-485通信
         href: /poc/rs485/
         body: MAX3485とUARTを使った通信、120Ω終端・バイアス、長時間通信試験の経験。
-        tags: [RS-485, UART, Termination, Communication Test]
-      - title: MSPM0 Peripheral Control
+        tags: [RS-485, UART, 終端, 通信試験]
+      - title: MSPM0の周辺機能制御
         href: /poc/mspm0-peripheral-control/
-        body: GPIO IRQ、TimerG、ADC12連続変換、UARTイベントカウント、__WFIを組み合わせたFirmware。
-        tags: [GPIO IRQ, Timer, ADC, Firmware]
-      - title: DRV8835 Motor Control & Troubleshooting
+        body: GPIO割込み、TimerG、ADC12連続変換、UARTイベントカウント、__WFIを組み合わせたファームウェア。
+        tags: [GPIO割込み, タイマ, ADC, ファームウェア]
+      - title: DRV8835のモータ制御とトラブルシュート
         href: /poc/drv8835-motor-control/
         body: MCUからのモータ駆動、MODE設定、誤配線時の不調と復旧をまとめた事例。
-        tags: [Motor Driver, MODE, Wiring, Troubleshooting]
+        tags: [モータドライバ, MODE, 配線, トラブルシュート]
 projects:
   ntt:
     evidence_id: ntt
-    title: NTT Arithmetic over the ML-KEM Modulus
+    title: ML-KEMで用いる法3329上のNTT演算
     href: /research/ntt/
-    body: q=3329上のNTT演算をCGLAへmapping。段間のデータ配置とARM・DMA境界まで含め、CPU参照との一致とFPGA実測を評価。
-    tags: [NTT, Modular Arithmetic, CGLA, Verification]
+    body: q=3329上のNTT演算をCGLAに割り当てる。段間のデータ配置とARM・DMA境界まで含め、CPU参照との一致とFPGA実測を評価。
+    tags: [NTT, 剰余演算, CGLA, 検証]
     paper: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
     venue: CANDARW 2026 原稿
-    overview: ML-KEMで使われる法q=3329の演算を、既存のCGLA datapathへ載せる研究です。専用NTTユニットを追加する代わりに、演算の分解と段間レコードの配置をソフトウェアで構成しています。
+    overview: ML-KEMで使われる法q=3329の演算を、既存のCGLAのデータパスへ載せる研究です。専用NTTユニットを追加する代わりに、演算の分解と段間レコードの配置をソフトウェアで構成しています。
     work:
-      - Twiddleを8bitと4bitに分割し、部分積を剰余へ落としてから再結合するFP32 butterflyを構成。
-      - 先頭2段を41-PE呼出しへ融合し、残りを47-PE呼出しで処理する7-call chainを実装。
+      - 回転因子を8ビットと4ビットに分割し、部分積を剰余へ落としてから再結合するFP32によるバタフライ演算を構成。
+      - 先頭2段を41-PE呼出しへ融合し、残りを47-PE呼出しで処理する7回の呼出しを連結する処理を実装。
       - 各段の出力を次段向けレコードへ直接格納し、ARM側の並べ替えと正規化、DMAを含む処理境界を評価。
-      - CPU参照との係数比較、batch条件ごとの実測、ASIC投影を原稿に整理。
+      - CPU参照との係数比較、バッチ条件ごとの実測、ASIC投影を原稿に整理。
     results:
-      - 原稿では4cohort・105回のFPGA実行で817,152出力係数がCPU参照と一致しています。
-      - Batch 64のFPGA end-to-end実測は27.5 µs/NTTです。これはASIC実測値ではありません。
+      - 原稿では4組の実験条件・105回のFPGA実行で817,152出力係数がCPU参照と一致しています。
+      - バッチサイズ64で測定したFPGA上の処理全体の時間は27.5 µs/NTTです。これはASIC実測値ではありません。
     limits:
-      - 評価対象は8段のcyclic radix-2 driverです。標準ML-KEMの7-layer incomplete negacyclic NTTとは異なります。
+      - 評価対象は8段の基数2の巡回変換処理です。標準ML-KEMの7段の不完全な負巡回NTTとは異なります。
       - 標準ML-KEMの多項式乗算全体や鍵カプセル化の実装・検証結果ではありません。
       - ASICの時間・エネルギーは投影です。実シリコンの測定値として扱いません。
   bitnet:
     evidence_id: bitnet
-    title: BitNet Low-bit Kernel Mapping & Runtime Integration
+    title: BitNetの低ビット演算と実行環境への組込み
     href: /research/bitnet/
-    body: 三値重みとint8活性をsigned-int4命令へmapping。BitNet C++の一部呼出しをoffloadし、host・staging・drainの境界を分析。
-    tags: [BitNet, Signed INT4, C++, Runtime Integration]
+    body: 三値重みとint8形式の活性値を符号付き4ビット整数命令に割り当てる。BitNet C++の一部呼出しをオフロードし、ホスト・データ準備・出力回収の境界を分析。
+    tags: [BitNet, 符号付きINT4, C++, 実行環境への組込み]
     paper: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
     venue: CANDARW 2026 原稿
-    overview: BitNetの三値重みと整数活性の積を、再利用可能なsigned-int4命令OP_SMA4へ対応付ける研究です。演算の正確な再構成と、既存runtimeへ接続した際の処理境界を扱います。
+    overview: BitNetの三値重みと整数の活性値の積を、再利用可能な符号付き4ビット整数命令OP_SMA4へ対応付ける研究です。演算の正確な再構成と、既存ランタイムへ接続した際の処理境界を扱います。
     work:
-      - 三値重みをsigned-int4 laneへ配置し、int8活性を2つのencoded signed-int4 fragmentへ分解。
-      - Shift-and-addとsparse correctionによって元の整数dot productを再構成。
-      - BitNet C++ runtimeの選択した1呼出しをCGLAへoffload。
-      - Input staging、array execution、output drainを分け、exact pathと近似1-stream pathを比較。
+      - 三値重みを符号付き4ビット整数の演算レーンへ配置し、int8形式の活性値を2つの符号付き4ビット整数として符号化した断片へ分解。
+      - シフトと加算、必要な要素への補正によって元の整数内積を再構成。
+      - BitNet C++のランタイムの選択した1呼出しをCGLAへオフロード。
+      - 入力データの準備、演算アレイの実行、出力データの回収を分け、厳密な計算経路と近似1ストリームの処理経路を比較。
     results:
-      - 原稿では1呼出しをoffloadしたBitNet C++ decode境界で2.52 tokens/sを測定しています。
-      - 整数partial dotの正しさと、近似pathでの誤差を区別して評価しています。
+      - 原稿では1呼出しをオフロードしたBitNet C++のデコード処理で2.52 トークン/秒を測定しています。
+      - 整数部分内積の正しさと、近似処理経路での誤差を区別して評価しています。
     limits:
-      - 全BitNet layerのoffloadではなく、選択した1呼出しを含むruntime評価です。大部分の実行はhostに残ります。
-      - Layer timingと840MHzのASIC性能は投影を含み、全モデルのASIC実測高速化を示すものではありません。
-      - Partial-dot誤差は生成tokenの品質やモデル精度とは別の指標です。
+      - BitNetの全レイヤのオフロードではなく、選択した1呼出しを含むランタイム評価です。大部分の実行はホストに残ります。
+      - レイヤの処理時間と840MHzのASIC性能は投影を含み、全モデルのASIC実測高速化を示すものではありません。
+      - 部分内積誤差は生成トークンの品質やモデル精度とは別の指標です。
   ssm:
     evidence_id: ssm
-    title: Mamba-family SSM Kernel Mapping & Evaluation
+    title: Mamba系状態空間モデルのカーネル実装と評価
     href: /research/ssm/
-    body: Dense projection、SSD、再帰state updateをCGLAへmappingし、kernel単体からtoken実行までの境界とボトルネックを評価。
-    tags: [Mamba, SSM, Kernel Mapping, Performance Analysis]
+    body: 全結合の射影演算、SSD、再帰状態更新をCGLAに割り当て、カーネル単体からトークン実行までの境界とボトルネックを評価。
+    tags: [Mamba, SSM, カーネルの割当て, 性能分析]
     paper: Mamba-Family State-Space Model Kernels on a Programmable CGLA
     venue: MCSoC 2026 原稿
-    overview: Mamba-familyの推論処理をdense projection、SSD、recurrent-state updateに分け、それぞれがCGLAの演算pipelineと転送境界にどう対応するかを調べた研究です。
+    overview: Mamba系の推論処理を全結合の射影演算、SSD、再帰的な状態更新に分け、それぞれがCGLAの演算パイプラインと転送境界にどう対応するかを調べた研究です。
     work:
-      - Projection GEMM、SSD Step-1、再帰state updateのkernelを実装・評価。
-      - Kernel演算だけでなく、DMAを含む呼出し時間とCPU参照との出力差を確認。
-      - Mamba-130Mのtoken-level integrationで、decode時間の内訳を計測。
-      - 長いreductionと短いreductionの差、kernel境界、projection GEMVの課題を整理。
+      - 射影演算のGEMM、SSDのステップ1、再帰状態更新のカーネルを実装・評価。
+      - カーネル演算だけでなく、DMAを含む呼出し時間とCPU参照との出力差を確認。
+      - Mamba-130Mのトークン単位の実行環境への組込みで、デコード時間の内訳を計測。
+      - 長い集約演算と短い集約演算の差、カーネル境界、射影演算のGEMVの課題を整理。
     results:
-      - 論文では長いreductionを持つprojectionと、短いreduction・境界費用に制約されるSSD Step-1を区別しています。
-      - Mamba-130Mのdecode計測ではprojection GEMVをボトルネックとして確認しています。
+      - 論文では集約演算が長い射影演算と、短い集約演算・境界費用に制約されるSSDのステップ1を区別しています。
+      - Mamba-130Mのデコード計測では射影演算のGEMVをボトルネックとして確認しています。
     limits:
-      - Token integrationには同条件のend-to-end CPU/GPU比較がなく、モデル全体の高速化は主張していません。
-      - このページはMCSoC 2026原稿の範囲です。その後のkernel改善や追加実験は含めません。
+      - トークン単位の組込みには同条件の処理全体でのCPU/GPU比較がなく、モデル全体の高速化は主張していません。
+      - このページはMCSoC 2026原稿の範囲です。その後のカーネル改善や追加実験は含めません。
   dpd:
     evidence_id: dpd
-    title: Memory-Polynomial DPD Kernel Mapping
+    title: メモリ多項式によるデジタルプリディストーション（DPD）の実装
     href: /research/dpd/
-    body: Memory-polynomial DPDのcomplex-MAC reductionをCGLAへmapping。実測時間、モデル電力による評価、合成PAモデルのNMSE・ACLRを整理。
-    tags: [DPD, Complex MAC, Wireless, System Evaluation]
+    body: メモリ多項式によるDPDの複素数の積和による集約演算をCGLAに割り当てる。実測時間、モデル電力による評価、合成PAモデルのNMSE・ACLRを整理。
+    tags: [DPD, 複素数積和演算, 無線通信, システム評価]
     paper: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
     venue: APCCAS 2026 原稿
-    overview: Memory-polynomial Digital Predistortionのreduction kernelをIMAXへmappingする研究です。係数と入力履歴のlocal reuseを利用し、通信向け演算を既存のprogrammable datapathで実行します。
+    overview: メモリ多項式によるデジタルプリディストーションの集約演算カーネルをIMAXに割り当てる研究です。係数と入力履歴を局所的に再利用し、通信向け演算を既存のプログラム可能なデータパスで実行します。
     work:
-      - P=5、M=5のodd-order memory-polynomial構成における15項のcomplex-MAC reductionをmapping。
-      - 係数をlocal memoryに保持し、1024-sample tile上で履歴を進める33-stage pipelineを構成。
+      - P=5、M=5の奇数次数のメモリ多項式構成における15項の複素数の積和による集約演算を割当て。
+      - 係数をローカルメモリに保持し、1024サンプルのタイル上で履歴を進める33段のパイプラインを構成。
       - FPGA実測時間とASIC投影を分け、CUDAおよびARM-NEONとの評価境界を整理。
       - 合成PAモデルによるNMSE・ACLR検証を実施。
     results:
-      - 原稿はkernel-onlyとend-to-endの測定時間を区別し、同じsingle-precision complex workloadで比較しています。
-      - NMSE・ACLRの検証はcontrolled synthetic PA modelを用いた評価です。
+      - 原稿はカーネル単体と処理全体の測定時間を区別し、同じ単精度複素数の処理で比較しています。
+      - NMSE・ACLRの検証は条件を統一した合成PAモデルを用いた評価です。
     limits:
       - RF計測器や実PAを使った実機の線形化試験ではありません。
-      - Energy比較はplatform powerの仮定を使ったモデル評価で、workload依存の実消費電力やASIC実測ではありません。
+      - エネルギー比較は機器全体の消費電力の仮定を使ったモデル評価で、処理内容依存の実消費電力やASIC実測ではありません。
   q-snap:
     title: CGLA向けLLM実行最適化
     evidence_id: q-snap
     venue: ICISN 2026
     paper: Q-snap Quantization-Aware Dynamic Chunking for LLM Execution on a CGLA
-    overview: 量子化LLMをCGLAで実行する際のchunk分割を扱った研究です。量子化アライメントと実行時のメモリ制約に応じてchunkサイズを選び、prefillの転送オーバーヘッドを評価しました。
-    tags: [Q-snap, LLM, Runtime, Chunking]
+    overview: 量子化LLMをCGLAで実行する際のチャンク分割を扱った研究です。量子化アライメントと実行時のメモリ制約に応じてチャンクサイズを選び、プリフィルの転送オーバーヘッドを評価しました。
+    tags: [Q-snap, LLM, ランタイム, チャンク分割]
     work:
-      - 固定chunk分割で生じるホスト・デバイス間転送のオーバーヘッドを分析。
-      - 量子化条件とメモリ制約に応じてchunkサイズを動的に選択する手法を実装。
-      - 同じIMAX環境でbaselineとQ-snapのprefill throughputを比較。
+      - 固定チャンク分割で生じるホスト・デバイス間転送のオーバーヘッドを分析。
+      - 量子化条件とメモリ制約に応じてチャンクサイズを動的に選択する手法を実装。
+      - 同じIMAX環境で従来手法とQ-snapのプリフィルのスループットを比較。
     results:
-      - 既存原稿ではprefill throughputを17.11 tok/sから27.70 tok/sへ改善し、1.62倍の高速化を報告しています。
-      - 動作デモはLLM実行環境の紹介です。throughputの測定ログとは区別します。
+      - 既存原稿ではプリフィルのスループットを17.11 トークン/秒から27.70 トークン/秒へ改善し、1.62倍の高速化を報告しています。
+      - 動作デモはLLM実行環境の紹介です。スループットの測定ログとは区別します。
     limits:
       - ここでの結果は保存原稿の評価条件に基づきます。今回の再測定ではありません。
-      - モデル・量子化・prompt・runtimeの条件を揃えずに、別の実験結果との倍率比較は行いません。
+      - モデル・量子化・prompt・ランタイムの条件を揃えずに、別の実験結果との倍率比較は行いません。
   asr:
-    title: Whisper ASRのCGLA実装
+    title: Whisperによる音声認識のCGLA実装
     venue: CANDAR 2025
     paper: Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA
-    overview: Whisperの音声認識処理をIMAXへ実装した研究です。FP16演算のmappingとkernelへの割当てを扱い、FPGAでの実行時間とASIC投影を分けて評価しています。
-    tags: [Whisper, ASR, FP16, Kernel Mapping]
+    overview: Whisperの音声認識処理をIMAXへ実装した研究です。FP16演算の配置とカーネルへの割当てを扱い、FPGAでの実行時間とASIC投影を分けて評価しています。
+    tags: [Whisper, ASR, FP16, カーネルの割当て]
     work:
-      - FP16からFP32への変換を含むdot-product kernelを実装。
+      - FP16からFP32への変換を含む内積演算カーネルを実装。
       - PEでの演算配置と、CPU側に残る処理の分担を整理。
-      - PaddingとLMM容量がkernel coverageに与える影響を評価。
+      - パディングとLMM容量がカーネルの対応範囲に与える影響を評価。
       - Whisper-tiny.enの音声認識実行を評価。
     results:
-      - 既存研究ではpaddingの扱いとLMM容量によるkernel coverageの変化を報告しています。
-      - Kernelだけでなく音声認識のend-to-end時間も扱い、FPGA実測と28nm ASIC投影を区別しています。
+      - 既存研究ではパディングの扱いとLMM容量によるカーネルの対応範囲の変化を報告しています。
+      - カーネルだけでなく音声認識の処理全体の時間も扱い、FPGA実測と28nm ASIC投影を区別しています。
     limits:
-      - 保存原稿のモデル・音声長・thread条件に基づく評価です。今回の再測定ではありません。
-      - ASIC投影とモデル電力に基づくenergy評価は、ASIC実測やworkloadの実消費電力測定とは異なります。
+      - 保存原稿のモデル・音声長・スレッド条件に基づく評価です。今回の再測定ではありません。
+      - ASIC投影とモデル電力に基づくエネルギー評価は、ASIC実測や処理内容の実消費電力測定とは異なります。
   generative-ai:
     title: Stable DiffusionのCGLA実装
     venue: MCSoC 2025
     paper: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
-    overview: stable-diffusion.cppの主要演算kernelをIMAX3へ実装した研究です。LLM向けに開発した量子化kernelを画像生成へ適用し、CPUに残る処理とoffloadできる処理を評価しました。
-    tags: [Stable Diffusion, GGML, Quantization, Kernel Coverage]
+    overview: stable-diffusion.cppの主要演算カーネルをIMAX3へ実装した研究です。LLM向けに開発した量子化カーネルを画像生成へ適用し、CPUに残る処理とオフロードできる処理を評価しました。
+    tags: [Stable Diffusion, GGML, 量子化, カーネルの対応範囲]
     work:
-      - GGMLを介してQ8_0・Q3_Kのdot-product kernelを画像生成処理へ適用。
-      - U-Net等で使う演算を調べ、kernel coverageとCPU fallbackを分析。
+      - GGMLを介してQ8_0・Q3_Kの内積演算カーネルを画像生成処理へ適用。
+      - U-Net等で使う演算を調べ、カーネルの対応範囲とCPU側での代替実行を分析。
       - SD-Turboの画像生成をFPGAプロトタイプで実行し、ASIC性能を投影。
     results:
-      - 保存原稿では量子化演算のcoverageをQ3_Kで10.3%、Q8_0で16.3%と報告しています。
-      - FP16/FP32のCPU fallbackが残るため、offloadしたkernelの性能と画像生成全体の時間を分けて整理しています。
+      - 保存原稿では量子化演算の対応範囲をQ3_Kで10.3%、Q8_0で16.3%と報告しています。
+      - FP16/FP32のCPU側での代替実行が残るため、オフロードしたカーネルの性能と画像生成全体の時間を分けて整理しています。
     limits:
-      - SD-Turbo、画像サイズ、denoising step等の保存原稿の条件に限った評価です。
+      - SD-Turbo、画像サイズ、ノイズ除去のステップ等の保存原稿の条件に限った評価です。
       - 全演算をCGLAで実行する実装ではありません。ASIC投影は実シリコンの測定ではありません。
   imax:
     title: IMAXアーキテクチャの評価と実装
     venue: SASIMI 2025 / IEEE Access
-    overview: IMAXのPEとLMMを交互配置したCGLA上で、LLMのkernel mappingとsystem評価に取り組んだ研究です。IMAX3とIMAX4の構成を比較し、演算だけでなくhost処理とデータ転送を分析しています。
-    tags: [CGLA, Programmable ASIC, DMA, System Evaluation]
+    overview: IMAXのPEとLMMを交互配置したCGLA上で、LLMのカーネルの割当てとシステム評価に取り組んだ研究です。IMAX3とIMAX4の構成を比較し、演算だけでなくホスト処理とデータ転送を分析しています。
+    tags: [CGLA, プログラム可能なASIC, DMA, システム評価]
     work_figures: [0, 1]
     skip_result_figure: true
     work:
-      - IMAXのPE/LMM構成と、edge・server向け評価環境を整理。
-      - 量子化LLM kernelの実装とhost/acceleratorの処理分担を評価。
-      - CPU処理、重み転送、array実行等の時間内訳を分析。
+      - IMAXのPE/LMM構成と、エッジ・サーバ向け評価環境を整理。
+      - 量子化LLM カーネルの実装とホスト/アクセラレータの処理分担を評価。
+      - CPU処理、重み転送、演算アレイ実行等の時間内訳を分析。
     results:
-      - 既存研究では、host CPUと転送境界がLLM実行全体に与える影響を報告しています。
+      - 既存研究では、ホスト CPUと転送境界がLLM実行全体に与える影響を報告しています。
       - IMAX3/IMAX4の結果は、それぞれの評価環境と測定区間を対応付けて扱います。
     limits:
-      - FPGA上の実測とASICへの投影、kernel時間とend-to-end時間を混ぜて比較しません。
+      - FPGA上の実測とASICへの投影、カーネル時間と処理全体の時間を混ぜて比較しません。
       - ハードウェア構成の紹介だけで、回路設計の担当範囲や新しい性能改善を主張するものではありません。
   facial-expression:
     title: FPGAによる表情認識システム
@@ -197,24 +197,24 @@ projects:
     evidence_id: fpga-vision
     venue: CANDARW 2024 / ICIC Express Letters
     overview: SoC FPGAのDPU上で顔検出と表情分類を実行するシステムです。後続のマルチスレッド実装では、CPU側前処理とDPU実行を重ね、推論処理の利用率を評価しました。
-    tags: [FPGA, DPU, Face Detection, Multi-threading]
+    tags: [FPGA, DPU, 顔検出, マルチスレッド処理]
     work:
       - 顔検出と表情分類の2つのDNNをDPUへ実装。
-      - Camera入力から前処理、顔領域検出、表情分類までの処理を接続。
+      - カメラ入力から前処理、顔領域検出、表情分類までの処理を接続。
       - CPU前処理とDPU実行をマルチスレッド化し、利用率と処理性能を評価。
     results:
       - 既存のマルチスレッド研究では顔検出、表情分類、処理速度とDPU利用率を評価しています。
       - 初期のYOLOv2 tinyを使う実装と後続のDenseBoxを使う実装は、モデルとDPU構成を分けて扱います。
     limits:
-      - 卒業研究・学会原稿の版ごとにモデル、thread数、データセット等の条件が異なります。
-      - 保存原稿の紹介であり、現在のboardやmodelを用いた再測定ではありません。
+      - 卒業研究・学会原稿の版ごとにモデル、スレッド数、データセット等の条件が異なります。
+      - 保存原稿の紹介であり、現在のボードやモデルを用いた再測定ではありません。
   green-onion-dnn:
     title: DNNによる小ねぎ分岐部検出
     category: edge-ai
     evidence_id: onion-yolox
     venue: 高専研究 / ICIC継続原稿 / 2024年発表資料
-    overview: 小ねぎの自動調製に向け、YOLOXによる分岐部検出とMask R-CNNによる芯・葉の領域分割を検討した研究です。検出とsegmentationは別の実装として、目的と評価条件を整理しています。
-    tags: [YOLOX, Mask R-CNN, Image Recognition, Edge AI]
+    overview: 小ねぎの自動調製に向け、YOLOXによる分岐部検出とMask R-CNNによる芯・葉の領域分割を検討した研究です。検出と領域分割は別の実装として、目的と評価条件を整理しています。
+    tags: [YOLOX, Mask R-CNN, 画像認識, エッジAI]
     work_figures: [0, 1]
     skip_result_figure: true
     work:
@@ -222,8 +222,8 @@ projects:
       - Mask R-CNNで芯と葉を分割し、領域の位置関係から分岐部位置を推定。
       - 通常画像と遮蔽画像を分け、各手法の評価条件と適用範囲を整理。
     results:
-      - YOLOX継続原稿とsegmentation発表資料に、それぞれの検出・推定結果をまとめています。
-      - 遮蔽画像での改善と全画像での評価は分けて扱い、別手法・別subsetの結果を混ぜません。
+      - YOLOX継続原稿と領域分割発表資料に、それぞれの検出・推定結果をまとめています。
+      - 遮蔽画像での改善と全画像での評価は分けて扱い、別手法・別部分集合の結果を混ぜません。
     limits:
       - 各原稿のデータ分割、成功基準、測定区間の対応は生ログとの照合が必要です。
       - 分岐部認識の評価であり、調製機全体の成功率を示すものではありません。
@@ -232,13 +232,13 @@ projects:
     category: edge-ai
     evidence_id: onion-edge
     venue: 本科卒業研究 2023 / 農業情報研究 2024
-    overview: 小ねぎの分岐部付近に現れる斜線を、エッジ検出で抽出する研究です。ニューラルネットワークを用いず、Raspberry Pi等のedge deviceで調製位置を推定する画像処理に取り組みました。
-    tags: [Edge Detection, Sobel, Image Processing, Raspberry Pi]
+    overview: 小ねぎの分岐部付近に現れる斜線を、エッジ検出で抽出する研究です。ニューラルネットワークを用いず、Raspberry Pi等のエッジ機器で調製位置を推定する画像処理に取り組みました。
+    tags: [エッジ検出, ソーベル, 画像処理, Raspberry Pi]
     work_figures: [1, 0]
     skip_result_figure: true
     work:
       - 小ねぎ調製機への入力画像から、色と輪郭を使って対象領域を抽出。
-      - 分岐部の推定領域へSobel filterとlabelingを適用。
+      - 分岐部の推定領域へソーベルフィルタとラベリングを適用。
       - エッジの特徴量を使って斜線を抽出し、分岐部の位置を推定。
       - Raspberry Pi上で検出率と処理時間を評価。
     results:

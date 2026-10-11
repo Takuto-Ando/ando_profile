@@ -1,5 +1,5 @@
 ---
-title: "24V Industrial Digital Input PoC"
+title: "24V産業用デジタル入力 PoC"
 permalink: /poc/24v-digital-input/
 published: true
 author_profile: false
@@ -8,15 +8,15 @@ classes: wide
 <link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
 <div class="poc">
   <a class="poc-back" href="{{ '/poc/' | relative_url }}">← PoC一覧</a>
-  <p class="poc-eyebrow">INDUSTRIAL I/O / MCU</p>
+  <p class="poc-eyebrow">産業用入出力・マイコン</p>
   <span class="poc-status">個人PoC / 動作経験あり / 測定証拠整理中</span>
-  <p class="poc-lead">24V入力からMSPM0の割込み検知までをつなぎ、アナログ入力の判定とFirmwareのデバウンスを試したPoC。</p>
+  <p class="poc-lead">24V入力からMSPM0の割込み検知までをつなぎ、アナログ入力の判定とファームウェアのデバウンスを試したPoC。</p>
   <h2>課題と目的</h2>
   <p>産業用の24V入力をMCUのロジック入力へ接続する構成を学び、入力判定からイベント検知までの一連の動作を確かめることを目的にしました。</p>
-  <p>取り組みの中心は、回路側の入力判定とMCU側のイベント処理を一つの信号経路として扱うことです。部品を接続した構成だけでなく、どの段で入力を判定し、どの段で波形を整え、Firmwareでどのように検知するかを説明できる形にまとめます。</p>
+  <p>取り組みの中心は、回路側の入力判定とMCU側のイベント処理を一つの信号経路として扱うことです。部品を接続した構成だけでなく、どの段で入力を判定し、どの段で波形を整え、ファームウェアでどのように検知するかを説明できる形にまとめます。</p>
   <h2>システム構成</h2>
   <div class="poc-flow" aria-label="信号経路">
-    <span>24V入力・分圧</span><b aria-hidden="true">→</b><span>LM393</span><b aria-hidden="true">→</b><span>PC817</span><b aria-hidden="true">→</b><span>74HC14</span><b aria-hidden="true">→</b><span>MSPM0 GPIO IRQ</span><b aria-hidden="true">→</b><span>Debounce</span>
+    <span>24V入力・分圧</span><b aria-hidden="true">→</b><span>LM393</span><b aria-hidden="true">→</b><span>PC817</span><b aria-hidden="true">→</b><span>74HC14</span><b aria-hidden="true">→</b><span>MSPM0 GPIO割込み</span><b aria-hidden="true">→</b><span>デバウンス</span>
   </div>
   <div class="poc-table"><table>
     <thead><tr><th>構成要素</th><th>このPoCでの役割</th><th>記録する設計条件</th></tr></thead>
@@ -24,11 +24,11 @@ classes: wide
       <tr><td>分圧回路</td><td>24V入力を判定回路へ渡す</td><td>抵抗値、印加電圧、入力電流</td></tr>
       <tr><td>LM393</td><td>入力と基準電圧の比較</td><td>電源、基準電圧、プルアップ、帰還回路の有無</td></tr>
       <tr><td>PC817</td><td>フォトカプラを介した信号伝達</td><td>LED電流、出力負荷、両側電源とGNDの接続</td></tr>
-      <tr><td>74HC14</td><td>Schmitt Triggerによる波形整形</td><td>電源、入出力レベル、反転段数</td></tr>
-      <tr><td>MSPM0</td><td>GPIO割込みとデバウンス</td><td>型番、GPIO、検知エッジ、Timer・判定時間</td></tr>
+      <tr><td>74HC14</td><td>シュミットトリガによる波形整形</td><td>電源、入出力レベル、反転段数</td></tr>
+      <tr><td>MSPM0</td><td>GPIO割込みとデバウンス</td><td>型番、GPIO、検知エッジ、タイマ・判定時間</td></tr>
     </tbody>
   </table></div>
-  <h2>回路とFirmwareで取り組んだこと</h2>
+  <h2>回路とファームウェアで取り組んだこと</h2>
   <h3>入力からロジック信号までの接続</h3>
   <p>24V入力を分圧してLM393へ渡し、PC817、74HC14を経由してMSPM0へ接続しました。入力の比較、フォトカプラを介した信号伝達、波形整形を段ごとに分けた構成です。</p>
   <figure class="article-figure">
@@ -37,11 +37,11 @@ classes: wide
   </figure>
   <p>設計記録では、各段の電源と信号レベル、LM393の出力側接続、PC817両側のGND、74HC14を通した信号の極性を回路図に対応付けます。抵抗値や保護回路の詳細は、実際の配線と照合して追記します。</p>
   <h3>MSPM0での割込みとデバウンス</h3>
-  <p>回路から得られる信号をMSPM0のGPIO割込みで検知し、デバウンスを含む入力処理まで動作させました。回路の出力をFirmwareのイベントへつなぐ部分が、このPoCで実装した範囲です。</p>
-  <p>Firmwareの説明には、使用GPIO、割込みの検知エッジ、デバウンスの判定方法と設定時間を残します。具体的な処理手順はソースコードを確認してから掲載します。</p>
+  <p>回路から得られる信号をMSPM0のGPIO割込みで検知し、デバウンスを含む入力処理まで動作させました。回路の出力をファームウェアのイベントへつなぐ部分が、このPoCで実装した範囲です。</p>
+  <p>ファームウェアの説明には、使用GPIO、割込みの検知エッジ、デバウンスの判定方法と設定時間を残します。具体的な処理手順はソースコードを確認してから掲載します。</p>
   <h2>実装と現在の結果</h2>
   <p>24V入力からLM393、PC817、74HC14を通し、MSPM0で割込み・デバウンスして検知するところまで動作させています。現段階の成果は、この入力経路を個人PoCとして実装したことです。</p>
-  <p>現時点では回路図、Firmware、測定ログをこのページに添付していません。閾値・ヒステリシス幅・応答時間・誤検知数の定量結果は未整理です。</p>
+  <p>現時点では回路図、ファームウェア、測定ログをこのページに添付していません。閾値・ヒステリシス幅・応答時間・誤検知数の定量結果は未整理です。</p>
   <h2>評価結果の整理欄</h2>
   <div class="poc-table"><table>
     <thead><tr><th>評価項目</th><th>残す測定条件・証拠</th><th>現状</th></tr></thead>
@@ -57,13 +57,13 @@ classes: wide
   <h2>このPoCで扱った範囲</h2>
   <ul>
     <li>24V入力からMCUのGPIOまでの回路構成</li>
-    <li>コンパレータ、フォトカプラ、Schmitt Triggerの接続</li>
+    <li>コンパレータ、フォトカプラ、シュミットトリガの接続</li>
     <li>MSPM0のGPIO割込みとデバウンスを含む入力検知</li>
-    <li>回路側の判定とFirmware側の処理を合わせた動作確認</li>
+    <li>回路側の判定とファームウェア側の処理を合わせた動作確認</li>
   </ul>
   <h3>経験の紹介文</h3>
-  <blockquote>個人PoCとして、24V入力をLM393、PC817、74HC14経由でMSPM0へ接続し、GPIO割込みとデバウンスによる検知まで実装しました。現在は、回路図・Firmware・測定記録を整理しています。</blockquote>
+  <blockquote>個人PoCとして、24V入力をLM393、PC817、74HC14経由でMSPM0へ接続し、GPIO割込みとデバウンスによる検知まで実装しました。現在は、回路図・ファームウェア・測定記録を整理しています。</blockquote>
   <h2>次に揃える成果物</h2>
-  <ul><li>実機写真に対応する部品値・電源・GND境界を示した回路図</li><li>型番・ツール環境・割込み設定を含むFirmware</li><li>閾値、各段波形、デバウンス試験の生記録</li><li>実際のトラブルシュート事例</li></ul>
-  <p class="poc-note">個人のPrototype / PoC experienceとして記載しています。IEC 61131-2適合、保護性能、安全な絶縁、量産条件での信頼性は検証していません。フォトカプラの使用だけではシステムの絶縁性能を保証できません。</p>
+  <ul><li>実機写真に対応する部品値・電源・GND境界を示した回路図</li><li>型番・ツール環境・割込み設定を含むファームウェア</li><li>閾値、各段波形、デバウンス試験の生記録</li><li>実際のトラブルシュート事例</li></ul>
+  <p class="poc-note">個人の試作・概念実証の経験として記載しています。IEC 61131-2適合、保護性能、安全な絶縁、量産条件での信頼性は検証していません。フォトカプラの使用だけではシステムの絶縁性能を保証できません。</p>
 </div>

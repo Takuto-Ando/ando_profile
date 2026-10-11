@@ -29,12 +29,12 @@
     {% for document in documents %}
       {% assign document_href = document.public_href | default: document.href %}
       {% if site.technical_preview %}{% assign document_href = document.href %}{% endif %}
-      <a href="{{ document_href | relative_url }}" target="_blank" rel="noopener">{{ include.title | default: document.label }}</a>{% unless forloop.last %}、{% endunless %}
+      <a href="{{ document_href | relative_url }}" target="_blank" rel="noopener">{% if site.active_lang == 'en' %}{{ include.title | default: document.label }}{% elsif document.public_href and site.technical_preview != true %}論文（arXiv公開版）{% else %}{{ document.label }}{% endif %}</a>{% unless forloop.last %}、{% endunless %}
     {% endfor %}
     {% if site.active_lang == 'en' %}.{% else %}にまとめています。{% endif %}</p>
   {% if site.technical_preview and materials.note %}<p class="poc-note">{{ materials.note }}</p>{% endif %}
 </div>
-{% elsif include.title %}
+{% elsif include.title and site.active_lang == 'en' %}
 <p class="article-citation">{{ include.title | escape }}</p>
 {% endif %}
 {% endif %}
