@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>私用HTMLの暗号化（ローカル専用）</title>
+  <link rel="stylesheet" href="../assets/css/private-vault.css">
+  <script type="module" src="./protect-private-page.js"></script>
+</head>
+<body>
+  <main><section class="panel">
+    <p class="eyebrow">LOCAL ENCRYPTION TOOL</p>
+    <h1>保護された資料一覧を作る</h1>
+    <p>ファイルとパスワードは、このブラウザ内で処理します。サーバーへ送信しません。</p>
+    <form id="encrypt-form">
+      <label for="existing">既存の暗号化データ（追加するときだけ）</label>
+      <input id="existing" type="file" accept=".json,application/json">
+      <p class="note">現在のcontent.jsonを選ぶと、同じパスワードで復号して新しい資料を追加します。</p>
+      <label for="source">追加・更新するHTMLファイル（複数選択可）</label>
+      <input id="source" type="file" accept=".html,.htm,text/html" multiple>
+      <p class="note">資料のタイトルはHTMLのtitleから取得。同名ファイルは更新します。全体5MiB以下・100件まで。外部画像・スクリプトは閲覧時に無効化します。</p>
+      <label for="password">パスワード（8文字以上、20文字以上を推奨）</label>
+      <input id="password" type="password" autocomplete="new-password" minlength="8" required spellcheck="false">
+      <label for="confirm">パスワード（確認）</label>
+      <input id="confirm" type="password" autocomplete="new-password" minlength="8" required spellcheck="false">
+      <button id="encrypt" type="submit">資料一覧を暗号化する</button>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <a id="download" class="download" download="content.json" hidden>暗号化データを保存</a>
+    <p class="note">保存したcontent.jsonをando_profile/assets/private/content.jsonに置き換えます。元のHTMLとパスワードは公開Gitへ入れないでください。パスワードを忘れると復号できません。</p>
+  </section></main>
+</body>
+</html>
