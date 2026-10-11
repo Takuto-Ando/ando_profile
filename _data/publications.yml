@@ -15,8 +15,14 @@ sections:
           - name: Kosuke Shigematsu
           - name: Yusuke Inoue
         title: Lightweight YOLOX-based Green Onion Branching Point Detection for Automated Peeling on Edge Device
+        abstractEn: "Agricultural automation has become critical as labor continues to decline worldwide. In green onion processing, current peeling machines require significant manual work due to imprecise leaf removal. Prior edge detection methods were tested only on uniform stems of a single variety, limiting their practical use where green onions vary in morphology. The key challenge is developing a detection system that maintains performance across varieties and growth stages without frequent adjustments. Here we show that an improved YOLOX-nano model effectively detects branching points across diverse varieties, achieving 0.929 detection score for the second branching point and 46 ms processing time on Jetson Orin Nano. Unlike edge detection methods, our deep learning approach handles variations in onion varieties and growth stages robustly and maintains performance under varying conditions. These results show that lightweight deep learning systems can reliably automate green onion peeling while achieving real-time performance on edge devices. The proposed system advances automated green onion peeling and could extend to similar agricultural tasks."
+        abstractOrigin: "安藤拓翔_主著_採録済みPDF集約/2026_icicel_lightweight_yolox_green_onion_accepted.pdf"
+        abstractNote: "採録原稿の保存版から抽出した要旨です。掲載版とは著者表記・書誌情報に差があります。"
         venue: ICIC Express Letters
         citation: vol. 20, no. 8, pp. 811-819, August 2026
+        links:
+          - label: PDF
+            url: /assets/pdfs/paper/yolox_green_onion_2026_published.pdf
         bibtexText: |-
           @article{ando2026lightweight,
             author  = {Takuto Ando and Iori Yamaguchi and Jun Shono and Takahiro Kawabe and Koji Uchida and Kosuke Shigematsu and Yusuke Inoue},
@@ -37,6 +43,8 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: Design and Evaluation of Energy-Efficient Whisper Dot-Product Kernel Offloading on a CGLA Architecture
+        abstractEn: "In this paper, we implement and evaluate Whisper dot‐product kernel offloading on IMAX, a programmable coarse‐grained linear arrays (CGLAs) architecture. Whisper‐tiny.en profiling on an ARM Cortex‐A72 shows that dot‐product operations account for 90.6% of FP16 execution time and 87.1% of Q8_0 execution time. To address this kernel bottleneck, we combine kernel mapping, local‐memory sizing, and burst scheduling. The implementation uses inline FP16‐to‐FP32 conversion, 2‐way SIMD FMA on a 64‐bit datapath, column‐wise multithreading, and mixed execution in which aligned vector segments run on IMAX and residual segments run concurrently on the host CPU. We evaluate the design with an FPGA prototype and a 28 nm ASIC projection at 840 MHz. For Whisper‐tiny.en, 32 KB local memory and burst length 16 jointly minimize PDP and EDP. Under a TDP‐based cross‐platform comparison, the projected IMAX records a PDP of 11.58 J for Whisper‐tiny.en Q8_0, 2.35 lower than Jetson AGX Orin (27.16 J) and 10.48 lower than RTX 4090 (121.38 J). The same design extends to Whisper‐base.en and Whisper‐small.en, where the PDP gap narrows as 32 KB local‐memory coverage drops from 93.8% for tiny to about 66.5% for base and small. These results position IMAX as a programmable architecture for lower‐PDP local ASR in the tiny‐model regime."
+        abstractSource: "https://doi.org/10.1002/cpe.70826"
         venue: "Concurrency and Computation: Practice and Experience"
         citation: vol. 38, e70826, 2026
         bibtexText: |-
@@ -53,6 +61,10 @@ sections:
         links:
           - label: Links
             url: https://doi.org/10.1002/cpe.70826
+          - label: PDF
+            url: /assets/pdfs/paper/whisper_cgla_2026_preprint.pdf
+          - label: arXiv preprint
+            url: https://arxiv.org/abs/2606.19913
         badges:
           - label: "2026"
             type: neutral
@@ -93,9 +105,11 @@ sections:
             me: true
           - name: Yusuke Inoue
         title: DPU-Based Hardware Implementation for Real-time Facial Expression Recognition System
+        abstractEn: "In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. The system consists of a face detection step and a facial expression recognition step. In conventional FPGA-based facial expression recognition systems, the Haar Cascade detector is run on the CPU due to FPGA (Field Programmable Gate Array) resource limitations in the face detection step. However, the Haar Cascade detector is less accurate than DNN (Deep Neutral Network)-based face detection for images of profile faces and images with changing lighting conditions. On the other hand, face detection using a DNN such as YOLO requires a long latency when executed on a CPU with low computing performance. Therefore, we offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA, to speed up the processing. In this work, we combined face detection with DenseBox and CNN-based facial expression recognition on the same DPU. The same DPU was used to implement the facial expression recognition system, which enabled efficient use of FPGA resources while keeping the size of the circuitry."
+        abstractOrigin: "ando_profile/assets/pdfs/paper/icic_express.pdf"
+        abstractSource: "/assets/pdfs/paper/icic_express.pdf"
         venue: ICIC Express Letters
         citation: vol. 19, no. 4, pp. 419-426, 2025
-        abstractEn: In this paper, we implemented a standalone DPU-based facial expression recognition system on SoC FPGA. The system consists of a face detection step and a facial expression recognition step. In conventional FPGA-based facial expression recognition systems, the Haar Cascade detector is run on the CPU due to FPGA (Field Programmable Gate Array) resource limitations in the face detection step. However, the Haar Cascade detector is less accurate than DNN (Deep Neutral Network)-based face detection for images of profile faces and images with changing lighting conditions. Onthe other hand, face detection using a DNN such as YOLO requires a long latency when executed on a CPU with low computing performance. Therefore, we offload face detection and facial expression recognition by DNN to DPU, a CNN accelerator on FPGA,to speed up the processing. In this work, we combined face detection with DenseBox andCNN-based facial expression recognition on the same DPU. The same DPU was used toimplement the facial expression recognition system, which enabled efficient use of FPGAresources while keeping the size of the circuitry
         bibtexText: |-
           @article{ando2025dpu,
             author  = {Takuto Ando and Yusuke Inoue},
@@ -159,6 +173,8 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Mamba-Family State-Space Model Kernels on a Programmable CGLA
+        abstractEn: "Edge and embedded inference is constrained by power and data movement. Mamba-family state-space models replace attention with sequence-linear recurrence, but their inference path combines dense projections, short-reduction SSD kernels, and recurrent-state updates. This paper maps these kernel groups onto IMAX, a programmable CPU-Grounded Linear Array (CGLA), and measures them from kernel execution to token-level integration. Projection kernels match the long-reduction IMAX pipeline, whereas SSD Step-1 is limited by short reductions and kernel-boundary overheads. Mamba-130M token-level integration identifies projection GEMV as the decode bottleneck. These results show that programmable CGLAs fit long-reduction projection kernels, while SSD and decode-time projection support require boundary reduction and persistent-weight execution."
+        abstractSource: "https://arxiv.org/abs/2609.27437"
         venue: 2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip
         citation: Regular Paper; December 14-17, 2026
         bibtexText: |-
@@ -179,6 +195,8 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
+        abstractEn: "FIPS 203 standardizes ML-KEM for post-quantum key establishment. Its polynomial multiplication relies on NTT butterflies with exact modular arithmetic over q = 3329. Dedicated NTT accelerators minimize latency with fixed modular arithmetic and stage schedules. A CPU-Grounded Linear Array (CGLA) reuses one programmable linear datapath across several workloads. Mapping the transform to this datapath requires exact FP32 reconstruction and explicit stage transitions across the ARM-to-CGLA interface. We implement an eight-stage cyclic radix-2 driver over the ML-KEM modulus by splitting each twiddle into 8-bit and 4-bit parts before modular reduction. This driver differs from the standardized seven-layer incomplete negacyclic NTT and does not implement the full ML-KEM polynomial multiplication path. The arithmetic sequence keeps every integer below 2^24. One 41-PE call fuses the first two radix-2 stages, and six 47-PE calls execute the remaining stages while scattering outputs into next-stage records. Across four cohorts, 105 FPGA runs match all 817152 output coefficients. At batch size 64, measured FPGA end-to-end latency is 27.5 us per NTT, and the ASIC projection is 6.74 us. With PE gating, projected ASIC system energy is 10.1 uJ per NTT at batch size 8 and 58.9 uJ at batch size 64."
+        abstractSource: "https://arxiv.org/abs/2609.28904"
         venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
         citation: November 2026
         bibtexText: |-
@@ -199,6 +217,8 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
+        abstractEn: "Large language model (LLM) inference transfers model weights and activations for every generated token, making memory traffic and its energy cost part of the decode path. BitNet b1.58 represents its low-bit weights by ternary values and uses integer activations. However, this arithmetic does not match conventional int8 or floating-point general matrix multiplication, and existing BitNet accelerators implement it in specialized datapaths. We instead map this operation to a CPU-Grounded Linear Array (CGLA), a programmable ASIC with explicit direct memory access, local memories, and reusable compiler-visible integer lanes. The mapping adds OP_SMA4 as a reusable signed-int4 multiply-accumulate instruction rather than a BitNet-only datapath. Each ternary weight occupies one signed 4-bit lane. Each int8 activation is split into two signed-int4 fragments and reconstructed by shift-and-add. Frequency scaling of the 145 MHz FPGA measurement to an 840 MHz 28 nm CGLA achieved 0.390 ns per signed-int4 product. We showed that CGLA-offloaded BitNet C++ execution measures 2.52 tokens/s."
+        abstractSource: "https://arxiv.org/abs/2609.27453"
         venue: 2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)
         citation: November 2026
         bibtexText: |-
@@ -219,6 +239,8 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Energy-Oriented CGLA Mapping of a Memory-Polynomial Digital Predistortion Kernel
+        abstractEn: "Memory-polynomial digital predistortion (DPD) evaluates a small fixed coefficient set over a sliding input history, so its reduction step is a complex-MAC workload with local reuse. We map this DPD reduction kernel onto In-Memory Accelerator eXtension (IMAX), a programmable CPU-Grounded Linear Array (CGLA) composed of a one-dimensional processing-element/local-memory pipeline. For a (P,M)=(5,5) odd-order memory-polynomial instance, the mapping keeps the 120 B coefficient set in local memory, advances the five-tap history over 1024-sample tiles, and realizes the 15 order-delay terms as a 33-stage streaming complex-MAC reduction. The evaluation measures kernel latency and modeled energy. All measured paths use the same single-precision complex workload of 32 sequences, each with 2048 complex samples, across an IMAX FPGA prototype, a CUDA implementation on an RTX 4090 system, and an ARM-NEON implementation on Jetson AGX Orin. With this 1024-sample tile configuration, the IMAX FPGA prototype reports 20.201 ms end-to-end latency and 1.948 ms kernel-only latency. Using the previously reported 28 nm IMAX frequency and power model, the projected IMAX configuration gives 3.14 ms end-to-end latency and 0.34 ms kernel-only latency. The RTX 4090 baseline has the lowest end-to-end latency at 0.484 ms. Under model-based platform power accounting and the stated power assumptions, the projected IMAX configuration gives 169.1 times smaller modeled end-to-end energy per batch than the RTX 4090 baseline. This value uses platform power assumptions rather than workload-dependent runtime power or a direct silicon power measurement. A controlled synthetic PA-model validation checks that the same 15-term form improves test-set NMSE by 26.1 dB and ACLR by 26.0 dB. These results characterize the mapped memory-polynomial DPD reduction on IMAX for the evaluated tile configuration and power model."
+        abstractSource: "https://arxiv.org/abs/2609.27438"
         venue: 2026 IEEE Asia Pacific Conference on Circuits and Systems
         citation: Poster Paper; October 25-28, 2026
         bibtexText: |-
@@ -243,6 +265,8 @@ sections:
           - name: Yoshifumi Munakata
           - name: Yasuhiko Nakashima
         title: "Q-snap: Quantization-aware dynamic chunking for LLM execution on a CGLA"
+        abstractEn: "This paper addresses the critical energy inefficiency of LLM inference on standard GPUs by leveraging a Coarse-Grained Linear Array (CGLA). We identify that static workload chunking in existing frameworks exposes prohibitive data transfer latency overheads on CGLAs. We introduce Q-Snap (Quantization-Aware Dynamic Chunking), a scheduling strategy that maximizes execution burst sizes based on runtime memory constraints and quantization alignment. Using an FPGA prototype and synthesis-based 28 nm ASIC projections, our method achieves a 1.62× speedup over the unoptimized baseline on the same hardware in the prefill phase. Our 28 nm CGLA design demonstrates 27 % better energy efficiency compared to a 4 nm RTX 4090, demonstrating that hardware-aware scheduling enables even mature process nodes to deliver superior sustainability for edge LLM inference."
+        abstractOrigin: "安藤拓翔_主著_採録済みPDF集約/2026_icisn_qsnap_on_cgla.pdf"
         venue: Sixth International Conference on Intelligent Systems and Networks
         citation: March 2026
         bibtexText: |-
@@ -356,6 +380,9 @@ sections:
           - name: Ayumu Takeuchi
           - name: Yasuhiko Nakashima
         title: LLM Performance Bottlenecks on CGLA
+        links:
+          - label: Links
+            url: https://ieeexplore.ieee.org/document/11235453
         venue: 2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum
         citation: 2025
         bibtexText: |-
@@ -372,6 +399,9 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Energy-Efficient FlashAttention Acceleration on CGLA
+        links:
+          - label: Links
+            url: https://ieeexplore.ieee.org/abstract/document/11235318
         venue: 2025 IEEE 38th International System-on-Chip Conference PhD and Master Forum
         citation: 2025
         bibtexText: |-
@@ -387,6 +417,11 @@ sections:
             me: true
           - name: Yasuhiko Nakashima
         title: Performance Evaluation of Flan-T5 in CGLA Based Accelerators
+        links:
+          - label: Links
+            url: https://ieeexplore.ieee.org/document/11235382
+        abstractEn: "Large Language Models (LLMs) impose significant computational and energy demands, posing challenges for deployment on edge devices. To address this, we explore the feasibility of executing Flan-T5 an instruction tuned encoder decoder LLM on IMAX3, an in memory accelerator based on a Coarse Grained Linear Array (CGLA). By leveraging existing custom instructions and hardware kernels originally developed for LLaMA v2 models, Flan-T5 inference was successfully achieved on IMAX3 without requiring any modification to the hardware instruction set or the high level inference workflow.To the best of our knowledge, this is the first implementation of Flan-T5 on a CGLA based accelerator. Although IMAX3 does not currently outperform CPUs or GPUs in execution speed or power efficiency, our analysis identifies critical system level bottlenecks particularly in host accelerator coordination and memory bandwidth that limit scalability. These findings highlight the architectural generality of quantized kernel designs across structurally distinct LLMs and provide a valuable foundation for future work on energy efficient LLM deployment using reconfigurable accelerators."
+        abstractSource: "https://ieeexplore.ieee.org/document/11235382/"
         venue: 2025 IEEE 38th International System-on-Chip Conference
         citation: 2025
         bibtexText: |-
@@ -454,6 +489,10 @@ sections:
           - name: 宗片 吉史
           - name: 中島 康彦
         title: CGLA上の多様なAIワークロードに向けた統合ソフトウェアスタックの実装と今後の展望
+        abstractOrigin: "cgla_research/papers/HOTSPA_26/cgla_software_stack/paper.tex"
+        abstractSource: "https://www.ieice.org/publications/search/summary.php?id=143759&tbl=ken"
+        abstractJa: "AI ワークロードの多様化に伴い,推論基盤には電力効率を保ちながら異なるワークロードへ展開できる柔軟性が求められる. GPU は汎用性が高い一方で消費電力が大きく,専用 ASIC は高効率だが対象ワークロードが固定されやすい. FPGA は柔軟だが,動作周波数と実行性能に制約がある. そこで本稿では,これらの中間に位置する CGLA (CPU-Grounded Linear Array) 上で,llama.cpp,whisper.cpp,stable-diffusion.cpp などの ggml 系 OSS を対象に,共通する実装方法と初期評価を整理する. CPU 側の行列積・dot積実装を IMAX へオフロードし,この実装方法を音声認識と画像生成にも適用した. 既存結果より,大規模言語モデルのトークン生成フェーズは LOAD とホスト側処理に支配され,動的チャンク分割によりトークン解析フェーズは 1.62 倍に高速化した. Whisper 音声認識は Jetson AGX Orin 比 1.90 倍,RTX 4090 比 9.83 倍の電力効率を達成した. Stable Diffusion では FP16/FP32/整数型が混在したモデルの実装に成功した. これらを踏まえ,共通のフロントエンド,計測に基づくランタイム,方策に応じて切り替えるバックエンドから成るソフトウェアスタックの論点を示す."
+        abstractEn: "As AI workloads diversify, inference platforms must provide both power efficiency and the flexibility to support a range of workloads. GPUs are highly programmable but power-hungry, whereas dedicated ASICs are efficient but typically tailored to specific workloads. FPGAs are flexible, but their operating frequency and execution performance are often limited. In this paper, we present a common implementation approach and an initial evaluation for ggml-based OSS workloads on CGLA/IMAX, including llama.cpp, whisper.cpp, and stable-diffusion.cpp. In llama.cpp, we offload CPU-side matrix multiplication and dot-product kernels to IMAX and extend the same implementation boundary to ASR and image generation workloads. Our prior results show that LLM decode is dominated by LOAD and host-side processing, Q-Snap improves prefill performance by 1.62×, Whisper ASR achieves 1.90× and 9.83× higher energy efficiency than Jetson AGX Orin and RTX 4090, respectively, and Stable Diffusion is implemented with mixed FP16/FP32/quantized execution. Based on these observations, we discuss software-stack issues for CGLA, including a common frontend, a measurement-driven runtime, and policy-specialized backends."
         venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
         citation: 2026年6月
         bibtexText: |-
@@ -469,6 +508,8 @@ sections:
             me: true
           - name: 中島 康彦
         title: 広帯域メモリを用いたCGLAのLLM向けスケーラビリティ評価
+        abstractJa: "本稿では, CGLAアクセラレータIMAX上でのAIアプリケーション, 特にLLM推論の実行を対象として,3D積層DRAMに代表される広帯域メモリを備えた将来IMAXにおける性能ボトルネックを予測するためのシミュレーションモデルを提示する．評価の結果, 現行IMAXにおいても, メモリ帯域の向上により1.4倍から1.9倍の性能向上が見込まれることを確認した．さらに, 本モデルに基づき, IMAXのスケーラビリティに応じたメモリ構成を検討するための見積り方法を示す．加えて, 将来的に広帯域メモリを導入した際に顕在化すると考えられるホスト側性能のボトルネックへの対応策を検討し,IMAXの並列化およびカスケード接続を組み合わせた二次元的な拡張によるスケーラビリティ向上の方針を提示する．"
+        abstractSource: "https://www.ieice.org/publications/ken/summary.php?contribution_id=143788&lang=jp"
         venue: 第257回情報処理学会 システム・アーキテクチャ研究発表会
         citation: 2026年6月
         bibtexText: |-
@@ -503,6 +544,9 @@ sections:
             me: true
           - name: 井上 優良
         title: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
+        abstractJa: "小ねぎの分岐部が葉の重なりによって遮蔽される場合に対応するため、インスタンスセグメンテーションによる調製位置の推定を検討した。Mask R-CNNで芯と葉の領域を推論し、葉の位置と枚数から分岐部位置を推定する。提案手法の有効性を評価する。"
+        abstractSource: "/assets/pdfs/ieice_kyusyu_ando.pdf"
+        abstractNote: "発表スライドの目的・提案手法に基づく要約です。原稿に掲載された要旨の転載ではありません。"
         venue: 電子情報通信学会九州支部学生会講演会
         citation: 2024
         bibtexText: |-
@@ -567,13 +611,35 @@ sections:
   - key: student_theses
     title_en: Student Theses
     title_ja: 学位論文
-    lead_en: Final thesis documents from the KOSEN regular course and advanced course.
-    lead_ja: 高専本科の卒業論文と、専攻科における特別研究論文です。
+    lead_en: Master's thesis and final thesis documents from the KOSEN regular course and advanced course.
+    lead_ja: 修士論文、高専本科の卒業論文、専攻科における特別研究論文です。
     items:
       - authors:
           - name: 安藤 拓翔
             me: true
+        title: CGLAにおけるエネルギー効率の高いワークロード実行のためのAIアプリケーション実装とソフトウェアスタック改善
+        venue: 奈良先端科学技術大学院大学 先端科学技術研究科
+        citation: "修士論文 / 2026年7月30日 / 主指導教員: 中島 康彦"
+        bibtexText: |-
+          @mastersthesis{ando2026master,
+            author = {Takuto Ando},
+            title = {AI Application Implementation and Software-Stack Improvements for Energy-Efficient Workloads on a CGLA},
+            school = {Nara Institute of Science and Technology},
+            year = {2026},
+            month = {July}
+          }
+        links:
+          - label: PDF
+            url: /assets/pdfs/master_thesis_2026_ja.pdf
+          - label: English PDF
+            url: /assets/pdfs/master_thesis_2026_en.pdf
+      - authors:
+          - name: 安藤 拓翔
+            me: true
         title: エッジ検出を用いたこねぎ分岐部の抽出
+        abstractJa: "近年,こねぎ生産における最低賃金の上昇等雇用環境が変化しており,人件費を抑えるために人 手の不要なこねぎ調製機の開発が求められている.現行の調製機では一度に不要な葉を全て除去でき ず,二次処理のために多くの人手を要する.正確な調製を行うためには,外葉最上部の分岐部位置に調 製用ノズル位置を合わせることが有効であることが分かっている.したがって,こねぎ分岐部の位置を 検出し,ノズルの位置を自動で合わせることができれば二次処理を必要としない調製機を開発できる. そこで本稿は,分岐部を検出するためにこねぎ分岐部における特有の斜線を抽出する手法を提案する. 本手法は,エッジ検出による斜線抽出とラベリング処理を行うことで頑健な検出を行う.本手法を実際 のこねぎ画像に適用した結果,分岐部斜線の検出率は 92%であり,分岐部位置を検出できた."
+        abstractOrigin: "ando_profile/assets/pdfs/sotsuken_thesis.pdf"
+        abstractSource: "/assets/pdfs/sotsuken_thesis.pdf"
         venue: 大分工業高等専門学校 情報工学科
         citation: "卒業研究論文 / 指導教員: 井上 優良"
         bibtexText: |-
@@ -590,6 +656,9 @@ sections:
           - name: 安藤 拓翔
             me: true
         title: DPUを用いたマルチタスクDNN表情認識システムのFPGA実装
+        abstractJa: "SoC FPGA上のDPUを用いた表情認識システムを実装した。顔検出と表情分類をそれぞれDNNで実行し、同一のDPUで二つの推論を処理する構成を検討した。"
+        abstractSource: "/assets/pdfs/tokukenn_thesis.pdf"
+        abstractNote: "特別研究論文の緒言・システム構成に基づく要約です。この原稿には独立した要旨がないため、原文の要旨とは区別しています。"
         venue: 大分工業高等専門学校 専攻科 電気電子情報工学専攻
         citation: "特別研究論文 / 指導教員: 井上 優良"
         bibtexText: |-
