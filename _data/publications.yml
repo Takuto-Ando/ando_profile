@@ -618,6 +618,11 @@ sections:
           - name: 安藤 拓翔
             me: true
         title: CGLAにおけるエネルギー効率の高いワークロード実行のためのAIアプリケーション実装とソフトウェアスタック改善
+        abstractEn: >-
+          Graphics processing units (GPUs) provide high AI inference throughput but consume high power, whereas fixed-function accelerators require redesign for new models and quantization formats. Motivated by this trade-off, this thesis examines the CPU-Grounded Linear Array (CGLA), a programmable accelerator architecture, using its IMAX3 FPGA prototype. We integrated a CGLA backend into llama.cpp, whisper.cpp, and stable-diffusion.cpp. Through their shared GGML matrix-multiplication interface, quantized and FP16 operations are dispatched to format-specific CGLA dot-product kernels. For dispatched quantized operations, the PE pipeline unpacks values, applies scales, and accumulates dot products, while application control and unsupported operations remain on the CPU.
+          Measurements of Qwen3 model inference show that repeated data transfers and host CPU processing constrain decode. Under the 28 nm ASIC projection, CGLA achieves 226× better PDP (Power-Delay Product) and 51.2× better EDP (Energy-Delay Product) than RTX 4090 for Qwen3-0.6B Q3_K_S at 8:1. PDP reductions are also observed in the automatic speech recognition and image generation evaluations, extending the results beyond LLM inference.
+        abstractSource: /assets/pdfs/master_thesis_2026_en.pdf
+        abstractOrigin: ando_profile/assets/pdfs/master_thesis_2026_en.pdf
         venue: 奈良先端科学技術大学院大学 先端科学技術研究科
         citation: "修士論文 / 2026年7月30日 / 主指導教員: 中島 康彦"
         bibtexText: |-
@@ -630,8 +635,6 @@ sections:
           }
         links:
           - label: PDF
-            url: /assets/pdfs/master_thesis_2026_ja.pdf
-          - label: English PDF
             url: /assets/pdfs/master_thesis_2026_en.pdf
       - authors:
           - name: 安藤 拓翔
