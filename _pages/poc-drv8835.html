@@ -1,5 +1,5 @@
 ---
-title: "DRV8835 Motor Control & Troubleshooting PoC"
+title: "DRV8835のモータ制御とトラブルシュート PoC"
 permalink: /poc/drv8835-motor-control/
 published: true
 author_profile: false
@@ -8,7 +8,7 @@ classes: wide
 <link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
 <div class="poc">
   <a class="poc-back" href="{{ '/poc/' | relative_url }}">← PoC一覧</a>
-  <p class="poc-eyebrow">MOTOR CONTROL / TROUBLESHOOTING</p>
+  <p class="poc-eyebrow">モータ制御・トラブルシュート</p>
   <span class="poc-status">個人PoC / 駆動・復旧経験あり / 原因記録整理中</span>
   <p class="poc-lead">MCUからDRV8835を制御してモータを駆動し、誤配線時の不調とMODE設定の修正に取り組んだPoC。</p>
   <h2>課題と目的</h2>
@@ -17,31 +17,31 @@ classes: wide
   <div class="poc-flow" aria-label="モータ制御の構成">
     <span>MCU / 制御信号</span><b aria-hidden="true">→</b><span>DRV8835 / MODE設定</span><b aria-hidden="true">→</b><span>モータ駆動</span>
   </div>
-  <p>使用MCUの型番、モータの仕様、電源構成、接続ピン、MODEの具体的なレベルは未整理です。最終的に動作した配線とFirmwareを照合して追記します。</p>
+  <p>使用MCUの型番、モータの仕様、電源構成、接続ピン、MODEの具体的なレベルは未整理です。最終的に動作した配線とファームウェアを照合して追記します。</p>
   <h2>実装と動作結果</h2>
   <p>MCUからDRV8835を制御してモータを駆動しました。MODE設定を扱い、正しい設定に修正した構成で動作を確認しています。</p>
   <p>現段階では、モータの駆動と設定・配線の切り分けに取り組んだ経験としてまとめます。PWM条件、回転数、電流、保護機能の評価結果は未整理です。</p>
-  <h2>Troubleshooting Case Study</h2>
+  <h2>トラブルシュート事例</h2>
   <h3>観測した症状</h3>
   <p>誤配線をした際に、モータ側に加えてUSB側にも不調が生じました。USB側で具体的に何が起きたか、どの端子をどう誤接続していたかは、当時の記録を確認して追記します。</p>
   <h3>復旧と修正</h3>
-  <p>BOOTSEL＋Resetで復旧し、その後、正しいMODE設定でモータが動作しました。これは経験した経過として記録します。BOOTSEL＋Resetの具体的な手順と、そのときの配線・電源状態は未整理です。</p>
+  <p>BOOTSEL＋リセットで復旧し、その後、正しいMODE設定でモータが動作しました。これは経験した経過として記録します。BOOTSEL＋リセットの具体的な手順と、そのときの配線・電源状態は未整理です。</p>
   <h3>原因の切り分けで残す情報</h3>
   <p>誤配線時のUSB側の不調と、MODE設定によるモータの動作を、それぞれの症状と対応付けて整理します。USB不調の電気的原因や、誤配線・MODE設定・復旧操作の因果関係は、この経過だけでは確定できません。</p>
   <div class="poc-table"><table>
     <thead><tr><th>段階</th><th>経験した内容</th><th>追記する証拠</th></tr></thead>
     <tbody>
       <tr><td>症状</td><td>誤配線時にUSB側も不調</td><td>配線図、具体的症状、接続機器、電源状態</td></tr>
-      <tr><td>復旧</td><td>BOOTSEL＋Resetで復旧</td><td>対象ボード、操作順序、復旧を判断した観測</td></tr>
-      <tr><td>設定修正</td><td>正しいMODE設定で動作</td><td>修正前後の設定、Firmware、動作動画</td></tr>
+      <tr><td>復旧</td><td>BOOTSEL＋リセットで復旧</td><td>対象ボード、操作順序、復旧を判断した観測</td></tr>
+      <tr><td>設定修正</td><td>正しいMODE設定で動作</td><td>修正前後の設定、ファームウェア、動作動画</td></tr>
       <tr><td>原因確認</td><td>詳細な因果関係は未整理</td><td>当時のログ・測定値と各変更の対応</td></tr>
     </tbody>
   </table></div>
   <h2>このPoCで扱った範囲</h2>
   <ul><li>MCUからモータドライバへの制御</li><li>DRV8835のMODE設定とモータ駆動</li><li>誤配線時の不調の観測と復旧</li><li>動作する設定への修正と確認</li></ul>
   <h3>経験の紹介文</h3>
-  <blockquote>個人PoCとして、MCUからDRV8835を制御するモータ駆動を試しました。誤配線時のUSB側の不調、BOOTSEL＋Resetによる復旧を経験し、正しいMODE設定での動作を確認しています。</blockquote>
+  <blockquote>個人PoCとして、MCUからDRV8835を制御するモータ駆動を試しました。誤配線時のUSB側の不調、BOOTSEL＋リセットによる復旧を経験し、正しいMODE設定での動作を確認しています。</blockquote>
   <h2>次に整理・評価すること</h2>
-  <ul><li>動作した配線図・電源構成・Firmware</li><li>MODE設定と制御信号の対応</li><li>トラブル発生から復旧までの時系列と観測記録</li><li>追加評価としてPWM制御、電流測定、保護の検討</li></ul>
-  <p class="poc-note">トラブルの経過をまとめた下書きです。電気的原因と安全性は未検証で、誤配線の再現試験やBOOTSEL＋Resetを一般的な復旧手順として推奨するものではありません。</p>
+  <ul><li>動作した配線図・電源構成・ファームウェア</li><li>MODE設定と制御信号の対応</li><li>トラブル発生から復旧までの時系列と観測記録</li><li>追加評価としてPWM制御、電流測定、保護の検討</li></ul>
+  <p class="poc-note">トラブルの経過をまとめた下書きです。電気的原因と安全性は未検証で、誤配線の再現試験やBOOTSEL＋リセットを一般的な復旧手順として推奨するものではありません。</p>
 </div>

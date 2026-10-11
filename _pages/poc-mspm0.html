@@ -1,5 +1,5 @@
 ---
-title: "MSPM0 Peripheral Control PoC"
+title: "MSPM0の周辺機能制御 PoC"
 permalink: /poc/mspm0-peripheral-control/
 published: true
 author_profile: false
@@ -8,41 +8,41 @@ classes: wide
 <link rel="stylesheet" href="{{ '/assets/css/poc.css' | relative_url }}">
 <div class="poc">
   <a class="poc-back" href="{{ '/poc/' | relative_url }}">← PoC一覧</a>
-  <p class="poc-eyebrow">MCU / EVENT-DRIVEN FIRMWARE</p>
+  <p class="poc-eyebrow">マイコン・イベント駆動ファームウェア</p>
   <span class="poc-status">個人PoC / 実装・動作経験あり / 記録整理中</span>
-  <p class="poc-lead">GPIO割込み、Timerデバウンス、ADC連続変換、UART出力、__WFIを組み合わせたMSPM0のFirmware PoC。</p>
+  <p class="poc-lead">GPIO割込み、タイマによるデバウンス、ADC連続変換、UART出力、__WFIを組み合わせたMSPM0のファームウェアの動作検証。</p>
   <h2>課題と目的</h2>
-  <p>MSPM0の周辺機能を個別に動かすだけでなく、入力イベントの検知とADCのサンプリングを共存させる実装に取り組みました。GPIO、Timer、ADC、UARTを組み合わせ、MCUが入力を受けて処理する一連の流れを確認することが目的です。</p>
-  <p><a href="{{ '/poc/24v-digital-input/' | relative_url }}">24V DI PoC</a>では回路からMCUまでの接続を扱い、このページではFirmwareと周辺機能の制御を中心にまとめます。割込み・デバウンスの経験には重複があり、別々の製品開発実績として数えるものではありません。</p>
+  <p>MSPM0の周辺機能を個別に動かすだけでなく、入力イベントの検知とADCのサンプリングを共存させる実装に取り組みました。GPIO、タイマ、ADC、UARTを組み合わせ、MCUが入力を受けて処理する一連の流れを確認することが目的です。</p>
+  <p><a href="{{ '/poc/24v-digital-input/' | relative_url }}">24V DI PoC</a>では回路からMCUまでの接続を扱い、このページではファームウェアと周辺機能の制御を中心にまとめます。割込み・デバウンスの経験には重複があり、別々の製品開発実績として数えるものではありません。</p>
   <h2>実装構成</h2>
   <div class="poc-flow" aria-label="イベント処理の構成">
-    <span>PA25 / Falling Edge</span><b aria-hidden="true">→</b><span>GPIO IRQ</span><b aria-hidden="true">→</b><span>TimerG / Debounce</span><b aria-hidden="true">→</b><span>イベントカウント / UART</span>
+    <span>PA25 / 立下りエッジ</span><b aria-hidden="true">→</b><span>GPIO割込み</span><b aria-hidden="true">→</b><span>TimerG / デバウンス</span><b aria-hidden="true">→</b><span>イベントカウント / UART</span>
   </div>
   <div class="poc-flow" aria-label="サンプリングの構成">
     <span>PA24 / ADC入力</span><b aria-hidden="true">→</b><span>ADC12 / 連続変換</span><b aria-hidden="true">＋</b><span>GPIO割込みとの共存</span>
   </div>
   <h2>実際に取り組んだこと</h2>
-  <h3>GPIO割込みとTimerデバウンス</h3>
-  <p>PA25のFalling EdgeをGPIO割込みで検知し、TimerGを使ったデバウンス処理を実装しました。イベント数をUARTで表示し、入力イベントをFirmwareで受け取る動作を確認しました。</p>
+  <h3>GPIO割込みとタイマによるデバウンス</h3>
+  <p>PA25の立下りエッジをGPIO割込みで検知し、TimerGを使ったデバウンス処理を実装しました。イベント数をUARTで表示し、入力イベントをファームウェアで受け取る動作を確認しました。</p>
   <p>TimerGの設定値、判定までの時間、割込み中に次の入力が入った場合の処理は、ソースコードと対応付けて追記します。</p>
   <h3>ADC12の連続サンプリング</h3>
-  <p>PA24を使ったADC12の連続変換を動かし、GPIO割込みとの共存も試しました。Timer、ADC、IRQを組み合わせた周辺機能制御の経験として整理します。</p>
-  <p>ADCのクロック、サンプリング条件、結果の取得方法、TimerとADCの具体的な接続関係は未整理です。TimerによるADCトリガやDMA利用は、この記録からは確認できません。</p>
+  <p>PA24を使ったADC12の連続変換を動かし、GPIO割込みとの共存も試しました。タイマ、ADC、IRQを組み合わせた周辺機能制御の経験として整理します。</p>
+  <p>ADCのクロック、サンプリング条件、結果の取得方法、タイマとADCの具体的な接続関係は未整理です。タイマによるADCトリガやDMA利用は、この記録からは確認できません。</p>
   <h3>__WFIによるイベント待機</h3>
-  <p>__WFIを使うイベント駆動の実装に取り組みました。待機からイベント処理へ移るFirmwareの構成を扱った経験として記載し、消費電流の削減量や応答時間は実測してから評価します。</p>
+  <p>__WFIを使うイベント駆動の実装に取り組みました。待機からイベント処理へ移るファームウェアの構成を扱った経験として記載し、消費電流の削減量や応答時間は実測してから評価します。</p>
   <h2>現在の結果と追加する証拠</h2>
   <div class="poc-table"><table>
     <thead><tr><th>機能</th><th>経験済みの内容</th><th>追記する記録</th></tr></thead>
     <tbody>
-      <tr><td>GPIO IRQ</td><td>PA25 / Falling Edge検知</td><td>MCU型番、配線、割込み設定、入力条件</td></tr>
+      <tr><td>GPIO割込み</td><td>PA25 / 立下りエッジ検知</td><td>MCU型番、配線、割込み設定、入力条件</td></tr>
       <tr><td>TimerG</td><td>デバウンス処理</td><td>クロック、設定時間、短いパルスへの挙動</td></tr>
-      <tr><td>UART</td><td>イベントカウント表示</td><td>baud rate、出力ログ、入力数と検知数の比較</td></tr>
-      <tr><td>ADC12</td><td>PA24 / 連続変換 / GPIO IRQとの共存</td><td>入力電圧、サンプリング条件、取得データ</td></tr>
+      <tr><td>UART</td><td>イベントカウント表示</td><td>通信速度、出力ログ、入力数と検知数の比較</td></tr>
+      <tr><td>ADC12</td><td>PA24 / 連続変換 / GPIO割込みとの共存</td><td>入力電圧、サンプリング条件、取得データ</td></tr>
       <tr><td>__WFI</td><td>イベント駆動の待機処理</td><td>待機・復帰のソース、電流と応答時間の測定</td></tr>
     </tbody>
   </table></div>
   <h2>このPoCで扱った範囲</h2>
-  <ul><li>GPIOのFalling Edge割込みとTimerGによるデバウンス</li><li>UARTを使ったイベントカウントの可視化</li><li>ADC12の連続変換とGPIO割込みの共存</li><li>__WFIを含むイベント駆動Firmware</li></ul>
+  <ul><li>GPIOの立下りエッジ割込みとTimerGによるデバウンス</li><li>UARTを使ったイベントカウントの可視化</li><li>ADC12の連続変換とGPIO割込みの共存</li><li>__WFIを含むイベント駆動ファームウェア</li></ul>
   <h3>経験の紹介文</h3>
   <blockquote>個人PoCとして、MSPM0のPA25 GPIO割込み、TimerGデバウンス、UARTイベントカウント、__WFIを実装しました。PA24のADC12連続変換とGPIO割込みの共存にも取り組んでいます。</blockquote>
   <p class="poc-note">記載は本人の実装・動作経験に基づく下書きです。ソースと測定記録は未添付で、サンプリング速度、ADC精度、消費電流、割込み応答時間の定量評価は未整理です。</p>
