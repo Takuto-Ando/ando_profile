@@ -165,3 +165,4 @@ window.addEventListener("pagehide", relock);
 window.addEventListener("pageshow", (event) => {
   if (event.persisted) relock();
 });
+unlock.disabled = false;
