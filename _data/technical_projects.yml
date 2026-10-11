@@ -1,8 +1,8 @@
 sections:
   - id: accelerator
     title: Accelerator / Hardware–Software Co-design
-    title_ja: アクセラレータ・ハードウェアとソフトウェアの協調実装
-    description: 演算の割当て、実行環境への組込み、正しさの検証と性能分析。CGLAはプログラム可能なASICで、研究ではFPGA試作機での測定とASICへの性能予測を区別しています。
+    title_ja: HW/SWの協調実装
+    description: アプリケーションにおける演算のマッピング、正しさの検証と性能分析などです。
     items:
       - project: ntt
       - project: bitnet
@@ -15,7 +15,7 @@ sections:
   - id: edge-ai
     title: エッジAI / 画像処理
     title_ja: エッジAI・画像処理
-    description: FPGAを使った認識システムと、実機への応用を見据えた画像処理。既存の研究テーマもこのカテゴリへまとめています。
+    description: FPGAを使った認識システムと、実機への応用を見据えた画像処理などまとめています。
     items:
       - legacy: /research/facial-expression/
       - legacy: /research/green-onion-dnn/
@@ -23,7 +23,7 @@ sections:
   - id: industrial
     title: Industrial Embedded Systems / PoC
     title_ja: 組込みシステム・PoC
-    description: 個人で実際に動かした回路・ファームウェアの経験。研究成果とは別に、構成、評価条件、デバッグの記録を残しています。
+    description: 個人で実際に動かした回路・ファームウェアの経験などをまとめています。研究成果とは別に、将来のキャリアのために取り組んだPoCの記録です。
     items:
       - title: 24V産業用デジタル入力
         href: /poc/24v-digital-input/
@@ -44,7 +44,7 @@ sections:
 projects:
   ntt:
     evidence_id: ntt
-    title: ML-KEMで用いる法3329上のNTT演算
+    title: ML-KEMで用いるNTT演算
     href: /research/ntt/
     body: q=3329上のNTT演算をCGLAに割り当てる。段間のデータ配置とARM・DMA境界まで含め、CPU参照との一致とFPGA実測を評価。
     tags: [NTT, 剰余演算, CGLA, 検証]
