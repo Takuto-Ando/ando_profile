@@ -1,5 +1,6 @@
 const iterations = 600000;
-const maximumBytes = 5 * 1024 * 1024;
+const maximumBytes = 32 * 1024 * 1024;
+const maximumCiphertext = 45000000;
 
 function toBase64(bytes) {
   let binary = "";
@@ -44,21 +45,25 @@ export async function encryptDocument(html, password) {
   }
   const plaintext = new TextEncoder().encode(html);
   if (!plaintext.length || plaintext.length > maximumBytes) {
-    throw new Error("資料全体を空でない5MiB以下にしてください。");
+    throw new Error("資料全体を空でない32MiB以下にしてください。");
   }
   const salt = crypto.getRandomValues(new Uint8Array(16));
   const iv = crypto.getRandomValues(new Uint8Array(12));
   const key = await deriveKey(password, salt);
+  const compressed = await new Response(
+    new Blob([plaintext]).stream().pipeThrough(new CompressionStream("gzip")),
+  ).arrayBuffer();
   const ciphertext = await crypto.subtle.encrypt(
     { name: "AES-GCM", iv },
     key,
-    plaintext,
+    compressed,
   );
   return {
     version: 1,
     algorithm: "AES-256-GCM",
     kdf: "PBKDF2-SHA256",
     iterations,
+    compression: "gzip",
     salt: toBase64(salt),
     iv: toBase64(iv),
     ciphertext: toBase64(new Uint8Array(ciphertext)),
@@ -73,7 +78,8 @@ export async function decryptDocument(payload, password) {
     payload.kdf !== "PBKDF2-SHA256" ||
     payload.iterations !== iterations ||
     typeof payload.ciphertext !== "string" ||
-    payload.ciphertext.length > 7100000
+    payload.ciphertext.length > maximumCiphertext ||
+    (payload.compression !== undefined && payload.compression !== "gzip")
   ) {
     throw new Error("保護データの形式が不正です。");
   }
@@ -84,10 +90,32 @@ export async function decryptDocument(payload, password) {
     throw new Error("保護データの形式が不正です。");
   }
   const key = await deriveKey(password, salt);
-  const plaintext = await crypto.subtle.decrypt(
+  const decoded = await crypto.subtle.decrypt(
     { name: "AES-GCM", iv },
     key,
     ciphertext,
   );
+  let plaintext = decoded;
+  if (payload.compression === "gzip") {
+    const reader = new Blob([decoded])
+      .stream()
+      .pipeThrough(new DecompressionStream("gzip"))
+      .getReader();
+    const chunks = [];
+    let size = 0;
+    while (true) {
+      const result = await reader.read();
+      if (result.done) break;
+      size += result.value.byteLength;
+      if (size > maximumBytes) {
+        await reader.cancel();
+        throw new Error("資料全体が32MiBを超えています。");
+      }
+      chunks.push(result.value);
+    }
+    plaintext = await new Blob(chunks).arrayBuffer();
+  }
+  if (plaintext.byteLength > maximumBytes)
+    throw new Error("資料全体が32MiBを超えています。");
   return new TextDecoder("utf-8", { fatal: true }).decode(plaintext);
 }

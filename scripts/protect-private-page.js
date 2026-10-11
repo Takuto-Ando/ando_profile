@@ -7,6 +7,7 @@ import { parseLibrary } from "../assets/js/private-library.js";
 const form = document.getElementById("encrypt-form");
 const source = document.getElementById("source");
 const existing = document.getElementById("existing");
+const interactive = document.getElementById("interactive");
 const password = document.getElementById("password");
 const confirm = document.getElementById("confirm");
 const button = document.getElementById("encrypt");
@@ -17,6 +18,7 @@ if (
   !(form instanceof HTMLFormElement) ||
   !(source instanceof HTMLInputElement) ||
   !(existing instanceof HTMLInputElement) ||
+  !(interactive instanceof HTMLInputElement) ||
   !(password instanceof HTMLInputElement) ||
   !(confirm instanceof HTMLInputElement) ||
   !(button instanceof HTMLButtonElement) ||
@@ -52,7 +54,7 @@ form.addEventListener("submit", async (event) => {
     const entries = new Map();
     const previous = existing.files?.[0];
     if (previous) {
-      if (previous.size > 7100000)
+      if (previous.size > 45000000)
         throw new Error("既存データが大きすぎます。");
       try {
         const plaintext = await decryptDocument(
@@ -69,8 +71,8 @@ form.addEventListener("submit", async (event) => {
     }
     const files = Array.from(source.files || []);
     for (const file of files) {
-      if (file.size > 5 * 1024 * 1024)
-        throw new Error("5MiB以下のHTMLを選んでください。");
+      if (file.size > 32 * 1024 * 1024)
+        throw new Error("32MiB以下のHTMLを選んでください。");
       const html = await file.text();
       if (!/<html[\s>]/i.test(html))
         throw new Error("完全なHTMLファイルを選んでください。");
@@ -80,7 +82,12 @@ form.addEventListener("submit", async (event) => {
         template.content.querySelector("title")?.textContent?.trim() ||
         file.name
       ).slice(0, 200);
-      entries.set(file.name, { id: file.name, title, html });
+      entries.set(file.name, {
+        id: file.name,
+        title,
+        html,
+        interactive: interactive.checked,
+      });
     }
     const library = {
       type: "private-library",

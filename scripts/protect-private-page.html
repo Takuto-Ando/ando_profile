@@ -19,7 +19,9 @@
       <p class="note">現在のcontent.jsonを選ぶと、同じパスワードで復号して新しい資料を追加します。</p>
       <label for="source">追加・更新するHTMLファイル（複数選択可）</label>
       <input id="source" type="file" accept=".html,.htm,text/html" multiple>
-      <p class="note">資料のタイトルはHTMLのtitleから取得。同名ファイルは更新します。全体5MiB以下・100件まで。外部画像・スクリプトは閲覧時に無効化します。</p>
+      <p class="note">資料のタイトルはHTMLのtitleから取得。同名ファイルは更新します。全体32MiB以下・100件まで。圧縮して暗号化します。外部画像・通信は無効化します。</p>
+      <label><input id="interactive" type="checkbox">信頼する自作教材の検索・クイズ機能を有効にする</label>
+      <p class="note">選択した新しいHTMLだけに適用。スクリプトは隔離した資料内で動作し、外部通信と親ページへのアクセスは禁止します。学習履歴は資料を閉じると消去します。</p>
       <label for="password">パスワード（8文字以上、20文字以上を推奨）</label>
       <input id="password" type="password" autocomplete="new-password" minlength="8" required spellcheck="false">
       <label for="confirm">パスワード（確認）</label>

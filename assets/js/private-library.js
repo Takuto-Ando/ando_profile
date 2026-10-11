@@ -25,6 +25,8 @@ export function parseLibrary(plaintext) {
       typeof entry.title !== "string" ||
       !entry.title.trim() ||
       entry.title.length > 200 ||
+      (entry.interactive !== undefined &&
+        typeof entry.interactive !== "boolean") ||
       typeof entry.html !== "string" ||
       !/<html[\s>]/i.test(entry.html)
     ) {
