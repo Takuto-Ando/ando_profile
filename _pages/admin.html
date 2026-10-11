@@ -1,0 +1,48 @@
+---
+layout: null
+title: 管理者ページ
+permalink: /admin/
+search: false
+sitemap: false
+---
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <title>管理者ページ | Ando Takuto</title>
+  <link rel="stylesheet" href="{{ '/assets/css/private-vault.css' | relative_url }}">
+  <script type="module" src="{{ '/assets/js/private-vault.js' | relative_url }}"></script>
+</head>
+<body data-payload-url="{{ '/assets/private/content.json' | relative_url }}">
+  <main>
+    <div class="bar"><a href="{{ '/' | relative_url }}">← ホーム</a><button id="lock" type="button" hidden>ロックする</button></div>
+    <section id="gate" class="panel" aria-labelledby="heading">
+      <p class="eyebrow">PRIVATE DOCUMENT</p>
+      <h1 id="heading">管理者ページ</h1>
+      <p>パスワードを入力すると、保護された資料一覧を開きます。</p>
+      <form id="unlock-form">
+        <label for="password">パスワード</label>
+        <input id="password" type="password" autocomplete="off" required spellcheck="false">
+        <button id="unlock" type="submit">資料一覧を開く</button>
+      </form>
+      <p class="note">このブラウザにパスワードを保存する機能はありません。</p>
+      <noscript>資料を開くにはJavaScriptを有効にしてください。</noscript>
+    </section>
+    <p id="status" role="status" aria-live="polite"></p>
+    <section id="library" aria-labelledby="library-heading" hidden>
+      <p class="eyebrow">PRIVATE LIBRARY</p>
+      <h1 id="library-heading">保護された資料</h1>
+      <p id="library-count" class="note"></p>
+      <div id="library-list" class="library-grid"></div>
+    </section>
+    <div id="document-bar" class="bar" hidden>
+      <button id="back" type="button">← 資料一覧へ</button>
+      <h2 id="document-title"></h2>
+    </div>
+    <iframe id="document" title="保護された資料" sandbox="allow-popups allow-popups-to-escape-sandbox" referrerpolicy="no-referrer" hidden></iframe>
+  </main>
+</body>
+</html>
