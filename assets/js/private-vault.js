@@ -1,5 +1,6 @@
 import { decryptDocument } from "./private-crypto.js";
 import { parseLibrary } from "./private-library.js";
+import { prepareDocument } from "./private-document.js";
 
 const form = document.getElementById("unlock-form");
 const password = document.getElementById("password");
@@ -34,11 +35,17 @@ if (
 }
 
 let operation = 0;
+let documents = [];
+let channel = "";
 
 const relock = () => {
   operation += 1;
   frame.removeAttribute("srcdoc");
   frame.hidden = true;
+  frame.style.height = "1px";
+  document.body.classList.remove("document-open");
+  documents = [];
+  channel = "";
   library.hidden = true;
   list.replaceChildren();
   count.textContent = "";
@@ -55,13 +62,33 @@ const relock = () => {
 const showLibrary = () => {
   frame.removeAttribute("srcdoc");
   frame.hidden = true;
+  frame.style.height = "1px";
+  document.body.classList.remove("document-open");
+  channel = "";
   frame.title = "保護された資料";
   documentBar.hidden = true;
   documentTitle.textContent = "";
   library.hidden = false;
 };
 
+const openDocument = (entry) => {
+  channel = Array.from(crypto.getRandomValues(new Uint8Array(24)), (byte) =>
+    byte.toString(16).padStart(2, "0"),
+  ).join("");
+  frame.style.height = "1px";
+  frame.srcdoc = prepareDocument(entry, documents, channel);
+  frame.title = entry.title;
+  documentTitle.textContent = entry.title;
+  library.hidden = true;
+  documentBar.hidden = false;
+  document.body.classList.add("document-open");
+  frame.hidden = false;
+  back.focus();
+  window.scrollTo(0, 0);
+};
+
 const renderLibrary = (entries) => {
+  documents = entries;
   list.replaceChildren();
   count.textContent = `${entries.length}件の資料。閲覧する資料を選んでください。`;
   for (const entry of entries) {
@@ -76,42 +103,43 @@ const renderLibrary = (entries) => {
     action.textContent = "資料を開く →";
     card.append(title, action);
     card.addEventListener("click", () => {
-      frame.srcdoc = protectedDocument(entry.html);
-      frame.title = entry.title;
-      documentTitle.textContent = entry.title;
-      library.hidden = true;
-      documentBar.hidden = false;
-      frame.hidden = false;
-      back.focus();
+      openDocument(entry);
     });
     list.append(card);
   }
   showLibrary();
 };
 
-function protectedDocument(html) {
-  const template = document.createElement("template");
-  template.innerHTML = html;
-  template.content
-    .querySelectorAll("script, iframe, object, embed, base, meta[http-equiv]")
-    .forEach((element) => element.remove());
-  template.content.querySelectorAll("a[href]").forEach((anchor) => {
-    const href = anchor.getAttribute("href") || "";
-    if (!href.startsWith("#")) {
-      if (!/^https?:\/\//i.test(href)) anchor.removeAttribute("href");
-      anchor.setAttribute("target", "_blank");
-      anchor.setAttribute("rel", "noopener noreferrer");
-    }
-  });
-  return (
-    '<!doctype html><html lang="ja"><head><meta charset="utf-8">' +
-    '<meta name="referrer" content="no-referrer">' +
-    '<meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; style-src &#39;unsafe-inline&#39;; img-src data:; base-uri &#39;none&#39;; form-action &#39;none&#39;">' +
-    "</head><body>" +
-    template.innerHTML +
-    "</body></html>"
-  );
-}
+window.addEventListener("message", (event) => {
+  if (
+    !channel ||
+    event.source !== frame.contentWindow ||
+    event.data?.channel !== channel
+  )
+    return;
+  const detail = event.data;
+  if (
+    detail.type === "height" &&
+    Number.isFinite(detail.height) &&
+    detail.height > 0 &&
+    detail.height <= 2000000
+  ) {
+    frame.style.height = `${Math.ceil(detail.height)}px`;
+  } else if (detail.type === "open" && typeof detail.id === "string") {
+    const entry = documents.find((document) => document.id === detail.id);
+    if (entry) openDocument(entry);
+  } else if (
+    detail.type === "scroll" &&
+    Number.isFinite(detail.top) &&
+    detail.top >= 0 &&
+    detail.top <= frame.offsetHeight
+  ) {
+    window.scrollTo(
+      0,
+      frame.getBoundingClientRect().top + scrollY + detail.top,
+    );
+  }
+});
 
 form.addEventListener("submit", async (event) => {
   event.preventDefault();

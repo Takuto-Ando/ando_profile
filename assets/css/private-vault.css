@@ -18,6 +18,7 @@ main {
   margin: 24px auto;
 }
 .bar {
+  position: static;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -61,6 +62,11 @@ input {
   font: inherit;
   margin: 8px 0 18px;
 }
+input[type="checkbox"] {
+  display: inline-block;
+  width: auto;
+  margin-right: 8px;
+}
 button,
 .download {
   display: inline-block;
@@ -92,11 +98,13 @@ button:disabled {
 iframe {
   display: block;
   width: 100%;
-  height: calc(100dvh - 150px);
-  min-height: 500px;
+  height: 1px;
   border: 1px solid #dce4e9;
   border-radius: 10px;
   background: white;
+}
+body.document-open main {
+  width: min(1600px, calc(100% - 32px));
 }
 [hidden] {
   display: none !important;
