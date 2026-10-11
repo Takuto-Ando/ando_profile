@@ -47,6 +47,8 @@ NTT/BitNetの保存済みPDFは現行本文との版差を明記する。PoCの�
 # Minimal Mistakes remote theme starter
 
 研究業績のBibTeXは `_data/publications.yml` の `bibtexText` に保存する。
+要旨は `abstractJa` / `abstractEn`、公開出典は `abstractSource`、手元原稿の所在は `abstractOrigin` に記録する。
+要旨ではなく本文・スライドから作成した要約や、掲載版と異なる保存原稿には `abstractNote` を付けて区別する。該当原稿が確認できない項目は推測で埋めない。
 既存の書誌情報を使い、未確認のDOI・巻号・ページ・学位論文の年は補完しない。「BibTeXをコピー」で取得でき、clipboardが使えない場合は本文を選択して手動コピーする。
 発表資料は `_data/presentations.yml` で既存のスライド・ポスターを管理する。趣味ページは保持し、ナビゲーションからだけ除外している。
 

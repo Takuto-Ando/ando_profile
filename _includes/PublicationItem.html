@@ -114,14 +114,20 @@
         {% if publication.abstractJa %}
           <div class="pub-panel__row">
             <div class="pub-panel__label">[ja]</div>
-            <div class="pub-panel__body">{{ publication.abstractJa }}</div>
+            <div class="pub-panel__body">{{ publication.abstractJa | escape }}</div>
           </div>
         {% endif %}
         {% if publication.abstractEn %}
           <div class="pub-panel__row">
             <div class="pub-panel__label">[en]</div>
-            <div class="pub-panel__body">{{ publication.abstractEn }}</div>
+            <div class="pub-panel__body">{{ publication.abstractEn | escape }}</div>
           </div>
+        {% endif %}
+        {% if publication.abstractNote %}<p class="pub-panel__body">{{ publication.abstractNote | escape }}</p>{% endif %}
+        {% if publication.abstractSource %}
+          {% assign abstract_source = publication.abstractSource %}
+          {% unless abstract_source contains '://' %}{% assign abstract_source = abstract_source | relative_url %}{% endunless %}
+          <p class="pub-panel__body"><a href="{{ abstract_source | escape }}" target="_blank" rel="noopener">{% if site.active_lang == 'en' %}Abstract source{% else %}要旨・概要の出典{% endif %}</a></p>
         {% endif %}
       </div>
     {% endif %}
