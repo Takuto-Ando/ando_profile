@@ -52,12 +52,12 @@ projects:
   kv260:
     title: KV260・Vitis AI・PYNQによるエッジAI実装
     href: /research/kv260/
-    body: Model Zooの車のセグメンテーション、量子化モデルの作成、DPU実行とPYNQを使った実装経験。表情認識研究へつながる開発の流れを整理。
+    body: Vitis AIによるFP32モデルの8bit量子化・コンパイルから、KV260のDPU構成選定、CPU前処理との協調実行、利用率・スループット評価まで。Model ZooとPYNQの実装経験も紹介。
     category: edge-ai
     evidence_id: kv260
     venue: 高専時代の研究・学習
-    overview: Kria KV260を使い、学習済みモデルの動作確認から量子化、DPU向けの変換、Pythonからの実行までを経験しました。Vitis AI Model ZooやAIエッジコンテストの公開資料を参考にした学習と、表情認識システムの研究をまとめています。
-    tags: [KV260, Vitis AI, PYNQ, Model Zoo, 量子化, DPU]
+    overview: Kria KV260とVitis AIを使い、モデルの量子化・コンパイルだけでなく、DPUを含むハードウェア構成、CPUとDPUの処理分担、複数モデルの実行、システム全体の評価まで取り組みました。表情認識研究で実装・評価した内容を中心に、Model ZooとPYNQを使った経験も紹介します。
+    tags: [KV260, Vitis AI 2.5, INT8, DPU, CPU・DPU協調, マルチスレッド, PYNQ]
     context:
       - 学習済みモデルをエッジ機器で動かす際には、モデルの形式、量子化、実行対象のDPUと入力前処理を対応付ける必要があります。
       - Model Zooの例で実行の流れを学び、顔検出と表情分類を同じDPUへ載せる研究に取り組みました。
@@ -67,10 +67,32 @@ projects:
       - PYNQを使ったPythonからのDPU実行と、モデルの入力・出力処理。
       - 表情認識研究で、カメラ入力、CPU前処理、DPUの顔検出・表情分類を接続。
       - AIエッジコンテストの公開資料を参照し、モデルをエッジ機器へ実装する手順を学習。
+    implementation:
+      - title: モデルの量子化とDPU向けコンパイル
+        paragraphs:
+          - 表情認識研究ではVitis AI 2.5のAI quantizerとAI compilerを使用しました。32bit浮動小数点のモデルを8bit整数へ量子化し、DPUで実行できる形式へコンパイルするまでを扱っています。
+          - モデルを変換して終わりではなく、顔検出と表情分類をそれぞれDPUへ載せ、量子化後のモデルについて認識精度とレイテンシを評価しました。量子化・コンパイル・実行後の評価を一連の開発工程として経験しています。
+      - title: DPUのハードウェア構成とサイズ選択
+        paragraphs:
+          - CANDARW 2024の実装では、Arm Cortex-A53とFPGAを持つKV260を使用し、Vivado 2021.1でDPUを含むハードウェアデザインを作成しました。CPUとDPUはAXIで接続され、共有するオフチップメモリと、FPGA上の画像・重み・中間特徴のバッファを使います。
+          - DPUの演算並列度とFPGAリソースの関係も扱いました。ICIC Express Letters 2025では、Pixel Parallelism（PP）、Input Channel Parallelism（ICP）、Output Channel Parallelism（OCP）から1クロック当たりの演算数を整理しています。B512ではPP=4、ICP=8、OCP=8で、積和を2演算と数えると512演算になります。
+          - 軽量な顔検出と表情分類にはB512を選択しました。CANDARW 2024ではB512からB4096までの構成と、300〜600 MHzのDPU動作周波数について、FPGAリソース、スループット、消費電力の違いを比較しました。最大のDPUを選ぶのではなく、システムの処理量に見合う構成を評価した経験です。
+      - title: 前処理と2つのモデルを接続する実装
+        paragraphs:
+          - CANDARW 2024の構成は、カメラ入力からCPUで画像をリサイズし、DPUのDenseBoxで顔を検出した後、顔領域を切り出してグレースケール化し、CNNで表情を分類する流れです。画像の前処理はCPU、2つの推論は同じDPUへ割り当てました。
+          - 顔検出と表情分類を時分割で実行するため、モデルごとに別のアクセラレータを増やさずにシステムを構成できます。モデル単体の推論だけでなく、入力画像、顔領域、分類結果をつなぐアプリケーション側の処理も扱っています。
+      - title: CPU前処理とDPU実行のマルチスレッド化
+        paragraphs:
+          - 1つの処理スレッドでは、CPUが画像を処理している間にDPUが待機します。この待ち時間を減らすため、Pythonのthreadingを使い、異なるフレームのCPU処理とDPU実行を重ねました。
+          - 論文の実装ではカメラ入力を専用の1スレッドへ分離し、2つの処理スレッドが1つのDPUを共有します。評価でいう「2スレッド」は処理スレッド数で、カメラ入力を含めると合計3スレッドです。複数のDPUで同時に推論する構成とは区別しています。
+      - title: Model Zoo・PYNQを使った開発経験
+        paragraphs:
+          - Vitis AI Model Zooの車のセグメンテーションをKV260で動かし、PYNQからPythonでDPUを利用する流れを経験しました。公開モデルの入出力を確認する経験と、研究での量子化・モデル変換・前後処理の接続が、エッジAI実装の理解につながっています。
+          - Model Zoo、Kria-PYNQ、AIエッジコンテストの資料を参考にした学習と、論文に記載した表情認識の実装・評価は区別しています。公開モデルやDPU自体を独自に開発したという実績ではありません。
     results:
-      - 表情認識研究の保存原稿には、評価ボードとしてKV260、モデルの変換にVitis AI 2.5を使用したことを記録しています。
-      - Model Zooの学習済みモデルを使う経験と、研究で行ったモデル変換・システム実装を通じて、前処理から推論・後処理までの流れを扱いました。
-      - 車のセグメンテーションとPYNQの経験は学習・実装経験の紹介です。このページでは新しい精度・速度の測定値やコンテスト参加実績を示していません。
+      - CANDARW 2024のTable IIIでは、B512の処理スレッドを1つから2つへ増やすと、スループットは14.69 FPSから25.00 FPS、顔検出と表情分類を合計したDPU利用率は22.85%から78.44%となりました。DPU利用率は総実行時間に対するDPU実行時間の割合として評価しています。
+      - モデルの推論速度だけでなく、CPU側の処理、DPUの待機、システム全体のFPS、FPGAリソース、消費電力を関連付けて評価しました。エッジ機器の構成を決める際に、モデル変換と実装・測定の両面から検討できる経験です。
+      - 上記の数値はCANDARW 2024の当該条件の結果であり、今回の再測定ではありません。初期SASIMI実装と後続論文ではモデルや構成が異なります。Model Zooの車のセグメンテーションについて、新しい精度・速度やコンテスト参加実績は示していません。
     skip_result_figure: true
     related:
       - href: /research/facial-expression/
@@ -261,13 +283,14 @@ projects:
     category: edge-ai
     evidence_id: fpga-vision
     venue: CANDARW 2024 / ICIC Express Letters
-    overview: Kria KV260のSoC FPGAに搭載したDPUで、顔検出と表情分類を実行するシステムです。Vitis AIでモデルを量子化・コンパイルし、後続のマルチスレッド実装ではCPU側前処理とDPU実行を重ねて利用率を評価しました。
+    overview: Kria KV260のSoC FPGAに搭載したDPUで、顔検出と表情分類を実行するシステムです。Vitis AIでモデルを量子化・コンパイルし、CPU前処理とのマルチスレッド実行、DPUサイズ・動作周波数の選択、利用率とスループットの評価に取り組みました。
     tags: [KV260, DPU, Vitis AI, 量子化, 顔検出, マルチスレッド処理]
     work:
       - 顔検出と表情分類の2つのDNNをDPUへ実装。
       - Vitis AI 2.5のAI quantizerとAI compilerを用いて、モデルをDPUで実行できる形式へ変換。
       - カメラ入力から前処理、顔領域検出、表情分類までの処理を接続。
       - CPU前処理とDPU実行をマルチスレッド化し、利用率と処理性能を評価。
+      - B512からB4096までのDPU構成と動作周波数を比較し、FPGAリソース・スループット・消費電力の関係を評価。
     results:
       - 既存のマルチスレッド研究では顔検出、表情分類、処理速度とDPU利用率を評価しています。
       - 初期のYOLOv2 tinyを使う実装と後続のDenseBoxを使う実装は、モデルとDPU構成を分けて扱います。
@@ -276,7 +299,7 @@ projects:
       - 保存原稿の紹介であり、現在のボードやモデルを用いた再測定ではありません。
     related:
       - href: /research/kv260/
-        label: KV260・Vitis AI・PYNQの実装経験
+        label: Vitis AIの量子化・DPU構成・協調実行の詳細
   green-onion-dnn:
     title: DNNによる小ねぎ分岐部検出
     category: edge-ai

@@ -121,6 +121,21 @@
     - src: /assets/images/imax4_proto.jpg
       caption: 既存サイトのIMAX4プロトタイプ写真。
       source: ando_profile/assets/images/imax4_proto.jpg
+/research/kv260/:
+  documents:
+    - href: /assets/pdfs/paper/candar2024gca.pdf
+      label: CANDARW 2024（III-C/D・IV-C・V：変換・協調実行・評価）
+      source: ando_profile/assets/pdfs/paper/candar2024gca.pdf
+    - href: /assets/pdfs/paper/icic_express.pdf
+      label: ICIC Express Letters 2025（2.1・2.2：DPU構成とモデル変換）
+      source: ando_profile/assets/pdfs/paper/icic_express.pdf
+    - href: /assets/pdfs/tokukenn_thesis.pdf
+      label: 専攻科特別研究論文（2025）
+      source: ando_profile/assets/pdfs/tokukenn_thesis.pdf
+  figures:
+    - src: /assets/images/fer_system.png
+      caption: CPUで画像を処理し、DenseBoxによる顔検出とCNNによる表情分類を同じDPUへ渡す構成。
+      source: ando_profile/assets/images/fer_system.png
 /research/facial-expression/:
   documents:
     - href: /assets/pdfs/tokukenn_thesis.pdf
