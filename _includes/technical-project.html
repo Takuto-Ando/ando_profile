@@ -10,6 +10,10 @@
   <p class="poc-lead">{{ project.overview }}</p>
   {% include article-materials.html title=project.paper %}
   <div class="bp-tags">{% for tag in project.tags %}<span class="bp-tag">{{ tag }}</span>{% endfor %}</div>
+  {% if project.context %}
+  <h2>課題と手法の選択</h2>
+  {% for text in project.context %}<p>{{ text }}</p>{% endfor %}
+  {% endif %}
   <h2>実装・評価した内容</h2>
   <ul>{% for text in project.work %}<li>{{ text }}</li>{% endfor %}</ul>
   {% if project.work_figures %}
@@ -20,6 +24,14 @@
   <h2>結果</h2>
   {% for text in project.results %}<p>{{ text }}</p>{% endfor %}
   {% unless project.skip_result_figure %}{% include article-materials.html figure=1 %}{% endunless %}
+  {% if project.related %}
+  <h2>関連する実装・資料</h2>
+  <ul>{% for link in project.related %}<li><a href="{{ link.href | relative_url }}">{{ link.label }}</a></li>{% endfor %}</ul>
+  {% endif %}
+  {% if project.references %}
+  <h2>参考にした資料</h2>
+  <ul>{% for reference in project.references %}<li><a href="{{ reference.href }}" target="_blank" rel="noopener">{{ reference.label }}</a></li>{% endfor %}</ul>
+  {% endif %}
   {% if site.technical_preview %}
   <p><a href="{{ '/research/evidence/' | relative_url }}{% if project.evidence_id %}#{{ project.evidence_id }}{% endif %}">出典と実験記録の整理状況 →</a></p>
   <p class="poc-note">公開状況・公開許可を確認するまではローカル下書きとして扱います。採録済み・公開済みであることをこのページから断定しません。</p>
