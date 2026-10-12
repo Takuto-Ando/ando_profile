@@ -56,10 +56,10 @@
   image: /assets/images/fpga_system2.png
   caption_ja: FPGA マルチタスク構成
   caption_en: FPGA multi-task stack
-  title_ja: FPGA による表情認識システム
-  title_en: FPGA Facial Expression Recognition
-  body_ja: DPU ベースの DNN アクセラレータを用いて、FPGA 上でリアルタイム表情認識システムを実装した。マルチスレッド化と低消費電力化を両立している。
-  body_en: I implemented a real-time facial expression recognition system on FPGA using a DPU-based DNN accelerator, targeting both multi-threaded execution and low power operation.
+  title_ja: KV260のDPUによる表情認識システム
+  title_en: Facial Expression Recognition on KV260
+  body_ja: KV260とVitis AIを使い、顔検出と表情分類を同じDPUへ実装した。モデルの量子化・コンパイル、CPU前処理とDPU実行を重ねるマルチスレッド処理に取り組んだ。
+  body_en: I deployed face detection and expression classification on the same DPU using KV260 and Vitis AI, including model quantization, compilation, and multithreaded CPU preprocessing.
   tags:
     - label: ICIC Express Letters 2025
       kind: neutral
@@ -73,8 +73,8 @@
   caption_en: YOLOX detection result
   title_ja: DNNベースの小ねぎ分岐部検出
   title_en: DNN-Based Green Onion Branching Point Detection
-  body_ja: 背景や照明条件が複雑な環境に対応するため、YOLOX ベースの検出とインスタンスセグメンテーションを用いた分岐部検出を検討した。自動調製機への実応用を見据えた認識系として整理している。
-  body_en: To handle complex backgrounds and lighting conditions, I studied branching-point detection based on YOLOX and instance segmentation. This line of work targets practical deployment in automated green-onion peeling systems.
+  body_ja: YOLOXによる分岐部の検出と、Mask R-CNNによる芯・葉の領域分割を比較した。葉が重なって分岐部が隠れる条件を含め、調製位置の推定に使える手法を評価した。
+  body_en: I compared YOLOX detection with Mask R-CNN instance segmentation for estimating trimming positions, including images where overlapping leaves hide the branching point.
   tags:
     - label: ICIC Express Letters 2026
       kind: neutral

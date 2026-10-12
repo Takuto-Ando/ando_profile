@@ -15,11 +15,12 @@ sections:
   - id: edge-ai
     title: エッジAI / 画像処理
     title_ja: エッジAI・画像処理
-    description: FPGAを使った認識システムと、実機への応用を見据えた画像処理などまとめています。
+    description: 高専時代から取り組んできたエッジ検出、物体検出・領域分割、KV260上の認識システムとモデルの実装経験をまとめています。
     items:
       - legacy: /research/facial-expression/
       - legacy: /research/green-onion-dnn/
       - legacy: /research/green-onion-edge/
+      - project: kv260
   - id: industrial
     title: Industrial Embedded Systems / PoC
     title_ja: 組込みシステム・PoC
@@ -35,13 +36,77 @@ sections:
         tags: [RS-485, UART, 終端, 通信試験]
       - title: MSPM0の周辺機能制御
         href: /poc/mspm0-peripheral-control/
-        body: GPIO割込み、TimerG、ADC12連続変換、UARTイベントカウント、__WFIを組み合わせたファームウェア。
+        body: GPIO割込み、UARTイベントカウント、__WFIの保存コードと、TimerG・ADC12を扱った個人PoCの経験。
         tags: [GPIO割込み, タイマ, ADC, ファームウェア]
       - title: DRV8835のモータ制御とトラブルシュート
         href: /poc/drv8835-motor-control/
         body: MCUからのモータ駆動、MODE設定、誤配線時の不調と復旧をまとめた事例。
         tags: [モータドライバ, MODE, 配線, トラブルシュート]
+  - id: systems-software
+    title: Networking / Software
+    title_ja: 通信・ソフトウェア
+    description: 通信の内容を観察し、解析・表示するために制作したソフトウェアです。
+    items:
+      - project: network-analyzer
 projects:
+  kv260:
+    title: KV260・Vitis AI・PYNQによるエッジAI実装
+    href: /research/kv260/
+    body: Model Zooの車のセグメンテーション、量子化モデルの作成、DPU実行とPYNQを使った実装経験。表情認識研究へつながる開発の流れを整理。
+    category: edge-ai
+    evidence_id: kv260
+    venue: 高専時代の研究・学習
+    overview: Kria KV260を使い、学習済みモデルの動作確認から量子化、DPU向けの変換、Pythonからの実行までを経験しました。Vitis AI Model ZooやAIエッジコンテストの公開資料を参考にした学習と、表情認識システムの研究をまとめています。
+    tags: [KV260, Vitis AI, PYNQ, Model Zoo, 量子化, DPU]
+    context:
+      - 学習済みモデルをエッジ機器で動かす際には、モデルの形式、量子化、実行対象のDPUと入力前処理を対応付ける必要があります。
+      - Model Zooの例で実行の流れを学び、顔検出と表情分類を同じDPUへ載せる研究に取り組みました。
+    work:
+      - Vitis AI Model Zooの車を対象としたセグメンテーションモデルをKV260で動かす学習。
+      - Vitis AIを用いた量子化モデルの作成と、DPU向けモデルへのコンパイル。
+      - PYNQを使ったPythonからのDPU実行と、モデルの入力・出力処理。
+      - 表情認識研究で、カメラ入力、CPU前処理、DPUの顔検出・表情分類を接続。
+      - AIエッジコンテストの公開資料を参照し、モデルをエッジ機器へ実装する手順を学習。
+    results:
+      - 表情認識研究の保存原稿には、評価ボードとしてKV260、モデルの変換にVitis AI 2.5を使用したことを記録しています。
+      - Model Zooの学習済みモデルを使う経験と、研究で行ったモデル変換・システム実装を通じて、前処理から推論・後処理までの流れを扱いました。
+      - 車のセグメンテーションとPYNQの経験は学習・実装経験の紹介です。このページでは新しい精度・速度の測定値やコンテスト参加実績を示していません。
+    skip_result_figure: true
+    related:
+      - href: /research/facial-expression/
+        label: KV260のDPUを用いた表情認識研究
+      - href: /research/green-onion-dnn/
+        label: 物体検出とインスタンスセグメンテーションの研究
+    references:
+      - href: https://github.com/Xilinx/Vitis-AI/tree/2.5/model_zoo
+        label: Vitis AI 2.5 Model Zoo
+      - href: https://github.com/Xilinx/Kria-PYNQ
+        label: Kria-PYNQ（PythonからKriaの機能を利用する環境）
+      - href: https://user.competition.signate.jp/ja/competition/detail/?competition=c2f142a1f5f6444884cb0918a3e4d3e6
+        label: 第6回AIエッジコンテスト（実装コンテスト④・学習時の参考資料）
+  network-analyzer:
+    title: ネットワークアナライザの開発
+    href: /research/network-analyzer/
+    body: 高専時代に制作したPythonのパケット解析GUI。通信の取得、プロトコル別表示、フィルタ、pcapの保存・読込み、通信量の可視化を扱う。
+    category: systems-software
+    evidence_id: network-analyzer
+    venue: 高専時代のソフトウェア制作
+    overview: ネットワーク通信を観察するため、Pythonでパケット解析用のGUIアプリケーションを制作しました。Scapyによるパケット取得・解析とPyQt5の画面をつなぎ、通信内容を一覧・詳細・統計で確認する構成です。
+    tags: [Python, Scapy, PyQt5, TCP/IP, パケット解析, 可視化]
+    context:
+      - 通信を調べる際に、プロトコル、送信元・宛先、ポート、通信量を画面で確認できるツールを制作しました。
+      - パケットを取得する処理と、表示・フィルタ・統計を扱うGUIを組み合わせ、通信の情報を見やすく整理しました。
+    work:
+      - Scapyによるパケットの取得と、Ethernet、IPv4・IPv6、TCP・UDP、ICMP、ARP等の識別・表示。
+      - PyQt5によるパケット一覧と、選択したパケットのヘッダ情報の表示。
+      - 送信元・宛先、プロトコル、ポートを指定するフィルタ画面。
+      - キャプチャの開始・停止と、pcapファイルの保存・読込み。
+      - プロトコル別の集計と、送信元・宛先の通信量をグラフで表示。
+    results:
+      - 保存コードで、パケット取得・フィルタ・pcap操作・統計表示を別の処理として構成したことを確認できます。
+      - GUIと通信解析をつなぐ制作経験として紹介しています。現在の環境での動作再試験、解析精度、取得性能の評価は行っていません。
+      - ソースリポジトリは非公開です。実際の通信ログやパケットデータはこのページへ掲載していません。
+    skip_result_figure: true
   ntt:
     evidence_id: ntt
     title: ML-KEMで用いるNTT演算
@@ -192,14 +257,15 @@ projects:
       - FPGA上の実測とASICへの投影、カーネル時間と処理全体の時間を混ぜて比較しません。
       - ハードウェア構成の紹介だけで、回路設計の担当範囲や新しい性能改善を主張するものではありません。
   facial-expression:
-    title: FPGAによる表情認識システム
+    title: KV260のDPUによる表情認識システム
     category: edge-ai
     evidence_id: fpga-vision
     venue: CANDARW 2024 / ICIC Express Letters
-    overview: SoC FPGAのDPU上で顔検出と表情分類を実行するシステムです。後続のマルチスレッド実装では、CPU側前処理とDPU実行を重ね、推論処理の利用率を評価しました。
-    tags: [FPGA, DPU, 顔検出, マルチスレッド処理]
+    overview: Kria KV260のSoC FPGAに搭載したDPUで、顔検出と表情分類を実行するシステムです。Vitis AIでモデルを量子化・コンパイルし、後続のマルチスレッド実装ではCPU側前処理とDPU実行を重ねて利用率を評価しました。
+    tags: [KV260, DPU, Vitis AI, 量子化, 顔検出, マルチスレッド処理]
     work:
       - 顔検出と表情分類の2つのDNNをDPUへ実装。
+      - Vitis AI 2.5のAI quantizerとAI compilerを用いて、モデルをDPUで実行できる形式へ変換。
       - カメラ入力から前処理、顔領域検出、表情分類までの処理を接続。
       - CPU前処理とDPU実行をマルチスレッド化し、利用率と処理性能を評価。
     results:
@@ -208,6 +274,9 @@ projects:
     limits:
       - 卒業研究・学会原稿の版ごとにモデル、スレッド数、データセット等の条件が異なります。
       - 保存原稿の紹介であり、現在のボードやモデルを用いた再測定ではありません。
+    related:
+      - href: /research/kv260/
+        label: KV260・Vitis AI・PYNQの実装経験
   green-onion-dnn:
     title: DNNによる小ねぎ分岐部検出
     category: edge-ai
@@ -217,16 +286,28 @@ projects:
     tags: [YOLOX, Mask R-CNN, 画像認識, エッジAI]
     work_figures: [0, 1]
     skip_result_figure: true
+    context:
+      - 調製機のノズルを合わせるため、小ねぎの分岐部位置を画像から求めることが課題です。葉が重なり、分岐部が見えなくなる条件も扱いました。
+      - YOLOXは分岐部を物体として検出します。Mask R-CNNは芯・葉の領域を個別に抽出し、葉の枚数が変化する位置から分岐部を推定します。
+      - 位置が見えている条件と遮蔽された条件で手法を比較し、全体の正解率と特定条件での有効性を分けて評価しました。
     work:
       - 軽量YOLOXを使って分岐部を検出し、候補の分類・選択から調製位置を推定。
       - Mask R-CNNで芯と葉を分割し、領域の位置関係から分岐部位置を推定。
       - 通常画像と遮蔽画像を分け、各手法の評価条件と適用範囲を整理。
     results:
       - YOLOX継続原稿と領域分割発表資料に、それぞれの検出・推定結果をまとめています。
-      - 遮蔽画像での改善と全画像での評価は分けて扱い、別手法・別部分集合の結果を混ぜません。
+      - 公開発表資料の430枚全体の評価ではYOLOXの正解率が89%、Mask R-CNNが72%でした。分岐部が遮蔽された39枚ではYOLOXが38%、Mask R-CNNが89%でした。
+      - この発表の成功基準は、推定y座標と正解y座標の差が50px未満であることです。YOLOXの検出とMask R-CNNの領域分割を同じ位置推定の基準で比較しています。
+      - 遮蔽時の推定に領域分割が役立つ一方、全体の正解率では検出が上回りました。この違いから、手法の選択には画像の条件を含める必要があることを整理しました。
     limits:
       - 各原稿のデータ分割、成功基準、測定区間の対応は生ログとの照合が必要です。
       - 分岐部認識の評価であり、調製機全体の成功率を示すものではありません。
+    related:
+      - href: /research/green-onion-edge/
+        label: 古典的なエッジ検出による分岐部抽出
+    references:
+      - href: https://speakerdeck.com/takuto_andtt/xiao-negidiao-zhi-wei-zhi-jian-chu-notamenoinsutansusegumentesiyon
+        label: 小ねぎ調製位置検出のためのインスタンスセグメンテーション（公開発表資料）
   green-onion-edge:
     title: エッジ検出による小ねぎ分岐部検出
     category: edge-ai
@@ -236,6 +317,9 @@ projects:
     tags: [エッジ検出, ソーベル, 画像処理, Raspberry Pi]
     work_figures: [1, 0]
     skip_result_figure: true
+    context:
+      - 小ねぎの調製作業でノズルを合わせるため、分岐部の位置を画像から推定することが目的です。
+      - 分岐部に現れる繊維の斜線に着目し、画像処理で特徴を抽出しました。エッジ機器の演算資源を考慮し、ニューラルネットワークを用いない方法を検討しました。
     work:
       - 小ねぎ調製機への入力画像から、色と輪郭を使って対象領域を抽出。
       - 分岐部の推定領域へソーベルフィルタとラベリングを適用。
@@ -247,3 +331,6 @@ projects:
     limits:
       - 2023年と2024年の結果は異なる資料の評価であり、同条件の比較ではありません。
       - 評価対象は分岐部斜線の検出です。実機の皮むき成功率や、YOLOXとの同条件比較ではありません。
+    related:
+      - href: /research/green-onion-dnn/
+        label: YOLOXによる検出とMask R-CNNによる領域分割

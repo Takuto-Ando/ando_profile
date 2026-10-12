@@ -1,7 +1,7 @@
 reviewed_on: "2026-10-08"
 groups:
   - title: Industrial Embedded
-    description: 個人PoCの経験は既存ページに記載。今回のローカル資料探索ではFirmware・回路図・測定生ログを特定できていません。
+    description: 個人PoCの経験と、MSPM0入力イベントの保存コードを整理。測定ログ・実配線図は未添付です。
     items:
       - id: digital-input
         title: 24V Digital Input
@@ -24,12 +24,17 @@ groups:
       - id: mspm0
         title: MSPM0 Peripheral Control
         href: /poc/mspm0-peripheral-control/
-        status: 本人申告 / ソース未添付
+        status: 入力イベントの保存コードを確認・添付 / 実機再試験なし
         work: PA25 Falling Edge、TimerG、UARTイベントカウント、PA24 ADC12連続変換と__WFI。
         sources:
           - path: ando_profile/_pages/poc-mspm0.html
             kind: 既存の経験記録。24V DIと一部重複
-        next: MCU型番とSDK版、割込みとTimer設定、ADC条件、ビルド手順とUARTログ。
+          - path: ando_profile/assets/code/mspm0-input-demo.c
+            kind: 保存Cから整理したGPIO IRQ・UART・WFIのソース例。生成設定は別途必要
+        attachment: /assets/code/mspm0-input-demo.c
+        attachment_label: 入力イベントのCソースを見る
+        limit: 保存設定はMSPM0C1104、SDK2.11.00.07、RISE_FALL、115200bps。添付CはHigh時にカウントし、TimerGデバウンス・ADC結果処理を含まない。
+        next: この版のビルド・実機ログと、TimerG/ADCを含む別版のソース・測定条件を対応付ける。
       - id: motor
         title: DRV8835 Motor Control
         href: /poc/drv8835-motor-control/
@@ -91,12 +96,25 @@ groups:
   - title: Edge AI / Processors & Software
     description: 既存サイトの図・デモとローカル実装を、ポートフォリオへ使える資料として整理。
     items:
+      - id: kv260
+        title: KV260 / Vitis AI・PYNQの実装経験
+        kosen: true
+        href: /research/kv260/
+        status: KV260・Vitis AIは保存原稿を確認 / Model Zoo・PYNQは本人の経験記録
+        work: Model Zooの車のセグメンテーション、量子化モデルの作成、DPUコンパイル・実行、表情認識システムへの接続。
+        sources:
+          - path: ando_profile/assets/pdfs/paper/candar2024gca.pdf
+            kind: KV260、Vitis AI2.5、AI quantizer/compilerの利用を記載する研究原稿
+          - path: ando_profile/_pages/research-kv260.html
+            kind: 2026-10-12の本人説明に基づくModel Zoo・PYNQの学習経験
+        limit: Model Zooのモデルやコンテスト資料を参考にした学習と研究の実装を分ける。コンテスト参加・受賞の記録ではない。
+        next: 車のモデル名、PYNQ環境・DPU構成、本人の変更内容と動作ログを整理。
       - id: fpga-vision
         title: 高専専攻科 / FPGA表情認識
         kosen: true
         href: /research/facial-expression/
         status: 専攻科論文・学会原稿を確認 / 生ログ未照合
-        work: DPUによる顔検出と表情分類、CPU前処理とのマルチスレッド実行。
+        work: KV260のDPUによる顔検出と表情分類、Vitis AIによる量子化・コンパイル、CPU前処理とのマルチスレッド実行。
         sources:
           - path: ando_profile/_pages/research-facial-expression.md
             kind: 既存の研究紹介
@@ -165,7 +183,7 @@ groups:
         results:
           - 発表資料の遮蔽画像評価はMask R-CNN 89%、比較YOLOX 38%。全画像評価はMask R-CNN 72%、YOLOX 89%と記載。
           - 遮蔽時の改善と全体精度の低下を分けて記録。遮蔽のない画像への改善と検出モデルとの組合せを課題としている。
-        limit: スライドには430枚の撮影画像と正解y座標との差50px未満の成功基準を記載。各評価subsetの枚数と学習/評価分割は今回未照合。ねぎ調製機全体の成功率ではない。
+        limit: 公開Speaker Deckには全430枚/遮蔽39枚、10分割交差検証、正解y座標との差50px未満の成功基準を記載。生ログは未照合で、ねぎ調製機全体の成功率ではない。
         next: Detectron2/Mask R-CNNの学習設定、芯/葉annotation、遮蔽subsetと全体の予測ログを照合。
       - id: onion-edge
         title: 高専本科 / エッジ検出による小ねぎ分岐部抽出
@@ -198,6 +216,24 @@ groups:
           - 2024年論文の要旨はRaspberry Pi 3で検出率90.6%、処理時間455 msを記載。2023年の評価と混ぜない。
         limit: 評価は分岐部斜線の検出。実機の皮むき成功率や、YOLOXとの同条件比較ではない。
         next: 元の画像処理コード、mask/特徴量の設定値、入力画像と誤検出例、Raspberry Pi計測ログを整理。
+  - title: Networking / Software
+    description: 本人指定の非公開リポジトリのコード構造を確認。実際の通信記録は掲載しない。
+    items:
+      - id: network-analyzer
+        title: 高専時代 / ネットワークアナライザ
+        kosen: true
+        href: /research/network-analyzer/
+        status: 保存コードの構造を確認 / 現環境の動作再試験なし
+        work: Scapyのパケット取得、PyQt5の一覧・詳細表示、フィルタ、pcap操作、統計可視化。
+        sources:
+          - path: Network_Analyzer/capture.py
+            kind: 本人指定private repoのcapture/start/stop/pcap操作をread-onlyで確認
+          - path: Network_Analyzer/filter.py
+            kind: IP・port・protocolのフィルタ設定と入力検査を確認
+          - path: Network_Analyzer/packet_statistics.py
+            kind: PyQt5/matplotlibのプロトコル・通信量表示を確認
+        limit: コードやLOG.db、pcap、実際の通信データを公開側へコピーしない。現在の環境での動作・解析精度・性能は未検証。
+        next: 本人の担当範囲・参考実装を整理し、架空データによる動作例を用意する。
       - id: q-snap
         title: Q-snap / LLM Chunking
         href: /research/q-snap/
