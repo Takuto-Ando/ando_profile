@@ -101,14 +101,16 @@ groups:
         kosen: true
         href: /research/kv260/
         status: KV260・Vitis AIは保存原稿を確認 / Model Zoo・PYNQは本人の経験記録
-        work: Model Zooの車のセグメンテーション、量子化モデルの作成、DPUコンパイル・実行、表情認識システムへの接続。
+        work: FP32→8bit量子化とDPUコンパイル、VivadoのDPU構成、CPU前処理と同一DPUのモデル共有・マルチスレッド化、サイズ/周波数/利用率の評価。Model Zooの車のセグメンテーションとPYNQは本人の実装経験。
         sources:
           - path: ando_profile/assets/pdfs/paper/candar2024gca.pdf
-            kind: KV260、Vitis AI2.5、AI quantizer/compilerの利用を記載する研究原稿
+            kind: III-C/DにVitis AI2.5と協調処理、IV-C/TableIIIに処理1/2threadの14.69/25.00FPS・DPU利用率22.85/78.44%、Vにサイズ/周波数評価
+          - path: ando_profile/assets/pdfs/paper/icic_express.pdf
+            kind: 2.1にPP/ICP/OCPとB512構成、2.2にAI quantizer/compilerによるモデル変換
           - path: ando_profile/_pages/research-kv260.html
             kind: 2026-10-12の本人説明に基づくModel Zoo・PYNQの学習経験
         limit: Model Zooのモデルやコンテスト資料を参考にした学習と研究の実装を分ける。コンテスト参加・受賞の記録ではない。
-        next: 車のモデル名、PYNQ環境・DPU構成、本人の変更内容と動作ログを整理。
+        next: 車のモデル名、PYNQ環境・DPU構成、本人の変更内容と動作ログを整理。研究の変換・協調実行・構成評価はCANDARW2024のIII-C/D・IV-C・V、ICIC2025の2.1・2.2に対応。
       - id: fpga-vision
         title: 高専専攻科 / FPGA表情認識
         kosen: true

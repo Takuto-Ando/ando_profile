@@ -58,8 +58,8 @@
   caption_en: FPGA multi-task stack
   title_ja: KV260のDPUによる表情認識システム
   title_en: Facial Expression Recognition on KV260
-  body_ja: KV260とVitis AIを使い、顔検出と表情分類を同じDPUへ実装した。モデルの量子化・コンパイル、CPU前処理とDPU実行を重ねるマルチスレッド処理に取り組んだ。
-  body_en: I deployed face detection and expression classification on the same DPU using KV260 and Vitis AI, including model quantization, compilation, and multithreaded CPU preprocessing.
+  body_ja: KV260とVitis AIを使い、顔検出と表情分類を同じDPUへ実装した。量子化・コンパイル、CPUとのマルチスレッド実行、DPUサイズ・周波数の比較を通じて、利用率とスループットを評価した。
+  body_en: I deployed face detection and expression classification on the same DPU using KV260 and Vitis AI. I evaluated utilization and throughput through model quantization, compilation, multithreaded CPU/DPU execution, and comparisons of DPU sizes and frequencies.
   tags:
     - label: ICIC Express Letters 2025
       kind: neutral

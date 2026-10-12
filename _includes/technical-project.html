@@ -21,6 +21,13 @@
   {% else %}
     {% include article-materials.html figure=0 %}
   {% endif %}
+  {% if project.implementation %}
+  <h2>Vitis AIを使った開発工程</h2>
+  {% for section in project.implementation %}
+  <h3>{{ section.title }}</h3>
+  {% for text in section.paragraphs %}<p>{{ text }}</p>{% endfor %}
+  {% endfor %}
+  {% endif %}
   <h2>結果</h2>
   {% for text in project.results %}<p>{{ text }}</p>{% endfor %}
   {% unless project.skip_result_figure %}{% include article-materials.html figure=1 %}{% endunless %}
