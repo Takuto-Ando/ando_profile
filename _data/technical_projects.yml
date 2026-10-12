@@ -28,18 +28,26 @@ sections:
     items:
       - title: 24V産業用デジタル入力
         href: /poc/24v-digital-input/
+        image: /assets/images/mspm0-24v-di.jpg
+        image_alt: 24Vデジタル入力PoCのブレッドボードとMSPM0を使った既存の実装写真
         body: LM393、PC817、74HC14からMSPM0の割込み・デバウンスまでをつなぐ入力回路PoC。
         tags: [24V入力, コンパレータ, 絶縁, MSPM0]
       - title: RS-485通信
         href: /poc/rs485/
+        image: /assets/images/technical/rs485-preview.svg
+        image_alt: UART・トランシーバ・RS-485バスの概念図。実配線図ではありません
         body: MAX3485とUARTを使った通信、120Ω終端・バイアス、長時間通信試験の経験。
         tags: [RS-485, UART, 終端, 通信試験]
       - title: MSPM0の周辺機能制御
         href: /poc/mspm0-peripheral-control/
+        image: /assets/images/technical/mspm0-preview.svg
+        image_alt: GPIO入力・割込み・UART通知の概念図。測定波形ではありません
         body: GPIO割込み、UARTイベントカウント、__WFIの保存コードと、TimerG・ADC12を扱った個人PoCの経験。
         tags: [GPIO割込み, タイマ, ADC, ファームウェア]
       - title: DRV8835のモータ制御とトラブルシュート
         href: /poc/drv8835-motor-control/
+        image: /assets/images/technical/motor-preview.svg
+        image_alt: MCU・DRV8835・モータの概念図。実配線図ではありません
         body: MCUからのモータ駆動、MODE設定、誤配線時の不調と復旧をまとめた事例。
         tags: [モータドライバ, MODE, 配線, トラブルシュート]
   - id: systems-software
@@ -109,6 +117,8 @@ projects:
   network-analyzer:
     title: ネットワークアナライザの開発
     href: /research/network-analyzer/
+    image: /assets/images/technical/network-preview.svg
+    image_alt: パケット取得・解析・GUI表示の概念図。実通信データや実装画面ではありません
     body: 高専時代に制作したPythonのパケット解析GUI。通信の取得、プロトコル別表示、フィルタ、pcapの保存・読込み、通信量の可視化を扱う。
     category: systems-software
     evidence_id: network-analyzer
