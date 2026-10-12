@@ -1,7 +1,9 @@
 # Public research figures
 
-These images are rendered from figures in the authors' public arXiv v1 source packages, not from local unpublished manuscripts.
+The research PNG images are rendered from figures in the authors' public arXiv v1 source packages, not from local unpublished manuscripts.
 PDF figures are rendered with `pdftoppm -png -scale-to 1800 -singlefile`; `ssm-decode.png` is copied unchanged from the source package.
+
+The `network-preview.svg`, `rs485-preview.svg`, `mspm0-preview.svg`, and `motor-preview.svg` files are conceptual article thumbnails based on the existing article descriptions. They are not implementation screenshots, wiring diagrams, captured traffic, or measured waveforms. Each is labeled as a concept diagram.
 
 | Paper | Public source | Figure members |
 | --- | --- | --- |
