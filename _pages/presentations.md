@@ -21,10 +21,13 @@ author_profile: false
     <h2 class="page-section-title">{% if is_en %}Slides{% else %}スライド{% endif %}</h2>
     {% for item in site.data.presentations.slides %}
     {% if is_en %}{% assign title = item.title_en %}{% else %}{% assign title = item.title_ja %}{% endif %}
-    <article class="material-slide">
+    <article id="{{ item.id }}" class="material-slide">
       <div class="material-heading"><span>{{ item.label }}</span><h3>{{ title }}</h3></div>
       <div class="material-embed"><iframe src="https://speakerdeck.com/player/{{ item.deck }}" title="{{ title }}" loading="lazy" allowfullscreen></iframe></div>
-      <a href="https://speakerdeck.com/player/{{ item.deck }}" target="_blank" rel="noopener">{% if is_en %}Open slides →{% else %}スライドを開く →{% endif %}</a>
+      <a href="{{ item.href }}" target="_blank" rel="noopener">{% if is_en %}Open slides →{% else %}スライドを開く →{% endif %}</a>
+      {% assign project = site.data.technical_projects.projects[item.primary_project] %}
+      {% capture project_path %}/research/{{ item.primary_project }}/{% endcapture %}
+      <p><a href="{{ project.href | default: project_path | relative_url }}">{% if is_en %}Read technical article →{% else %}技術記事を読む →{% endif %}</a></p>
     </article>
     {% endfor %}
   </section>
@@ -33,10 +36,15 @@ author_profile: false
     <div class="material-posters">
       {% for item in site.data.presentations.posters %}
       {% if is_en %}{% assign title = item.title_en %}{% else %}{% assign title = item.title_ja %}{% endif %}
-      <article class="material-poster">
+      <article id="{{ item.id }}" class="material-poster">
         <div class="material-heading"><span>{{ item.label }}</span><h3>{{ title }}</h3></div>
         <a class="material-poster__image" href="{{ item.image | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ title }} — {{ item.label }}" loading="lazy"></a>
         <a href="{{ item.image | relative_url }}" target="_blank" rel="noopener">{% if is_en %}View full size →{% else %}原寸で見る →{% endif %}</a>
+        <p>{% if is_en %}{{ item.note_en }}{% else %}{{ item.note_ja }}{% endif %}</p>
+        <a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if is_en %}Poster PDF →{% else %}ポスターPDF →{% endif %}</a>
+        {% assign poster_project_key = item.projects | first %}
+        {% capture poster_project_path %}/research/{{ poster_project_key }}/{% endcapture %}
+        <p><a href="{{ poster_project_path | relative_url }}">{% if is_en %}Read technical article →{% else %}技術記事を読む →{% endif %}</a></p>
       </article>
       {% endfor %}
     </div>

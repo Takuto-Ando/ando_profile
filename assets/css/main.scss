@@ -59,6 +59,10 @@ body {
 .greedy-nav .visible-links a:hover {
   color: var(--acc) !important;
 }
+.greedy-nav .visible-links a::before {
+  background: var(--acc);
+  height: 2px;
+}
 .greedy-nav button {
   background: transparent !important;
   color: var(--sub) !important;

@@ -3,20 +3,67 @@ slides:
     title_ja: IMAX3・IMAX4 性能評価
     title_en: IMAX3 & IMAX4 Performance Evaluation
     deck: 1b0060b0e2974a659464493d58e16eb0
+    id: imax-evaluation
+    primary_project: imax
+    projects: [imax, ntt, bitnet, ssm, dpd, q-snap, asr, generative-ai]
+    href: https://speakerdeck.com/takuto_andtt/a-detailed-analysis-of-llm-execution-on-imax3-and-initial-evaluation-of-imax4-prototype-for-server-environment
   - label: Image Processing
     title_ja: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
     title_en: Green Onion Branching Point Segmentation
     deck: f027bc23215946868b187e68bec91c37
+    id: onion-segmentation
+    primary_project: green-onion-dnn
+    projects: [green-onion-dnn]
+    href: https://speakerdeck.com/takuto_andtt/xiao-negidiao-zhi-wei-zhi-jian-chu-notamenoinsutansusegumentesiyon
+  - label: CANDARW 2024
+    title_ja: DPUによる表情認識とマルチスレッド実装
+    title_en: Facial Expression Recognition with Multi-threading on FPGA
+    deck: d97c1e883e3b42aa951aac7b0fe5c4af
+    id: facial-multithreading
+    primary_project: facial-expression
+    projects: [facial-expression, kv260]
+    href: https://speakerdeck.com/takuto_andtt/facial-expression-recognition-system-using-dnn-accelerator-with-multi-threading-on-fpga
+  - label: FPGA / DPU
+    title_ja: DPUを用いたマルチタスクDNN表情認識システム
+    title_en: Multi-task DNN Facial Expression Recognition on FPGA
+    deck: 31712b81ffbe4805832711d6c3b4f209
+    id: facial-system
+    primary_project: facial-expression
+    projects: [facial-expression, kv260]
+    href: https://speakerdeck.com/takuto_andtt/dpuwoyong-itamarutitasukudnnbiao-qing-ren-shi-sisutemunofpgashi-zhuang
+  - label: Image Processing
+    title_ja: エッジ検出による小ねぎ分岐部の抽出
+    title_en: Green Onion Branching Point Extraction with Edge Detection
+    deck: c7b3504555f44de5b096338248f5b426
+    id: onion-edge
+    primary_project: green-onion-edge
+    projects: [green-onion-edge]
+    href: https://speakerdeck.com/takuto_andtt/etuzijian-chu-woyong-itaxiao-negifen-qi-bu-nojian-chu
 posters:
   - label: SOCC 2025
     title_ja: CGLAによるLLM推論
     title_en: LLM Inference on a CGLA
     image: /assets/images/socc_poster.png
+    id: llm-offload
+    projects: [imax]
+    pdf: /assets/pdfs/socc2025_poster.pdf
+    note_ja: Q6_Kカーネルのオフロードを扱うSOCC 2025の資料です。Q-snapやBitNetの評価結果ではありません。FPGA実測と28nm ASICの投影を区別します。
+    note_en: This SOCC 2025 poster covers Q6_K kernel offloading, not Q-snap or BitNet results. FPGA measurements and the 28 nm ASIC projection are distinct.
   - label: SASIMI 2025
     title_ja: IMAX3・IMAX4 の評価
     title_en: IMAX3 / IMAX4 Evaluation
     image: /assets/images/sasimi2025_poster.png
+    id: imax-prototype
+    projects: [imax]
+    pdf: /assets/pdfs/sasimi2025_poster.pdf
+    note_ja: IMAX3/IMAX4のホスト処理と転送経路を比較したSASIMI 2025の資料です。モデルや量子化形式によって結果が異なります。
+    note_en: This SASIMI 2025 poster compares IMAX3/IMAX4 host processing and transfers. Results depend on the model and quantization format.
   - label: SASIMI 2024
     title_ja: FPGAによる表情認識
     title_en: Facial Expression Recognition on FPGA
     image: /assets/images/sasimi_poster.png
+    id: facial-prototype
+    projects: [facial-expression, kv260]
+    pdf: /assets/pdfs/sasimi_poster.pdf
+    note_ja: YOLOv2 tinyを使ったSASIMI 2024の初期実装です。DenseBoxを使うCANDARW 2024のマルチスレッド実装とは、モデルと評価条件が異なります。
+    note_en: This SASIMI 2024 poster describes the initial YOLOv2 tiny implementation. Its model and conditions differ from the DenseBox-based CANDARW 2024 implementation.

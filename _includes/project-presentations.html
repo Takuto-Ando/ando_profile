@@ -1,0 +1,30 @@
+{% assign slides = site.data.presentations.slides | where_exp: 'item', 'item.projects contains page.project_key' %}
+{% assign posters = site.data.presentations.posters | where_exp: 'item', 'item.projects contains page.project_key' %}
+{% if slides.size > 0 or posters.size > 0 %}
+<section class="project-presentations" aria-label="{% if site.active_lang == 'en' %}Presentation materials{% else %}発表資料{% endif %}">
+  <h2>{% if site.active_lang == 'en' %}Slides and Posters{% else %}スライド・ポスターで見る{% endif %}</h2>
+  {% for item in slides %}
+  {% if site.active_lang == 'en' %}{% assign material_title = item.title_en %}{% else %}{% assign material_title = item.title_ja %}{% endif %}
+  <article class="material-slide">
+    <h3>{{ material_title }}</h3>
+    {% if item.primary_project == page.project_key or page.project_key == 'kv260' %}
+    <p>{{ item.label }}</p>
+    {% else %}
+    <p class="poc-note">{% if site.active_lang == 'en' %}Architecture background from SASIMI 2025, not the evaluation results of this article.{% else %}SASIMI 2025のアーキテクチャの背景資料です。本記事の評価結果とは別です。{% endif %}</p>
+    {% endif %}
+    <div class="material-embed"><iframe src="https://speakerdeck.com/player/{{ item.deck }}" title="{{ material_title | escape }}" loading="lazy" allowfullscreen></iframe></div>
+    <a href="{{ item.href }}" target="_blank" rel="noopener">{% if site.active_lang == 'en' %}Open slides{% else %}スライドを開く{% endif %}</a>
+  </article>
+  {% endfor %}
+  {% for item in posters %}
+  {% if site.active_lang == 'en' %}{% assign material_title = item.title_en %}{% assign material_note = item.note_en %}{% else %}{% assign material_title = item.title_ja %}{% assign material_note = item.note_ja %}{% endif %}
+  <h3>{{ item.label }} — {{ material_title }}</h3>
+  <p>{{ material_note }}</p>
+  <figure class="article-figure">
+    <a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ material_title | escape }} — {{ item.label }}" loading="lazy"></a>
+    <figcaption><a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if site.active_lang == 'en' %}Read poster PDF{% else %}ポスターPDFを読む{% endif %}</a></figcaption>
+  </figure>
+  {% endfor %}
+  <p><a href="{{ '/presentations/' | relative_url }}">{% if site.active_lang == 'en' %}All presentation materials{% else %}発表資料の一覧を見る{% endif %} →</a></p>
+</section>
+{% endif %}
