@@ -67,3 +67,125 @@ posters:
     pdf: /assets/pdfs/sasimi_poster.pdf
     note_ja: YOLOv2 tinyを使ったSASIMI 2024の初期実装です。DenseBoxを使うCANDARW 2024のマルチスレッド実装とは、モデルと評価条件が異なります。
     note_en: This SASIMI 2024 poster describes the initial YOLOv2 tiny implementation. Its model and conditions differ from the DenseBox-based CANDARW 2024 implementation.
+  - label: DPD / 研究紹介ポスター（草稿）
+    title_ja: CGLAによるメモリ多項式DPD
+    title_en: Memory-Polynomial DPD on a CGLA
+    image: /assets/presentations/dpd-poster-draft.png
+    id: dpd-poster-draft
+    projects: [dpd]
+    pdf: /assets/presentations/dpd-poster-draft.pdf
+    note_ja: 本人名義の保存ポスター草稿です。実発表済みの証明ではありません。合成PAモデルでの検証、FPGA実測、ASICへの投影を区別して読む資料です。
+    note_en: An author-named saved poster draft, not evidence that it was presented. Synthetic-PA validation, FPGA measurements and ASIC projections are distinct.
+pdf_slides:
+  - id: whisper-candar2025
+    label: CANDAR 2025
+    title_ja: Whisper ASRのCGLA実装と評価
+    title_en: Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA
+    pdf: /assets/presentations/whisper-candar2025.pdf
+    image: /assets/presentations/whisper-candar2025.png
+    pages: 23
+    language: English
+    primary_project: asr
+    projects: [asr]
+    version_ja: 発表スライドの保存版
+    version_en: Saved presentation slides
+    note_ja: Whisperの処理、IMAXへの演算配置、測定区間と電力評価を説明しています。発表当時の表記と評価条件を保持しています。
+    note_en: Covers Whisper execution, IMAX kernel mapping, measurement boundaries and power evaluation. Original terminology and conditions are retained.
+  - id: qsnap-icisn2026
+    label: ICISN 2026
+    title_ja: Q-Snap：量子化を考慮した動的チャンク分割
+    title_en: Q-Snap — Quantization-Aware Dynamic Chunking for LLM Execution on a CGLA
+    pdf: /assets/presentations/qsnap-icisn2026.pdf
+    image: /assets/presentations/qsnap-icisn2026.png
+    pages: 37
+    language: English
+    primary_project: q-snap
+    projects: [q-snap]
+    version_ja: 発表スライドの保存版
+    version_en: Saved presentation slides
+    note_ja: チャンク分割、量子化形式とLMM容量、プリフィルの評価を整理した本人名義の資料です。類似ファイル名の版を重複掲載せず、1版を選びました。
+    note_en: Author-named slides on chunking, quantization formats, LMM capacity and prefill evaluation. One saved version is selected.
+  - id: hotspa2026-software-stack
+    label: HOTSPA 2026
+    title_ja: 多様なAIワークロードに向けたCGLA統合ソフトウェアスタック
+    title_en: An Integrated Software Stack for Diverse AI Workloads on CGLA
+    pdf: /assets/presentations/hotspa2026-software-stack.pdf
+    image: /assets/presentations/hotspa2026-software-stack.png
+    pages: 27
+    language: 日本語 / Japanese
+    primary_project: imax
+    projects: [imax, q-snap, asr, generative-ai]
+    version_ja: 保存スライド
+    version_en: Saved slides
+    note_ja: LLM、音声認識、画像生成を共通の実行基盤へ接続する研究説明資料です。個別研究の最新性能を同条件で比較する資料ではありません。
+    note_en: Discusses a shared execution stack for LLMs, speech recognition and image generation, not a same-condition comparison of their latest performance.
+  - id: stable-diffusion-mcsoc2025
+    label: MCSoC 2025
+    title_ja: Stable DiffusionのCGLA実装と評価
+    title_en: Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator
+    pdf: /assets/presentations/stable-diffusion-mcsoc2025.pdf
+    image: /assets/presentations/stable-diffusion-mcsoc2025.png
+    pages: 12
+    language: English
+    primary_project: generative-ai
+    projects: [generative-ai]
+    version_ja: 本人PPTXから書き出したPDF
+    version_en: PDF exported from the author's PPTX
+    note_ja: 本人名義の元PPTXから本文スライドをPDF化しました。量子化カーネルの適用範囲、CPUに残る処理、FPGA実測とASIC投影を整理しています。
+    note_en: Exported from the author's PPTX. Covers quantized-kernel coverage, remaining CPU work, FPGA measurements and ASIC projections.
+  - id: ntt-research-slides
+    label: NTT / 2026原稿ベース
+    title_ja: ML-KEM向けNTT演算のCGLA実装
+    title_en: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
+    pdf: /assets/presentations/ntt-research-slides.pdf
+    image: /assets/presentations/ntt-research-slides.png
+    pages: 19
+    language: English
+    primary_project: ntt
+    projects: [ntt]
+    version_ja: 原稿に基づく研究説明版
+    version_en: Manuscript-based research slides
+    note_ja: 保存原稿に基づく説明版です。演算分解、段の連結、ARM側処理、オフロード深度を説明しています。実発表済みや最終発表版を意味しません。
+    note_en: A saved manuscript-based explanation of arithmetic mapping, stage chaining, ARM processing and offload depth; not evidence of presentation or a final talk version.
+  - id: bitnet-research-slides
+    label: BitNet / 2026原稿ベース
+    title_ja: 符号付きINT4命令によるBitNet実装と評価
+    title_en: Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions
+    pdf: /assets/presentations/bitnet-research-slides.pdf
+    image: /assets/presentations/bitnet-research-slides.png
+    pages: 18
+    language: English
+    primary_project: bitnet
+    projects: [bitnet]
+    version_ja: 原稿に基づく研究説明版
+    version_en: Manuscript-based research slides
+    note_ja: 保存原稿に基づく説明版です。三値重みとint8活性の配置、厳密な再構成、C++への組込み、測定境界を扱います。最終発表版ではありません。
+    note_en: Saved manuscript-based slides on ternary/int8 mapping, exact reconstruction, C++ integration and measurement boundaries; not a final talk version.
+  - id: ssm-research-slides
+    label: SSM / 2026原稿ベース
+    title_ja: Mamba系SSMのCGLAカーネル実装と評価
+    title_en: Mamba-Family State-Space Model Kernels on a Programmable CGLA
+    pdf: /assets/presentations/ssm-research-slides.pdf
+    image: /assets/presentations/ssm-research-slides.png
+    pages: 20
+    language: English
+    primary_project: ssm
+    projects: [ssm]
+    version_ja: 原稿に基づく研究説明版
+    version_en: Manuscript-based research slides
+    note_ja: 射影、SSD、状態更新とトークン実行の区間を整理した説明版です。保存原稿時点の内容であり、その後のカーネル改善や最終発表版とは区別します。
+    note_en: Manuscript-based slides on projection, SSD, state updates and token integration. Later kernel improvements and a final talk version are separate.
+  - id: dpd-research-slides
+    label: DPD / 草稿
+    title_ja: メモリ多項式DPDのCGLA実装
+    title_en: Energy-Oriented Acceleration of Memory-Polynomial DPD on a CGLA
+    pdf: /assets/presentations/dpd-research-slides.pdf
+    image: /assets/presentations/dpd-research-slides.png
+    pages: 12
+    language: English
+    primary_project: dpd
+    projects: [dpd]
+    version_ja: 保存スライド草稿
+    version_en: Saved slide draft
+    note_ja: 表紙にAPCCAS 2026 draftと記載された本人名義の草稿です。複素数の積和と係数・履歴の再利用を説明する資料で、実PAの計測結果や実発表済みを示すものではありません。
+    note_en: An author-named APCCAS 2026 draft on complex-MAC mapping and coefficient/history reuse, not a real-PA measurement or proof of presentation.
