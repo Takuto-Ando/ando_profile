@@ -14,7 +14,7 @@
 {% if site.technical_preview or figure_src contains '/assets/images/' %}
 <figure class="article-figure" markdown="0">
   <a href="{{ figure_src | relative_url }}" target="_blank" rel="noopener"><img src="{{ figure_src | relative_url }}" alt="{{ figure_caption }}" loading="lazy"></a>
-  <figcaption>{{ figure_caption }}{% if figure.public_source and site.technical_preview != true %} <a href="{{ figure.public_source }}" target="_blank" rel="noopener">出典</a>{% endif %}</figcaption>
+  <figcaption>{{ figure_caption }}{% if figure.public_source and site.technical_preview != true %} <a href="{% if figure.public_source contains '://' %}{{ figure.public_source }}{% else %}{{ figure.public_source | relative_url }}{% endif %}" target="_blank" rel="noopener">出典</a>{% endif %}</figcaption>
 </figure>
 {% endif %}
 {% endif %}
