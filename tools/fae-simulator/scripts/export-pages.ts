@@ -31,6 +31,8 @@ for (const file of [
 for (const file of [
   "src/App.tsx",
   "src/ic-reference.ts",
+  "src/bundled-ic.ts",
+  "src/data/ic-reference.json",
   "src/IcLibraryPanel.tsx",
   "src/LearningPath.tsx",
   "src/WorkflowPanel.tsx",

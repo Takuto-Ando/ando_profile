@@ -97,9 +97,16 @@ def fixture_workbook(path: Path):
         archive.writestr("xl/worksheets/detail.xml", sheet(detail))
 
 
-def run(url: str, output: Path, workbook: Path | None, part: str, count: int):
+def run(
+    url: str,
+    output: Path,
+    workbook: Path | None,
+    part: str,
+    count: int,
+    bundled: bool = False,
+):
     output.mkdir(parents=True, exist_ok=True)
-    if workbook is None:
+    if workbook is None and not bundled:
         workbook = output / "fictional-ic.xlsx"
         fixture_workbook(workbook)
     legacy = output / "legacy.json"
@@ -136,10 +143,20 @@ def run(url: str, output: Path, workbook: Path | None, part: str, count: int):
         )
         expect(page.get_by_role("status")).to_contain_text("1件を取り込み")
         page.get_by_role("button", name="採用ICライブラリ", exact=False).click()
-        page.get_by_label("IC資料を取り込む", exact=True).set_input_files(str(workbook))
-        expect(
-            page.get_by_text(f"{count}型番を端末内に保存しました。", exact=False)
-        ).to_be_visible()
+        if not bundled:
+            page.get_by_label("IC資料を取り込む", exact=True).set_input_files(
+                str(workbook)
+            )
+            expect(
+                page.get_by_text(f"{count}型番を端末内に保存しました。", exact=False)
+            ).to_be_visible()
+        else:
+            expect(
+                page.get_by_text("教材は読み込み済みです。", exact=False)
+            ).to_be_visible()
+            expect(
+                page.get_by_label("学習するIC", exact=True).locator("option")
+            ).to_have_count(count + 1)
         page.get_by_label("学習するIC", exact=True).select_option(part)
         expect(page.locator(".ic-details")).to_contain_text("採用理由：不明")
         expect(page.locator('.ic-details a[href^="javascript:"]')).to_have_count(0)
@@ -256,8 +273,9 @@ def run(url: str, output: Path, workbook: Path | None, part: str, count: int):
         "status": "pass",
         "entries": count,
         "part": part,
+        "bundledWithoutImport": bundled,
         "flows": [
-            "xlsx-import",
+            "bundled-no-import" if bundled else "xlsx-import",
             "evidence-separation",
             "priority",
             "source-sha",
@@ -288,5 +306,6 @@ if __name__ == "__main__":
     parser.add_argument("--workbook", type=Path)
     parser.add_argument("--part", default="TEST0")
     parser.add_argument("--count", type=int, default=6)
+    parser.add_argument("--bundled", action="store_true")
     args = parser.parse_args()
-    run(args.url, args.output, args.workbook, args.part, args.count)
+    run(args.url, args.output, args.workbook, args.part, args.count, args.bundled)

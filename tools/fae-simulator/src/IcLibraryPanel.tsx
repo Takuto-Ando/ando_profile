@@ -230,23 +230,31 @@ export function IcLibraryPanel({
       <p>
         採用例と役割を学び、提案の引き出しを増やします。A/Bは元資料の評価、採用理由・性能適合は別途検証します。
       </p>
-      <label className="file-label">
-        IC資料Excel / バックアップJSONを取り込む
-        <input
-          type="file"
-          accept=".xlsx,.json"
-          aria-label="IC資料を取り込む"
-          disabled={busy}
-          onChange={(event) => {
-            const file = event.target.files?.[0];
-            event.target.value = "";
-            void receive(file);
-          }}
-        />
-      </label>
-      <p>
-        ファイルは端末内で解析します。アップロードしません。再取り込みはIC資料のみ置換し、Notion事例・既存履歴は保持します。
-      </p>
+      {library && (
+        <p>
+          教材は読み込み済みです。Excelの取り込みなしで学習・提案を始められます。
+        </p>
+      )}
+      <details>
+        <summary>別のIC資料に差し替える（任意）</summary>
+        <label className="file-label">
+          IC資料Excel / バックアップJSONを取り込む
+          <input
+            type="file"
+            accept=".xlsx,.json"
+            aria-label="IC資料を取り込む"
+            disabled={busy}
+            onChange={(event) => {
+              const file = event.target.files?.[0];
+              event.target.value = "";
+              void receive(file);
+            }}
+          />
+        </label>
+        <p>
+          ファイルは端末内で解析します。アップロードしません。再取り込みはIC資料のみ置換し、Notion事例・既存履歴は保持します。
+        </p>
+      </details>
       {error && <p role="alert">{error}</p>}
       {message && <p role="status">{message}</p>}
       {library && (

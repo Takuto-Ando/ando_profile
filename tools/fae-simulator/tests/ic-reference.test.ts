@@ -18,6 +18,19 @@ import { validateLearningState, buildPrompt, evaluate } from "../src/learning";
 import { emptyAnswers } from "../src/model";
 import { createWorkflow, assessWorkflow } from "../src/workflow";
 import { caseEvidence } from "../src/evidence";
+import { bundledIcLibrary } from "../src/bundled-ic";
+
+it("bundles the approved 164-IC workbook with provenance and conservative learning rules", () => {
+  expect(bundledIcLibrary.entries).toHaveLength(164);
+  expect(bundledIcLibrary.source.sha256).toBe(
+    "3ef94f118aabfd40ddcce95ff7649ecebddb8e351e17856e4186860bfdf5e1fd",
+  );
+  expect(icCases(bundledIcLibrary)).toHaveLength(27);
+  expect(icShortQuestions(bundledIcLibrary)).toHaveLength(54);
+  expect(
+    bundledIcLibrary.entries.filter((entry) => !entry.adoptionExample),
+  ).toHaveLength(58);
+});
 
 const masterHeaders = [
   "型番",
