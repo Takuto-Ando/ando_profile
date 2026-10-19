@@ -1,4 +1,5 @@
 import type { Dataset, LearningState } from "./model";
+import { validateIcLibrary, type IcLibrary } from "./ic-reference";
 
 const emptyState = (): LearningState => ({
   schemaVersion: 1,
@@ -50,3 +51,9 @@ export const loadLearning = async () =>
 export const saveLearning = (state: LearningState) => write("learning", state);
 export const loadDataset = () => read<Dataset>("dataset");
 export const saveDataset = (dataset: Dataset) => write("dataset", dataset);
+export const loadIcLibrary = async () => {
+  const value = await read<unknown>("ic-reference");
+  return value === undefined ? null : validateIcLibrary(value);
+};
+export const saveIcLibrary = (library: IcLibrary) =>
+  write("ic-reference", validateIcLibrary(library));

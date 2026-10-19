@@ -5,10 +5,32 @@ import {
   saveLearning,
   loadDataset,
   saveDataset,
+  loadIcLibrary,
+  saveIcLibrary,
 } from "../src/storage";
 import { importFiles } from "../src/importer";
 import { shortQuestions } from "../src/short-questions";
 import { gradeShort } from "../src/short-learning";
+
+it("stores IC reference separately without replacing history or Notion data", async () => {
+  const history = await loadLearning();
+  const dataset = await loadDataset();
+  const library = {
+    schemaVersion: 1 as const,
+    importedAt: new Date().toISOString(),
+    source: { path: "fictional.xlsx", sha256: "a".repeat(64) },
+    entries: [],
+    warnings: [],
+  };
+  await saveIcLibrary(library);
+  expect(await loadIcLibrary()).toEqual(library);
+  expect(await loadLearning()).toEqual(history);
+  expect(await loadDataset()).toEqual(dataset);
+  expect(() =>
+    saveIcLibrary({ ...library, schemaVersion: 2 } as never),
+  ).toThrow();
+  expect(await loadIcLibrary()).toEqual(library);
+});
 
 it("persists history/favorites and keeps them after replacing the dataset", async () => {
   const initial = await loadLearning();

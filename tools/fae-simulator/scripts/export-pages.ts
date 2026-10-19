@@ -30,6 +30,8 @@ for (const file of [
   await copy(file);
 for (const file of [
   "src/App.tsx",
+  "src/ic-reference.ts",
+  "src/IcLibraryPanel.tsx",
   "src/LearningPath.tsx",
   "src/WorkflowPanel.tsx",
   "src/evidence.ts",
@@ -52,6 +54,9 @@ for (const file of [
   "scripts/build-public.ts",
   "scripts/export-pages.ts",
   "scripts/import-notion.ts",
+  "scripts/import-ic.ts",
+  "tests/ic-reference.test.ts",
+  "tests/browser_ic.py",
   "tests/browser_levels.py",
   "tests/browser_public.py",
   "tests/browser_smoke.py",

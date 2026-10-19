@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 import type { Attempt, Question } from "./model";
-import { shortQuestions } from "./short-questions";
+import { shortQuestions as baseShortQuestions } from "./short-questions";
 import {
   advancedPool,
   buildShortPrompt,
@@ -27,6 +27,7 @@ import { NotionEvidencePanel } from "./WorkflowPanel";
 
 export function LearningPath({
   attempts,
+  shortQuestions = baseShortQuestions,
   caseAttempts = [],
   questions,
   onSave,
@@ -34,6 +35,7 @@ export function LearningPath({
   initialQuestion,
 }: {
   attempts: ShortAttempt[];
+  shortQuestions?: ShortQuestion[];
   caseAttempts?: Attempt[];
   questions: Question[];
   onSave: (attempt: ShortAttempt) => Promise<void>;
@@ -82,6 +84,7 @@ export function LearningPath({
   const notionCases = questions.filter(
     (candidate) =>
       candidate.mode === "reverse" &&
+      !candidate.record?.sources.some((source) => source.format === "xlsx") &&
       candidate.category.some((category) =>
         question?.category.includes(category),
       ),

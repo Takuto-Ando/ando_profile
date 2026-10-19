@@ -40,7 +40,7 @@ export type ShortQuestion = {
     url: string;
     section: string;
     checkedAt: string;
-    scope: "concept" | "notion";
+    scope: "concept" | "notion" | "reference";
     localPath?: string;
     datasheet?: {
       partNumber: string;
