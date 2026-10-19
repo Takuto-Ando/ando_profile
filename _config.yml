@@ -50,6 +50,7 @@ exclude:
   - scripts
   - _site-local
   - assets/portfolio-evidence
+  - tools/fae-simulator
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
