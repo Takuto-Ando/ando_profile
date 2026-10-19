@@ -1,5 +1,6 @@
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
@@ -44,6 +45,15 @@ def run(url: str, output: Path):
         expect(page.get_by_role("button", name="1分問題を始める")).to_be_in_viewport(
             ratio=1
         )
+        summary = page.locator(".learning-progress summary")
+        expect(summary).to_contain_text("全体の進捗：0 /")
+        total = int(re.search(r"/\s*(\d+)問", summary.inner_text()).group(1))
+        assert total > 0
+        summary.click()
+        expect(
+            page.get_by_role("progressbar", name="全問題の回答進捗")
+        ).to_have_attribute("value", "0")
+        summary.click()
         page.screenshot(path=str(output / "web-home-mobile.png"), full_page=True)
         page.get_by_role("button", name="1分問題を始める").click()
         expect(page.locator("[data-answer-state]")).to_have_count(0)
@@ -59,6 +69,9 @@ def run(url: str, output: Path):
         expect(incorrect).to_have_text("✕ 不正解 · ISO77xx")
         expect(correct).to_have_css("background-color", "rgb(232, 246, 237)")
         expect(incorrect).to_have_css("background-color", "rgb(255, 240, 241)")
+        expect(page.locator(".short-feedback")).to_contain_text(
+            f"全体の進捗：1 / {total}問回答済み"
+        )
         correct_context = browser.new_context()
         correct_page = correct_context.new_page()
         correct_page.goto(url)
@@ -73,6 +86,10 @@ def run(url: str, output: Path):
         expect(
             page.get_by_role("button", name="理解できた", exact=True)
         ).to_have_attribute("aria-pressed", "true")
+        page.reload()
+        expect(page.locator(".learning-progress summary")).to_contain_text(
+            f"全体の進捗：1 / {total}問回答済み"
+        )
         page.get_by_role("button", name="データ管理", exact=False).click()
         page.get_by_label("履歴JSONをインポート", exact=True).set_input_files(
             str(legacy)

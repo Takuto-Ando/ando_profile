@@ -24,6 +24,10 @@
   align-items: end;
   margin-top: 20px;
 }
+.learning-progress progress {
+  width: 100%;
+  accent-color: #167344;
+}
 .short-settings label {
   flex: 1 1 180px;
 }

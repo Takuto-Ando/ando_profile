@@ -524,6 +524,7 @@ export default function App() {
               <LearningPath
                 key={initialShort?.id ?? "learning-path"}
                 attempts={learning.shortAttempts ?? []}
+                caseAttempts={learning.attempts}
                 questions={questions}
                 onSave={saveShortAttempt}
                 onAdvanced={start}
