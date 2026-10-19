@@ -34,7 +34,18 @@ import {
   loadLearning,
   saveDataset,
   saveLearning,
+  loadIcLibrary,
+  saveIcLibrary,
 } from "./storage";
+import {
+  icCases,
+  icShortQuestions,
+  icSelectionText,
+  validateIcLibrary,
+  type IcLibrary,
+} from "./ic-reference";
+import { IcLibraryPanel, IcCandidatePicker } from "./IcLibraryPanel";
+import { shortQuestions as baseShortQuestions } from "./short-questions";
 import { createWorkflow, assessWorkflow } from "./workflow";
 import {
   errorLabels,
@@ -51,7 +62,7 @@ import { caseEvidence } from "./evidence";
 import { LearningPath, ShortHistory } from "./LearningPath";
 import type { ShortAttempt, ShortQuestion } from "./short-model";
 
-type Page = "learn" | "dashboard" | "practice" | "history" | "data";
+type Page = "learn" | "dashboard" | "practice" | "history" | "data" | "ic";
 type Mode = Question["mode"] | "review";
 const modeLabels: Record<Mode, string> = {
   virtual: "仮想顧客案件",
@@ -115,6 +126,7 @@ export default function App() {
   const [practiceLevel, setPracticeLevel] = useState<4 | 5>(5);
   const [initialShort, setInitialShort] = useState<ShortQuestion | undefined>();
   const [dataset, setDataset] = useState<Dataset | null>(null);
+  const [icLibrary, setIcLibrary] = useState<IcLibrary | null>(null);
   const [learning, setLearning] = useState<LearningState>({
     schemaVersion: 1,
     attempts: [],
@@ -142,6 +154,29 @@ export default function App() {
     createWorkflow(virtualQuestions[0]),
   );
   const [errorFilter, setErrorFilter] = useState<ErrorCategory | "">("");
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        let library = await loadIcLibrary();
+        if (!library && import.meta.env.VITE_PUBLIC_EDITION !== "true") {
+          const response = await fetch(
+            `${import.meta.env.BASE_URL}data/ic-reference.json`,
+          );
+          if (response.ok) library = validateIcLibrary(await response.json());
+        }
+        if (!cancelled && library) setIcLibrary(library);
+      } catch (caught) {
+        if (!cancelled)
+          setNotice(
+            `IC資料を読み込めません。データ管理から再取り込みできます。${String(caught)}`,
+          );
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -203,13 +238,23 @@ export default function App() {
       window.removeEventListener("offline-error", offlineError);
     };
   }, []);
+  const referenceCases = useMemo(() => icCases(icLibrary), [icLibrary]);
+  const referenceShortQuestions = useMemo(
+    () => icShortQuestions(icLibrary),
+    [icLibrary],
+  );
+  const allShortQuestions = useMemo(
+    () => [...baseShortQuestions, ...referenceShortQuestions],
+    [referenceShortQuestions],
+  );
   const questions = useMemo(
     () => [
       ...virtualQuestions,
       ...competitionQuestions,
       ...reverseQuestions(dataset),
+      ...referenceCases,
     ],
-    [dataset],
+    [dataset, referenceCases],
   );
   const reviewQuestions = useMemo(() => {
     const snapshots = [
@@ -444,6 +489,23 @@ export default function App() {
       setBusy(false);
     }
   }
+  const icPanel = (
+    <IcLibraryPanel
+      library={icLibrary}
+      onImport={async (next) => {
+        await saveIcLibrary(next);
+        setIcLibrary(next);
+      }}
+      shortQuestions={referenceShortQuestions}
+      cases={referenceCases}
+      onShort={(question) => {
+        setInitialShort(question);
+        setPage("learn");
+        window.scrollTo(0, 0);
+      }}
+      onCase={(question, level) => start(question, level)}
+    />
+  );
   return (
     <div className="app-shell">
       <aside className="sidebar">
@@ -463,6 +525,7 @@ export default function App() {
               ["practice", "02", "案件トレーニング"],
               ["history", "03", "回答履歴"],
               ["data", "04", "データ管理"],
+              ["ic", "05", "採用ICライブラリ"],
             ] as const
           ).map(([target, number, label]) => (
             <button
@@ -524,6 +587,7 @@ export default function App() {
               <LearningPath
                 key={initialShort?.id ?? "learning-path"}
                 attempts={learning.shortAttempts ?? []}
+                shortQuestions={allShortQuestions}
                 caseAttempts={learning.attempts}
                 questions={questions}
                 onSave={saveShortAttempt}
@@ -531,6 +595,7 @@ export default function App() {
                 initialQuestion={initialShort}
               />
             )}
+            {page === "ic" && icPanel}
             {page === "dashboard" && (
               <>
                 <div className="hero">
@@ -790,6 +855,36 @@ export default function App() {
                           <p className="muted">
                             型番の暗記より、要件との対応・理由・検証計画を記述してください。未確認情報は明記できます。
                           </p>
+                          <IcCandidatePicker
+                            library={icLibrary}
+                            onSelect={(entry) => {
+                              if (
+                                !icLibrary ||
+                                answers.selection.includes(
+                                  `候補TI型番: ${entry.partNumber}\n`,
+                                )
+                              )
+                                return;
+                              setAnswers((current) => ({
+                                ...current,
+                                selection: [
+                                  current.selection,
+                                  icSelectionText(entry, icLibrary),
+                                ]
+                                  .filter(Boolean)
+                                  .join("\n\n"),
+                              }));
+                              setWorkflow((current) => ({
+                                ...current,
+                                products: {
+                                  ...current.products,
+                                  ti: [current.products.ti, entry.partNumber]
+                                    .filter(Boolean)
+                                    .join(" / "),
+                                },
+                              }));
+                            }}
+                          />
                           {dimensions.map((item) => (
                             <label className="answer-field" key={item.id}>
                               <span>
@@ -904,9 +999,7 @@ export default function App() {
                         <Urls urls={active.urls} />
                         {active.record && (
                           <details>
-                            <summary>
-                              元のNotion記載・本文・出典ファイル
-                            </summary>
+                            <summary>元資料の記載・本文・出典ファイル</summary>
                             {Object.entries(active.record.fields).map(
                               ([key, field]) => (
                                 <div className="evidence" key={key}>
@@ -1247,6 +1340,7 @@ export default function App() {
                     </p>
                   </div>
                 </div>
+                {icPanel}
                 <div className="two-columns">
                   <Panel title="Notionエクスポートを再取り込み">
                     <p>

@@ -12,7 +12,8 @@
     "check": "tsc --noEmit && prettier --check src scripts tests vite.config.ts index.html public/sw.js",
     "format": "prettier --write src scripts tests vite.config.ts index.html public/sw.js",
     "test": "vitest run",
-    "import:notion": "tsx scripts/import-notion.ts"
+    "import:notion": "tsx scripts/import-notion.ts",
+    "import:ic": "tsx scripts/import-ic.ts"
   },
   "dependencies": {
     "fflate": "^0.8.2",

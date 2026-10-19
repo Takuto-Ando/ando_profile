@@ -352,7 +352,7 @@ export function validateShortAttempts(
             (/^\d{4}-\d{2}-\d{2}$/.test(source.checkedAt) &&
               new Date(source.checkedAt).toISOString().slice(0, 10) ===
                 source.checkedAt)) &&
-          ["concept", "notion"].includes(source.scope as string) &&
+          ["concept", "notion", "reference"].includes(source.scope as string) &&
           (source.localPath === undefined ||
             typeof source.localPath === "string") &&
           (source.datasheet === undefined ||

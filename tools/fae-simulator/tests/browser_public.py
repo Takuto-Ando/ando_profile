@@ -141,7 +141,10 @@ def run(url: str, output: Path):
         assert cache_urls and all(entry.startswith(url) for entry in cache_urls), (
             cache_urls
         )
-        assert all("notion.json" not in entry for entry in cache_urls)
+        assert all(
+            "notion.json" not in entry and "ic-reference.json" not in entry
+            for entry in cache_urls
+        )
         session = context.new_cdp_session(page)
         session.send("Network.clearBrowserCache")
         context.set_offline(True)
@@ -163,9 +166,13 @@ def run(url: str, output: Path):
         assert all(
             urlparse(entry["url"]).netloc == origin.netloc for entry in requests
         ), requests
-        assert not any("data/notion.json" in entry["url"] for entry in requests), (
-            requests
-        )
+        assert not any(
+            any(
+                path in entry["url"]
+                for path in ["data/notion.json", "data/ic-reference.json"]
+            )
+            for entry in requests
+        ), requests
         assert not errors, errors
         browser.close()
     report = {
@@ -187,7 +194,12 @@ def run(url: str, output: Path):
         "pageErrors": errors,
         "nonGetRequests": [entry for entry in requests if entry["method"] != "GET"],
         "privateDataFetches": [
-            entry for entry in requests if "data/notion.json" in entry["url"]
+            entry
+            for entry in requests
+            if any(
+                path in entry["url"]
+                for path in ["data/notion.json", "data/ic-reference.json"]
+            )
         ],
     }
     (output / "public-report.json").write_text(

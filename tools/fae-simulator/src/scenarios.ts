@@ -287,7 +287,7 @@ export function profileFor(question: Question): CaseProfile {
         topic(
           requirements[0],
           ["要件", "課題", "周期", "電圧", "温度", "精度"],
-          `Notion記載（推定含む）: ${fields?.challenge.value || "不明"}。定量条件は原典から自動確定できません。顧客確認が必要です。`,
+          `元資料記載（推定含む）: ${fields?.challenge.value || "不明"}。定量条件は原典から自動確定できません。顧客確認が必要です。`,
         ),
         topic(
           requirements[1],

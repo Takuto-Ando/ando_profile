@@ -80,7 +80,7 @@ def run(url: str, output: Path) -> None:
 
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name="Design Win逆算 ↗").click()
-        expect(page.locator(".question-card")).to_have_count(351)
+        expect(page.locator(".question-card").filter(has_not_text="Excel採用記載から提案:")).to_have_count(351)
         page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
         expect(page.get_by_text("顧客・搭載製品（記載確認、外部未検証）", exact=False)).to_have_count(0)
         for _ in range(3):
