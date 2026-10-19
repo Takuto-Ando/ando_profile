@@ -1,11 +1,12 @@
 import { useRef, useState } from "react";
-import type { Question } from "./model";
+import type { Attempt, Question } from "./model";
 import { shortQuestions } from "./short-questions";
 import {
   advancedPool,
   buildShortPrompt,
   gradeShort,
   levelInfo,
+  learningProgress,
   nextHint,
   relatedCases,
   revealedChoices,
@@ -26,12 +27,14 @@ import { NotionEvidencePanel } from "./WorkflowPanel";
 
 export function LearningPath({
   attempts,
+  caseAttempts = [],
   questions,
   onSave,
   onAdvanced,
   initialQuestion,
 }: {
   attempts: ShortAttempt[];
+  caseAttempts?: Attempt[];
   questions: Question[];
   onSave: (attempt: ShortAttempt) => Promise<void>;
   onAdvanced: (question: Question, level: 4 | 5) => void;
@@ -67,6 +70,12 @@ export function LearningPath({
   const selectionLock = useRef(false);
   const question = queue[index];
   const pool = shortPool(shortQuestions, attempts, level, theme, review, query);
+  const progress = learningProgress(
+    shortQuestions,
+    attempts,
+    questions,
+    caseAttempts,
+  );
   const advanced = preferred
     ? relatedCases(preferred, questions)
     : advancedPool(questions, theme, query);
@@ -272,6 +281,35 @@ export function LearningPath({
                 {level === 1 ? "1分問題を始める" : `Lv.${level}を始める`}
               </button>
             )}
+            <details className="learning-progress">
+              <summary>
+                全体の進捗：{progress.overall.completed} /{" "}
+                {progress.overall.total}問回答済み （{progress.overall.percent}
+                %）
+              </summary>
+              <progress
+                aria-label="全問題の回答進捗"
+                value={progress.overall.completed}
+                max={Math.max(1, progress.overall.total)}
+              />
+              <p>未回答：{progress.overall.remaining}問</p>
+              <ul>
+                {progress.byLevel.map((item) => (
+                  <li key={item.level}>
+                    Lv.{item.level}：{item.completed} / {item.total}問回答済み
+                  </li>
+                ))}
+                <li>
+                  Lv.4〜5 案件演習：{progress.cases.completed} /{" "}
+                  {progress.cases.total}件回答済み
+                </li>
+              </ul>
+              <p className="muted">
+                現在の問題一覧が対象です。再回答は重複せず、正誤にかかわらず保存済みの回答を数えます。
+                Lv.1〜3は同じテーマでも別問題、Lv.4〜5は同じ案件を1件として集計します。
+                検索・復習条件では総数は変わりません。教材統合・実例取り込みで総数は増えます。
+              </p>
+            </details>
             <div className="short-settings">
               <label>
                 学習ジャンル
@@ -595,6 +633,11 @@ export function LearningPath({
                 <h4>
                   {shortCorrect(result) ? "正解！" : "ここが学びのポイント"}
                 </h4>
+                <p>
+                  全体の進捗：{progress.overall.completed} /{" "}
+                  {progress.overall.total}問回答済み （
+                  {progress.overall.percent}%）
+                </p>
                 <p>
                   {result.result.selectionCorrect
                     ? "製品・機能の選択：正解"

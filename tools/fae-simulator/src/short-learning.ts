@@ -1,4 +1,4 @@
-import { categories, type Question } from "./model";
+import { categories, type Attempt, type Question } from "./model";
 import {
   levels,
   themes,
@@ -8,6 +8,51 @@ import {
   type ShortQuestion,
   type ShortResult,
 } from "./short-model";
+
+export function learningProgress(
+  shortCatalog: ShortQuestion[],
+  shortAttempts: ShortAttempt[],
+  caseCatalog: Question[],
+  caseAttempts: Attempt[],
+) {
+  function countProgress(ids: string[], answeredIds: string[]) {
+    const catalog = new Set(ids);
+    const completed = new Set(answeredIds.filter((id) => catalog.has(id))).size;
+    const total = catalog.size;
+    return {
+      total,
+      completed,
+      remaining: total - completed,
+      percent: total ? Math.floor((completed / total) * 100) : 0,
+    };
+  }
+  const shortIds = shortAttempts.map((attempt) => attempt.question.id);
+  const caseIds = caseAttempts.map((attempt) => attempt.question.id);
+  const byLevel = ([1, 2, 3] as const).map((level) => ({
+    level,
+    ...countProgress(
+      shortCatalog
+        .filter((question) => question.level === level)
+        .map((question) => question.id),
+      shortIds,
+    ),
+  }));
+  const cases = countProgress(
+    caseCatalog.map((question) => question.id),
+    caseIds,
+  );
+  const overall = countProgress(
+    [
+      ...shortCatalog.map((question) => `short:${question.id}`),
+      ...caseCatalog.map((question) => `case:${question.id}`),
+    ],
+    [
+      ...shortIds.map((id) => `short:${id}`),
+      ...caseIds.map((id) => `case:${id}`),
+    ],
+  );
+  return { overall, byLevel, cases };
+}
 
 export function gradeShort(
   question: ShortQuestion,

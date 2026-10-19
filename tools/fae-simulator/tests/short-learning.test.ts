@@ -5,6 +5,7 @@ import {
   buildShortPrompt,
   gradeShort,
   levelInfo,
+  learningProgress,
   nextHint,
   relatedCases,
   revealedChoices,
@@ -56,6 +57,85 @@ function attempt(question = shortQuestions[0], correct = true): ShortAttempt {
     selfAssessment: "unrated",
   };
 }
+describe("catalog learning progress", () => {
+  it("handles an empty catalog without treating history as new questions", () => {
+    expect(learningProgress([], [attempt()], [], [legacy()]).overall).toEqual({
+      total: 0,
+      completed: 0,
+      remaining: 0,
+      percent: 0,
+    });
+  });
+
+  it("counts wrong answers once and ignores answers outside the catalog", () => {
+    const first = attempt(shortQuestions[0], false);
+    const missing = structuredClone(first);
+    missing.question.id = "removed-question";
+    const progress = learningProgress(
+      shortQuestions,
+      [first, first, missing],
+      [],
+      [],
+    );
+    expect(progress.overall.completed).toBe(1);
+    expect(progress.overall.total).toBe(shortQuestions.length);
+    expect(progress.overall.remaining).toBe(shortQuestions.length - 1);
+    expect(
+      progress.byLevel.find((item) => item.level === first.question.level)
+        ?.completed,
+    ).toBe(1);
+    expect(
+      progress.byLevel.reduce((total, item) => total + item.completed, 0),
+    ).toBe(1);
+  });
+
+  it("separates levels and counts a case once across Lv.4 and Lv.5", () => {
+    const first = attempt();
+    const higher = shortQuestions.find(
+      (question) =>
+        question.conceptId === first.question.conceptId && question.level === 2,
+    )!;
+    const old = legacy();
+    const level4 = { ...old, learningLevel: 4 as const };
+    const level5 = { ...old, learningLevel: 5 as const };
+    const progress = learningProgress(
+      shortQuestions,
+      [first, attempt(higher)],
+      virtualQuestions,
+      [old, level4, level5],
+    );
+    expect(progress.overall.completed).toBe(3);
+    expect(progress.cases.completed).toBe(1);
+    expect(progress.byLevel.map((item) => item.completed)).toEqual([1, 1, 0]);
+  });
+
+  it("separates short and case IDs and reaches 100 only after all questions", () => {
+    const first = attempt();
+    const old = legacy();
+    const sameIdCase = { ...old.question, id: first.question.id };
+    const progress = learningProgress(
+      [first.question],
+      [first],
+      [sameIdCase],
+      [],
+    );
+    expect(progress.overall).toEqual({
+      total: 2,
+      completed: 1,
+      remaining: 1,
+      percent: 50,
+    });
+    expect(
+      learningProgress(
+        [first.question],
+        [first],
+        [sameIdCase],
+        [{ ...old, question: sameIdCase }],
+      ).overall.percent,
+    ).toBe(100);
+  });
+});
+
 function legacy(): Attempt {
   const answers = emptyAnswers();
   return {
