@@ -449,8 +449,26 @@ export function LearningPath({
                   key={option.id}
                   disabled={!!answers.selection || !!result || saving}
                   aria-pressed={answers.selection === option.id}
+                  aria-label={option.text}
+                  data-answer-state={
+                    result
+                      ? option.id === question.selection.correctId
+                        ? "correct"
+                        : option.id === result.answers.selection
+                          ? "incorrect"
+                          : undefined
+                      : undefined
+                  }
                   onClick={() => choose(option.id)}
                 >
+                  {result && option.id === question.selection.correctId && (
+                    <strong aria-hidden="true">✓ 正解 · </strong>
+                  )}
+                  {result &&
+                    option.id === result.answers.selection &&
+                    !result.result.selectionCorrect && (
+                      <strong aria-hidden="true">✕ 不正解 · </strong>
+                    )}
                   {option.text}
                 </button>
               ))}
@@ -474,7 +492,7 @@ export function LearningPath({
                 </ol>
               </div>
             )}
-            {level === 2 && answers.selection && !result && question.reason && (
+            {level === 2 && answers.selection && question.reason && (
               <section aria-label="選定理由">
                 <h4>{question.reason.prompt}</h4>
                 <p className="muted">
@@ -484,13 +502,31 @@ export function LearningPath({
                   {question.reason.options.map((option) => (
                     <button
                       key={option.id}
-                      disabled={saving}
+                      disabled={saving || !!result}
+                      aria-label={option.text}
+                      data-answer-state={
+                        result
+                          ? option.id === question.reason?.correctId
+                            ? "correct"
+                            : option.id === result.answers.reason
+                              ? "incorrect"
+                              : undefined
+                          : undefined
+                      }
                       onClick={() => {
                         const next = { ...answers, reason: option.id };
                         setAnswers(next);
                         void submit(next);
                       }}
                     >
+                      {result && option.id === question.reason?.correctId && (
+                        <strong aria-hidden="true">✓ 正解 · </strong>
+                      )}
+                      {result &&
+                        option.id === result.answers.reason &&
+                        !result.result.reasonCorrect && (
+                          <strong aria-hidden="true">✕ 不正解 · </strong>
+                        )}
                       {option.text}
                     </button>
                   ))}
