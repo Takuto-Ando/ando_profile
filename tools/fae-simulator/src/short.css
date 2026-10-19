@@ -59,6 +59,16 @@
   opacity: 1;
   cursor: default;
 }
+.short-options button[data-answer-state="correct"] {
+  border: 2px solid #167344;
+  background: #e8f6ed;
+  color: #105b35;
+}
+.short-options button[data-answer-state="incorrect"] {
+  border: 2px solid #b42332;
+  background: #fff0f1;
+  color: #8e1b29;
+}
 .short-hints {
   margin-top: 20px;
 }

@@ -46,12 +46,29 @@ def run(url: str, output: Path):
         )
         page.screenshot(path=str(output / "web-home-mobile.png"), full_page=True)
         page.get_by_role("button", name="1分問題を始める").click()
+        expect(page.locator("[data-answer-state]")).to_have_count(0)
         page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
-            "button", name="MSPM0", exact=True
+            "button", name="ISO77xx", exact=True
         ).click()
         expect(
             page.get_by_text("回答・ヒント利用を保存済み", exact=False)
         ).to_be_visible()
+        correct = page.locator('[data-answer-state="correct"]')
+        incorrect = page.locator('[data-answer-state="incorrect"]')
+        expect(correct).to_have_text("✓ 正解 · MSPM0")
+        expect(incorrect).to_have_text("✕ 不正解 · ISO77xx")
+        expect(correct).to_have_css("background-color", "rgb(232, 246, 237)")
+        expect(incorrect).to_have_css("background-color", "rgb(255, 240, 241)")
+        correct_context = browser.new_context()
+        correct_page = correct_context.new_page()
+        correct_page.goto(url)
+        correct_page.get_by_role("button", name="1分問題を始める").click()
+        correct_page.get_by_role("button", name="MSPM0", exact=True).click()
+        expect(correct_page.locator('[data-answer-state="correct"]')).to_have_text(
+            "✓ 正解 · MSPM0"
+        )
+        expect(correct_page.locator('[data-answer-state="incorrect"]')).to_have_count(0)
+        correct_context.close()
         page.get_by_role("button", name="理解できた", exact=True).click()
         expect(
             page.get_by_role("button", name="理解できた", exact=True)
@@ -118,6 +135,7 @@ def run(url: str, output: Path):
         expect(
             page.get_by_text("回答・ヒント利用を保存済み", exact=False)
         ).to_be_visible()
+        expect(page.locator('[data-answer-state="correct"]')).to_have_count(1)
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
         page.screenshot(path=str(output / "web-offline-mobile.png"), full_page=True)
         assert all(entry["method"] == "GET" for entry in requests), requests
