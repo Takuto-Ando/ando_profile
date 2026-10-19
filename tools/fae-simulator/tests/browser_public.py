@@ -41,6 +41,9 @@ def run(url: str, output: Path):
         )
         assert scope == url, scope
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
+        expect(page.get_by_role("button", name="1分問題を始める")).to_be_in_viewport(
+            ratio=1
+        )
         page.screenshot(path=str(output / "web-home-mobile.png"), full_page=True)
         page.get_by_role("button", name="1分問題を始める").click()
         page.get_by_role("group", name="製品・機能の選択肢").get_by_role(

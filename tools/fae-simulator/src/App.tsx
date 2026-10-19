@@ -156,7 +156,7 @@ export default function App() {
         if (custom) setDataset(custom);
         else if (import.meta.env.VITE_PUBLIC_EDITION === "true") {
           setNotice(
-            "Web版：基礎問題と架空案件のみ同梱しています。Notion事例・以前の履歴は「データ管理」からこの端末へ取り込めます。ファイルをサーバーへ送信しません。",
+            "Web版：実例・履歴は「データ管理」から端末内へ取り込めます。",
           );
         } else {
           try {
