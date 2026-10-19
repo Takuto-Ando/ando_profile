@@ -1,0 +1,35 @@
+{
+  "name": "fae-design-win-simulator",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "build": "tsc --noEmit && vite build",
+    "build:public": "tsx scripts/build-public.ts",
+    "export:pages": "tsx scripts/export-pages.ts",
+    "preview": "vite preview --host 127.0.0.1",
+    "check": "tsc --noEmit && prettier --check src scripts tests vite.config.ts index.html public/sw.js",
+    "format": "prettier --write src scripts tests vite.config.ts index.html public/sw.js",
+    "test": "vitest run",
+    "import:notion": "tsx scripts/import-notion.ts"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "linkedom": "^0.18.12",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.10",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^4.7.0",
+    "fake-indexeddb": "^6.2.2",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.5",
+    "typescript": "~5.9.2",
+    "vite": "^6.4.1",
+    "vitest": "^4.1.12"
+  }
+}

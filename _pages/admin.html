@@ -39,15 +39,13 @@ sitemap: false
       <div id="library-list" class="library-grid"></div>
       <aside class="library-card local-app" aria-labelledby="simulator-heading">
         <h2 id="simulator-heading">FAE Design Win Simulator</h2>
-        <p>顧客ヒアリング・要件整理・技術的成立性検証を練習するローカル学習アプリ。</p>
-        <p><a class="download" href="http://127.0.0.1:4178/" target="_blank" rel="noopener noreferrer">Simulatorを開く（このPC）</a></p>
-        <p class="note">同じPCでSimulatorを起動してから開いてください。別のスマートフォンやPCから、このPCのアプリへ接続するリンクではありません。資料・回答履歴は外部送信しません。</p>
+        <p>1分の4択から、顧客ヒアリング・要件整理・技術的成立性検証まで練習する学習アプリ。</p>
+        <p><a class="download" href="{{ '/fae-simulator/' | relative_url }}" target="_blank" rel="noopener noreferrer">Simulatorを開く（Web版）</a></p>
+        <p class="note">スマートフォン・別のPCから使えます。ローカルサーバーは不要です。公開版にNotion原本・実例データ・個人の回答履歴は同梱しません。必要な端末でファイルを取り込み、履歴はそのブラウザ内に保存します。端末間の自動同期はありません。</p>
         <details>
-          <summary>起動手順</summary>
-          <p>WSLのターミナルで実行してください。履歴を引き継ぐため、ホストとポートは変更しないでください。</p>
-          <pre><code>cd /home/wsl_user/work_space/Research_project/fae-design-win-simulator
-npm run build
-npm run preview -- --host 127.0.0.1 --port 4178 --strictPort</code></pre>
+          <summary>以前のローカル版から履歴を移す</summary>
+          <p>以前のローカル版の「データ管理」で履歴JSONをエクスポートし、Web版の「データ管理」からインポートしてください。Notion事例はエクスポートZIPを端末から再取り込みできます。ファイルはサーバーへ送信しません。</p>
+          <p>このWebアプリ自体は公開されています。管理者ページのパスワードによるアクセス保護はありません。機密資料は取り込まないでください。</p>
         </details>
       </aside>
     </section>
