@@ -86,6 +86,9 @@ def run(url: str, output: Path):
         expect(
             page.get_by_role("button", name="理解できた", exact=True)
         ).to_have_attribute("aria-pressed", "true")
+        expect(
+            page.get_by_role("button", name="理解できた", exact=True)
+        ).to_be_enabled()
         page.reload()
         expect(page.locator(".learning-progress summary")).to_contain_text(
             f"全体の進捗：1 / {total}問回答済み"
