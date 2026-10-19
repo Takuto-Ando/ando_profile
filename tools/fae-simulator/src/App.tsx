@@ -41,10 +41,10 @@ import {
   icCases,
   icShortQuestions,
   icSelectionText,
-  validateIcLibrary,
   type IcLibrary,
 } from "./ic-reference";
 import { IcLibraryPanel, IcCandidatePicker } from "./IcLibraryPanel";
+import { bundledIcLibrary } from "./bundled-ic";
 import { shortQuestions as baseShortQuestions } from "./short-questions";
 import { createWorkflow, assessWorkflow } from "./workflow";
 import {
@@ -126,7 +126,9 @@ export default function App() {
   const [practiceLevel, setPracticeLevel] = useState<4 | 5>(5);
   const [initialShort, setInitialShort] = useState<ShortQuestion | undefined>();
   const [dataset, setDataset] = useState<Dataset | null>(null);
-  const [icLibrary, setIcLibrary] = useState<IcLibrary | null>(null);
+  const [icLibrary, setIcLibrary] = useState<IcLibrary | null>(
+    bundledIcLibrary,
+  );
   const [learning, setLearning] = useState<LearningState>({
     schemaVersion: 1,
     attempts: [],
@@ -158,13 +160,7 @@ export default function App() {
     let cancelled = false;
     (async () => {
       try {
-        let library = await loadIcLibrary();
-        if (!library && import.meta.env.VITE_PUBLIC_EDITION !== "true") {
-          const response = await fetch(
-            `${import.meta.env.BASE_URL}data/ic-reference.json`,
-          );
-          if (response.ok) library = validateIcLibrary(await response.json());
-        }
+        const library = await loadIcLibrary();
         if (!cancelled && library) setIcLibrary(library);
       } catch (caught) {
         if (!cancelled)
@@ -190,9 +186,7 @@ export default function App() {
         setReady(true);
         if (custom) setDataset(custom);
         else if (import.meta.env.VITE_PUBLIC_EDITION === "true") {
-          setNotice(
-            "Web版：実例・履歴は「データ管理」から端末内へ取り込めます。",
-          );
+          setNotice("Web版：IC教材は反映済み。履歴・Notion実例は端末内保存。");
         } else {
           try {
             const response = await fetch(

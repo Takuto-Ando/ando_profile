@@ -18,7 +18,7 @@ def run(url: str, output: Path):
             [
                 str(root / "node_modules/.bin/tsx"),
                 "-e",
-                "import {shortQuestions} from './src/short-questions.ts';import {icShortQuestions,validateIcLibrary} from './src/ic-reference.ts';import {existsSync,readFileSync} from 'node:fs';const path='public/data/ic-reference.json';const extra=existsSync(path)?icShortQuestions(validateIcLibrary(JSON.parse(readFileSync(path,'utf8')))):[];process.stdout.write(JSON.stringify([...shortQuestions,...extra]));",
+                "import {shortQuestions} from './src/short-questions.ts';import {icShortQuestions} from './src/ic-reference.ts';import {bundledIcLibrary} from './src/bundled-ic.ts';process.stdout.write(JSON.stringify([...shortQuestions,...icShortQuestions(bundledIcLibrary)]));",
             ],
             cwd=root,
             text=True,

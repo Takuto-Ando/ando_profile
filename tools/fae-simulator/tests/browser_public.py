@@ -35,6 +35,18 @@ def run(url: str, output: Path):
         page.goto(url)
         expect(page.get_by_role("heading", name="1分からのFAE学習")).to_be_visible()
         expect(page.locator(".sidebar-note")).to_contain_text("Web学習")
+        page.get_by_role("button", name="採用ICライブラリ", exact=False).click()
+        expect(
+            page.get_by_text("教材は読み込み済みです。", exact=False)
+        ).to_be_visible()
+        expect(
+            page.get_by_label("学習するIC", exact=True).locator("option")
+        ).to_have_count(165)
+        page.get_by_label("学習するIC", exact=True).select_option("AM2434")
+        expect(
+            page.get_by_role("button", name="Lv.1 資料読解4択を始める", exact=True)
+        ).to_be_visible()
+        page.get_by_role("button", name="1分からの学習", exact=False).click()
         page.evaluate("navigator.serviceWorker.ready")
         page.wait_for_function("navigator.serviceWorker.controller !== null")
         scope = page.evaluate(
@@ -104,8 +116,13 @@ def run(url: str, output: Path):
         expect(page.get_by_role("status")).to_contain_text("1件を取り込み")
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name="Design Win逆算 ↗").click()
-        expect(page.locator(".question-card")).to_have_count(1)
-        page.locator(".question-card").get_by_role("button", name="案件を開く").click()
+        expect(page.locator(".question-card")).to_have_count(28)
+        expect(
+            page.locator(".question-card").filter(has_not_text="Excel採用記載から提案:")
+        ).to_have_count(1)
+        page.locator(".question-card").filter(
+            has_not_text="Excel採用記載から提案:"
+        ).get_by_role("button", name="案件を開く").click()
         expect(
             page.get_by_role("button", name="要件を整理して提案に進む")
         ).to_be_visible()
@@ -161,6 +178,10 @@ def run(url: str, output: Path):
         expect(page.locator('[data-answer-state="correct"]')).to_have_count(1)
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
         page.screenshot(path=str(output / "web-offline-mobile.png"), full_page=True)
+        page.get_by_role("button", name="採用ICライブラリ", exact=False).click()
+        expect(
+            page.get_by_label("学習するIC", exact=True).locator("option")
+        ).to_have_count(165)
         assert all(entry["method"] == "GET" for entry in requests), requests
         origin = urlparse(url)
         assert all(
