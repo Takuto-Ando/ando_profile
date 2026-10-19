@@ -135,6 +135,10 @@ body.document-open main {
   font-weight: 700;
   overflow-wrap: anywhere;
 }
+.local-app pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
 #document-title {
   font-size: 17px;
   margin: 0;

@@ -37,6 +37,19 @@ sitemap: false
       <h1 id="library-heading">保護された資料</h1>
       <p id="library-count" class="note"></p>
       <div id="library-list" class="library-grid"></div>
+      <aside class="library-card local-app" aria-labelledby="simulator-heading">
+        <h2 id="simulator-heading">FAE Design Win Simulator</h2>
+        <p>顧客ヒアリング・要件整理・技術的成立性検証を練習するローカル学習アプリ。</p>
+        <p><a class="download" href="http://127.0.0.1:4178/" target="_blank" rel="noopener noreferrer">Simulatorを開く（このPC）</a></p>
+        <p class="note">同じPCでSimulatorを起動してから開いてください。別のスマートフォンやPCから、このPCのアプリへ接続するリンクではありません。資料・回答履歴は外部送信しません。</p>
+        <details>
+          <summary>起動手順</summary>
+          <p>WSLのターミナルで実行してください。履歴を引き継ぐため、ホストとポートは変更しないでください。</p>
+          <pre><code>cd /home/wsl_user/work_space/Research_project/fae-design-win-simulator
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4178 --strictPort</code></pre>
+        </details>
+      </aside>
     </section>
     <div id="document-bar" class="bar" hidden>
       <button id="back" type="button">← 資料一覧へ</button>
