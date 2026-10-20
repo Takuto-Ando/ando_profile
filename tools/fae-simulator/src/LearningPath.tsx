@@ -1,4 +1,10 @@
-import { useRef, useState, type ReactNode } from "react";
+import {
+  useRef,
+  useState,
+  useEffect,
+  useLayoutEffect,
+  type ReactNode,
+} from "react";
 import type { Attempt, Question } from "./model";
 import { decisionQuestions as baseShortQuestions } from "./decision-questions";
 import {
@@ -26,6 +32,23 @@ import {
 import { safeUrl } from "./importer";
 import { NotionEvidencePanel } from "./WorkflowPanel";
 
+function FeedbackDetail({
+  compact,
+  children,
+}: {
+  compact: boolean;
+  children: ReactNode;
+}) {
+  return compact ? (
+    <details className="feedback-detail">
+      <summary>詳しい解説・復習</summary>
+      {children}
+    </details>
+  ) : (
+    <>{children}</>
+  );
+}
+
 export function LearningPath({
   attempts,
   shortQuestions = baseShortQuestions,
@@ -41,6 +64,7 @@ export function LearningPath({
   onFavorite,
   selectedLevel,
   onLevelChange,
+  shortcutsEnabled = true,
 }: {
   attempts: ShortAttempt[];
   shortQuestions?: ShortQuestion[];
@@ -56,6 +80,7 @@ export function LearningPath({
   onFavorite?: (id: string) => void;
   selectedLevel?: LearningLevel;
   onLevelChange?: (level: LearningLevel) => void;
+  shortcutsEnabled?: boolean;
 }) {
   const [localLevel, setLevel] = useState<LearningLevel>(
     initialQuestion?.level ?? 1,
@@ -89,6 +114,12 @@ export function LearningPath({
   const lock = useRef(false);
   const selectionLock = useRef(false);
   const question = queue[index];
+  const compact = level <= 2;
+  const compactActive = compact && !!question && !finished;
+  const advanceLock = useRef(false);
+  const questionRef = useRef<HTMLElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
+  const [showDock, setShowDock] = useState(false);
   const pool = shortPool(shortQuestions, attempts, level, theme, review, query);
   const progress = learningProgress(
     shortQuestions,
@@ -198,7 +229,9 @@ export function LearningPath({
     if (question.level === 1) void submit(next);
   }
   function advance() {
-    if (saving || saveError || !result) return;
+    if (saving || saveError || !result || lock.current || advanceLock.current)
+      return;
+    advanceLock.current = true;
     if (queue.length === 1) {
       const next = pool.find((candidate) => candidate.id !== question.id);
       if (next) {
@@ -206,7 +239,7 @@ export function LearningPath({
         setIndex(0);
         setSessionIds([]);
         resetAnswer();
-        window.scrollTo(0, 0);
+        if (!compact) window.scrollTo(0, 0);
         return;
       }
     }
@@ -215,7 +248,7 @@ export function LearningPath({
       setIndex(index + 1);
       resetAnswer();
     }
-    window.scrollTo(0, 0);
+    if (!compact) window.scrollTo(0, 0);
   }
   async function copyPrompt() {
     if (!result) return;
@@ -256,10 +289,144 @@ export function LearningPath({
     </div>
   );
 
+  const nextLabel =
+    queue.length === 1 &&
+    pool.some((candidate) => candidate.id !== question?.id)
+      ? "次の1問へ"
+      : index + 1 < queue.length
+        ? "次の問題へ"
+        : "この演習を終了";
+  const ratingControls = result ? (
+    <div className="short-rating" role="group" aria-label="理解の自己評価">
+      {(
+        [
+          ["understood", "理解できた"],
+          ["unclear", "まだ曖昧"],
+        ] as const
+      ).map(([value, label]) => (
+        <button
+          key={value}
+          aria-pressed={result.selfAssessment === value}
+          disabled={saving || !!saveError}
+          onClick={() => void persist({ ...result, selfAssessment: value })}
+        >
+          {label}
+        </button>
+      ))}
+    </div>
+  ) : null;
+  const nextControls = (
+    <div className="short-actions">
+      <button
+        className="primary"
+        disabled={saving || !!saveError}
+        ref={nextRef}
+        data-quiz-next
+        onClick={(event) => {
+          if (event.detail < 2) advance();
+        }}
+      >
+        {nextLabel}
+      </button>
+      <button
+        disabled={saving || !!saveError}
+        onClick={() => setFinished(true)}
+      >
+        1問で終了する
+      </button>
+    </div>
+  );
+  useEffect(() => {
+    advanceLock.current = false;
+  }, [question?.id, finished]);
+  useLayoutEffect(() => {
+    if (!compactActive || !questionRef.current) return;
+    const top = questionRef.current.getBoundingClientRect().top;
+    if (top < 0 || top > Math.min(160, innerHeight / 3))
+      questionRef.current.scrollIntoView({
+        block: "start",
+        behavior: "instant",
+      });
+  }, [question?.id, compactActive]);
+  useEffect(() => {
+    if (!compactActive || !result || !nextRef.current) {
+      setShowDock(false);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowDock(entry.intersectionRatio < 1),
+      { threshold: 1 },
+    );
+    observer.observe(nextRef.current);
+    return () => observer.disconnect();
+  }, [compactActive, result?.id]);
+  useEffect(() => {
+    function shortcut(event: KeyboardEvent) {
+      if (
+        !compactActive ||
+        !shortcutsEnabled ||
+        saving ||
+        lock.current ||
+        event.repeat ||
+        event.defaultPrevented ||
+        event.isComposing ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.metaKey
+      )
+        return;
+      const target = event.target instanceof Element ? event.target : null;
+      if (
+        target?.closest(
+          "input,textarea,select,[contenteditable]:not([contenteditable=false]),[role=textbox],dialog,[role=dialog],[role=menu],[role=listbox]",
+        ) ||
+        [
+          ...document.querySelectorAll(
+            "dialog[open],[role=dialog],[aria-modal=true]",
+          ),
+        ].some((element) => element.getClientRects().length > 0)
+      )
+        return;
+      if (result) {
+        if (event.key.toLowerCase() !== "n" && event.key !== "Enter") return;
+        if (
+          event.key === "Enter" &&
+          target?.closest("button,a,summary") &&
+          !target.closest("[data-quiz-next]")
+        )
+          return;
+        event.preventDefault();
+        advance();
+        return;
+      }
+      if (!/^[1-4]$/.test(event.key)) return;
+      const task =
+        level === 2 && answers.selection ? question.reason : question.selection;
+      const option = task?.options[Number(event.key) - 1];
+      if (
+        !option ||
+        (!answers.selection &&
+          !revealedChoices(question, hints).some(
+            (candidate) => candidate.id === option.id,
+          ))
+      )
+        return;
+      event.preventDefault();
+      if (answers.selection && level === 2) {
+        const next = { ...answers, reason: option.id };
+        setAnswers(next);
+        void submit(next);
+      } else choose(option.id);
+    }
+    document.addEventListener("keydown", shortcut);
+    return () => document.removeEventListener("keydown", shortcut);
+  });
   return (
     <section
       id="exercise-workspace"
-      className="learning-path"
+      className={
+        compactActive ? "learning-path quick-learning" : "learning-path"
+      }
       aria-label="統合演習"
     >
       <div className="page-heading">
@@ -556,6 +723,7 @@ export function LearningPath({
       ) : (
         <>
           <article
+            ref={questionRef}
             className="panel short-question"
             key={question.id}
             aria-labelledby="short-question-title"
@@ -584,6 +752,13 @@ export function LearningPath({
                   disabled={!!answers.selection || !!result || saving}
                   aria-pressed={answers.selection === option.id}
                   aria-label={option.text}
+                  data-shortcut={
+                    compact
+                      ? question.selection.options.findIndex(
+                          (candidate) => candidate.id === option.id,
+                        ) + 1
+                      : undefined
+                  }
                   data-answer-state={
                     result
                       ? option.id === question.selection.correctId
@@ -593,7 +768,9 @@ export function LearningPath({
                           : undefined
                       : undefined
                   }
-                  onClick={() => choose(option.id)}
+                  onClick={(event) => {
+                    if (event.detail < 2) choose(option.id);
+                  }}
                 >
                   {result && option.id === question.selection.correctId && (
                     <strong aria-hidden="true">✓ 正解 · </strong>
@@ -609,6 +786,11 @@ export function LearningPath({
             </div>
             {!result && (
               <div className="short-hints">
+                {compact && (
+                  <small className="quiz-keys">
+                    1〜4：回答 / 解答後 Enter・N：次へ
+                  </small>
+                )}
                 <button
                   disabled={hints >= 3 || saving}
                   onClick={() => setHints(nextHint(hints))}
@@ -663,6 +845,13 @@ export function LearningPath({
                       key={option.id}
                       disabled={saving || !!result}
                       aria-label={option.text}
+                      data-shortcut={
+                        compact
+                          ? question.reason!.options.findIndex(
+                              (candidate) => candidate.id === option.id,
+                            ) + 1
+                          : undefined
+                      }
                       data-answer-state={
                         result
                           ? option.id === question.reason?.correctId
@@ -752,234 +941,217 @@ export function LearningPath({
                 role="status"
               >
                 <h4>
-                  {shortCorrect(result) ? "正解！" : "ここが学びのポイント"}
+                  {shortCorrect(result)
+                    ? "正解！"
+                    : compact
+                      ? "不正解（減点なし）"
+                      : "ここが学びのポイント"}
                 </h4>
-                <p>
-                  全体の進捗：{progress.overall.completed} /{" "}
-                  {progress.overall.total}問回答済み （
-                  {progress.overall.percent}%）
-                </p>
-                <p>
-                  {result.result.selectionCorrect
-                    ? "技術的判断：正解"
-                    : "技術的判断：不正解（減点なし）"}
-                  {result.result.reasonCorrect !== null &&
-                    ` / 理由：${result.result.reasonCorrect ? "正解" : "不正解（減点なし）"}`}
-                </p>
-                <p>選んだ回答：{selectionResult?.text}</p>
-                <p>{selectionResult?.explanation}</p>
-                {!result.result.selectionCorrect && (
-                  <p>
-                    正解：
-                    {
-                      question.selection.options.find(
-                        (option) => option.id === question.selection.correctId,
-                      )?.text
-                    }
-                  </p>
-                )}
-                {question.reason && (
+                {compact && (
                   <>
-                    <p>
-                      選んだ理由：
+                    <p className="quick-judgment">
+                      正しい判断：
                       {
-                        question.reason.options.find(
-                          (option) => option.id === result.answers.reason,
+                        question.selection.options.find(
+                          (option) =>
+                            option.id === question.selection.correctId,
                         )?.text
                       }
                     </p>
-                    <p>
-                      正しい理由：
-                      {
-                        question.reason.options.find(
-                          (option) => option.id === question.reason?.correctId,
-                        )?.text
-                      }
-                    </p>
+                    <p className="quick-basic">{question.basic}</p>
+                    {nextControls}
+                    {ratingControls}
                   </>
                 )}
-                <h4>10秒で読む基本解説</h4>
-                <p>{question.basic}</p>
-                {question.customerChecks && (
-                  <p>顧客に確認：{question.customerChecks.join(" / ")}</p>
-                )}
-                {question.solutionCategory && (
+                <FeedbackDetail compact={compact}>
                   <p>
-                    関連するTIソリューション：{question.solutionCategory}
-                    （候補・適合は未検証）
+                    全体の進捗：{progress.overall.completed} /{" "}
+                    {progress.overall.total}問回答済み （
+                    {progress.overall.percent}%）
                   </p>
-                )}
-                <details>
-                  <summary>詳しい解説・関連製品・根拠</summary>
-                  <p>{question.detailed}</p>
-                  <h4>各選択肢を設計判断として振り返る</h4>
-                  <ul>
-                    {question.selection.options.map((option) => (
-                      <li key={option.id}>
-                        <b>{option.text}</b>：{option.explanation}
-                      </li>
-                    ))}
-                  </ul>
                   <p>
-                    関連製品・カテゴリ：{question.relatedProducts.join(" / ")}
-                    （実際の採用・適合を示すものではありません）
+                    {result.result.selectionCorrect
+                      ? "技術的判断：正解"
+                      : "技術的判断：不正解（減点なし）"}
+                    {result.result.reasonCorrect !== null &&
+                      ` / 理由：${result.result.reasonCorrect ? "正解" : "不正解（減点なし）"}`}
                   </p>
-                  {question.sources.map((source, sourceIndex) => (
-                    <p key={sourceIndex}>
-                      {safeUrl(source.url) ? (
-                        <a
-                          href={safeUrl(source.url)!}
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          根拠：{source.section}
-                        </a>
-                      ) : (
-                        <>学習方針：{source.section}</>
-                      )}
-                      <small>
-                        {" "}
-                        ·{" "}
-                        {source.checkedAt
-                          ? `参照確認 ${source.checkedAt}`
-                          : "確認日未記録"}
-                        {source.localPath &&
-                          ` / ローカル参照 ${source.localPath}`}
-                      </small>
-                      {source.datasheet && (
-                        <>
-                          <br />
+                  <p>選んだ回答：{selectionResult?.text}</p>
+                  <p>{selectionResult?.explanation}</p>
+                  {!result.result.selectionCorrect && (
+                    <p>
+                      正解：
+                      {
+                        question.selection.options.find(
+                          (option) =>
+                            option.id === question.selection.correctId,
+                        )?.text
+                      }
+                    </p>
+                  )}
+                  {question.reason && (
+                    <>
+                      <p>
+                        選んだ理由：
+                        {
+                          question.reason.options.find(
+                            (option) => option.id === result.answers.reason,
+                          )?.text
+                        }
+                      </p>
+                      <p>
+                        正しい理由：
+                        {
+                          question.reason.options.find(
+                            (option) =>
+                              option.id === question.reason?.correctId,
+                          )?.text
+                        }
+                      </p>
+                    </>
+                  )}
+                  <h4>10秒で読む基本解説</h4>
+                  <p>{question.basic}</p>
+                  {question.customerChecks && (
+                    <p>顧客に確認：{question.customerChecks.join(" / ")}</p>
+                  )}
+                  {question.solutionCategory && (
+                    <p>
+                      関連するTIソリューション：{question.solutionCategory}
+                      （候補・適合は未検証）
+                    </p>
+                  )}
+                  <details>
+                    <summary>詳しい解説・関連製品・根拠</summary>
+                    <p>{question.detailed}</p>
+                    <h4>各選択肢を設計判断として振り返る</h4>
+                    <ul>
+                      {question.selection.options.map((option) => (
+                        <li key={option.id}>
+                          <b>{option.text}</b>：{option.explanation}
+                        </li>
+                      ))}
+                    </ul>
+                    <p>
+                      関連製品・カテゴリ：{question.relatedProducts.join(" / ")}
+                      （実際の採用・適合を示すものではありません）
+                    </p>
+                    {question.sources.map((source, sourceIndex) => (
+                      <p key={sourceIndex}>
+                        {safeUrl(source.url) ? (
                           <a
-                            href={safeUrl(source.datasheet.url) ?? undefined}
+                            href={safeUrl(source.url)!}
                             target="_blank"
                             rel="noreferrer"
                           >
-                            Datasheet: {source.datasheet.partNumber} ·{" "}
-                            {source.datasheet.revision}
+                            根拠：{source.section}
                           </a>
-                          <small>
-                            {" "}
-                            / 参照箇所：{source.datasheet.section}
-                            。版は参照時点の記録です。リンク先の更新に注意してください。
-                          </small>
-                        </>
-                      )}
-                    </p>
-                  ))}
-                </details>
-                {level === 3 && (
-                  <>
-                    <p className="prewrap">
-                      自分の提案：{result.answers.proposal}
-                    </p>
-                    <p>
-                      自由文の技術正誤・個別型番の適合は評価不能。参考案と照合し、必要ならChatGPTで振り返れます。
-                    </p>
-                    <p>
-                      参考案の型：「必要な機能を候補にし、入力・出力の経路へ配置する。未確認の定格・精度・遅延は、対象品番と測定条件を確認してから判断する。」
-                    </p>
-                  </>
-                )}
-                <div
-                  className="short-rating"
-                  role="group"
-                  aria-label="理解の自己評価"
-                >
-                  {(
-                    [
-                      ["understood", "理解できた"],
-                      ["unclear", "まだ曖昧"],
-                    ] as const
-                  ).map(([value, label]) => (
-                    <button
-                      key={value}
-                      aria-pressed={result.selfAssessment === value}
-                      disabled={saving || !!saveError}
-                      onClick={() =>
-                        void persist({ ...result, selfAssessment: value })
-                      }
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
-                <p className="muted">
-                  {saving
-                    ? "保存中…"
-                    : saveError
-                      ? "未保存。再試行してください。"
-                      : "回答・ヒント利用を保存済み。自己評価は任意です。"}
-                </p>
-                <div className="short-actions">
-                  <button
-                    className="primary"
-                    disabled={saving || !!saveError}
-                    onClick={advance}
-                  >
-                    {queue.length === 1 &&
-                    pool.some((candidate) => candidate.id !== question.id)
-                      ? "次の1問へ"
-                      : index + 1 < queue.length
-                        ? "次の問題へ"
-                        : "この演習を終了"}
-                  </button>
-                  <button
-                    disabled={saving || !!saveError}
-                    onClick={() => setFinished(true)}
-                  >
-                    1問で終了する
-                  </button>
-                </div>
-                <details>
-                  <summary>
-                    {level <= 2
-                      ? "詳しく知りたいときだけ：ChatGPTで復習"
-                      : "ChatGPTで提案を振り返る"}
-                  </summary>
-                  <button onClick={() => void copyPrompt()}>
-                    ChatGPT用プロンプトをコピー
-                  </button>
-                  <button onClick={() => setPromptVisible(!promptVisible)}>
-                    復習プロンプトを表示
-                  </button>
-                  {promptVisible && (
-                    <textarea
-                      aria-label="短時間学習の復習プロンプト"
-                      readOnly
-                      rows={12}
-                      value={buildShortPrompt(result, attempts)}
-                    />
-                  )}
-                </details>
-                {result.question.notionContext?.record && (
-                  <details>
-                    <summary>Notionの参考情報と確度</summary>
-                    <NotionEvidencePanel
-                      record={result.question.notionContext.record}
-                    />
-                    <p className="prewrap">
-                      {result.question.notionContext.reference}
-                    </p>
+                        ) : (
+                          <>学習方針：{source.section}</>
+                        )}
+                        <small>
+                          {" "}
+                          ·{" "}
+                          {source.checkedAt
+                            ? `参照確認 ${source.checkedAt}`
+                            : "確認日未記録"}
+                          {source.localPath &&
+                            ` / ローカル参照 ${source.localPath}`}
+                        </small>
+                        {source.datasheet && (
+                          <>
+                            <br />
+                            <a
+                              href={safeUrl(source.datasheet.url) ?? undefined}
+                              target="_blank"
+                              rel="noreferrer"
+                            >
+                              Datasheet: {source.datasheet.partNumber} ·{" "}
+                              {source.datasheet.revision}
+                            </a>
+                            <small>
+                              {" "}
+                              / 参照箇所：{source.datasheet.section}
+                              。版は参照時点の記録です。リンク先の更新に注意してください。
+                            </small>
+                          </>
+                        )}
+                      </p>
+                    ))}
                   </details>
-                )}
-                <details>
-                  <summary>同じテーマを本格演習へつなぐ（任意）</summary>
-                  <p>
-                    ここでは自動で難しくなりません。進むレベルを選んでください。
+                  {level === 3 && (
+                    <>
+                      <p className="prewrap">
+                        自分の提案：{result.answers.proposal}
+                      </p>
+                      <p>
+                        自由文の技術正誤・個別型番の適合は評価不能。参考案と照合し、必要ならChatGPTで振り返れます。
+                      </p>
+                      <p>
+                        参考案の型：「必要な機能を候補にし、入力・出力の経路へ配置する。未確認の定格・精度・遅延は、対象品番と測定条件を確認してから判断する。」
+                      </p>
+                    </>
+                  )}
+                  {!compact && ratingControls}
+                  <p className="muted">
+                    {saving
+                      ? "保存中…"
+                      : saveError
+                        ? "未保存。再試行してください。"
+                        : "回答・ヒント利用を保存済み。自己評価は任意です。"}
                   </p>
-                  <button
-                    disabled={saving}
-                    onClick={() => changeLevel(4, question)}
-                  >
-                    Lv.4の関連案件を選ぶ
-                  </button>
-                  <button
-                    disabled={saving}
-                    onClick={() => changeLevel(5, question)}
-                  >
-                    Lv.5の関連案件を選ぶ
-                  </button>
-                </details>
+                  {!compact && nextControls}
+                  <details>
+                    <summary>
+                      {level <= 2
+                        ? "詳しく知りたいときだけ：ChatGPTで復習"
+                        : "ChatGPTで提案を振り返る"}
+                    </summary>
+                    <button onClick={() => void copyPrompt()}>
+                      ChatGPT用プロンプトをコピー
+                    </button>
+                    <button onClick={() => setPromptVisible(!promptVisible)}>
+                      復習プロンプトを表示
+                    </button>
+                    {promptVisible && (
+                      <textarea
+                        aria-label="短時間学習の復習プロンプト"
+                        readOnly
+                        rows={12}
+                        value={buildShortPrompt(result, attempts)}
+                      />
+                    )}
+                  </details>
+                  {result.question.notionContext?.record && (
+                    <details>
+                      <summary>Notionの参考情報と確度</summary>
+                      <NotionEvidencePanel
+                        record={result.question.notionContext.record}
+                      />
+                      <p className="prewrap">
+                        {result.question.notionContext.reference}
+                      </p>
+                    </details>
+                  )}
+                  <details>
+                    <summary>同じテーマを本格演習へつなぐ（任意）</summary>
+                    <p>
+                      ここでは自動で難しくなりません。進むレベルを選んでください。
+                    </p>
+                    <button
+                      disabled={saving}
+                      onClick={() => changeLevel(4, question)}
+                    >
+                      Lv.4の関連案件を選ぶ
+                    </button>
+                    <button
+                      disabled={saving}
+                      onClick={() => changeLevel(5, question)}
+                    >
+                      Lv.5の関連案件を選ぶ
+                    </button>
+                  </details>
+                </FeedbackDetail>
               </section>
             )}
             {!result && (
@@ -995,6 +1167,22 @@ export function LearningPath({
             )}
           </article>
         </>
+      )}
+      {compactActive && shortcutsEnabled && result && showDock && (
+        <nav className="quiz-dock" aria-label="短時間クイズの固定ナビ">
+          <span>{shortCorrect(result) ? "正解" : "不正解"} · Enter / N</span>
+          <button
+            className="primary"
+            data-quiz-next
+            aria-label={nextLabel + "（画面下部）"}
+            disabled={saving || !!saveError}
+            onClick={(event) => {
+              if (event.detail < 2) advance();
+            }}
+          >
+            {nextLabel}
+          </button>
+        </nav>
       )}
     </section>
   );

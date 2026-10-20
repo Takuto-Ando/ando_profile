@@ -61,6 +61,7 @@ for (const file of [
   "tests/decision-learning.test.ts",
   "tests/ic-reference.test.ts",
   "tests/browser_ic.py",
+  "tests/browser_tempo.py",
   "tests/browser_levels.py",
   "tests/browser_public.py",
   "tests/browser_smoke.py",
