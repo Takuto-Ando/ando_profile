@@ -31,6 +31,7 @@ for (const file of [
 for (const file of [
   "src/App.tsx",
   "src/curriculum.ts",
+  "src/scope-counts.ts",
   "src/ic-exercises.ts",
   "src/bundled-notion.ts",
   "src/data/curriculum.json",

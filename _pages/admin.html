@@ -35,19 +35,16 @@ sitemap: false
     <section id="library" aria-labelledby="library-heading" hidden>
       <p class="eyebrow">PRIVATE LIBRARY</p>
       <h1 id="library-heading">保護された資料</h1>
-      <p id="library-count" class="note"></p>
-      <div id="library-list" class="library-grid"></div>
-      <aside class="library-card local-app" aria-labelledby="simulator-heading">
+      <aside class="simulator-hero" aria-labelledby="simulator-heading">
+        <p class="eyebrow">TI LEARNING PORTAL</p>
         <h2 id="simulator-heading">FAE Design Win Simulator</h2>
-        <p>1分の4択から、顧客ヒアリング・要件整理・技術的成立性検証まで練習する学習アプリ。</p>
-        <p><a class="download" href="{{ '/fae-simulator/' | relative_url }}" target="_blank" rel="noopener noreferrer">Simulatorを開く（Web版）</a></p>
-        <p class="note">スマートフォン・別のPCから使えます。ローカルサーバーは不要です。公開版にNotion原本・実例データ・個人の回答履歴は同梱しません。必要な端末でファイルを取り込み、履歴はそのブラウザ内に保存します。端末間の自動同期はありません。</p>
-        <details>
-          <summary>以前のローカル版から履歴を移す</summary>
-          <p>以前のローカル版の「データ管理」で履歴JSONをエクスポートし、Web版の「データ管理」からインポートしてください。Notion事例はエクスポートZIPを端末から再取り込みできます。ファイルはサーバーへ送信しません。</p>
-          <p>このWebアプリ自体は公開されています。管理者ページのパスワードによるアクセス保護はありません。機密資料は取り込まないでください。</p>
-        </details>
+        <p class="hero-lead"><span>1分クイズから</span><span>30分の本格提案まで</span></p>
+        <p>顧客の課題から、技術方式・IC選定・システム提案を練習。統合されたTIクイズも同じ画面で学べます。</p>
+        <p><a class="download hero-start" href="{{ '/fae-simulator/' | relative_url }}">学習を始める →</a></p>
+        <p class="note">教材は同梱済み。PC・スマートフォンで利用でき、履歴はそのブラウザ内に保存します。Simulator自体は公開アプリです。以下の保護資料の閲覧には引き続き認証が必要です。</p>
       </aside>
+      <p id="library-count" class="note"></p>
+      <div id="library-list"></div>
     </section>
     <div id="document-bar" class="bar" hidden>
       <button id="back" type="button">← 資料一覧へ</button>

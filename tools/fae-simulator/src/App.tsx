@@ -132,6 +132,7 @@ export default function App() {
   const [online, setOnline] = useState(navigator.onLine);
   const [offlineReady, setOfflineReady] = useState(false);
   const [mode, setMode] = useState<Mode>("virtual");
+  const [activeScope, setActiveScope] = useState("");
   const [category, setCategory] = useState("");
   const [difficulty, setDifficulty] = useState("");
   const [favoritesOnly, setFavoritesOnly] = useState(false);
@@ -905,6 +906,7 @@ export default function App() {
                 curriculumScopes={curriculumScopes}
                 curriculumReport={curriculumRegistry.report}
                 onScopeChange={(scope) => {
+                  setActiveScope(scope);
                   setMode(
                     scope === "ic" || scope === "notion"
                       ? "reverse"
@@ -919,7 +921,9 @@ export default function App() {
                 advancedWorkspace={advancedWorkspace}
                 selectedLevel={active ? practiceLevel : requestedLevel}
                 advancedControls={advancedControls}
-                advancedQuestions={visible}
+                advancedQuestions={
+                  activeScope === "customer" ? questions : visible
+                }
                 favorites={learning.favorites}
                 onFavorite={(id) => void toggleFavorite(id)}
                 onLevelChange={(level) => {
