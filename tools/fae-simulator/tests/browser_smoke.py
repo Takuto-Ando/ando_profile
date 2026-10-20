@@ -51,7 +51,7 @@ def run(url: str, output: Path) -> None:
         page.get_by_label("お気に入りのみ").check()
         expect(page.locator(".question-card")).to_have_count(1)
         page.get_by_label("お気に入りのみ").uncheck()
-        page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
+        page.locator(".question-card").first.get_by_role("button", name="Lv.5の案件を開く").click()
 
         answer = "制御周期50μsを目標として顧客の電圧と安全条件を確認します。入力センサからMCU処理、出力PWMへ信号を流し、TI型番のデータシート定格を照合します。既存STM32との比較はソフト移行コストを含めるため、評価基板で最悪遅延を測定します。2週のPoCで顧客担当と合格基準を決め、条件が満たせなければ現行維持を提案します。"
 
@@ -81,7 +81,7 @@ def run(url: str, output: Path) -> None:
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name="Design Win逆算 ↗").click()
         expect(page.locator(".question-card").filter(has_not_text="Excel採用記載から提案:")).to_have_count(351)
-        page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
+        page.locator(".question-card").first.get_by_role("button", name="Lv.5の案件を開く").click()
         expect(page.get_by_text("顧客・搭載製品（記載確認、外部未検証）", exact=False)).to_have_count(0)
         for _ in range(3):
             page.get_by_role("button", name="次の情報を開示", exact=False).click()
@@ -93,7 +93,7 @@ def run(url: str, output: Path) -> None:
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name="競合対策 ↗").click()
         expect(page.locator(".question-card")).to_have_count(5)
-        page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
+        page.locator(".question-card").first.get_by_role("button", name="Lv.5の案件を開く").click()
         submit_answer()
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name=re.compile("復習 ↗")).click()
@@ -163,7 +163,7 @@ def run(url: str, output: Path) -> None:
         expect(page.get_by_text("正規化 1件", exact=True)).to_be_visible()
         page.get_by_role("button", name="ダッシュボード", exact=False).click()
         page.get_by_role("button", name="仮想顧客案件 ↗").click()
-        page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
+        page.locator(".question-card").first.get_by_role("button", name="Lv.5の案件を開く").click()
         submit_answer()
         page.get_by_role("button", name="回答履歴", exact=False).click()
         expect(page.locator(".history-row")).to_have_count(4)

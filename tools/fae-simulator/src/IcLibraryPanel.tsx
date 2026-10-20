@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { safeUrl } from "./importer";
 import {
   icEligible,
+  icDomain,
   icPriority,
   importIcWorkbook,
   validateIcLibrary,
@@ -314,15 +315,23 @@ export function IcLibraryPanel({
           {active && (
             <>
               <IcDetails entry={active} library={library} />
+              <p>
+                関連カテゴリの技術判断から学ぶ（このICの適合や採用理由を確認する問題ではありません）。
+              </p>
               <div className="short-actions">
                 {shortQuestions
-                  .filter((question) =>
-                    question.relatedProducts.includes(active.partNumber),
+                  .filter(
+                    (question) => question.theme === icDomain(active).theme,
                   )
+                  .slice(0, 3)
                   .map((question) => (
                     <button key={question.id} onClick={() => onShort(question)}>
                       Lv.{question.level}{" "}
-                      {question.level === 1 ? "資料読解4択" : "短い提案"}
+                      {question.level === 1
+                        ? "技術判断4択"
+                        : question.level === 2
+                          ? "技術判断と理由"
+                          : "短い提案"}
                       を始める
                     </button>
                   ))}

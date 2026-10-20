@@ -18,7 +18,7 @@ def run(url: str, output: Path):
             [
                 str(root / "node_modules/.bin/tsx"),
                 "-e",
-                "import {shortQuestions} from './src/short-questions.ts';import {icShortQuestions} from './src/ic-reference.ts';import {bundledIcLibrary} from './src/bundled-ic.ts';process.stdout.write(JSON.stringify([...shortQuestions,...icShortQuestions(bundledIcLibrary)]));",
+                "import {decisionQuestions} from './src/decision-questions.ts';process.stdout.write(JSON.stringify(decisionQuestions));",
             ],
             cwd=root,
             text=True,
@@ -62,11 +62,14 @@ def run(url: str, output: Path):
             ).click()
 
         def level(value):
+            previous_url = page.url
             if not page.get_by_role("group", name="学習レベル").is_visible():
                 page.get_by_text("レベルを変更する", exact=False).click()
             page.get_by_role("group", name="学習レベル").get_by_role("button").nth(
                 value - 1
             ).click()
+            assert page.url == previous_url
+            expect(page.locator("#exercise-workspace")).to_have_count(1)
 
         def active_question(value):
             title = page.locator("#short-question-title").inner_text()
@@ -83,8 +86,9 @@ def run(url: str, output: Path):
                 option
                 for option in options
                 if (option["id"] != question["selection"]["correctId"]) == wrong
+                and page.get_by_role("group", name="技術方式の選択肢").get_by_role("button", name=option["text"], exact=True).is_visible()
             )
-            page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
+            page.get_by_role("group", name="技術方式の選択肢").get_by_role(
                 "button", name=option["text"], exact=True
             ).click()
             return question
@@ -105,19 +109,21 @@ def run(url: str, output: Path):
             str(original_file)
         )
         expect(page.get_by_role("status")).to_contain_text("履歴を統合")
-        nav("1分からの学習")
+        page.get_by_label("ファイル／ZIPを選択", exact=True).set_input_files({"name":"fictional.csv","mimeType":"text/csv","buffer":"事業名,会社名,TI製品,課題\n架空基板,架空会社,MSPM0,精度\n".encode()})
+        nav("統合演習")
         page.get_by_role("button", name="1分問題を始める").click()
         expect(page.locator(".short-question")).to_have_count(1)
         expect(page.locator("textarea")).to_have_count(0)
         expect(
             page.get_by_role("button", name="要件を整理して提案に進む")
         ).to_have_count(0)
-        options = page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
+        options = page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button"
         )
         expect(options).to_have_count(4)
         for step in range(1, 4):
             page.get_by_role("button", name=f"ヒント{step}を見る").click()
+        page.get_by_text("追加ヒント：TIカテゴリ・候補と参考資料", exact=True).click()
         expect(options).to_have_count(2)
         page.evaluate("""() => {
           const original = IDBObjectStore.prototype.put;
@@ -132,17 +138,21 @@ def run(url: str, output: Path):
         first = choose(1, wrong=True)
         expect(page.get_by_role("alert")).to_contain_text("保存できませんでした")
         expect(
-            page.get_by_text("製品・機能の選択：不正解（減点なし）", exact=True)
+            page.get_by_text("技術的判断：不正解（減点なし）", exact=True)
         ).to_be_visible()
         expect(page.get_by_role("button", name="次の1問へ")).to_be_disabled()
         page.get_by_role("button", name="保存を再試行").click()
         saved()
         expect(
-            page.get_by_text("製品・機能の選択：不正解（減点なし）", exact=True)
+            page.get_by_text("技術的判断：不正解（減点なし）", exact=True)
         ).to_be_visible()
         expect(page.get_by_role("heading", name="10秒で読む基本解説")).to_be_visible()
         assert len(state()["shortAttempts"]) == 1
         assert state()["shortAttempts"][0]["hintsUsed"] == 3
+        assert state()["shortAttempts"][0]["solutionHintUsed"] is True
+        expect(page.locator(".short-feedback")).to_contain_text("顧客に確認：")
+        page.get_by_text("詳しい解説・関連製品・根拠", exact=True).click()
+        expect(page.get_by_role("heading", name="各選択肢を設計判断として振り返る")).to_be_visible()
         page.get_by_role("button", name="まだ曖昧", exact=True).click()
         expect(
             page.get_by_role("button", name="まだ曖昧", exact=True)
@@ -241,12 +251,17 @@ def run(url: str, output: Path):
         assert data["attempts"][-1]["learningLevel"] == 4
         assert "workflow" not in data["attempts"][-1]
         assert data["shortAttempts"][-1]["question"]["notionContext"]["record"]
-        nav("1分からの学習")
+        nav("統合演習")
         level(5)
         page.get_by_role("button", name="Lv.5の案件を開く").first.click()
         expect(
             page.get_by_role("button", name="要件を整理して提案に進む")
         ).to_be_visible()
+        expect(page.locator("#exercise-workspace").get_by_label("顧客への質問", exact=True)).to_be_visible()
+        page.get_by_label("顧客への質問", exact=True).fill("温度と電源の制約は？")
+        nav("採用ICライブラリ")
+        nav("統合演習")
+        expect(page.get_by_label("顧客への質問", exact=True)).to_have_value("温度と電源の制約は？")
 
         nav("回答履歴")
         expect(

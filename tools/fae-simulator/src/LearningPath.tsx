@@ -1,6 +1,6 @@
-import { useRef, useState } from "react";
+import { useRef, useState, type ReactNode } from "react";
 import type { Attempt, Question } from "./model";
-import { shortQuestions as baseShortQuestions } from "./short-questions";
+import { decisionQuestions as baseShortQuestions } from "./decision-questions";
 import {
   advancedPool,
   buildShortPrompt,
@@ -13,6 +13,7 @@ import {
   shortCorrect,
   shortPool,
   shortSession,
+  shortRetryQuestion,
 } from "./short-learning";
 import {
   levels,
@@ -33,6 +34,13 @@ export function LearningPath({
   onSave,
   onAdvanced,
   initialQuestion,
+  advancedWorkspace,
+  advancedControls,
+  advancedQuestions,
+  favorites = [],
+  onFavorite,
+  selectedLevel,
+  onLevelChange,
 }: {
   attempts: ShortAttempt[];
   shortQuestions?: ShortQuestion[];
@@ -41,12 +49,21 @@ export function LearningPath({
   onSave: (attempt: ShortAttempt) => Promise<void>;
   onAdvanced: (question: Question, level: 4 | 5) => void;
   initialQuestion?: ShortQuestion;
+  advancedWorkspace?: ReactNode;
+  advancedControls?: ReactNode;
+  advancedQuestions?: Question[];
+  favorites?: string[];
+  onFavorite?: (id: string) => void;
+  selectedLevel?: LearningLevel;
+  onLevelChange?: (level: LearningLevel) => void;
 }) {
-  const [level, setLevel] = useState<LearningLevel>(
+  const [localLevel, setLevel] = useState<LearningLevel>(
     initialQuestion?.level ?? 1,
   );
+  const level = selectedLevel ?? localLevel;
   const [theme, setTheme] = useState("");
   const [query, setQuery] = useState("");
+  const [selectedId, setSelectedId] = useState("");
   const [count, setCount] = useState(1);
   const [review, setReview] = useState(false);
   const [queue, setQueue] = useState<ShortQuestion[]>(
@@ -61,6 +78,7 @@ export function LearningPath({
     proposal: "",
   });
   const [hints, setHints] = useState(0);
+  const [solutionHintUsed, setSolutionHintUsed] = useState(false);
   const [result, setResult] = useState<ShortAttempt | null>(null);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState("");
@@ -80,7 +98,7 @@ export function LearningPath({
   );
   const advanced = preferred
     ? relatedCases(preferred, questions)
-    : advancedPool(questions, theme, query);
+    : advancedPool(advancedQuestions ?? questions, theme, query);
   const notionCases = questions.filter(
     (candidate) =>
       candidate.mode === "reverse" &&
@@ -94,6 +112,7 @@ export function LearningPath({
   function resetAnswer() {
     setAnswers({ selection: null, reason: null, proposal: "" });
     setHints(0);
+    setSolutionHintUsed(false);
     setResult(null);
     setSaveError("");
     setMessage("");
@@ -106,6 +125,7 @@ export function LearningPath({
     source: ShortQuestion | null = null,
   ) {
     if (lock.current) return;
+    onLevelChange?.(next);
     setLevel(next);
     setQueue([]);
     setFinished(false);
@@ -113,7 +133,16 @@ export function LearningPath({
     resetAnswer();
   }
   function begin() {
-    const session = shortSession(pool, count);
+    const selected = pool.find((candidate) => candidate.id === selectedId);
+    const session = shortSession(
+      selected
+        ? [
+            selected,
+            ...pool.filter((candidate) => candidate.id !== selected.id),
+          ]
+        : pool,
+      count,
+    );
     setQueue(session);
     setIndex(0);
     setFinished(false);
@@ -154,6 +183,7 @@ export function LearningPath({
       answers: next,
       result: gradeShort(snapshot, next),
       hintsUsed: hints,
+      solutionHintUsed,
       selfAssessment: "unrated",
       createdAt: new Date().toISOString(),
     };
@@ -227,12 +257,28 @@ export function LearningPath({
   );
 
   return (
-    <section className="learning-path" aria-label="段階的学習">
+    <section
+      id="exercise-workspace"
+      className="learning-path"
+      aria-label="統合演習"
+    >
       <div className="page-heading">
         <div>
           <p className="eyebrow">ONE SMALL STEP</p>
           <h2>1分からのFAE学習</h2>
           <p>1問だけでもOK。時間制限・減点・自動昇級はありません。</p>
+          <p className="muted">
+            顧客課題から技術方式を判断し、解説でTIの提案候補へつなげます。
+          </p>
+          {level === 1 && (!question || finished) && (
+            <button
+              className="primary"
+              disabled={!pool.length || saving}
+              onClick={begin}
+            >
+              1分問題を始める
+            </button>
+          )}
         </div>
       </div>
       {question && !finished && level <= 3 ? (
@@ -254,7 +300,20 @@ export function LearningPath({
         </div>
       )}
       {message && <p role="status">{message}</p>}
-      {!question || finished || level > 3 ? (
+      {question && !finished && level <= 3 && (
+        <button
+          disabled={saving}
+          onClick={() => {
+            setQueue([]);
+            resetAnswer();
+          }}
+        >
+          ジャンル・問題を選び直す
+        </button>
+      )}
+      {advancedWorkspace && selectedLevel && selectedLevel >= 4 ? (
+        advancedWorkspace
+      ) : !question || finished || level > 3 ? (
         <>
           {finished && (
             <section className="panel" aria-label="今回の学習結果">
@@ -275,7 +334,7 @@ export function LearningPath({
               Lv.{level} · {levelInfo(level).label}{" "}
               <small>{levelInfo(level).time} / 目安・制限なし</small>
             </h3>
-            {level <= 3 && (
+            {level > 1 && level <= 3 && (
               <button
                 className="primary"
                 disabled={!pool.length || saving}
@@ -339,11 +398,30 @@ export function LearningPath({
                   aria-label="短時間問題を検索"
                   value={query}
                   onChange={(event) => setQuery(event.target.value)}
-                  placeholder="シリーズ・機能・型番"
+                  placeholder="顧客課題・技術・関連候補"
                 />
               </label>
               {level <= 3 && (
                 <>
+                  <label>
+                    問題を選ぶ
+                    <select
+                      aria-label="問題を選ぶ"
+                      value={
+                        pool.some((candidate) => candidate.id === selectedId)
+                          ? selectedId
+                          : ""
+                      }
+                      onChange={(event) => setSelectedId(event.target.value)}
+                    >
+                      <option value="">おすすめ順</option>
+                      {pool.map((candidate) => (
+                        <option key={candidate.id} value={candidate.id}>
+                          {candidate.title}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
                   <label>
                     連続演習
                     <select
@@ -398,17 +476,32 @@ export function LearningPath({
                     </button>
                   </p>
                 )}
+                {advancedControls}
                 <div className="question-grid">
                   {advanced.map((candidate) => (
                     <article className="question-card" key={candidate.id}>
                       <small>
                         {candidate.mode === "reverse"
-                          ? "Notion由来・記載と推定を区別"
+                          ? candidate.record?.sources.some(
+                              (source) => source.format === "xlsx",
+                            )
+                            ? "Excel由来・採用理由は未確認"
+                            : "Notion由来・記載と推定を区別"
                           : "架空案件"}{" "}
                         · Lv.{level}
                       </small>
                       <h3>{candidate.title}</h3>
                       <p>{candidate.brief}</p>
+                      {onFavorite && (
+                        <button
+                          aria-pressed={favorites.includes(candidate.id)}
+                          onClick={() => onFavorite(candidate.id)}
+                        >
+                          {favorites.includes(candidate.id)
+                            ? "★ お気に入り解除"
+                            : "☆ お気に入り"}
+                        </button>
+                      )}
                       <button
                         onClick={() => onAdvanced(candidate, level as 4 | 5)}
                       >
@@ -483,7 +576,7 @@ export function LearningPath({
             <div
               className="short-options"
               role="group"
-              aria-label="製品・機能の選択肢"
+              aria-label="技術方式の選択肢"
             >
               {revealedChoices(question, hints).map((option) => (
                 <button
@@ -531,6 +624,31 @@ export function LearningPath({
                     <li>候補を2つに絞りました。正解はこの中です。</li>
                   )}
                 </ol>
+                <details
+                  onToggle={(event) => {
+                    if (event.currentTarget.open) setSolutionHintUsed(true);
+                  }}
+                >
+                  <summary>追加ヒント：TIカテゴリ・候補と参考資料</summary>
+                  <p>
+                    {question.relatedProducts.join(" / ")}（候補の適合は未検証）
+                  </p>
+                  {question.sources.map((source, index) => (
+                    <p key={index}>
+                      {safeUrl(source.url) ? (
+                        <a
+                          href={safeUrl(source.url)!}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {source.section}
+                        </a>
+                      ) : (
+                        source.section
+                      )}
+                    </p>
+                  ))}
+                </details>
               </div>
             )}
             {level === 2 && answers.selection && question.reason && (
@@ -643,8 +761,8 @@ export function LearningPath({
                 </p>
                 <p>
                   {result.result.selectionCorrect
-                    ? "製品・機能の選択：正解"
-                    : "製品・機能の選択：不正解（減点なし）"}
+                    ? "技術的判断：正解"
+                    : "技術的判断：不正解（減点なし）"}
                   {result.result.reasonCorrect !== null &&
                     ` / 理由：${result.result.reasonCorrect ? "正解" : "不正解（減点なし）"}`}
                 </p>
@@ -682,9 +800,26 @@ export function LearningPath({
                 )}
                 <h4>10秒で読む基本解説</h4>
                 <p>{question.basic}</p>
+                {question.customerChecks && (
+                  <p>顧客に確認：{question.customerChecks.join(" / ")}</p>
+                )}
+                {question.solutionCategory && (
+                  <p>
+                    関連するTIソリューション：{question.solutionCategory}
+                    （候補・適合は未検証）
+                  </p>
+                )}
                 <details>
                   <summary>詳しい解説・関連製品・根拠</summary>
                   <p>{question.detailed}</p>
+                  <h4>各選択肢を設計判断として振り返る</h4>
+                  <ul>
+                    {question.selection.options.map((option) => (
+                      <li key={option.id}>
+                        <b>{option.text}</b>：{option.explanation}
+                      </li>
+                    ))}
+                  </ul>
                   <p>
                     関連製品・カテゴリ：{question.relatedProducts.join(" / ")}
                     （実際の採用・適合を示すものではありません）
@@ -922,7 +1057,11 @@ export function ShortHistory({
               )}
             </details>
           </div>
-          <button onClick={() => onRetry(attempt.question)}>
+          <button
+            onClick={() =>
+              onRetry(shortRetryQuestion(attempt.question, baseShortQuestions)!)
+            }
+          >
             この問題を復習
           </button>
         </article>
