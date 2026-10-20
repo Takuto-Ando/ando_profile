@@ -44,6 +44,7 @@ jobs:
           FAE_BASE_PATH: "${{ steps.pages.outputs.base_path }}/fae-simulator/"
         run: |
           npm ci
+          node --experimental-default-type=module --test ../../scripts/private-page/portal.test.mjs
           npm run check
           npm test
           npm run build:public

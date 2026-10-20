@@ -12,8 +12,25 @@ import { bundledIcLibrary } from "../src/bundled-ic";
 import { bundledNotion } from "../src/bundled-notion";
 import { gradeShort, validateShortAttempts } from "../src/short-learning";
 import { reverseQuestions } from "../src/questions";
+import { scopeCount, caseInScope } from "../src/scope-counts";
 
 describe("unified curriculum", () => {
+  it("counts only playable unique forms, excludes pending references, and keeps case scopes separate", () => {
+    const cases = reverseQuestions(bundledNotion);
+    expect(scopeCount(importedQuestions, cases, "digital")).toBe(35);
+    expect(scopeCount(importedQuestions, cases, "analog")).toBe(40);
+    expect(scopeCount(importedQuestions, cases, "block")).toBe(43);
+    expect(scopeCount(importedQuestions, cases, "product")).toBe(122);
+    expect(scopeCount(importedQuestions, cases, "seminar")).toBe(75);
+    expect(scopeCount(importedQuestions, cases, "industrial")).toBe(0);
+    expect(scopeCount(importedQuestions, cases, "taxonomy")).toBe(122);
+    expect(scopeCount(importedQuestions, cases, "psds")).toBe(40);
+    expect(
+      scopeCount([...importedQuestions, ...importedQuestions], cases, ""),
+    ).toBe(importedQuestions.length + cases.length);
+    expect(caseInScope(cases[0], "digital")).toBe(false);
+    expect(caseInScope(cases[0], "customer")).toBe(true);
+  });
   it("accounts for all fixed sources without counting the combined seminar twice", () => {
     expect(curriculumRegistry.report).toEqual({
       rawFixed: 493,

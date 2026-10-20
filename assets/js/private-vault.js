@@ -1,6 +1,7 @@
 import { decryptDocument } from "./private-crypto.js";
 import { parseLibrary } from "./private-library.js";
 import { prepareDocument } from "./private-document.js";
+import { groupMaterials } from "./private-categories.js";
 
 const form = document.getElementById("unlock-form");
 const password = document.getElementById("password");
@@ -90,22 +91,41 @@ const openDocument = (entry) => {
 const renderLibrary = (entries) => {
   documents = entries;
   list.replaceChildren();
-  count.textContent = `${entries.length}件の資料。閲覧する資料を選んでください。`;
-  for (const entry of entries) {
-    const card = document.createElement("button");
-    card.type = "button";
-    card.className = "library-card";
-    const title = document.createElement("span");
-    title.className = "library-card-title";
-    title.textContent = entry.title;
-    const action = document.createElement("span");
-    action.className = "note";
-    action.textContent = "資料を開く →";
-    card.append(title, action);
-    card.addEventListener("click", () => {
-      openDocument(entry);
-    });
-    list.append(card);
+  const groups = groupMaterials(entries);
+  const visibleCount = groups.reduce(
+    (total, group) => total + group.entries.length,
+    0,
+  );
+  count.textContent = `参考資料${visibleCount}件。クイズは上のSimulatorから始められます。`;
+  for (const group of groups) {
+    const section = document.createElement("section");
+    section.className = "material-category";
+    const heading = document.createElement("h2");
+    heading.textContent = group.title;
+    const description = document.createElement("p");
+    description.className = "note";
+    description.textContent = group.description;
+    const grid = document.createElement("div");
+    grid.className = "library-grid";
+    section.append(heading, description, grid);
+    list.append(section);
+    if (!group.entries.length) description.textContent += "（該当資料なし）";
+    for (const entry of group.entries) {
+      const card = document.createElement("button");
+      card.type = "button";
+      card.className = "library-card";
+      const title = document.createElement("span");
+      title.className = "library-card-title";
+      title.textContent = entry.title;
+      const action = document.createElement("span");
+      action.className = "note";
+      action.textContent = "資料を開く →";
+      card.append(title, action);
+      card.addEventListener("click", () => {
+        openDocument(entry);
+      });
+      grid.append(card);
+    }
   }
   showLibrary();
 };

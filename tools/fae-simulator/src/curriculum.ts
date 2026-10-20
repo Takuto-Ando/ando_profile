@@ -6,11 +6,49 @@ import { makeRubric } from "./questions";
 
 export const curriculumRegistry = data;
 export const curriculumScopes = [
+  { id: "customer", title: "顧客案件・IC選定" },
   { id: "decision", title: "顧客課題・技術判断" },
   { id: "ic", title: "IC選定演習（採用記載製品）" },
   { id: "notion", title: "Notion由来のDesign Win演習" },
-  ...data.sources.map((source) => ({ id: source.id, title: source.title })),
+  ...data.sources.map((source) => ({
+    id: source.id,
+    title:
+      (
+        {
+          product: "用途・特徴",
+          digital: "デジタルセミナー",
+          analog: "アナログセミナー",
+          block: "ブロック図・回路",
+          seminar: "セミナー総合",
+        } as Record<string, string>
+      )[source.id] ?? source.title,
+  })),
 ];
+
+export const sourceIntegration = data.sources.map((source) => {
+  const questions = data.questions.filter((question) =>
+    question.sourceIds.includes(source.id),
+  );
+  const ready = questions.filter(
+    (question) => question.status === "ready",
+  ).length;
+  return {
+    id: source.id,
+    title: source.title,
+    originalCount: source.fixedQuestions,
+    normalizedCount: questions.length,
+    ready,
+    review: questions.length - ready,
+    status:
+      ready === questions.length && ready > 0
+        ? "integrated"
+        : ready
+          ? "partially-integrated"
+          : questions.length
+            ? "review-only"
+            : "reference-only",
+  };
+});
 
 function classify(text: string): { theme: Theme; category: Category } {
   if (/絶縁|保護|ノイズ|ESD|EMI|CMTI/.test(text))

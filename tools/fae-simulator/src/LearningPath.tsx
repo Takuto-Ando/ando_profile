@@ -5,6 +5,7 @@ import {
   useLayoutEffect,
   type ReactNode,
 } from "react";
+import { inScope, caseInScope, scopeCount } from "./scope-counts";
 import type { Attempt, Question } from "./model";
 import { decisionQuestions as baseShortQuestions } from "./decision-questions";
 import {
@@ -142,7 +143,7 @@ export function LearningPath({
     query,
   ).filter(
     (candidate) =>
-      (!scope || candidate.sourceIds?.includes(scope)) &&
+      inScope(candidate, scope) &&
       (!kind ||
         ["reason", "proposal", "hearing", "designwin"].includes(kind) ||
         (candidate.kind ?? "choice") === kind),
@@ -157,15 +158,7 @@ export function LearningPath({
     ? relatedCases(preferred, questions)
     : advancedPool(advancedQuestions ?? questions, theme, query);
   const advanced = advancedBase.filter((candidate) =>
-    scope === "ic" || kind === "ic-selection"
-      ? candidate.id.startsWith("ic-case-")
-      : scope === "notion"
-        ? candidate.mode === "reverse" && !candidate.id.startsWith("ic-case-")
-        : scope === "industrial"
-          ? candidate.id.startsWith("industrial-")
-          : scope === "decision"
-            ? !candidate.id.startsWith("industrial-")
-            : true,
+    caseInScope(candidate, kind === "ic-selection" ? "ic" : scope),
   );
   const notionCases = questions.filter(
     (candidate) =>
@@ -618,13 +611,52 @@ export function LearningPath({
                     onScopeChange?.(event.target.value);
                   }}
                 >
-                  <option value="">すべて（おすすめ順）</option>
-                  {curriculumScopes.map((item) => (
-                    <option key={item.id} value={item.id}>
-                      {item.title}
-                    </option>
-                  ))}
+                  <option value="">
+                    すべて（{scopeCount(shortQuestions, questions, "")}
+                    問・おすすめ順）
+                  </option>
+                  {[
+                    "product",
+                    "digital",
+                    "analog",
+                    "block",
+                    "seminar",
+                    "customer",
+                  ]
+                    .map((id) =>
+                      curriculumScopes.find((item) => item.id === id),
+                    )
+                    .filter((item) => !!item)
+                    .map((item) => (
+                      <option key={item.id} value={item.id}>
+                        {item.title}（
+                        {scopeCount(shortQuestions, questions, item.id)}問）
+                      </option>
+                    ))}
+                  <optgroup label="元教材・詳細範囲">
+                    {curriculumScopes
+                      .filter(
+                        (item) =>
+                          ![
+                            "product",
+                            "digital",
+                            "analog",
+                            "block",
+                            "seminar",
+                            "customer",
+                          ].includes(item.id),
+                      )
+                      .map((item) => (
+                        <option key={item.id} value={item.id}>
+                          {item.title}（
+                          {scopeCount(shortQuestions, questions, item.id)}問）
+                        </option>
+                      ))}
+                  </optgroup>
                 </select>
+                <small>
+                  出題可能な全レベルの形式数。Lv.4〜5の同一案件は1件。品質確認待ち・参照資料は含みません。
+                </small>
               </label>
               <label>
                 回答形式

@@ -5,12 +5,13 @@
 「資料一覧へ」で戻り、別の資料を再入力なしで閲覧する。「ロックする」で全資料を破棄する。
 `assets/private/content.json` はタイトル・一覧・全本文をまとめた暗号文のみ。
 初期状態では資料未設定として何も開かない。
-解除後の一覧には「FAE Design Win Simulator」の起動リンクも表示する。
+解除後の最上部に「1分クイズから30分の本格提案まで」のSimulatorメイン入口を表示する。
+6つの旧クイズカードは一覧描画だけ非表示にし、暗号文・全documents・相対リンクの解決対象を維持する。
+参考資料は全体像、デジタル、アナログ/電源、システム、セミナー、業界/キャリアの6カテゴリへ分類する。
 リンク先は `/fae-simulator/` のWeb版。スマートフォン・別PCから起動でき、WSLのサーバーは不要。
-GitHub Actionsが `tools/fae-simulator/` のソースからビルドする。ビルド時にNotion原本・同梱JSONを除外する。
-Web版自体は公開であり、adminのパスワード認証では保護されない。機密資料の取り込みは避ける。
-以前のローカル履歴はJSONをエクスポートし、Web版からインポートする。端末間の自動同期はない。
-Simulator本体・Notion事例・回答履歴をこのサイトや暗号化資料へコピーしない。
+GitHub Actionsが `tools/fae-simulator/` を検査・ビルドする。公開用の最小教材は同梱するが、生のNotion原本・Excel・保護HTML・個人履歴は除外する。
+Web版自体は公開であり、adminのパスワード認証では保護されない。通常画面にファイル取り込みはない。
+履歴はブラウザ内で保持し、端末間の自動同期はない。保護資料の平文をSimulatorや公開ソースへコピーしない。
 この起動カードのHTMLは公開されるが、画面上は解除後だけ表示する。リンクの非表示をアプリの認証とは扱わない。
 この説明と暗号化ツールは、既存の `scripts` build除外設定により公開しない。
 
@@ -40,6 +41,8 @@ python3 -m http.server 8766 --bind 127.0.0.1
 教材間の相対HTMLリンクは資料庫内の同名HTMLへ移動する。未登録の原本リンクは無効化し、外部HTTPリンクは別タブで開く。
 
 ## 保護の範囲
+
+UI変更の検証は `node --experimental-default-type=module --test scripts/private-page/portal.test.mjs` と、ビルド済み配信先に対する `python3 scripts/private-page/browser_portal.py --url URL` で行う。後者は合成教材をテスト用パスワードで暗号化してfetchを差し替え、実際の暗号文・パスワードを読み出さず、PC/スマートフォン、誤認証、解除、分類、非表示クイズへの既存リンク、ロック時破棄を確認する。
 
 - AES-256-GCM、PBKDF2-SHA256（600000回）、毎回ランダムな16byte saltと12byte IV。
 - パスワード・復号鍵・平文をlocalStorage、sessionStorage、Cookieへ保存しない。
