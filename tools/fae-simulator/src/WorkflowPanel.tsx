@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useState } from "react";
 import {
   activateCounter,
   askCustomer,
@@ -596,15 +596,13 @@ export function ReviewPanel({
 }) {
   const [content, setContent] = useState("");
   const [error, setError] = useState("");
-  async function importJson(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
+  const [reviewJson, setReviewJson] = useState("");
+  async function importJson() {
     setError("");
     try {
-      if (file.size > 1024 * 1024)
+      if (reviewJson.length > 1024 * 1024)
         throw new Error("レビューは1MB以下にしてください");
-      await onImport(JSON.parse(await file.text()));
+      await onImport(JSON.parse(reviewJson));
     } catch (caught) {
       setError(String(caught));
     }
@@ -639,15 +637,20 @@ export function ReviewPanel({
       >
         レビュー本文を保存
       </button>
-      <label className="file-label">
-        ChatGPTレビューJSONを取り込む
-        <input
-          disabled={busy}
-          type="file"
-          accept=".json,application/json"
-          onChange={importJson}
+      <details>
+        <summary>ChatGPTレビューJSONを貼り付ける</summary>
+        <textarea
+          aria-label="ChatGPTレビューJSON"
+          value={reviewJson}
+          onChange={(event) => setReviewJson(event.target.value)}
         />
-      </label>
+        <button
+          disabled={busy || !reviewJson.trim()}
+          onClick={() => void importJson()}
+        >
+          レビューJSONを保存
+        </button>
+      </details>
       {(attempt.externalReviews ?? []).map((review) => (
         <details key={review.id}>
           <summary>

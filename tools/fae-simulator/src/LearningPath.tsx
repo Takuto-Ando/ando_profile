@@ -65,6 +65,9 @@ export function LearningPath({
   selectedLevel,
   onLevelChange,
   shortcutsEnabled = true,
+  curriculumScopes = [],
+  curriculumReport,
+  onScopeChange,
 }: {
   attempts: ShortAttempt[];
   shortQuestions?: ShortQuestion[];
@@ -81,12 +84,22 @@ export function LearningPath({
   selectedLevel?: LearningLevel;
   onLevelChange?: (level: LearningLevel) => void;
   shortcutsEnabled?: boolean;
+  curriculumScopes?: { id: string; title: string }[];
+  curriculumReport?: {
+    unique: number;
+    duplicates: number;
+    ready: number;
+    review: number;
+  };
+  onScopeChange?: (scope: string) => void;
 }) {
   const [localLevel, setLevel] = useState<LearningLevel>(
     initialQuestion?.level ?? 1,
   );
   const level = selectedLevel ?? localLevel;
   const [theme, setTheme] = useState("");
+  const [scope, setScope] = useState("");
+  const [kind, setKind] = useState("");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState("");
   const [count, setCount] = useState(1);
@@ -120,16 +133,40 @@ export function LearningPath({
   const questionRef = useRef<HTMLElement>(null);
   const nextRef = useRef<HTMLButtonElement>(null);
   const [showDock, setShowDock] = useState(false);
-  const pool = shortPool(shortQuestions, attempts, level, theme, review, query);
+  const pool = shortPool(
+    shortQuestions,
+    attempts,
+    level,
+    theme,
+    review,
+    query,
+  ).filter(
+    (candidate) =>
+      (!scope || candidate.sourceIds?.includes(scope)) &&
+      (!kind ||
+        ["reason", "proposal", "hearing", "designwin"].includes(kind) ||
+        (candidate.kind ?? "choice") === kind),
+  );
   const progress = learningProgress(
     shortQuestions,
     attempts,
     questions,
     caseAttempts,
   );
-  const advanced = preferred
+  const advancedBase = preferred
     ? relatedCases(preferred, questions)
     : advancedPool(advancedQuestions ?? questions, theme, query);
+  const advanced = advancedBase.filter((candidate) =>
+    scope === "ic" || kind === "ic-selection"
+      ? candidate.id.startsWith("ic-case-")
+      : scope === "notion"
+        ? candidate.mode === "reverse" && !candidate.id.startsWith("ic-case-")
+        : scope === "industrial"
+          ? candidate.id.startsWith("industrial-")
+          : scope === "decision"
+            ? !candidate.id.startsWith("industrial-")
+            : true,
+  );
   const notionCases = questions.filter(
     (candidate) =>
       candidate.mode === "reverse" &&
@@ -158,6 +195,11 @@ export function LearningPath({
     if (lock.current) return;
     onLevelChange?.(next);
     setLevel(next);
+    if (
+      (kind === "reason" && next !== 2) ||
+      (kind === "proposal" && next !== 3)
+    )
+      setKind("");
     setQueue([]);
     setFinished(false);
     setPreferred(source);
@@ -180,6 +222,22 @@ export function LearningPath({
     setSessionIds([]);
     resetAnswer();
     window.scrollTo(0, 0);
+  }
+  function beginIc() {
+    const selected = shortQuestions.find(
+      (candidate) => candidate.kind === "ic-selection" && candidate.level === 1,
+    );
+    if (!selected) return;
+    onLevelChange?.(1);
+    onScopeChange?.("ic");
+    setLevel(1);
+    setScope("ic");
+    setKind("ic-selection");
+    setQueue([selected]);
+    setIndex(0);
+    setFinished(false);
+    setSessionIds([]);
+    resetAnswer();
   }
   async function persist(attempt: ShortAttempt) {
     if (lock.current) return;
@@ -446,6 +504,14 @@ export function LearningPath({
               1分問題を始める
             </button>
           )}
+          {!question &&
+            shortQuestions.some(
+              (candidate) => candidate.kind === "ic-selection",
+            ) && (
+              <button className="primary" onClick={beginIc}>
+                IC選定演習を始める
+              </button>
+            )}
         </div>
       </div>
       {question && !finished && level <= 3 ? (
@@ -541,6 +607,54 @@ export function LearningPath({
             </details>
             <div className="short-settings">
               <label>
+                出題範囲
+                <select
+                  aria-label="出題範囲"
+                  value={scope}
+                  onChange={(event) => {
+                    setScope(event.target.value);
+                    setSelectedId("");
+                    setPreferred(null);
+                    onScopeChange?.(event.target.value);
+                  }}
+                >
+                  <option value="">すべて（おすすめ順）</option>
+                  {curriculumScopes.map((item) => (
+                    <option key={item.id} value={item.id}>
+                      {item.title}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label>
+                回答形式
+                <select
+                  aria-label="回答形式"
+                  value={kind}
+                  onChange={(event) => {
+                    const next = event.target.value;
+                    setKind(next);
+                    if (next === "reason") changeLevel(2);
+                    if (next === "proposal") changeLevel(3);
+                    if (next === "hearing" || next === "designwin")
+                      changeLevel(5);
+                    if (next === "ic-selection") {
+                      setScope("ic");
+                      onScopeChange?.("ic");
+                    }
+                  }}
+                >
+                  <option value="">すべて</option>
+                  <option value="choice">4択</option>
+                  <option value="reason">理由選択</option>
+                  <option value="ic-selection">IC選定</option>
+                  <option value="block-diagram">ブロック図</option>
+                  <option value="proposal">記述式</option>
+                  <option value="hearing">顧客ヒアリング</option>
+                  <option value="designwin">本格提案</option>
+                </select>
+              </label>
+              <label>
                 学習ジャンル
                 <select
                   aria-label="学習ジャンル"
@@ -614,6 +728,21 @@ export function LearningPath({
                 </>
               )}
             </div>
+            {curriculumReport && (
+              <details>
+                <summary>教材の統合範囲・品質確認</summary>
+                <p>
+                  正規化{curriculumReport.unique}件 / 完全重複
+                  {curriculumReport.duplicates}件を統合 / 出題用
+                  {curriculumReport.ready}件 / 要再構成・既存案件へ統合済み
+                  {curriculumReport.review}
+                  件。用語暗記や前提不明を確定正解として水増ししません。
+                </p>
+                <p>
+                  Lab・Taxonomyの製品カードは型番暗記問題へ変換せず、機能比較とIC候補の参照元へ統合しています。教材一覧・ロードマップは目次/参照元です。
+                </p>
+              </details>
+            )}
             {level <= 3 ? (
               <>
                 <p className="muted">
@@ -741,6 +870,14 @@ export function LearningPath({
             </div>
             <h3 id="short-question-title">{question.title}</h3>
             <p className="short-stem">{question.selection.prompt}</p>
+            {question.blockDiagram && (
+              <pre
+                className="exercise-diagram"
+                aria-label="比較するシステムブロック"
+              >
+                {question.blockDiagram}
+              </pre>
+            )}
             <div
               className="short-options"
               role="group"
@@ -780,7 +917,18 @@ export function LearningPath({
                     !result.result.selectionCorrect && (
                       <strong aria-hidden="true">✕ 不正解 · </strong>
                     )}
-                  {option.text}
+                  {question.kind === "ic-selection" ? (
+                    <>
+                      <span className="ic-option-title">
+                        {option.text.split("\n")[0]}
+                      </span>
+                      <span className="ic-option-spec">
+                        {option.text.split("\n").slice(1).join(" ")}
+                      </span>
+                    </>
+                  ) : (
+                    option.text
+                  )}
                 </button>
               ))}
             </div>
@@ -964,6 +1112,43 @@ export function LearningPath({
                   </>
                 )}
                 <FeedbackDetail compact={compact}>
+                  {question.icSelection && (
+                    <section aria-label="IC候補の根拠と適合性">
+                      <h4>必須条件・候補・追加確認</h4>
+                      <p>{question.icSelection.requirements.join(" / ")}</p>
+                      {question.icSelection.candidates.map((candidate) => (
+                        <details key={candidate.partNumber}>
+                          <summary>
+                            {candidate.partNumber}：
+                            {candidate.compatibility === "candidate"
+                              ? "初期候補（成立未検証）"
+                              : candidate.compatibility === "incompatible"
+                                ? "この要求に不適合"
+                                : "未検証"}
+                          </summary>
+                          <p>
+                            {candidate.role} / {candidate.specifications}
+                          </p>
+                          <p>{candidate.reason}</p>
+                          <p>
+                            採用例：{candidate.adoption} /{" "}
+                            {candidate.confidence}
+                            。今回の成立や採用理由とは別です。
+                          </p>
+                          <p>
+                            競合・代替：{candidate.alternatives.join(" / ")}
+                          </p>
+                          <a
+                            href={safeUrl(candidate.datasheetUrl) ?? undefined}
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            データシート
+                          </a>
+                        </details>
+                      ))}
+                    </section>
+                  )}
                   <p>
                     全体の進捗：{progress.overall.completed} /{" "}
                     {progress.overall.total}問回答済み （
@@ -1191,9 +1376,11 @@ export function LearningPath({
 export function ShortHistory({
   attempts,
   onRetry,
+  catalog = baseShortQuestions,
 }: {
   attempts: ShortAttempt[];
   onRetry: (question: ShortQuestion) => void;
+  catalog?: ShortQuestion[];
 }) {
   return (
     <section className="panel">
@@ -1247,7 +1434,7 @@ export function ShortHistory({
           </div>
           <button
             onClick={() =>
-              onRetry(shortRetryQuestion(attempt.question, baseShortQuestions)!)
+              onRetry(shortRetryQuestion(attempt.question, catalog)!)
             }
           >
             この問題を復習

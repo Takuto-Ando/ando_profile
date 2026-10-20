@@ -232,6 +232,24 @@
 .quiz-dock button {
   padding: 9px 14px;
 }
+.ic-option-title,
+.ic-option-spec {
+  display: block;
+}
+.ic-option-title {
+  font-weight: 700;
+}
+.ic-option-spec {
+  font-size: 12px;
+  margin-top: 4px;
+}
+.exercise-diagram {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 12px;
+  background: #f1f4f7;
+  padding: 10px;
+}
 @media (max-width: 1150px) {
   .quiz-dock {
     left: 205px;

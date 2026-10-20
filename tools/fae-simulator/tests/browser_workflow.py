@@ -4,6 +4,7 @@ import sys
 from pathlib import Path
 
 from playwright.sync_api import expect, sync_playwright
+from browser_state import read_state, seed_state
 
 
 def legacy_state():
@@ -28,9 +29,7 @@ def run(url: str, output: Path):
         page.on("pageerror", lambda error: errors.append(str(error)))
         page.on("request", lambda request: external.append(request.url) if not request.url.startswith(url) else None)
         page.goto(url)
-        page.get_by_role("button", name="データ管理", exact=False).click()
-        page.get_by_label("履歴JSONをインポート", exact=True).set_input_files(str(legacy_file))
-        expect(page.get_by_role("status")).to_contain_text("履歴を統合")
+        seed_state(page, {"learning": baseline})
         page.get_by_role("button", name="回答履歴", exact=False).click()
         page.get_by_role("button", name="回答・復習を開く").click()
         expect(page.get_by_text("旧形式の回答です。", exact=False)).to_be_visible()
@@ -54,11 +53,9 @@ def run(url: str, output: Path):
 
         def export_history(name):
             page.get_by_role("button", name="回答履歴", exact=False).click()
-            with page.expect_download() as download_info:
-                page.get_by_role("button", name="履歴JSONをエクスポート").click()
-            target = output / name
-            download_info.value.save_as(str(target))
-            return json.loads(target.read_text())
+            result = read_state(page)
+            (output / name).write_text(json.dumps(result, ensure_ascii=False))
+            return result
 
         start_servo()
         ask("入力電圧の動作範囲は？")
@@ -122,7 +119,9 @@ def run(url: str, output: Path):
         prepare_keep("-20..85 °C")
         submit()
         expect(page.locator(".technical-status")).to_contain_text("成立確認済み")
-        page.get_by_label("ChatGPTレビューJSONを取り込む", exact=True).set_input_files({"name": "review.json", "mimeType": "application/json", "buffer": json.dumps({"schemaVersion": 1, "attemptId": "wrong", "source": "ChatGPT", "reviewedAt": "2026-10-19", "content": "別の回答へのレビュー"}).encode()})
+        page.get_by_text("ChatGPTレビューJSONを貼り付ける", exact=True).click()
+        page.get_by_label("ChatGPTレビューJSON", exact=True).fill(json.dumps({"schemaVersion":1,"attemptId":"wrong","source":"ChatGPT","reviewedAt":"2026-10-19","content":"別の回答へのレビュー"}))
+        page.get_by_role("button", name="レビューJSONを保存", exact=True).click()
         expect(page.get_by_role("alert")).to_contain_text("回答ID")
         keep_export = export_history("with-keep.json")
         keep = keep_export["attempts"][-1]

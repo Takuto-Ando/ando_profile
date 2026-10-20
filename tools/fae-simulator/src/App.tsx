@@ -1,10 +1,4 @@
-import {
-  useEffect,
-  useMemo,
-  useState,
-  type ChangeEvent,
-  type ReactNode,
-} from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   categories,
   competitionQuestions,
@@ -24,22 +18,27 @@ import {
 import {
   buildPrompt,
   evaluate,
-  mergeLearningState,
   reviewPriority,
   validateLearningState,
 } from "./learning";
-import { importFiles, safeUrl } from "./importer";
+import { safeUrl } from "./importer";
 import {
   loadDataset,
   loadLearning,
-  saveDataset,
   saveLearning,
   loadIcLibrary,
-  saveIcLibrary,
 } from "./storage";
 import { icCases, icSelectionText, type IcLibrary } from "./ic-reference";
-import { IcLibraryPanel, IcCandidatePicker } from "./IcLibraryPanel";
+import { IcCandidatePicker } from "./IcLibraryPanel";
 import { bundledIcLibrary } from "./bundled-ic";
+import { bundledNotion } from "./bundled-notion";
+import {
+  importedQuestions,
+  curriculumRegistry,
+  curriculumScopes,
+  industrialDrills,
+} from "./curriculum";
+import { icSelectionQuestions } from "./ic-exercises";
 import { decisionQuestions as baseShortQuestions } from "./decision-questions";
 import { createWorkflow, assessWorkflow } from "./workflow";
 import {
@@ -57,7 +56,7 @@ import { caseEvidence } from "./evidence";
 import { LearningPath, ShortHistory } from "./LearningPath";
 import type { ShortAttempt, ShortQuestion } from "./short-model";
 
-type Page = "learn" | "dashboard" | "history" | "data" | "ic";
+type Page = "learn" | "dashboard" | "history";
 type Mode = Question["mode"] | "review";
 const modeLabels: Record<Mode, string> = {
   virtual: "仮想顧客案件",
@@ -79,16 +78,6 @@ const fieldLabels: Record<string, string> = {
 const date = (value: string) => new Date(value).toLocaleString("ja-JP");
 const totalPoints = (attempt: Attempt) =>
   attempt.evaluations.reduce((sum, item) => sum + item.points, 0);
-function download(name: string, value: unknown) {
-  const url = URL.createObjectURL(
-    new Blob([JSON.stringify(value, null, 2)], { type: "application/json" }),
-  );
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = name;
-  anchor.click();
-  setTimeout(() => URL.revokeObjectURL(url), 1000);
-}
 function Urls({ urls }: { urls: string[] }) {
   return (
     <div className="source-links">
@@ -166,7 +155,7 @@ export default function App() {
       } catch (caught) {
         if (!cancelled)
           setNotice(
-            `IC資料を読み込めません。データ管理から再取り込みできます。${String(caught)}`,
+            `保存済みIC教材の読込に失敗しました。標準教材を利用します。${String(caught)}`,
           );
       }
     })();
@@ -186,23 +175,25 @@ export default function App() {
         setLearning(validateLearningState(stored));
         setReady(true);
         if (custom) setDataset(custom);
-        else if (import.meta.env.VITE_PUBLIC_EDITION === "true") {
-          setNotice("Web版：IC教材は反映済み。履歴・Notion実例は端末内保存。");
-        } else {
-          try {
-            const response = await fetch(
-              `${import.meta.env.BASE_URL}data/notion.json`,
-            );
-            if (!response.ok) throw new Error("事例JSONがありません");
-            const bundled = (await response.json()) as Dataset;
-            if (bundled.schemaVersion !== 1 || !Array.isArray(bundled.records))
-              throw new Error("事例JSONが不正です");
-            if (!cancelled) setDataset(bundled);
-          } catch {
-            if (!cancelled)
-              setNotice(
-                "Notionデータを読み込めません。「データ管理」から取り込めます。仮想案件と競合対策は利用できます。",
+        else {
+          setDataset(bundledNotion);
+          if (import.meta.env.VITE_PUBLIC_EDITION !== "true") {
+            try {
+              const response = await fetch(
+                `${import.meta.env.BASE_URL}data/notion.json`,
               );
+              if (response.ok) {
+                const local = (await response.json()) as Dataset;
+                if (
+                  !cancelled &&
+                  local.schemaVersion === 1 &&
+                  Array.isArray(local.records)
+                )
+                  setDataset(local);
+              }
+            } catch {
+              setNotice("標準教材で演習できます。");
+            }
           }
         }
       } catch (caught) {
@@ -233,13 +224,37 @@ export default function App() {
       window.removeEventListener("offline-error", offlineError);
     };
   }, []);
-  const referenceCases = useMemo(() => icCases(icLibrary), [icLibrary]);
-  const referenceShortQuestions = baseShortQuestions;
-  const allShortQuestions = baseShortQuestions;
+  const referenceCases = useMemo(
+    () => [
+      ...new Map(
+        [...icCases(bundledIcLibrary), ...icCases(icLibrary)].map(
+          (question) => [question.id, question],
+        ),
+      ).values(),
+    ],
+    [icLibrary],
+  );
+  const allShortQuestions = useMemo(
+    () => [
+      ...baseShortQuestions.map((question) => ({
+        ...question,
+        sourceIds: ["decision", "industrial", "index"],
+      })),
+      ...new Map(
+        [
+          ...icSelectionQuestions(bundledIcLibrary),
+          ...icSelectionQuestions(icLibrary),
+        ].map((question) => [question.id, question]),
+      ).values(),
+      ...importedQuestions,
+    ],
+    [icLibrary],
+  );
   const questions = useMemo(
     () => [
       ...virtualQuestions,
       ...competitionQuestions,
+      ...industrialDrills,
       ...reverseQuestions(dataset),
       ...referenceCases,
     ],
@@ -385,43 +400,6 @@ export default function App() {
       setNotice("自己評価と追加質問を保存しました。");
     });
   }
-  async function importNotion(event: ChangeEvent<HTMLInputElement>) {
-    const files = Array.from(event.target.files ?? []);
-    event.target.value = "";
-    if (!files.length) return;
-    await action(async () => {
-      if (
-        files.reduce((sum, file) => sum + file.size, 0) > 100 * 1024 * 1024 ||
-        files.length > 5000
-      )
-        throw new Error("100MB・5000ファイル以下で取り込んでください");
-      const imported = await importFiles(
-        await Promise.all(
-          files.map(async (file) => ({
-            path: file.webkitRelativePath || file.name,
-            bytes: new Uint8Array(await file.arrayBuffer()),
-          })),
-        ),
-      );
-      await saveDataset(imported);
-      setDataset(imported);
-      setNotice(
-        `${imported.records.length}件を取り込みました。以前の回答スナップショットは保持します。`,
-      );
-    });
-  }
-  async function importHistory(event: ChangeEvent<HTMLInputElement>) {
-    const file = event.target.files?.[0];
-    event.target.value = "";
-    if (!file) return;
-    await action(async () => {
-      if (file.size > 100 * 1024 * 1024)
-        throw new Error("履歴JSONは100MB以下にしてください");
-      const imported = validateLearningState(JSON.parse(await file.text()));
-      await persist(mergeLearningState(learning, imported));
-      setNotice("履歴を統合しました。同一IDは既存の回答を保持します。");
-    });
-  }
   function navigate(next: Page) {
     setPage(next);
     setNotice("");
@@ -481,26 +459,6 @@ export default function App() {
       setBusy(false);
     }
   }
-  const icPanel = (
-    <IcLibraryPanel
-      library={icLibrary}
-      onImport={async (next) => {
-        await saveIcLibrary(next);
-        setIcLibrary(next);
-      }}
-      shortQuestions={referenceShortQuestions}
-      cases={referenceCases}
-      onShort={(question) => {
-        setShortLaunch((value) => value + 1);
-        setActive(null);
-        setRequestedLevel(question.level);
-        setInitialShort(question);
-        setPage("learn");
-        window.scrollTo(0, 0);
-      }}
-      onCase={(question, level) => start(question, level)}
-    />
-  );
   const advancedControls = (
     <>
       <div className="tabs" role="group" aria-label="学習モード">
@@ -880,12 +838,10 @@ export default function App() {
         <nav aria-label="メインナビゲーション">
           {(
             [
-              ["learn", "00", "統合演習"],
+              ["learn", "00", "案件トレーニング"],
               ["dashboard", "01", "ダッシュボード"],
 
               ["history", "03", "回答履歴"],
-              ["data", "04", "データ管理"],
-              ["ic", "05", "採用ICライブラリ"],
             ] as const
           ).map(([target, number, label]) => (
             <button
@@ -946,6 +902,15 @@ export default function App() {
             {
               <LearningPath
                 key={`${initialShort?.id ?? "learning-path"}-${shortLaunch}`}
+                curriculumScopes={curriculumScopes}
+                curriculumReport={curriculumRegistry.report}
+                onScopeChange={(scope) => {
+                  setMode(
+                    scope === "ic" || scope === "notion"
+                      ? "reverse"
+                      : "virtual",
+                  );
+                }}
                 attempts={learning.shortAttempts ?? []}
                 shortQuestions={allShortQuestions}
                 caseAttempts={learning.attempts}
@@ -968,7 +933,6 @@ export default function App() {
               />
             }
             <div id="study-tools">
-              {page === "ic" && icPanel}
               {page === "dashboard" && (
                 <>
                   <div className="hero">
@@ -1159,15 +1123,9 @@ export default function App() {
                       <h2>回答履歴</h2>
                       <p>回答時点の案件・採点基準・出典を保持します。</p>
                     </div>
-                    <button
-                      onClick={() =>
-                        download("fae-learning-history.json", learning)
-                      }
-                    >
-                      履歴JSONをエクスポート
-                    </button>
                   </div>
                   <ShortHistory
+                    catalog={allShortQuestions}
                     attempts={learning.shortAttempts ?? []}
                     onRetry={(question) => {
                       setShortLaunch((value) => value + 1);
@@ -1206,224 +1164,6 @@ export default function App() {
                     ))}
                     {!learning.attempts.length && <p>まだ回答がありません。</p>}
                   </Panel>
-                </>
-              )}
-              {page === "data" && (
-                <>
-                  <div className="page-heading">
-                    <div>
-                      <p className="eyebrow">DATA & PROVENANCE</p>
-                      <h2>データ管理</h2>
-                      <p>
-                        原本を変更せず、ローカルに正規化したデータを保存します。
-                      </p>
-                    </div>
-                  </div>
-                  {icPanel}
-                  <div className="two-columns">
-                    <Panel title="Notionエクスポートを再取り込み">
-                      <p>
-                        ZIP、CSV、Markdown、HTMLと添付を選択。添付はファイル名・サイズ・SHAを保持し、内容解析は行いません。
-                      </p>
-                      <label className="file-label">
-                        ファイル／ZIPを選択
-                        <input
-                          disabled={busy}
-                          type="file"
-                          multiple
-                          onChange={importNotion}
-                        />
-                      </label>
-                      <label className="file-label">
-                        エクスポートフォルダを選択
-                        <input
-                          disabled={busy}
-                          type="file"
-                          multiple
-                          {...{ webkitdirectory: "", directory: "" }}
-                          onChange={importNotion}
-                        />
-                      </label>
-                      <p className="muted">
-                        再取り込みは事例データを置き換えます。履歴・お気に入りは保持。欠損は捏造しません。100MB・5000ファイルまで。
-                      </p>
-                      {dataset && (
-                        <button
-                          onClick={() =>
-                            download("fae-normalized-notion.json", dataset)
-                          }
-                        >
-                          正規化JSONを保存
-                        </button>
-                      )}
-                    </Panel>
-                    <Panel title="学習履歴のバックアップ">
-                      <p>
-                        履歴はこのブラウザ・このオリジンのIndexedDBに保存します。ブラウザのデータ消去前にバックアップしてください。
-                      </p>
-                      <button
-                        onClick={() =>
-                          download("fae-learning-history.json", learning)
-                        }
-                      >
-                        履歴JSONをエクスポート
-                      </button>
-                      <label className="file-label">
-                        履歴JSONをインポート
-                        <input
-                          type="file"
-                          accept=".json,application/json"
-                          disabled={busy}
-                          onChange={importHistory}
-                        />
-                      </label>
-                      <p className="muted">
-                        schemaVersion
-                        1のみ対応。同一回答IDは既存を優先し、他の回答を統合します。
-                      </p>
-                    </Panel>
-                  </div>
-                  {dataset ? (
-                    <>
-                      <Panel title="取り込み結果">
-                        <div className="badges">
-                          <span>正規化 {dataset.report.records}件</span>
-                          <span>演習利用 {dataset.report.eligible}件</span>
-                          <span>
-                            重複候補 {dataset.report.duplicateGroups.length}組
-                          </span>
-                          <span>添付 {dataset.attachments.length}件</span>
-                        </div>
-                        <p>
-                          {date(dataset.importedAt)} ·{" "}
-                          {Object.entries(dataset.report.files)
-                            .map(
-                              ([format, count]) =>
-                                `${format.toUpperCase()} ${count}`,
-                            )
-                            .join(" / ")}
-                        </p>
-                        <div className="callout">
-                          「記載確認」はNotionエクスポートへの記載だけを指します。元データの「公式根拠あり」も外部照合済みに昇格させません。課題・理由・競合は保守的に推定として扱います。
-                        </div>
-                        <table>
-                          <thead>
-                            <tr>
-                              <th>抽出項目</th>
-                              <th>欠損件数</th>
-                              <th>欠損率</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {Object.entries(dataset.report.missing).map(
-                              ([field, count]) => (
-                                <tr key={field}>
-                                  <td>{fieldLabels[field]}</td>
-                                  <td>{count}</td>
-                                  <td>
-                                    {(
-                                      (count / dataset.records.length) *
-                                      100
-                                    ).toFixed(1)}
-                                    %
-                                  </td>
-                                </tr>
-                              ),
-                            )}
-                          </tbody>
-                        </table>
-                        {dataset.report.csvTables.map((table) => (
-                          <details key={table.path}>
-                            <summary>
-                              元CSV {table.rows}行 ·{" "}
-                              {table.path.split("/").at(-1)}
-                            </summary>
-                            <table>
-                              <thead>
-                                <tr>
-                                  <th>プロパティ</th>
-                                  <th>空欄</th>
-                                  <th>欠損率</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                {table.columns.map((key) => (
-                                  <tr key={key}>
-                                    <td>{key}</td>
-                                    <td>{table.missing[key]}</td>
-                                    <td>
-                                      {(
-                                        (table.missing[key] / table.rows) *
-                                        100
-                                      ).toFixed(1)}
-                                      %
-                                    </td>
-                                  </tr>
-                                ))}
-                              </tbody>
-                            </table>
-                          </details>
-                        ))}
-                        <details>
-                          <summary>重複候補と注意事項</summary>
-                          {dataset.report.duplicateGroups.map(
-                            (group, index) => (
-                              <p key={index}>
-                                {group
-                                  .map(
-                                    (id) =>
-                                      dataset.records.find(
-                                        (record) => record.id === id,
-                                      )?.title ?? id,
-                                  )
-                                  .join(" / ")}
-                              </p>
-                            ),
-                          )}
-                          {dataset.report.warnings.map((warning, index) => (
-                            <p key={index}>{warning}</p>
-                          ))}
-                        </details>
-                        <button
-                          onClick={() =>
-                            download("fae-import-report.json", dataset.report)
-                          }
-                        >
-                          解析レポートJSONを保存
-                        </button>
-                      </Panel>
-                      <Panel title="出典レジストリ（重複・未出題を含む）">
-                        <p className="muted">
-                          正規化JSONには全本文・rawプロパティ・ファイルSHA・CSV行番号を保存します。重複候補は保持し、2件目以降を出題から除外します。
-                        </p>
-                        <details>
-                          <summary>
-                            全{dataset.records.length}件の出典を表示
-                          </summary>
-                          {dataset.records.map((record) => (
-                            <details key={record.id}>
-                              <summary>
-                                {record.title} ·{" "}
-                                {record.fields.customer.value || "顧客不明"}
-                                {record.duplicateOf ? " · 重複候補" : ""}
-                              </summary>
-                              <pre>{JSON.stringify(record, null, 2)}</pre>
-                            </details>
-                          ))}
-                        </details>
-                        <details>
-                          <summary>添付メタデータ</summary>
-                          <pre>
-                            {JSON.stringify(dataset.attachments, null, 2)}
-                          </pre>
-                        </details>
-                      </Panel>
-                    </>
-                  ) : (
-                    <Panel title="Notionデータ未取り込み">
-                      <p>エクスポートを選択して取り込んでください。</p>
-                    </Panel>
-                  )}
                 </>
               )}
             </div>
