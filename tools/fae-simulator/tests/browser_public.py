@@ -44,9 +44,9 @@ def run(url: str, output: Path):
         ).to_have_count(165)
         page.get_by_label("学習するIC", exact=True).select_option("AM2434")
         expect(
-            page.get_by_role("button", name="Lv.1 資料読解4択を始める", exact=True)
+            page.get_by_role("button", name="Lv.1 技術判断4択を始める", exact=True)
         ).to_be_visible()
-        page.get_by_role("button", name="1分からの学習", exact=False).click()
+        page.get_by_role("button", name="統合演習", exact=False).click()
         page.evaluate("navigator.serviceWorker.ready")
         page.wait_for_function("navigator.serviceWorker.controller !== null")
         scope = page.evaluate(
@@ -69,16 +69,16 @@ def run(url: str, output: Path):
         page.screenshot(path=str(output / "web-home-mobile.png"), full_page=True)
         page.get_by_role("button", name="1分問題を始める").click()
         expect(page.locator("[data-answer-state]")).to_have_count(0)
-        page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
-            "button", name="ISO77xx", exact=True
+        page.get_by_role("group", name="技術方式の選択肢").get_by_role(
+            "button", name="画面がなくてもLinux用プロセッサと外部DDRを必須にする", exact=True
         ).click()
         expect(
             page.get_by_text("回答・ヒント利用を保存済み", exact=False)
         ).to_be_visible()
         correct = page.locator('[data-answer-state="correct"]')
         incorrect = page.locator('[data-answer-state="incorrect"]')
-        expect(correct).to_have_text("✓ 正解 · MSPM0")
-        expect(incorrect).to_have_text("✕ 不正解 · ISO77xx")
+        expect(correct).to_have_text("✓ 正解 · 必要なADC・タイマ・通信を持つMCUを中心に構成する")
+        expect(incorrect).to_have_text("✕ 不正解 · 画面がなくてもLinux用プロセッサと外部DDRを必須にする")
         expect(correct).to_have_css("background-color", "rgb(232, 246, 237)")
         expect(incorrect).to_have_css("background-color", "rgb(255, 240, 241)")
         expect(page.locator(".short-feedback")).to_contain_text(
@@ -88,9 +88,9 @@ def run(url: str, output: Path):
         correct_page = correct_context.new_page()
         correct_page.goto(url)
         correct_page.get_by_role("button", name="1分問題を始める").click()
-        correct_page.get_by_role("button", name="MSPM0", exact=True).click()
+        correct_page.get_by_role("button", name="必要なADC・タイマ・通信を持つMCUを中心に構成する", exact=True).click()
         expect(correct_page.locator('[data-answer-state="correct"]')).to_have_text(
-            "✓ 正解 · MSPM0"
+            "✓ 正解 · 必要なADC・タイマ・通信を持つMCUを中心に構成する"
         )
         expect(correct_page.locator('[data-answer-state="incorrect"]')).to_have_count(0)
         correct_context.close()
@@ -122,7 +122,7 @@ def run(url: str, output: Path):
         ).to_have_count(1)
         page.locator(".question-card").filter(
             has_not_text="Excel採用記載から提案:"
-        ).get_by_role("button", name="案件を開く").click()
+        ).get_by_role("button", name="Lv.5の案件を開く").click()
         expect(
             page.get_by_role("button", name="要件を整理して提案に進む")
         ).to_be_visible()
@@ -169,7 +169,7 @@ def run(url: str, output: Path):
         expect(page.get_by_role("heading", name="1分からのFAE学習")).to_be_visible()
         expect(page.locator(".sidebar-note")).to_contain_text("オフライン")
         page.get_by_role("button", name="1分問題を始める").click()
-        page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
+        page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button"
         ).first.click()
         expect(

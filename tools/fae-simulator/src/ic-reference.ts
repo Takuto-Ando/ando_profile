@@ -298,7 +298,10 @@ export function icEligible(entry: IcReference): boolean {
     ].includes(entry.explanationConfidence)
   );
 }
-function domain(entry: IcReference): { category: Category; theme: Theme } {
+export function icDomain(entry: IcReference): {
+  category: Category;
+  theme: Theme;
+} {
   const text = `${entry.classification} ${entry.role}`;
   if (/電源|Buck|充電|eFuse|ロードスイッチ|パワー|電力段|GaN/i.test(text))
     return { category: "電源", theme: "power" };
@@ -369,7 +372,7 @@ export function icCases(library: IcLibrary | null): Question[] {
         id: `ic-case-${entry.partNumber}`,
         mode: "reverse",
         title: `Excel採用記載から提案: ${entry.partNumber}`,
-        category: [domain(entry).category],
+        category: [icDomain(entry).category],
         difficulty: 2,
         brief: `元資料に「${entry.adoptionExample}」での採用例が記載されています。実際の顧客要求・採用理由は不明です。採用を再現する正解ではなく、確認質問と候補提案を練習します。`,
         stages: [icSelectionText(entry, library)],
@@ -409,8 +412,8 @@ export function icShortQuestions(library: IcLibrary | null): ShortQuestion[] {
         id: `ic-short-${entry.partNumber}-lv${level}`,
         conceptId: `ic-${entry.partNumber}`,
         level,
-        theme: domain(entry).theme,
-        category: [domain(entry).category],
+        theme: icDomain(entry).theme,
+        category: [icDomain(entry).category],
         title: `資料読解: ${entry.partNumber}の役割`,
         selection: {
           prompt: `このExcelでは、${entry.partNumber}の役割はどれと記載されていますか？（採用理由や仕様適合を問う問題ではありません）`,

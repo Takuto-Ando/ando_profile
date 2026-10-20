@@ -1,5 +1,6 @@
 import argparse
 import json
+import subprocess
 from pathlib import Path
 from xml.sax.saxutils import escape
 from zipfile import ZipFile
@@ -170,14 +171,14 @@ def run(
         library = json.loads(backup.read_text())
         assert len(library["entries"]) == count
         assert len(library["source"]["sha256"]) == 64
-        page.get_by_role("button", name="Lv.1 資料読解4択を始める", exact=True).click()
-        expect(
-            page.get_by_role("heading", name=f"資料読解: {part}の役割")
-        ).to_be_visible()
-        expected_role = next(
-            entry["role"] for entry in library["entries"] if entry["partNumber"] == part
-        )
-        page.get_by_role("group", name="製品・機能の選択肢").get_by_role(
+        page.get_by_role("button", name="Lv.1 技術判断4択を始める", exact=True).click()
+        title = page.locator("#short-question-title").inner_text()
+        root = Path(__file__).resolve().parents[1]
+        questions = json.loads(subprocess.check_output([str(root / "node_modules/.bin/tsx"), "-e", "import {decisionQuestions} from './src/decision-questions.ts';process.stdout.write(JSON.stringify(decisionQuestions));"], cwd=root, text=True))
+        question = next(item for item in questions if item["title"] == title and item["level"] == 1)
+        expected_role = next(option["text"] for option in question["selection"]["options"] if option["id"] == question["selection"]["correctId"])
+        assert part not in question["selection"]["prompt"]
+        page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button", name=expected_role, exact=True
         ).click()
         expect(

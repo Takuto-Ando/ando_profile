@@ -110,7 +110,9 @@ export function shortPriority(
   const related = attempts.filter(
     (attempt) => attempt.question.conceptId === question.conceptId,
   );
-  const latest = related.at(-1);
+  const latest =
+    related.filter((attempt) => attempt.question.id === question.id).at(-1) ??
+    related.at(-1);
   const categoryAttempts = attempts.filter((attempt) =>
     attempt.question.category.some((category) =>
       question.category.includes(category),
@@ -137,17 +139,7 @@ export function shortPool(
   review: boolean,
   query = "",
 ): ShortQuestion[] {
-  const latest = new Map(
-    attempts.map((attempt) => [attempt.question.id, attempt.question]),
-  );
-  const pool = [
-    ...new Map(
-      [...latest.values(), ...questions].map((question) => [
-        question.id,
-        question,
-      ]),
-    ).values(),
-  ];
+  const pool = questions;
   return pool
     .filter(
       (question) =>
@@ -176,6 +168,20 @@ export function shortSession(
 ): ShortQuestion[] {
   if (![1, 3, 5, 10].includes(count)) throw new Error("演習数が不正です。");
   return pool.slice(0, count);
+}
+
+export function shortRetryQuestion(
+  snapshot: ShortQuestion,
+  catalog: ShortQuestion[],
+): ShortQuestion | undefined {
+  return (
+    catalog.find((question) => question.id === snapshot.id) ??
+    catalog.find(
+      (question) =>
+        question.level === snapshot.level && question.theme === snapshot.theme,
+    ) ??
+    catalog.find((question) => question.level === snapshot.level)
+  );
 }
 
 export function relatedCases(
@@ -315,7 +321,13 @@ export function validateShortAttempts(
       (question.level === 2
         ? !validTask(question.reason)
         : question.reason !== undefined) ||
+      (attempt.solutionHintUsed !== undefined &&
+        typeof attempt.solutionHintUsed !== "boolean") ||
       !strings(question.relatedProducts) ||
+      (question.customerChecks !== undefined &&
+        !strings(question.customerChecks)) ||
+      (question.solutionCategory !== undefined &&
+        typeof question.solutionCategory !== "string") ||
       !strings(question.advancedIds)
     )
       throw new Error("短問のスナップショットが不正です。");
@@ -355,6 +367,9 @@ export function validateShortAttempts(
           ["concept", "notion", "reference"].includes(source.scope as string) &&
           (source.localPath === undefined ||
             typeof source.localPath === "string") &&
+          (source.sha256 === undefined ||
+            (typeof source.sha256 === "string" &&
+              /^[a-f0-9]{64}$/.test(source.sha256))) &&
           (source.datasheet === undefined ||
             (object(source.datasheet) &&
               typeof source.datasheet.partNumber === "string" &&

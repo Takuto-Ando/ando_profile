@@ -39,7 +39,7 @@ def run(url: str, output: Path):
         def start_servo():
             page.get_by_role("button", name="ダッシュボード", exact=False).click()
             page.get_by_role("button", name="仮想顧客案件 ↗").click()
-            page.locator(".question-card").first.get_by_role("button", name="案件を開く").click()
+            page.locator(".question-card").first.get_by_role("button", name="Lv.5の案件を開く").click()
 
         def ask(text):
             page.get_by_label("顧客への質問", exact=True).fill(text)
