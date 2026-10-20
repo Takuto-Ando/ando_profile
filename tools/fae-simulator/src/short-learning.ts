@@ -157,6 +157,20 @@ export function shortPool(
             Number(
               attempts.some((attempt) => attempt.question.id === second.id),
             ) ||
+          (first.sourceIds?.includes("decision")
+            ? 0
+            : first.kind === "ic-selection"
+              ? 1
+              : first.sourceIds
+                ? 2
+                : 0) -
+            (second.sourceIds?.includes("decision")
+              ? 0
+              : second.kind === "ic-selection"
+                ? 1
+                : second.sourceIds
+                  ? 2
+                  : 0) ||
           themes.findIndex((theme) => theme.id === first.theme) -
             themes.findIndex((theme) => theme.id === second.theme),
     );
@@ -324,6 +338,42 @@ export function validateShortAttempts(
       (attempt.solutionHintUsed !== undefined &&
         typeof attempt.solutionHintUsed !== "boolean") ||
       !strings(question.relatedProducts) ||
+      (question.kind !== undefined &&
+        !["choice", "ic-selection", "block-diagram"].includes(
+          String(question.kind),
+        )) ||
+      (question.sourceIds !== undefined && !strings(question.sourceIds)) ||
+      (question.blockDiagram !== undefined &&
+        typeof question.blockDiagram !== "string") ||
+      (question.estimatedMinutes !== undefined &&
+        (typeof question.estimatedMinutes !== "number" ||
+          !Number.isFinite(question.estimatedMinutes) ||
+          question.estimatedMinutes <= 0)) ||
+      (question.evidenceConfidence !== undefined &&
+        !["primary-checked", "source-recorded", "unverified"].includes(
+          String(question.evidenceConfidence),
+        )) ||
+      (question.icSelection !== undefined &&
+        (!object(question.icSelection) ||
+          !strings(question.icSelection.requirements) ||
+          !Array.isArray(question.icSelection.candidates) ||
+          !question.icSelection.candidates.every(
+            (candidate) =>
+              object(candidate) &&
+              [
+                "partNumber",
+                "role",
+                "specifications",
+                "adoption",
+                "confidence",
+                "datasheetUrl",
+                "reason",
+              ].every((key) => typeof candidate[key] === "string") &&
+              ["candidate", "incompatible", "unverified"].includes(
+                String(candidate.compatibility),
+              ) &&
+              strings(candidate.alternatives),
+          ))) ||
       (question.customerChecks !== undefined &&
         !strings(question.customerChecks)) ||
       (question.solutionCategory !== undefined &&

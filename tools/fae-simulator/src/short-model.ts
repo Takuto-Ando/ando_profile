@@ -30,6 +30,25 @@ export type ShortQuestion = {
   theme: Theme;
   category: Category[];
   title: string;
+  kind?: "choice" | "ic-selection" | "block-diagram";
+  sourceIds?: string[];
+  estimatedMinutes?: number;
+  evidenceConfidence?: "primary-checked" | "source-recorded" | "unverified";
+  blockDiagram?: string;
+  icSelection?: {
+    requirements: string[];
+    candidates: {
+      partNumber: string;
+      role: string;
+      specifications: string;
+      adoption: string;
+      confidence: string;
+      datasheetUrl: string;
+      compatibility: "candidate" | "incompatible" | "unverified";
+      reason: string;
+      alternatives: string[];
+    }[];
+  };
   selection: ChoiceTask;
   reason?: ChoiceTask;
   hints: [string, string, [string, string]];
