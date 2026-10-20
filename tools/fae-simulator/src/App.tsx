@@ -963,6 +963,7 @@ export default function App() {
                   setPage("learn");
                 }}
                 onAdvanced={start}
+                shortcutsEnabled={page === "learn"}
                 initialQuestion={initialShort}
               />
             }

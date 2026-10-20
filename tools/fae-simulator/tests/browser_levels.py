@@ -94,9 +94,7 @@ def run(url: str, output: Path):
             return question
 
         def saved():
-            expect(
-                page.get_by_text("回答・ヒント利用を保存済み", exact=False)
-            ).to_be_visible()
+            expect(page.locator(".short-actions [data-quiz-next]").first).to_be_enabled()
 
         page.screenshot(path=str(output / "levels-home-desktop.png"), full_page=True)
         page.set_viewport_size({"width": 390, "height": 844})
@@ -138,19 +136,20 @@ def run(url: str, output: Path):
         first = choose(1, wrong=True)
         expect(page.get_by_role("alert")).to_contain_text("保存できませんでした")
         expect(
-            page.get_by_text("技術的判断：不正解（減点なし）", exact=True)
+            page.get_by_role("heading", name="不正解（減点なし）", exact=True)
         ).to_be_visible()
-        expect(page.get_by_role("button", name="次の1問へ")).to_be_disabled()
+        expect(page.get_by_role("button", name="次の1問へ", exact=True)).to_be_disabled()
         page.get_by_role("button", name="保存を再試行").click()
         saved()
         expect(
-            page.get_by_text("技術的判断：不正解（減点なし）", exact=True)
+            page.get_by_role("heading", name="不正解（減点なし）", exact=True)
         ).to_be_visible()
-        expect(page.get_by_role("heading", name="10秒で読む基本解説")).to_be_visible()
+        expect(page.locator(".quick-basic")).to_be_visible()
         assert len(state()["shortAttempts"]) == 1
         assert state()["shortAttempts"][0]["hintsUsed"] == 3
         assert state()["shortAttempts"][0]["solutionHintUsed"] is True
         expect(page.locator(".short-feedback")).to_contain_text("顧客に確認：")
+        page.get_by_text("詳しい解説・復習", exact=True).click()
         page.get_by_text("詳しい解説・関連製品・根拠", exact=True).click()
         expect(page.get_by_role("heading", name="各選択肢を設計判断として振り返る")).to_be_visible()
         page.get_by_role("button", name="まだ曖昧", exact=True).click()
@@ -163,7 +162,7 @@ def run(url: str, output: Path):
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
         page.screenshot(path=str(output / "lv1-feedback-mobile.png"), full_page=True)
         page.set_viewport_size({"width": 1440, "height": 1000})
-        page.get_by_role("button", name="次の1問へ").click()
+        page.get_by_role("button", name="次の1問へ", exact=True).click()
         assert active_question(1)["id"] != first["id"]
         choose(1)
         saved()

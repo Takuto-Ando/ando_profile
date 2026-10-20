@@ -72,9 +72,7 @@ def run(url: str, output: Path):
         page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button", name="画面がなくてもLinux用プロセッサと外部DDRを必須にする", exact=True
         ).click()
-        expect(
-            page.get_by_text("回答・ヒント利用を保存済み", exact=False)
-        ).to_be_visible()
+        expect(page.locator(".short-actions [data-quiz-next]").first).to_be_enabled()
         correct = page.locator('[data-answer-state="correct"]')
         incorrect = page.locator('[data-answer-state="incorrect"]')
         expect(correct).to_have_text("✓ 正解 · 必要なADC・タイマ・通信を持つMCUを中心に構成する")
@@ -172,9 +170,7 @@ def run(url: str, output: Path):
         page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button"
         ).first.click()
-        expect(
-            page.get_by_text("回答・ヒント利用を保存済み", exact=False)
-        ).to_be_visible()
+        expect(page.locator(".short-actions [data-quiz-next]").first).to_be_enabled()
         expect(page.locator('[data-answer-state="correct"]')).to_have_count(1)
         assert page.evaluate("document.documentElement.scrollWidth <= innerWidth")
         page.screenshot(path=str(output / "web-offline-mobile.png"), full_page=True)

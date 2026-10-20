@@ -181,9 +181,7 @@ def run(
         page.get_by_role("group", name="技術方式の選択肢").get_by_role(
             "button", name=expected_role, exact=True
         ).click()
-        expect(
-            page.get_by_text("回答・ヒント利用を保存済み", exact=False)
-        ).to_be_visible()
+        expect(page.locator(".short-actions [data-quiz-next]").first).to_be_enabled()
         expect(page.locator('[data-answer-state="correct"]')).to_contain_text(
             expected_role
         )
