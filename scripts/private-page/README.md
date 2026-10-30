@@ -5,10 +5,6 @@
 「資料一覧へ」で戻り、別の資料を再入力なしで閲覧する。「ロックする」で全資料を破棄する。
 `assets/private/content.json` はタイトル・一覧・全本文をまとめた暗号文のみ。
 初期状態では資料未設定として何も開かない。
-解除後の一覧には「FAE Design Win Simulator」の起動リンクも表示する。
-リンク先は同じ端末の `http://127.0.0.1:4178/`。別端末で動くアプリには接続できない。
-Simulatorは別途WSLで起動する。アプリ原本のREADMEと画面内の起動手順を参照する。
-Simulator本体・Notion事例・回答履歴をこのサイトや暗号化資料へコピーしない。
 この起動カードのHTMLは公開されるが、画面上は解除後だけ表示する。リンクの非表示をアプリの認証とは扱わない。
 この説明と暗号化ツールは、既存の `scripts` build除外設定により公開しない。
 
@@ -38,6 +34,8 @@ python3 -m http.server 8766 --bind 127.0.0.1
 教材間の相対HTMLリンクは資料庫内の同名HTMLへ移動する。未登録の原本リンクは無効化し、外部HTTPリンクは別タブで開く。
 
 ## 保護の範囲
+
+UI変更の検証は `node --experimental-default-type=module --test scripts/private-page/portal.test.mjs` と、ビルド済み配信先に対する `python3 scripts/private-page/browser_portal.py --url URL` で行う。後者は合成教材をテスト用パスワードで暗号化してfetchを差し替え、実際の暗号文・パスワードを読み出さず、PC/スマートフォン、誤認証、解除、分類、非表示クイズへの既存リンク、ロック時破棄を確認する。
 
 - AES-256-GCM、PBKDF2-SHA256（600000回）、毎回ランダムな16byte saltと12byte IV。
 - パスワード・復号鍵・平文をlocalStorage、sessionStorage、Cookieへ保存しない。
