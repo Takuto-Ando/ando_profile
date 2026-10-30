@@ -867,7 +867,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   align-items: start;
   margin-bottom: 0.65rem;
 }
-.pub-section__label {
+.page__content .pub-section__label {
   margin: 0;
   padding-top: 0.1rem;
   font-size: 0.7rem;
@@ -875,8 +875,10 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   color: #526173;
   letter-spacing: 0.1em;
 }
-.pub-section__heading h2 {
+.page__content .pub-section__heading h2 {
   margin: 0;
+  padding: 0;
+  border: 0;
   font-size: 1rem;
   line-height: 1.35;
   color: #102033;

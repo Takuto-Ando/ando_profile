@@ -63,29 +63,23 @@ body[data-design="section-band"] .page__title {
 
 body[data-design="section-band"] .technical-section > h2,
 body[data-design="section-band"] .technical > h2 {
-  padding: .65rem .85rem !important;
+  padding: .65rem 0 !important;
   background: var(--acc-light);
-  font-size: 1.05rem;
+  font-size: 1.15rem;
 }
 
 body[data-design="section-band"] .technical-section > p,
 body[data-design="section-band"] .technical-section > .poc-grid {
-  margin-left: .85rem;
-}
-
-@media (max-width: 640px) {
-  body[data-design="section-band"] .technical-section > h2 {
-    padding-left: .65rem !important;
-  }
-
-  body[data-design="section-band"] .technical-section > p,
-  body[data-design="section-band"] .technical-section > .poc-grid {
-    margin-left: .65rem;
-  }
+  margin-left: 0;
 }
 
 body[data-design="section-band"] .poc-card h3 {
-  font-size: 1.15rem;
+  font-size: 1rem;
+}
+
+body[data-design="section-band"] .technical .poc-card p {
+  font-size: .85rem;
+  line-height: 1.8;
 }
 
 body[data-design="notebook"] .technical {
