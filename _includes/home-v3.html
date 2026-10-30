@@ -145,11 +145,6 @@
               <div class="bp-card__media-caption">{{ card_caption }}</div>
               <div class="bp-card__ttl">{{ card_title }}</div>
               <div class="bp-card__body">{{ card_body }}</div>
-              <div class="bp-tags">
-                {% for tag in item.tags %}
-                <span class="bp-tag{% if tag.kind == 'award' %} bp-tag--award{% endif %}">{{ tag.label }}</span>
-                {% endfor %}
-              </div>
             </div>
             {% if mod == 5 or forloop.last %}
           </div>

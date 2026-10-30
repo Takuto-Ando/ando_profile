@@ -13,12 +13,6 @@ project_key: imax
 
 ## IMAX Architecture
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">CGRA / CGLA</span>
-  <span class="bp-tag">Near-Memory Computing</span>
-  <span class="bp-tag">Edge &amp; Server</span>
-</div>
-
 ### What is IMAX?
 
 **IMAX** (In-Memory Accelerator eXtension) is a non-von Neumann **CGLA** (Coarse-Grained Logic Array) developed at NAIST's Computing Architecture Laboratory. It is designed to structurally eliminate the von Neumann bottleneck — the fundamental performance wall caused by repeatedly moving data between processing units and main memory.
@@ -67,12 +61,6 @@ Key properties:
 {% else %}
 
 ## IMAX アーキテクチャ
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">CGRA / CGLA</span>
-  <span class="bp-tag">ニアメモリコンピューティング</span>
-  <span class="bp-tag">エッジ &amp; サーバ</span>
-</div>
 
 ### IMAX とは
 

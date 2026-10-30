@@ -13,10 +13,6 @@ project_key: generative-ai
 
 ## Generative AI on IMAX (CGLA)
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">MCSoC 2025</span>
-</div>
-
 ### Overview
 
 Image generation models like **Stable Diffusion** demand massive compute and memory bandwidth, making them prime candidates for hardware acceleration. Unlike LLMs which are dominated by matrix-vector multiplications, Stable Diffusion involves a U-Net denoising loop, cross-attention, and VAE decoding — presenting distinct data flow challenges for CGLA execution.
@@ -68,10 +64,6 @@ The high latency on IMAX is primarily due to the limited kernel coverage (~10–
 {% else %}
 
 ## 生成 AI の IMAX（CGLA）上での実装
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">MCSoC 2025</span>
-</div>
 
 ### 概要
 

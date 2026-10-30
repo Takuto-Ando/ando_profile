@@ -13,11 +13,6 @@ project_key: facial-expression
 
 ## Facial Expression Recognition on FPGA
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2025</span>
-  <span class="bp-tag">CANDARW 2024</span>
-</div>
-
 ### Overview
 
 Real-time facial expression recognition requires running two DNN models in sequence — face detection followed by expression classification. Executing both on an embedded CPU is impractical due to compute constraints and poor power efficiency.
@@ -71,11 +66,6 @@ The multi-threading technique enables **25 FPS** at only 2.7 W, achieving **2.4x
 {% else %}
 
 ## FPGA 上での表情認識システム
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2025</span>
-  <span class="bp-tag">CANDARW 2024</span>
-</div>
 
 ### 概要
 

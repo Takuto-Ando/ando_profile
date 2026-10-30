@@ -13,10 +13,6 @@ project_key: asr
 
 ## Speech Recognition (ASR) on IMAX (CGLA)
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — CANDAR 2025</span>
-</div>
-
 ### Overview
 
 Automatic Speech Recognition (ASR) powers voice interfaces, transcription services, and accessibility tools. **Whisper**, OpenAI's transformer-based ASR model, poses unique challenges for non-GPU hardware due to its encoder-decoder architecture and heavy reliance on FP16 arithmetic.
@@ -75,10 +71,6 @@ Energy efficiency (PDP): IMAX achieves **1.90x** better energy than Jetson AGX O
 {% else %}
 
 ## 音声認識（ASR）の IMAX（CGLA）上での高効率実装
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — CANDAR 2025</span>
-</div>
 
 ### 概要
 

@@ -9,10 +9,6 @@ classes: wide
 
 ## Green Onion Branching Point Detection
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">農業情報研究 2024</span>
-</div>
-
 ### Overview
 
 Automated trimming of green onions (welsh onions) is a key challenge in agricultural robotics. The trimming machine must cut at the **branching point** where outer leaves diverge from the main stalk. Accurate detection of this point is essential, as positioning errors directly affect peeling success rates.
@@ -54,10 +50,6 @@ The detection pipeline runs on edge devices suitable for agricultural production
 {% else %}
 
 ## 小ねぎ分岐部検出
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">農業情報研究 2024</span>
-</div>
 
 ### 概要
 
