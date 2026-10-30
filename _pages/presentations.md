@@ -10,7 +10,6 @@ author_profile: false
 <div class="materials-page" markdown="0">
   <header class="page-intro">
     <h1 class="page-heading">Materials</h1>
-    <p>{% if is_en %}Slides and posters on accelerator evaluation and FPGA / image processing research.{% else %}アクセラレータの評価と、FPGA・画像処理研究のスライドとポスターをまとめています。{% endif %}</p>
   </header>
   <section id="slides">
     <h2 class="page-section-title">{% if is_en %}Slides{% else %}スライド{% endif %}</h2>

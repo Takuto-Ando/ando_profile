@@ -13,10 +13,6 @@ classes: wide
 <div class="pub-page" markdown="0">
   <div class="pub-page__hero">
     <h1 class="page-heading">Technology</h1>
-    <p class="pub-page__lead">
-      This page summarizes my research themes from recent CGLA and IMAX work to earlier edge-AI and FPGA projects.
-    </p>
-    <p class="pub-page__note">Ordered from recent themes to earlier work.</p>
   </div>
 
   <div class="bp-grid">
@@ -38,10 +34,6 @@ classes: wide
 <div class="pub-page" markdown="0">
   <div class="pub-page__hero">
     <h1 class="page-heading">Technology</h1>
-    <p class="pub-page__lead">
-      現在進めている CGLA / IMAX 研究から、高専時代に取り組んだエッジ AI・FPGA 実装まで、主な研究テーマをまとめています。
-    </p>
-    <p class="pub-page__note">新しいテーマから順に掲載しています。</p>
   </div>
 
   <div class="bp-grid">

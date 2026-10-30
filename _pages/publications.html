@@ -8,16 +8,13 @@ author_profile: false
 
 {% if site.active_lang == 'en' %}
 {% assign pub_title = 'Publications' %}
-{% assign pub_lead = 'Journal papers, conference presentations, and student theses are organized by category.' %}
 {% else %}
 {% assign pub_title = 'Publications' %}
-{% assign pub_lead = '論文誌、会議発表、学位論文を種別ごとに整理しています。' %}
 {% endif %}
 
 <div class="pub-page">
   <header class="page-intro">
     <h1 class="page-heading">{{ pub_title }}</h1>
-    <p class="pub-page__lead">{{ pub_lead }}</p>
   </header>
 
   {% for section in site.data.publications.sections %}
