@@ -13,12 +13,6 @@ project_key: green-onion-edge
 
 ## Edge-Detection-Based Green Onion Branching Point Detection
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">Agricultural Information Research 2024</span>
-  <span class="bp-tag">Edge Detection</span>
-  <span class="bp-tag">Raspberry Pi 3</span>
-</div>
-
 ### Overview
 
 This page focuses only on the classical image-processing approach for green onion branching point detection. The target is a lightweight method that can run on resource-constrained edge devices without relying on neural-network inference.
@@ -56,12 +50,6 @@ Evaluation on Raspberry Pi 3 achieved **90.6%** detection rate for branching-poi
 {% else %}
 
 ## エッジ検出による小ねぎ分岐部検出
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">農業情報研究 2024</span>
-  <span class="bp-tag">Edge Detection</span>
-  <span class="bp-tag">Raspberry Pi 3</span>
-</div>
 
 ### 概要
 

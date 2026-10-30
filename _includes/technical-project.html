@@ -6,10 +6,8 @@
   {% capture back_path %}/research/#{{ category }}{% endcapture %}
   <a class="poc-back" href="{{ back_path | relative_url }}">← 技術</a>
   {% if include.show_title %}<h1>{{ project.title }}</h1>{% endif %}
-  <span class="poc-status">{{ project.venue }}{% if site.technical_preview %} / ローカル下書き{% endif %}</span>
   <p class="poc-lead">{{ project.overview }}</p>
   {% include article-materials.html title=project.paper %}
-  <div class="bp-tags">{% for tag in project.tags %}<span class="bp-tag">{{ tag }}</span>{% endfor %}</div>
   {% if project.context %}
   <h2>課題と手法の選択</h2>
   {% for text in project.context %}<p>{{ text }}</p>{% endfor %}

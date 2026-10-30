@@ -20,10 +20,8 @@ author_profile: false
   {% for section in site.data.publications.sections %}
   {% if site.active_lang == 'en' %}
   {% assign section_title = section.title_en %}
-  {% assign section_lead = section.lead_en %}
   {% else %}
   {% assign section_title = section.title_ja %}
-  {% assign section_lead = section.lead_ja %}
   {% endif %}
 
   <section class="pub-section" id="{{ section.key }}">
@@ -31,7 +29,6 @@ author_profile: false
       <p class="pub-section__label">{{ forloop.index }}</p>
       <div class="pub-section__heading">
         <h2>{{ section_title }}</h2>
-        <p>{{ section_lead }}</p>
       </div>
     </header>
 

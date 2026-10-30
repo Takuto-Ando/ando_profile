@@ -13,12 +13,6 @@ project_key: green-onion-dnn
 
 ## DNN-Based Green Onion Branching Point Detection
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2026</span>
-  <span class="bp-tag">YOLOX</span>
-  <span class="bp-tag">Instance Segmentation</span>
-</div>
-
 ### Overview
 
 This page focuses on the DNN-based approach for green onion branching point detection. Unlike the edge-detection method, this line of work targets scenes with complex backgrounds and lighting conditions where classical image processing alone is not sufficient.
@@ -62,12 +56,6 @@ This work is positioned as a recognition pipeline for automated green onion peel
 {% else %}
 
 ## DNNベースの小ねぎ分岐部検出
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag">ICIC Express Letters 2026</span>
-  <span class="bp-tag">YOLOX</span>
-  <span class="bp-tag">Instance Segmentation</span>
-</div>
 
 ### 概要
 

@@ -13,12 +13,6 @@ project_key: q-snap
 
 ## Q-snap: LLM Execution Optimization for CGLA
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
-  <span class="bp-tag">Q-snap</span>
-  <span class="bp-tag">LLM</span>
-</div>
-
 ### Overview
 
 Q-snap is a scheduling method for LLM execution on CGLA systems. The focus is not on the whole IMAX platform, but on how to reduce transfer overhead caused by static chunking during prefill execution.
@@ -57,12 +51,6 @@ On the IMAX environment, Q-snap improved prefill throughput from **17.11 tok/s**
 {% else %}
 
 ## CGLA向けLLM実行最適化
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
-  <span class="bp-tag">Q-snap</span>
-  <span class="bp-tag">LLM</span>
-</div>
 
 ### 概要
 

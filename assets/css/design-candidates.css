@@ -54,7 +54,6 @@ body[data-design="link-accent"] .poc-card h3 a {
   color: var(--ink) !important;
 }
 
-body[data-design="section-band"] .technical h1,
 body[data-design="section-band"] .page__title {
   font-size: 1.15rem;
   color: var(--ink) !important;
@@ -223,7 +222,6 @@ body[data-design="gallery"] .poc-card h3 {
   body[data-design="notebook"] .technical h1 {
     font-size: 1.5rem;
   }
-  body[data-design="section-band"] .technical h1,
   body[data-design="section-band"] .page__title {
     font-size: 1.05rem;
   }

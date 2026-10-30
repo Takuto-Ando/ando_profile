@@ -9,12 +9,6 @@ classes: wide
 
 ## LLM Acceleration on IMAX (CGLA)
 
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
-  <span class="bp-tag bp-tag--award">Young Researcher Award — SASIMI 2025</span>
-  <span class="bp-tag">IEEE Access (2025)</span>
-</div>
-
 ### Overview
 
 Large Language Models (LLMs) demand substantial computational resources, resulting in high energy consumption on GPUs. To address this challenge, this research focuses on **IMAX** — a CPU-Grounded Linear Array (CGLA) accelerator developed at NAIST — as an effective alternative that provides a trade-off between energy efficiency and programmability.
@@ -86,12 +80,6 @@ IMAX3 → IMAX4 host bottleneck reduction (LLaMA3 8B, Q8_0):
 {% else %}
 
 ## LLM の IMAX（CGLA）上での高速化
-
-<div class="bp-tags" markdown="0" style="margin-bottom:1.25rem;">
-  <span class="bp-tag bp-tag--award">Best Paper — ICISN 2026</span>
-  <span class="bp-tag bp-tag--award">Young Researcher Award — SASIMI 2025</span>
-  <span class="bp-tag">IEEE Access (2025)</span>
-</div>
 
 ### 概要
 

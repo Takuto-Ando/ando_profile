@@ -30,7 +30,6 @@
   {% for section in site.data.technical_projects.sections %}
     <section id="{{ section.id }}" class="technical-section">
       <h2>{{ section.title_ja }}</h2>
-      <p>{{ section.description }}</p>
       <div class="poc-grid">
         {% for entry in section.items %}
           {% if entry.legacy %}
