@@ -11,12 +11,6 @@ author_profile: false
   <header class="page-intro">
     <h1 class="page-heading">Materials</h1>
     <p>{% if is_en %}Slides and posters on accelerator evaluation and FPGA / image processing research.{% else %}アクセラレータの評価と、FPGA・画像処理研究のスライドとポスターをまとめています。{% endif %}</p>
-    <nav class="page-links" aria-label="{% if is_en %}Material types{% else %}資料の種類{% endif %}">
-      <a href="#slides">{% if is_en %}Slides{% else %}スライド{% endif %}</a>
-      <a href="#pdf-slides">{% if is_en %}PDF Slides{% else %}PDFスライド{% endif %}</a>
-      <a href="#posters">{% if is_en %}Posters{% else %}ポスター{% endif %}</a>
-      <a href="{{ '/publications/' | relative_url }}">{% if is_en %}Publications →{% else %}研究業績 →{% endif %}</a>
-    </nav>
   </header>
   <section id="slides">
     <h2 class="page-section-title">{% if is_en %}Slides{% else %}スライド{% endif %}</h2>
@@ -57,10 +51,11 @@ author_profile: false
       {% if is_en %}{% assign title = item.title_en %}{% else %}{% assign title = item.title_ja %}{% endif %}
       <article id="{{ item.id }}" class="material-poster">
         <div class="material-heading"><span>{{ item.label }}</span><h3>{{ title }}</h3></div>
-        <a class="material-poster__image" href="{{ item.image | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ title }} — {{ item.label }}" loading="lazy"></a>
-        <a href="{{ item.image | relative_url }}" target="_blank" rel="noopener">{% if is_en %}View full size →{% else %}原寸で見る →{% endif %}</a>
+        {% if item.image %}<a class="material-poster__image" href="{{ item.image | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ title }} — {{ item.label }}" loading="lazy"></a>
+        <a href="{{ item.image | relative_url }}" target="_blank" rel="noopener">{% if is_en %}View full size →{% else %}原寸で見る →{% endif %}</a>{% endif %}
         <p>{% if is_en %}{{ item.note_en }}{% else %}{{ item.note_ja }}{% endif %}</p>
-        <a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if is_en %}Poster PDF →{% else %}ポスターPDF →{% endif %}</a>
+        {% if item.pdf %}<a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if is_en %}Poster PDF →{% else %}ポスターPDF →{% endif %}</a>{% endif %}
+        {% if item.pptx %}<a href="{{ item.pptx | relative_url }}">{% if is_en %}Poster PPTX →{% else %}ポスターPPTX →{% endif %}</a>{% endif %}
         {% assign poster_project_key = item.projects | first %}
         {% capture poster_project_path %}/research/{{ poster_project_key }}/{% endcapture %}
         <p><a href="{{ poster_project_path | relative_url }}">{% if is_en %}Read technical article →{% else %}技術記事を読む →{% endif %}</a></p>

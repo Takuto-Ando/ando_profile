@@ -21,10 +21,11 @@
   {% if site.active_lang == 'en' %}{% assign material_title = item.title_en %}{% assign material_note = item.note_en %}{% else %}{% assign material_title = item.title_ja %}{% assign material_note = item.note_ja %}{% endif %}
   <h3>{{ item.label }} — {{ material_title }}</h3>
   <p>{{ material_note }}</p>
-  <figure class="article-figure">
+  {% if item.image and item.pdf %}<figure class="article-figure">
     <a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ material_title | escape }} — {{ item.label }}" loading="lazy"></a>
     <figcaption><a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if site.active_lang == 'en' %}Read poster PDF{% else %}ポスターPDFを読む{% endif %}</a></figcaption>
-  </figure>
+  </figure>{% endif %}
+  {% if item.pptx %}<p><a href="{{ item.pptx | relative_url }}">{% if site.active_lang == 'en' %}Poster PPTX{% else %}ポスターPPTX{% endif %}</a></p>{% endif %}
   {% endfor %}
   {% for item in pdf_slides %}
   {% if site.active_lang == 'en' %}{% assign material_title = item.title_en %}{% assign material_note = item.note_en %}{% assign material_version = item.version_en %}{% else %}{% assign material_title = item.title_ja %}{% assign material_note = item.note_ja %}{% assign material_version = item.version_ja %}{% endif %}
