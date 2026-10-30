@@ -2,8 +2,6 @@ sections:
   - key: international_journals
     title_en: International Journals
     title_ja: 国際論文誌
-    lead_en: Peer-reviewed journal papers on edge AI, agricultural vision, and CGLA-based acceleration.
-    lead_ja: エッジ AI、農業画像認識、CGLA アクセラレーションに関する査読付き論文です。
     items:
       - authors:
           - name: Takuto Ando
@@ -134,8 +132,6 @@ sections:
   - key: domestic_journals
     title_en: Domestic Journals
     title_ja: 国内論文誌
-    lead_en: Japanese-language journal publications with peer review and application-oriented evaluation.
-    lead_ja: 応用評価を含む日本語の査読付き論文です。
     items:
       - authors:
           - name: 安藤 拓翔
@@ -165,8 +161,6 @@ sections:
   - key: international_conferences
     title_en: International Conferences
     title_ja: 国際会議
-    lead_en: International conference papers, forums, and workshop presentations related to CGLA, IMAX, and edge-AI systems.
-    lead_ja: CGLA、IMAX、エッジ AI システムに関する国際会議・フォーラム発表です。
     items:
       - authors:
           - name: Takuto Ando
@@ -477,8 +471,6 @@ sections:
   - key: domestic_conferences
     title_en: Domestic Conferences
     title_ja: 国内研究会
-    lead_en: Domestic conferences and workshop papers that document implementation details and system evaluation.
-    lead_ja: 実装詳細やシステム評価を整理した国内研究会・大会発表です。
 
 
 
@@ -610,8 +602,6 @@ sections:
   - key: student_theses
     title_en: Student Theses
     title_ja: 学位論文
-    lead_en: Master's thesis and final thesis documents from the KOSEN regular course and advanced course.
-    lead_ja: 修士論文、高専本科の卒業論文、専攻科における特別研究論文です。
     items:
       - authors:
           - name: 安藤 拓翔
