@@ -64,8 +64,6 @@ sections:
           - label: arXiv preprint
             url: https://arxiv.org/abs/2606.19913
         badges:
-          - label: "2026"
-            type: neutral
           - label: "Impact Factor: 2.2 (2025)"
             type: impact
             source: https://onlinelibrary.wiley.com/journal/15320634/journal-metrics

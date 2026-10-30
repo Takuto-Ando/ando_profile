@@ -801,6 +801,13 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 .pub-page {
   margin-top: 0.5rem;
 }
+.pub-page .page-intro {
+  margin-bottom: 0;
+  padding-bottom: 0.5rem;
+}
+.page__content .pub-page .page-intro .page-heading {
+  margin-bottom: 0;
+}
 .pub-page__hero {
   padding: 0 0 1rem;
   margin-bottom: 0.85rem;
@@ -858,7 +865,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   background: #f6f9fc;
 }
 .pub-section {
-  margin-top: 1.25rem;
+  margin-top: 0.75rem;
 }
 .pub-section__head {
   display: grid;
@@ -982,7 +989,7 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   min-width: 4.35rem;
   padding: 0 0.55rem;
   border: 1px solid #d3dbe4;
-  border-radius: 0.55rem;
+  border-radius: 0;
   background: #f5f7fa;
   color: #415263 !important;
   text-decoration: none !important;
