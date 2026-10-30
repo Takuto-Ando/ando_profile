@@ -9,11 +9,9 @@ author_profile: false
 {% if site.active_lang == 'en' %}
 {% assign pub_title = 'Publications' %}
 {% assign pub_lead = 'Journal papers, conference presentations, and student theses are organized by category.' %}
-{% assign pub_nav_label = 'Publication Sections' %}
 {% else %}
 {% assign pub_title = 'Publications' %}
 {% assign pub_lead = '論文誌、会議発表、学位論文を種別ごとに整理しています。' %}
-{% assign pub_nav_label = '研究業績の区分' %}
 {% endif %}
 
 <div class="pub-page">
@@ -21,17 +19,6 @@ author_profile: false
     <h1 class="page-heading">{{ pub_title }}</h1>
     <p class="pub-page__lead">{{ pub_lead }}</p>
   </header>
-
-  <nav class="pub-page__nav" aria-label="{{ pub_nav_label }}">
-    {% for section in site.data.publications.sections %}
-    {% if site.active_lang == 'en' %}
-    {% assign section_title = section.title_en %}
-    {% else %}
-    {% assign section_title = section.title_ja %}
-    {% endif %}
-    <a href="#{{ section.key }}">{{ section_title }}</a>
-    {% endfor %}
-  </nav>
 
   {% for section in site.data.publications.sections %}
   {% if site.active_lang == 'en' %}

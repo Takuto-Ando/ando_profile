@@ -11,12 +11,6 @@ author_profile: false
   <header class="page-intro">
     <h1 class="page-heading">Materials</h1>
     <p>{% if is_en %}Slides and posters on accelerator evaluation and FPGA / image processing research.{% else %}アクセラレータの評価と、FPGA・画像処理研究のスライドとポスターをまとめています。{% endif %}</p>
-    <nav class="page-links" aria-label="{% if is_en %}Material types{% else %}資料の種類{% endif %}">
-      <a href="#slides">{% if is_en %}Slides{% else %}スライド{% endif %}</a>
-      <a href="#pdf-slides">{% if is_en %}PDF Slides{% else %}PDFスライド{% endif %}</a>
-      <a href="#posters">{% if is_en %}Posters{% else %}ポスター{% endif %}</a>
-      <a href="{{ '/publications/' | relative_url }}">{% if is_en %}Publications →{% else %}研究業績 →{% endif %}</a>
-    </nav>
   </header>
   <section id="slides">
     <h2 class="page-section-title">{% if is_en %}Slides{% else %}スライド{% endif %}</h2>
