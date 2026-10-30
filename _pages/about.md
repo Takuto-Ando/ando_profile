@@ -29,7 +29,7 @@ classes: wide
 {% else %}
 
 <div class="about-page" markdown="0">
-  <h1 class="page-heading">自己紹介</h1>
+  <h1 class="page-heading">About</h1>
   <div class="about-card">
     <div class="about-card__photo">
       <img src="{{ '/assets/images/ando_main.jpg' | relative_url }}" alt="安藤 拓翔">
