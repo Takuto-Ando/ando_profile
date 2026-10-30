@@ -623,7 +623,7 @@ sections:
         abstractSource: /assets/pdfs/master_thesis_2026_en.pdf
         abstractOrigin: ando_profile/assets/pdfs/master_thesis_2026_en.pdf
         venue: 奈良先端科学技術大学院大学 先端科学技術研究科
-        citation: "修士論文 / 2026年7月30日 / 主指導教員: 中島 康彦"
+        citation: "修士論文 / 主指導教員: 中島 康彦"
         bibtexText: |-
           @mastersthesis{ando2026master,
             author = {Takuto Ando},
