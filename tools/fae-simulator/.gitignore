@@ -1,0 +1,8 @@
+node_modules/
+__pycache__/
+dist/
+dist-public/
+public/data/
+data/notion-export/*
+!data/notion-export/.gitkeep
+playwright-report/
