@@ -204,7 +204,7 @@ projects:
     tags: [NTT, 剰余演算, CGLA, 検証]
     paper: Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA
     venue: CANDARW 2026 原稿
-    overview: ML-KEMで使われる法q=3329の演算を、既存のCGLAのデータパスへ載せる研究です。専用NTTユニットを追加する代わりに、演算の分解と段間レコードの配置をソフトウェアで構成しています。
+    overview: ML-KEMで使われる法q=3329上の8段の基数2巡回NTT演算を、既存のCGLAのデータパスへ載せる研究です。標準ML-KEMの7段の不完全な負巡回NTTとは異なる変換を対象に、演算の分解と段間レコードの配置をソフトウェアで構成しています。
     work:
       - 回転因子を8ビットと4ビットに分割し、部分積を剰余へ落としてから再結合するFP32によるバタフライ演算を構成。
       - 先頭2段を41-PE呼出しへ融合し、残りを47-PE呼出しで処理する7回の呼出しを連結する処理を実装。

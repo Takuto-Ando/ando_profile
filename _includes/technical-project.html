@@ -45,11 +45,6 @@
   <h2>参考にした資料</h2>
   <ul>{% for reference in project.references %}<li><a href="{{ reference.href }}" target="_blank" rel="noopener">{{ reference.label }}</a></li>{% endfor %}</ul>
   {% endif %}
-  {% if project.limits %}
-  <h2>評価の範囲</h2>
-  {% for text in project.limits %}<p>{{ text }}</p>{% endfor %}
-  {% endif %}
-  {% include project-presentations.html %}
   {% if site.technical_preview %}
   <p><a href="{{ '/research/evidence/' | relative_url }}{% if project.evidence_id %}#{{ project.evidence_id }}{% endif %}">出典と実験記録の整理状況 →</a></p>
   <p class="poc-note">公開状況・公開許可を確認するまではローカル下書きとして扱います。採録済み・公開済みであることをこのページから断定しません。</p>
