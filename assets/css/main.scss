@@ -884,8 +884,8 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
 }
 .page__content .pub-section__heading h2 {
   margin: 0;
-  padding: 0;
-  border: 0;
+  padding: 0 !important;
+  border: 0 !important;
   font-size: 1rem;
   line-height: 1.35;
   color: #102033;
