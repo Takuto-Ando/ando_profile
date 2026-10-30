@@ -40,7 +40,6 @@
               <a href="{{ item.href | relative_url }}"><img class="technical-image" src="{{ item.image | relative_url }}" alt="{{ item.caption_ja }}" loading="lazy"></a>
               <h3><a href="{{ item.href | relative_url }}">{{ item.title_ja }}</a></h3>
               <p>{{ item.body_ja }}</p>
-              <div class="bp-tags">{% for tag in item.tags %}<span class="bp-tag">{{ tag.label | replace: 'CGRA / CGLA', 'CGLA / プログラム可能なASIC' | replace: 'Best Paper', '最優秀論文賞' | replace: 'Young Researcher', '若手研究者賞' | replace: 'Near-Memory Computing', 'メモリ近接計算' | replace: 'Edge and Server', 'エッジ・サーバ' }}</span>{% endfor %}</div>
             </article>
           {% else %}
             {% if entry.project %}
@@ -57,9 +56,7 @@
               <a href="{{ item.href | relative_url }}"><img class="technical-image" src="{{ preview_image | relative_url }}" alt="{{ preview_caption | escape }}" loading="lazy"></a>
               {% endif %}
               <h3><a href="{{ item.href | relative_url }}">{{ item.title }}</a></h3>
-              {% if entry.project %}<span class="poc-status">{{ item.venue }}</span>{% endif %}
               <p>{{ item.body }}</p>
-              <div class="bp-tags">{% for tag in item.tags %}<span class="bp-tag">{{ tag }}</span>{% endfor %}</div>
             </article>
           {% endif %}
         {% endfor %}

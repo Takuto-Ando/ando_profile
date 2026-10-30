@@ -40,6 +40,14 @@ slides:
     projects: [green-onion-edge]
     href: https://speakerdeck.com/takuto_andtt/etuzijian-chu-woyong-itaxiao-negifen-qi-bu-nojian-chu
 posters:
+  - label: APCCAS 2026
+    title_ja: メモリ多項式DPDカーネルのCGLA実装
+    title_en: Memory-Polynomial DPD Kernel Mapping on a CGLA
+    id: dpd-apccas2026
+    projects: [dpd]
+    pptx: /assets/presentations/dpd-apccas2026.pptx
+    note_ja: 2026年10月21日更新のポスター編集版です。
+    note_en: Poster editing version updated on October 21, 2026.
   - label: SOCC 2025
     title_ja: CGLAによるLLM推論
     title_en: LLM Inference on a CGLA

@@ -51,10 +51,11 @@ author_profile: false
       {% if is_en %}{% assign title = item.title_en %}{% else %}{% assign title = item.title_ja %}{% endif %}
       <article id="{{ item.id }}" class="material-poster">
         <div class="material-heading"><span>{{ item.label }}</span><h3>{{ title }}</h3></div>
-        <a class="material-poster__image" href="{{ item.image | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ title }} — {{ item.label }}" loading="lazy"></a>
-        <a href="{{ item.image | relative_url }}" target="_blank" rel="noopener">{% if is_en %}View full size →{% else %}原寸で見る →{% endif %}</a>
+        {% if item.image %}<a class="material-poster__image" href="{{ item.image | relative_url }}" target="_blank" rel="noopener"><img src="{{ item.image | relative_url }}" alt="{{ title }} — {{ item.label }}" loading="lazy"></a>
+        <a href="{{ item.image | relative_url }}" target="_blank" rel="noopener">{% if is_en %}View full size →{% else %}原寸で見る →{% endif %}</a>{% endif %}
         <p>{% if is_en %}{{ item.note_en }}{% else %}{{ item.note_ja }}{% endif %}</p>
-        <a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if is_en %}Poster PDF →{% else %}ポスターPDF →{% endif %}</a>
+        {% if item.pdf %}<a href="{{ item.pdf | relative_url }}" target="_blank" rel="noopener">{% if is_en %}Poster PDF →{% else %}ポスターPDF →{% endif %}</a>{% endif %}
+        {% if item.pptx %}<a href="{{ item.pptx | relative_url }}">{% if is_en %}Poster PPTX →{% else %}ポスターPPTX →{% endif %}</a>{% endif %}
         {% assign poster_project_key = item.projects | first %}
         {% capture poster_project_path %}/research/{{ poster_project_key }}/{% endcapture %}
         <p><a href="{{ poster_project_path | relative_url }}">{% if is_en %}Read technical article →{% else %}技術記事を読む →{% endif %}</a></p>

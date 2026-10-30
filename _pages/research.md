@@ -3,11 +3,11 @@ permalink: /research/
 classes: wide
 ---
 
+{% include lang-switcher.html %}
+
 {% if site.technical_preview or site.technical_enabled %}
 {% include technical-hub.html %}
 {% else %}
-{% include lang-switcher.html %}
-
 {% if site.active_lang == 'en' %}
 
 <div class="pub-page" markdown="0">
@@ -28,11 +28,6 @@ classes: wide
         <div class="bp-card__media-caption">{{ item.caption_en }}</div>
         <div class="bp-card__ttl">{{ item.title_en }}</div>
         <div class="bp-card__body">{{ item.body_en }}</div>
-        <div class="bp-tags">
-          {% for tag in item.tags %}
-            <span class="bp-tag{% if tag.kind == 'award' %} bp-tag--award{% endif %}">{{ tag.label }}</span>
-          {% endfor %}
-        </div>
       </div>
     {% endfor %}
   </div>
@@ -58,11 +53,6 @@ classes: wide
         <div class="bp-card__media-caption">{{ item.caption_ja }}</div>
         <div class="bp-card__ttl">{{ item.title_ja }}</div>
         <div class="bp-card__body">{{ item.body_ja }}</div>
-        <div class="bp-tags">
-          {% for tag in item.tags %}
-            <span class="bp-tag{% if tag.kind == 'award' %} bp-tag--award{% endif %}">{{ tag.label }}</span>
-          {% endfor %}
-        </div>
       </div>
     {% endfor %}
   </div>
