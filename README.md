@@ -46,6 +46,28 @@ NTT/BitNetの保存済みPDFは現行本文との版差を明記する。PoCの�
 
 # Minimal Mistakes remote theme starter
 
+## Notionの記事をZIPから取り込む
+
+Notionの対象ページを「Markdown & CSV」でエクスポートし、画像を含むZIPを保存する。
+API・token・外部サービスは不要。Python標準ライブラリだけを使う。
+
+```bash
+python3 scripts/import_notion.py /path/to/export.zip --slug 24v-input --dry-run
+python3 scripts/import_notion.py /path/to/export.zip --slug 24v-input --date 2026-10-11 --category engineering
+bash scripts/preview-poc.sh
+```
+
+`_posts/YYYY-MM-DD-slug.md` と `assets/images/posts/YYYY-MM-DD-slug/` を生成する。
+タイトルは先頭のH1から取得し、本文の重複H1は除く。`--title` で指定も可能。
+画像パスと参照形式リンクを `relative_url` へ変換する。通常の表・本文・コードブロックは保持する。
+複数Markdown入りZIPは候補一覧を表示するので、`--page 'ZIP内のページ.md'` で選択する。
+既存記事・画像を上書きしない。再取り込みは別slugを指定する。
+
+既定は `published: false` のローカル下書き。通常buildに含める場合だけ `--publish` を付ける。
+下書きの画像自体は通常buildにも含まれるため、機密・顧客資料を取り込まない。
+コールアウト・埋め込み・HTML画像・別ページへのリンクの完全再現は対象外。ローカル表示で本文と画像を確認してから公開する。
+push・deploy・Notion API通信は実行しない。
+
 研究業績のBibTeXは `_data/publications.yml` の `bibtexText` に保存する。
 要旨は `abstractJa` / `abstractEn`、公開出典は `abstractSource`、手元原稿の所在は `abstractOrigin` に記録する。
 要旨ではなく本文・スライドから作成した要約や、掲載版と異なる保存原稿には `abstractNote` を付けて区別する。該当原稿が確認できない項目は推測で埋めない。

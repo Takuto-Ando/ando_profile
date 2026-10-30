@@ -11,10 +11,6 @@
 {% assign publications_label = 'Publications' %}
 {% assign presentations_label = 'Presentations' %}
 {% assign biography_label = 'Biography' %}
-{% assign stat_journal = 'International Journals' %}
-{% assign stat_conference = 'International Conferences' %}
-{% assign stat_award = 'Awards' %}
-{% assign stat_domestic = 'Domestic Presentations' %}
 {% assign news_title = 'News' %}
 {% assign featured_title = 'Technology' %}
 {% assign awards_title = 'Awards' %}
@@ -24,14 +20,10 @@
 {% assign profile_subname = 'Takuto ANDO' %}
 {% assign profile_role = '博士後期課程1年 · コンピューティング・アーキテクチャ研究室' %}
 {% assign profile_affiliation = '奈良先端科学技術大学院大学' %}
-{% assign profile_bio = 'AI・画像処理技術を中心に、計算機アーキテクチャから組込みシステムまで幅広い技術を探求。 奈良先端大では、非ノイマン型アクセラレータ IMAX 上で、LLM・音声認識・耐量子計算機暗号・無線信号処理に関わる行列演算・多項式演算の実装と最適化に従事し、研究成果を国際会議やジャーナルにて発表。高専時代には、FPGAを用いた表情認識・物体検出・農業画像認識の研究に取り組んだ。' %}
+{% assign profile_bio = 'AI・画像処理技術を中心に、計算機アーキテクチャから組込みシステムまで幅広い技術を探求しています。奈良先端大では、非ノイマン型アクセラレータCGLA上で、LLM・音声認識・耐量子計算機暗号・無線信号処理に関わる行列演算・多項式演算の実装と最適化に従事し、研究成果を国際会議や国際ジャーナルにて発表しました。高専時代には、FPGAを用いた表情認識・物体検出・農業画像認識の研究に取り組みました。' %}
 {% assign publications_label = '研究業績' %}
 {% assign presentations_label = '発表資料' %}
 {% assign biography_label = '経歴' %}
-{% assign stat_journal = '国際論文誌' %}
-{% assign stat_conference = '国際会議' %}
-{% assign stat_award = '受賞' %}
-{% assign stat_domestic = '国内発表' %}
 {% assign news_title = 'ニュース' %}
 {% assign featured_title = '技術' %}
 {% assign awards_title = '受賞歴' %}
@@ -58,26 +50,6 @@
       </div>
     </div>
   </div>
-
-  <div class="bp-stats">
-    <div class="bp-stat">
-      <div class="bp-stat__n">4</div>
-      <div class="bp-stat__l">{{ stat_journal }}</div>
-    </div>
-    <div class="bp-stat">
-      <div class="bp-stat__n">9</div>
-      <div class="bp-stat__l">{{ stat_conference }}</div>
-    </div>
-    <div class="bp-stat">
-      <div class="bp-stat__n">7</div>
-      <div class="bp-stat__l">{{ stat_award }}</div>
-    </div>
-    <div class="bp-stat">
-      <div class="bp-stat__n">7</div>
-      <div class="bp-stat__l">{{ stat_domestic }}</div>
-    </div>
-  </div>
-
 
   <div id="news" class="bp-sec">{{ news_title }}</div>
   {% assign latest_posts = site.posts | sort: "date" | reverse %}

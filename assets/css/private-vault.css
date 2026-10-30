@@ -139,36 +139,6 @@ body.document-open main {
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
-.simulator-hero {
-  padding: clamp(22px, 4vw, 40px);
-  margin: 24px 0 36px;
-  border: 1px solid #e6bdc2;
-  border-top: 5px solid #a92332;
-  border-radius: 12px;
-  background: #fff;
-}
-.simulator-hero h2 {
-  margin: 0;
-  font-size: clamp(23px, 4vw, 34px);
-}
-.hero-lead {
-  font-size: 20px;
-  font-weight: 700;
-}
-.hero-lead span {
-  display: inline-block;
-}
-.hero-start {
-  padding: 16px 32px;
-  font-size: 20px;
-  font-weight: 700;
-}
-.material-category {
-  margin: 32px 0;
-}
-.material-category h2 {
-  margin-bottom: 0;
-}
 #document-title {
   font-size: 17px;
   margin: 0;

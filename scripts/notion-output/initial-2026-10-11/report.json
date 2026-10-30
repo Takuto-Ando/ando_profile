@@ -1,0 +1,38 @@
+{
+  "articles": 18,
+  "attachments": 18,
+  "warnings": [
+    {
+      "article": "_posts/2025-11-21-post..md",
+      "message": "既存記事URLの重複（元サイト不変更）: https://takuto-ando.github.io/ando_profile/announcement/post/"
+    },
+    {
+      "article": "_posts/2025-11-22-post.md",
+      "message": "既存記事URLの重複（元サイト不変更）: https://takuto-ando.github.io/ando_profile/announcement/post/"
+    },
+    {
+      "article": "_posts/2025-01-06-post-cat1.md",
+      "message": "iframeをリンクへ変換（Notionで必要なら埋め込み直してください）"
+    },
+    {
+      "article": "_posts/2025-01-06-post-cat2.md",
+      "message": "iframeをリンクへ変換（Notionで必要なら埋め込み直してください）"
+    }
+  ],
+  "external_links_not_checked": [
+    "https://arxiv.org/abs/2609.27437",
+    "https://arxiv.org/abs/2609.27438",
+    "https://arxiv.org/abs/2609.27453",
+    "https://arxiv.org/abs/2609.28904",
+    "https://doi.org/10.1002/cpe.70826",
+    "https://doi.org/10.1109/ACCESS.2025.3636266",
+    "https://doi.org/10.1109/CANDAR68384.2025.00018",
+    "https://doi.org/10.1109/MCSoC67473.2025.00120",
+    "https://doi.org/10.1109/SOCC66126.2025.11235407",
+    "https://doi.org/10.24507/icicel.20.08.811",
+    "https://doi.org/10.3173/air.33.73",
+    "https://speakerdeck.com/player/31712b81ffbe4805832711d6c3b4f209",
+    "https://speakerdeck.com/player/c7b3504555f44de5b096338248f5b426"
+  ],
+  "notion_import_verified": false
+}

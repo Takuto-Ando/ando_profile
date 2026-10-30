@@ -5,7 +5,7 @@ slides:
     deck: 1b0060b0e2974a659464493d58e16eb0
     id: imax-evaluation
     primary_project: imax
-    projects: [imax, ntt, bitnet, ssm, dpd, q-snap, asr, generative-ai]
+    projects: [imax]
     href: https://speakerdeck.com/takuto_andtt/a-detailed-analysis-of-llm-execution-on-imax3-and-initial-evaluation-of-imax4-prototype-for-server-environment
   - label: Image Processing
     title_ja: 小ねぎ調製位置検出のためのインスタンスセグメンテーション
@@ -110,17 +110,3 @@ pdf_slides:
     version_en: PDF exported from the author's PPTX
     note_ja: 本人名義の元PPTXから本文スライドをPDF化しました。量子化カーネルの適用範囲、CPUに残る処理、FPGA実測とASIC投影を整理しています。
     note_en: Exported from the author's PPTX. Covers quantized-kernel coverage, remaining CPU work, FPGA measurements and ASIC projections.
-  - id: dpd-research-slides
-    label: DPD / 草稿
-    title_ja: メモリ多項式DPDのCGLA実装
-    title_en: Energy-Oriented Acceleration of Memory-Polynomial DPD on a CGLA
-    pdf: /assets/presentations/dpd-research-slides.pdf
-    image: /assets/presentations/dpd-research-slides.png
-    pages: 12
-    language: English
-    primary_project: dpd
-    projects: [dpd]
-    version_ja: 保存スライド草稿
-    version_en: Saved slide draft
-    note_ja: 表紙にAPCCAS 2026 draftと記載された本人名義の草稿です。複素数の積和と係数・履歴の再利用を説明する資料で、実PAの計測結果や実発表済みを示すものではありません。
-    note_en: An author-named APCCAS 2026 draft on complex-MAC mapping and coefficient/history reuse, not a real-PA measurement or proof of presentation.

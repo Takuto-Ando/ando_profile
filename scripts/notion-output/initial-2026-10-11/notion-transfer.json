@@ -1,0 +1,560 @@
+{
+  "parent": "https://app.notion.com/p/364f0e4112b280e29d21ef6c0d6f7b81",
+  "database": "https://app.notion.com/p/809b38eca8f94dafa6415e93ec1c413a",
+  "data_source": "collection://b9483c09-2f7f-44d5-ba58-fb20d58d8220",
+  "articles": [
+    {
+      "id": "3f6f0e41-12b2-8105-8662-c3112a74a853",
+      "url": "https://app.notion.com/p/3f6f0e4112b281058662c3112a74a853?pvs=204",
+      "source": "2025-01-05-post-test.md",
+      "source_sha256": "ff641b9ecc93aad6cbbbfc12b42328f2eafed193d1ecf1a21af4cc7d94fe99ca",
+      "title": "Profile page の公開"
+    },
+    {
+      "id": "3f6f0e41-12b2-813b-841c-e5bf87a13bc8",
+      "url": "https://app.notion.com/p/3f6f0e4112b2813b841ce5bf87a13bc8?pvs=204",
+      "source": "2025-01-06-post-cat1.md",
+      "source_sha256": "3ff94505461472af1ec9acd74a6fe4bd95f68819ce0417875406d1242ae54da4",
+      "title": "高専 本科の卒業研究"
+    },
+    {
+      "id": "3f6f0e41-12b2-8150-9910-f8a6d1d5e4b0",
+      "url": "https://app.notion.com/p/3f6f0e4112b281509910f8a6d1d5e4b0?pvs=204",
+      "source": "2025-01-06-post-cat2.md",
+      "source_sha256": "28890b26ebec00dbe95c2c4ae3a08ce77ff68fd673ce1b9bb041c716bf68bd4f",
+      "title": "高専 専攻科の特別研究"
+    },
+    {
+      "id": "3f6f0e41-12b2-8143-9386-f9f7d22d2a8e",
+      "url": "https://app.notion.com/p/3f6f0e4112b281439386f9f7d22d2a8e?pvs=204",
+      "source": "2025-03-24-post_1.md",
+      "source_sha256": "03fa9fea6cb870295d79aeb258884ea2e9380a0053653cd046e9ac0125e09da0",
+      "title": "電子情報通信学会 九州支部 学術奨励賞を受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-81b2-abb2-c42c1e1fc9d9",
+      "url": "https://app.notion.com/p/3f6f0e4112b281b2abb2c42c1e1fc9d9?pvs=204",
+      "source": "2025-03-24-post_2.md",
+      "source_sha256": "7dc034660c13a0ed554cd6d9a8aea1a7cace972c227ded208a15f02b5fef9ab9",
+      "title": "国立高等専門学校機構 学生表彰を受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-81f0-aba6-dfe2980584fe",
+      "url": "https://app.notion.com/p/3f6f0e4112b281f0aba6dfe2980584fe?pvs=204",
+      "source": "2025-03-24-post_3.md",
+      "source_sha256": "41f55acf3314ad85bd4b19b2034bdcb89fa7abb329c5265b8a2c7c4c64be3c5c",
+      "title": "第87回 情報処理学会全国大会 学生奨励賞を受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-8199-8ea9-c222d448c664",
+      "url": "https://app.notion.com/p/3f6f0e4112b281998ea9c222d448c664?pvs=204",
+      "source": "2025-03-24-post_4.md",
+      "source_sha256": "fad16d8616f55213fbd164d7ef095477648630703e144917b77abb92d20e0613",
+      "title": "大分工業高等専門学校 専攻科を修了しました"
+    },
+    {
+      "id": "3f6f0e41-12b2-81f5-b19f-fd8366b5ae9f",
+      "url": "https://app.notion.com/p/3f6f0e4112b281f5b19ffd8366b5ae9f?pvs=204",
+      "source": "2025-03-24-post_5.md",
+      "source_sha256": "c34b1c3ae07c1686c4270ae4060d0e2ccd2c68a5b9e4b45933acf2122954f848",
+      "title": "日本高専学会 研究奨励賞を受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-8190-8ad9-e771cf34cf30",
+      "url": "https://app.notion.com/p/3f6f0e4112b281908ad9e771cf34cf30?pvs=204",
+      "source": "2025-08-19-post.md",
+      "source_sha256": "fc390e8390b2b78dfe10b70499f1b84ada514a1759af89ceb705e786b9b36948",
+      "title": "研究成果のまとめ(2025/04~2025/08)"
+    },
+    {
+      "id": "3f6f0e41-12b2-81c3-99b0-c63699d120f3",
+      "url": "https://app.notion.com/p/3f6f0e4112b281c399b0c63699d120f3?pvs=204",
+      "source": "2025-10-10-post.md",
+      "source_sha256": "a208caebb1d7b0c64359468ecbe66eb0dd3dc7a4ca25c8f87d895464cc9cea63",
+      "title": "国際会議 SASIMI2025にてIEEE CEDA All Japan Joint Chapter SASIMI Young Researcher Award を受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-816f-84d5-d2f55d490219",
+      "url": "https://app.notion.com/p/3f6f0e4112b2816f84d5d2f55d490219?pvs=204",
+      "source": "2025-11-16-post.md",
+      "source_sha256": "15708a19a44f6487c129f8aa0ff95a6c3e6d6525cf944669fd5b6abec113e4ae",
+      "title": "IMAX3とllama.cppで実現するGUIチャット"
+    },
+    {
+      "id": "3f6f0e41-12b2-8191-a6e5-df433fa0bc05",
+      "url": "https://app.notion.com/p/3f6f0e4112b28191a6e5df433fa0bc05?pvs=204",
+      "source": "2025-11-21-post..md",
+      "source_sha256": "3d58cc88d892a457fbe5d67fe30e876a138bc8c56d394c4da55a0d486f3b0a4c",
+      "title": "大学院での研究成果のまとめ(2025/04~2025/11)"
+    },
+    {
+      "id": "3f6f0e41-12b2-81fc-918d-e016fa3d965e",
+      "url": "https://app.notion.com/p/3f6f0e4112b281fc918de016fa3d965e?pvs=204",
+      "source": "2025-11-22-post.md",
+      "source_sha256": "f1794e7d4cf0db2f76a3b1cab66c41f9d8e7da250deead29423059853f8a6338",
+      "title": "国際ジャーナル：IEEE AccessにてLLM推論のCGLA実装が採択されました"
+    },
+    {
+      "id": "3f6f0e41-12b2-8188-8368-eb0c25e3fa62",
+      "url": "https://app.notion.com/p/3f6f0e4112b281888368eb0c25e3fa62?pvs=204",
+      "source": "2025-11-29-post_.md",
+      "source_sha256": "94d36b96e62907ebf3b0a9a1ac84acd34a397f2b74ce255cd5669a03a2cf375a",
+      "title": "国際会議 CANDAR 2025にてBest Paper Awardを受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-81a0-801b-ebd8f4617eee",
+      "url": "https://app.notion.com/p/3f6f0e4112b281a0801bebd8f4617eee?pvs=204",
+      "source": "2026-03-26-post_icisn.md",
+      "source_sha256": "f861bf51401fdead4027384c14cac7e34b93a11a1bbaff227478b9fbc7fec04a",
+      "title": "国際会議 ICISN 2026にてBest Paper Awardを受賞"
+    },
+    {
+      "id": "3f6f0e41-12b2-8110-8f8b-f65b15efd27f",
+      "url": "https://app.notion.com/p/3f6f0e4112b281108f8bf65b15efd27f?pvs=204",
+      "source": "2026-04-03-post.md",
+      "source_sha256": "e793e2c8c9fc9766370105b2acbd8e50f80d05e95e8fb7039d3992ae73c943de",
+      "title": "修士1年の研究成果"
+    },
+    {
+      "id": "3f6f0e41-12b2-81c4-b68e-f55b1b2dcf90",
+      "url": "https://app.notion.com/p/3f6f0e4112b281c4b68ef55b1b2dcf90?pvs=204",
+      "source": "2026-06-18-post_ccpe.md",
+      "source_sha256": "d09a67754f242924df05f4b6905261518739dee178a83c69bf3e36668975caed",
+      "title": "国際ジャーナル：Concurrency and Computation: Practice and ExperienceにてWhisper ASRのCGLA実装が採択されました。"
+    },
+    {
+      "id": "3f6f0e41-12b2-815b-bee6-d97dd32ef256",
+      "url": "https://app.notion.com/p/3f6f0e4112b2815bbee6d97dd32ef256?pvs=204",
+      "source": "2026-10-11-post.md",
+      "source_sha256": "3a68fbc0ca0001bac8ae2714a0159aab4bbf717022c7dd05ceb4d3ef57bd2d5c",
+      "title": "修士課程の修了と研究成果のまとめ"
+    }
+  ],
+  "validation": [
+    {
+      "source": "2025-01-05-post-test.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2025-01-06-post-cat1.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2025-01-06-post-cat2.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 2
+    },
+    {
+      "source": "2025-03-24-post_1.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-03-24-post_2.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-03-24-post_3.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-03-24-post_4.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-03-24-post_5.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-08-19-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2025-10-10-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 2
+    },
+    {
+      "source": "2025-11-16-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 2
+    },
+    {
+      "source": "2025-11-21-post..md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2025-11-22-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 1
+    },
+    {
+      "source": "2025-11-29-post_.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 2
+    },
+    {
+      "source": "2026-03-26-post_icisn.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 3
+    },
+    {
+      "source": "2026-04-03-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2026-06-18-post_ccpe.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    },
+    {
+      "source": "2026-10-11-post.md",
+      "bodyTextMatches": true,
+      "unknown": 0,
+      "truncated": false,
+      "images": 0
+    }
+  ],
+  "metadata_checks": [
+    {
+      "source": "2025-01-05-post-test.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-01-06-post-cat1.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-01-06-post-cat2.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-03-24-post_1.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-03-24-post_2.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-03-24-post_3.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-03-24-post_4.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-03-24-post_5.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-08-19-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-10-10-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-11-16-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-11-21-post..md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-11-22-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2025-11-29-post_.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2026-03-26-post_icisn.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2026-04-03-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2026-06-18-post_ccpe.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    },
+    {
+      "source": "2026-10-11-post.md",
+      "datesMatch": true,
+      "title": true,
+      "sourceMatches": true,
+      "url": true,
+      "front": true,
+      "permalink": true,
+      "categories": true
+    }
+  ],
+  "attachments": [
+    {
+      "source": "attachments/assets/images/fpga_system_fig.png",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8145-8b44-00b23cb99d79",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/fer_system.png",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8120-b7a2-00b2b2482aaf",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/kyusyu_award.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-814d-a910-00b2667605ed",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/kosenkikou_award.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8130-8672-00b276955ad1",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/zenkoku2025.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-812b-a3f6-00b251e38e47",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/ando_and_inoue.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-815f-ac4a-00b25c8dff4b",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/kosengakkai_award.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-816f-9763-00b2bd1b39f1",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/sasimi2025_photo.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-81ca-b352-00b24d679e1b",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/sasimi_award.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8132-8c96-00b280a5e26e",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/llama-web.png",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8107-81b7-00b281f9fb58",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/LLMchat_demo.gif",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-81a4-9eae-00b2e5796955",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/access_image.png",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8139-8342-00b2a0a42798",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/20251128_ando-1.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8150-8176-00b2f60ae846",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/IMG_6011.png",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8150-ad9c-00b2934f7f1a",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/ICISN_1.jpg",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-81ab-820e-00b2f5639c39",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/ICISN_2.PNG",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-811e-aac6-00b26723a59b",
+      "reason": null
+    },
+    {
+      "source": "attachments/assets/images/ICISN_3.png",
+      "status": "external",
+      "file_upload_id": null,
+      "reason": "Notion workspace file limit 5 MiB; original 5.847 MiB retained without modification"
+    },
+    {
+      "source": "attachments/assets/pdfs/master_thesis_2026_en.pdf",
+      "status": "uploaded",
+      "file_upload_id": "3f6f0e41-12b2-8123-a2fb-00b22817026b",
+      "reason": null
+    }
+  ],
+  "limitations": [
+    "ICISN_3.png is an external original image because the workspace upload limit is 5 MiB.",
+    "Category Announcement is normalized to announcement for filtering; original spelling preserved in page metadata and original Front Matter.",
+    "Two original URLs collide; original Jekyll site left unchanged.",
+    "Two iframes retained as full source links.",
+    "No automatic synchronization or GitHub publication configured."
+  ]
+}

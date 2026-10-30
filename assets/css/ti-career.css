@@ -1,0 +1,40 @@
+.ti-career { --ti-accent: #007c8c; --ti-ink: #17232d; color: var(--ti-ink); font-size: 16px; line-height: 1.9; max-width: 1120px; margin: auto; }
+.ti-career .ti-hero { background: #f3f5f7; border-top: 6px solid var(--ti-accent); padding: clamp(24px, 5vw, 64px); border-radius: 4px; }
+.ti-career .ti-eyebrow { color: #50616f; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+.ti-career h1 { color: var(--ti-ink); font-size: clamp(32px, 5vw, 56px); line-height: 1.22; letter-spacing: -.03em; margin: 20px 0; }
+.ti-career .ti-lead { font-size: 20px; line-height: 1.7; }
+.ti-career .ti-tags, .ti-career .ti-toc { display: flex; flex-wrap: wrap; gap: 10px; }
+.ti-career .ti-tags span { font-size: 12px; border: 1px solid #aebbc4; padding: 4px 10px; border-radius: 30px; }
+.ti-career .ti-toc { margin: 24px 0; }
+.ti-career .ti-toc a { border: 1px solid #ccd6dd; padding: 6px 12px; border-radius: 4px; }
+.ti-career a { color: #006775; text-underline-offset: 3px; }
+.ti-career section { margin: 48px 0; scroll-margin-top: 24px; }
+.ti-career h2 { border-bottom: 2px solid #dce3e8; padding-bottom: 14px; font-size: 26px; line-height: 1.5; }
+.ti-career h2 span { color: var(--ti-accent); margin-right: 12px; font-size: 18px; }
+.ti-career h3 { font-size: 20px; line-height: 1.55; }
+.ti-career .ti-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+.ti-career .ti-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.ti-career .ti-card { border: 1px solid #d5dfe5; border-radius: 8px; padding: 22px; background: #fff; }
+.ti-career .ti-card h3 { margin-top: 12px; }
+.ti-career .ti-rank { color: #006775; font-size: 13px; font-weight: 700; }
+.ti-career .ti-deliverable { font-size: 14px; font-weight: 700; padding-top: 12px; border-top: 1px solid #dce3e8; }
+.ti-career .ti-note, .ti-career .ti-thesis { background: #f3f5f7; padding: 20px 24px; border-left: 4px solid var(--ti-accent); margin: 24px 0; }
+.ti-career .ti-note p:last-child { margin-bottom: 0; }
+.ti-career .ti-table { overflow-x: auto; margin: 24px 0; }
+.ti-career table { width: 100%; font-size: 14px; display: table; min-width: 600px; }
+.ti-career caption { text-align: left; font-weight: 700; margin-bottom: 10px; }
+.ti-career th { background: #eef3f5; text-align: left; }
+.ti-career td, .ti-career th { padding: 12px; border-bottom: 1px solid #dce3e8; vertical-align: top; }
+.ti-career .ti-source { font-size: 13px; color: #445765; }
+.ti-career details { border: 1px solid #d5dfe5; border-radius: 6px; padding: 16px 20px; }
+.ti-career summary { cursor: pointer; font-weight: 700; }
+.ti-career blockquote { font-size: 16px; border-left: 3px solid #007c8c; background: #f6f8f9; padding: 14px 20px; font-style: normal; margin: 20px 0; }
+.ti-career .ti-roadmap { padding-left: 28px; }
+.ti-career .ti-roadmap li { padding: 0 0 18px 12px; margin: 18px 0; border-bottom: 1px solid #dce3e8; }
+.ti-career .ti-sources { font-size: 14px; }
+.ti-career .ti-sources li { margin-bottom: 14px; }
+.ti-career .ti-next { padding: 22px; background: #eef3f5; font-size: 18px; }
+.ti-career button { background: #007c8c; color: #fff; border: 0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font: inherit; }
+.ti-career :focus-visible { outline: 3px solid #007c8c; outline-offset: 4px; }
+@media (max-width: 800px) { .ti-career .ti-grid, .ti-career .ti-grid-two { grid-template-columns: 1fr; } .ti-career h2 { font-size: 23px; } }
+@media print { .masthead, .page__footer, .ti-career .ti-toc, .ti-career button { display: none !important; } .ti-career { font-size: 11pt; max-width: none; } .ti-career .ti-hero { padding: 18px; } .ti-career h1 { font-size: 28pt; } .ti-career .ti-grid, .ti-career .ti-grid-two { display: block; } .ti-career .ti-card { margin: 12px 0; } .ti-career table { min-width: 0; font-size: 9pt; } .ti-career .ti-table { overflow: visible; } .ti-career section { margin: 24px 0; } .ti-career h2, .ti-career h3 { break-after: avoid; } .ti-career .ti-card, .ti-career tr { break-inside: avoid; } }

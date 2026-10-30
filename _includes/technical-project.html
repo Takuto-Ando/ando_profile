@@ -33,6 +33,7 @@
   {% for section in project.explanation %}
   <h3>{{ section.title }}</h3>
   {% for text in section.paragraphs %}<p>{{ text }}</p>{% endfor %}
+  {% if section.figure != nil %}{% include article-materials.html figure=section.figure %}{% endif %}
   {% endfor %}
   {% endif %}
   <h2>結果</h2>

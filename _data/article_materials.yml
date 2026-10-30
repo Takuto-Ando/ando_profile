@@ -88,6 +88,19 @@
     - src: /assets/images/LLMchat_demo.gif
       caption: 既存サイトのLLMチャット動作デモ。性能測定ログではありません。
       source: ando_profile/assets/images/LLMchat_demo.gif
+    - src: /assets/images/technical/article-slides/q-snap-05.png
+      caption: 固定チャンクと実行環境の不一致。保存発表資料のPDF 5ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/qsnap-icisn2026.pdf
+      source: ando_profile/assets/presentations/qsnap-icisn2026.pdf page 5
+    - src: /assets/images/technical/article-slides/q-snap-06.png
+      caption: 容量と量子化境界からサイズを決める。保存発表資料のPDF 6ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/qsnap-icisn2026.pdf
+      source: ando_profile/assets/presentations/qsnap-icisn2026.pdf page 6
+    - src: /assets/images/technical/article-slides/q-snap-08.png
+      caption: プリフィルとデコードの結果を分ける。保存発表資料のPDF 8ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/qsnap-icisn2026.pdf
+      source: ando_profile/assets/presentations/qsnap-icisn2026.pdf page 8
+
 /research/asr/:
   documents:
     - href: /assets/portfolio-evidence/article-media/whisper-paper.pdf
@@ -97,6 +110,19 @@
     - src: /assets/images/CANDAR_process.png
       caption: 既存サイトに掲載しているCANDAR研究紹介図。
       source: ando_profile/assets/images/CANDAR_process.png
+    - src: /assets/images/technical/article-slides/asr-11.png
+      caption: FP16入力を変換して内積を実行する。保存発表資料のPDF 11ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/whisper-candar2025.pdf
+      source: ando_profile/assets/presentations/whisper-candar2025.pdf page 11
+    - src: /assets/images/technical/article-slides/asr-13.png
+      caption: 転送前にパディングを取り除く。保存発表資料のPDF 13ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/whisper-candar2025.pdf
+      source: ando_profile/assets/presentations/whisper-candar2025.pdf page 13
+    - src: /assets/images/technical/article-slides/asr-20.png
+      caption: LMM容量とモデル電力に基づく評価。保存発表資料のPDF 20ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/whisper-candar2025.pdf
+      source: ando_profile/assets/presentations/whisper-candar2025.pdf page 20
+
 /research/generative-ai/:
   documents:
     - href: /assets/portfolio-evidence/article-media/stable-diffusion-paper.pdf
@@ -106,6 +132,19 @@
     - src: /assets/images/MCSOC_imagegen.png
       caption: 既存サイトに掲載しているMCSoC研究紹介図。
       source: ando_profile/assets/images/MCSOC_imagegen.png
+    - src: /assets/images/technical/article-slides/generative-ai-05.png
+      caption: 画像生成のどこへ量子化演算を適用するか。保存発表資料のPDF 5ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/stable-diffusion-mcsoc2025.pdf
+      source: ando_profile/assets/presentations/stable-diffusion-mcsoc2025.pdf page 5
+    - src: /assets/images/technical/article-slides/generative-ai-06.png
+      caption: 量子化された重みを内積へつなぐ。保存発表資料のPDF 6ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/stable-diffusion-mcsoc2025.pdf
+      source: ando_profile/assets/presentations/stable-diffusion-mcsoc2025.pdf page 6
+    - src: /assets/images/technical/article-slides/generative-ai-09.png
+      caption: CPUに残る処理が全体時間を制約する。保存発表資料のPDF 9ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/presentations/stable-diffusion-mcsoc2025.pdf
+      source: ando_profile/assets/presentations/stable-diffusion-mcsoc2025.pdf page 9
+
 /research/imax/:
   documents:
     - href: /assets/portfolio-evidence/article-media/imax-analysis-paper.pdf
@@ -136,6 +175,19 @@
     - src: /assets/images/fer_system.png
       caption: CPUで画像を処理し、DenseBoxによる顔検出とCNNによる表情分類を同じDPUへ渡す構成。
       source: ando_profile/assets/images/fer_system.png
+    - src: /assets/images/technical/article-slides/kv260-17.png
+      caption: DPUサイズとFPGAリソースの対応。保存発表資料のPDF 17ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 17
+    - src: /assets/images/technical/article-slides/kv260-18.png
+      caption: 単一スレッドで生じるDPUの待ち時間。保存発表資料のPDF 18ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 18
+    - src: /assets/images/technical/article-slides/kv260-19.png
+      caption: 複数フレームのCPU処理とDPU実行を重ねる。保存発表資料のPDF 19ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 19
+
 /research/facial-expression/:
   documents:
     - href: /assets/pdfs/tokukenn_thesis.pdf
@@ -151,6 +203,19 @@
     - src: /assets/images/fer_system.png
       caption: 表情認識システムの既存図。
       source: ando_profile/assets/images/fer_system.png
+    - src: /assets/images/technical/article-slides/facial-expression-11.png
+      caption: 2つのモデルの入出力を接続する。保存発表資料のPDF 11ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 11
+    - src: /assets/images/technical/article-slides/facial-expression-15.png
+      caption: CPUと同じDPUへ処理を割り振る。保存発表資料のPDF 15ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 15
+    - src: /assets/images/technical/article-slides/facial-expression-31.png
+      caption: システム全体のスループットを見る。保存発表資料のPDF 31ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/CANDARW_GCA'24.pdf
+      source: ando_profile/assets/pdfs/CANDARW_GCA'24.pdf page 31
+
 /research/green-onion-dnn/:
   documents:
     - href: /assets/portfolio-evidence/kosen-yolox-manuscript.pdf
@@ -166,6 +231,23 @@
     - src: /assets/images/negi_seg.png
       caption: インスタンスセグメンテーションの既存結果図。YOLOXとは別の実装です。
       source: ando_profile/assets/images/negi_seg.png
+    - src: /assets/images/technical/article-slides/green-onion-dnn-14.png
+      caption: 画像から位置座標までの処理工程。保存発表資料のPDF 14ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/ieice_kyusyu_ando.pdf
+      source: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf page 14
+    - src: /assets/images/technical/article-slides/green-onion-dnn-17.png
+      caption: 芯と外葉を分けて学習する。保存発表資料のPDF 17ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/ieice_kyusyu_ando.pdf
+      source: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf page 17
+    - src: /assets/images/technical/article-slides/green-onion-dnn-19.png
+      caption: 葉の枚数が変わる位置を調製位置へ変換する。保存発表資料のPDF 19ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/ieice_kyusyu_ando.pdf
+      source: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf page 19
+    - src: /assets/images/technical/article-slides/green-onion-dnn-24.png
+      caption: 全画像と遮蔽画像で手法の優劣が変わる。保存発表資料のPDF 24ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/ieice_kyusyu_ando.pdf
+      source: ando_profile/assets/pdfs/ieice_kyusyu_ando.pdf page 24
+
 /research/green-onion-edge/:
   documents:
     - href: /assets/pdfs/sotsuken_thesis.pdf
@@ -181,3 +263,44 @@
     - src: /assets/images/negi_machine.jpg
       caption: 小ねぎ調製機の既存写真。
       source: ando_profile/assets/images/negi_machine.jpg
+    - src: /assets/images/technical/article-slides/green-onion-edge-08.png
+      caption: 分岐部を求める処理全体。保存発表資料のPDF 8ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/sotsuken_slide.pdf
+      source: ando_profile/assets/pdfs/sotsuken_slide.pdf page 8
+    - src: /assets/images/technical/article-slides/green-onion-edge-10.png
+      caption: 背景と葉の輪郭をマスクで除く。保存発表資料のPDF 10ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/sotsuken_slide.pdf
+      source: ando_profile/assets/pdfs/sotsuken_slide.pdf page 10
+    - src: /assets/images/technical/article-slides/green-onion-edge-16.png
+      caption: 面積だけでは分けにくい繊維を角度で区別する。保存発表資料のPDF 16ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/sotsuken_slide.pdf
+      source: ando_profile/assets/pdfs/sotsuken_slide.pdf page 16
+    - src: /assets/images/technical/article-slides/green-onion-edge-22.png
+      caption: 特徴量を組み合わせたときの変化。保存発表資料のPDF 22ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/sotsuken_slide.pdf
+      source: ando_profile/assets/pdfs/sotsuken_slide.pdf page 22
+    - src: /assets/images/technical/article-slides/green-onion-edge-23.png
+      caption: 見えない斜線と輝度差の小さい斜線。保存発表資料のPDF 23ページ。発表当時の条件・表記を保持しています。
+      public_source: /assets/pdfs/sotsuken_slide.pdf
+      source: ando_profile/assets/pdfs/sotsuken_slide.pdf page 23
+
+/research/network-analyzer/:
+  figures:
+    - src: /assets/portfolio-evidence/article-media/network-overview.png
+      caption: 最終発表10枚目。パケットの概要一覧と詳細領域。当時の通信情報を含むためローカル表示限定。
+      source: files_tmp/プレゼン_NA_1.pptx slide 10
+    - src: /assets/portfolio-evidence/article-media/network-details.png
+      caption: 最終発表11枚目。パケットの16進数表示とレイヤごとの詳細。当時の画面。
+      source: files_tmp/プレゼン_NA_1.pptx slide 11
+    - src: /assets/portfolio-evidence/article-media/network-filter.png
+      caption: 最終発表12枚目。IPアドレス・ポート番号の複数指定とプロトコル選択を行う開発時のフィルタ画面。
+      source: files_tmp/プレゼン_NA_1.pptx slide 12
+    - src: /assets/portfolio-evidence/article-media/network-protocols.png
+      caption: 最終発表15枚目。プロトコル統計の画面。今回の測定値ではありません。
+      source: files_tmp/プレゼン_NA_1.pptx slide 15
+    - src: /assets/portfolio-evidence/article-media/network-traffic.png
+      caption: 最終発表16枚目。トラフィック統計の画面。当時のデモ表示。
+      source: files_tmp/プレゼン_NA_1.pptx slide 16
+    - src: /assets/portfolio-evidence/article-media/network-time.png
+      caption: 最終発表17枚目。上位5アドレスの1秒ごとの取得パケット数。帯域の測定ではありません。
+      source: files_tmp/プレゼン_NA_1.pptx slide 17
