@@ -14,27 +14,18 @@
   {% endif %}
   <h1 class="page-heading">Technology</h1>
   <p class="poc-lead">研究内容や個人で行っている勉強の活動記録です。</p>
+  {% if site.technical_preview %}
   <div class="technical-actions">
-    {% if site.technical_preview %}
     <a class="action-primary" href="{{ '/research/evidence/' | relative_url }}">ポートフォリオ資料庫を見る</a>
     <a href="{{ '/research/kosen/' | relative_url }}">高専での研究を見る →</a>
-    {% else %}
-    <a class="action-primary" href="{{ '/poc/' | relative_url }}">組込みPoCを見る</a>
-    <a href="#edge-ai">エッジAI・画像処理を見る →</a>
-    {% endif %}
   </div>
+  {% endif %}
   {% if site.technical_preview %}
   <details class="technical-draft">
     <summary>ローカル下書きについて</summary>
     <p>研究の整理範囲はMCSoC 2026 SSM、CANDARW 2026 BitNet・NTTまでの論文原稿と既存掲載研究です。新しい原稿の公開状況・公開許可は掲載前に確認します。</p>
   </details>
   {% endif %}
-  <nav class="technical-categories" aria-label="技術カテゴリ">
-    {% for section in site.data.technical_projects.sections %}
-      <a href="#{{ section.id }}">{{ section.title_ja }}</a>
-    {% endfor %}
-    <a href="#engineering-notes">技術ノート</a>
-  </nav>
   {% for section in site.data.technical_projects.sections %}
     <section id="{{ section.id }}" class="technical-section">
       <h2>{{ section.title_ja }}</h2>

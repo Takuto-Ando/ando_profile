@@ -2,7 +2,7 @@ sections:
   - id: accelerator
     title: Accelerator / Hardware–Software Co-design
     title_ja: HW/SWの協調実装
-    description: アプリケーションにおける演算のマッピング、正しさの検証と性能分析などです。
+    description: CGLAアプリケーションにおける演算のマッピングや性能分析などについてまとめています。
     items:
       - project: ntt
       - project: bitnet
