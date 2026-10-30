@@ -46,6 +46,8 @@ posters:
     id: dpd-apccas2026
     projects: [dpd]
     pptx: /assets/presentations/dpd-apccas2026.pptx
+    version_ja: 編集版（2026年10月21日更新）
+    version_en: Editing version (updated October 21, 2026)
     note_ja: 2026年10月21日更新のポスター編集版です。
     note_en: Poster editing version updated on October 21, 2026.
   - label: SOCC 2025

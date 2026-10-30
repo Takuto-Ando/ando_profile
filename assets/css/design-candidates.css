@@ -69,6 +69,22 @@ body[data-design="section-band"] .technical > h2 {
   font-size: 1.05rem;
 }
 
+body[data-design="section-band"] .technical-section > p,
+body[data-design="section-band"] .technical-section > .poc-grid {
+  margin-left: .85rem;
+}
+
+@media (max-width: 640px) {
+  body[data-design="section-band"] .technical-section > h2 {
+    padding-left: .65rem !important;
+  }
+
+  body[data-design="section-band"] .technical-section > p,
+  body[data-design="section-band"] .technical-section > .poc-grid {
+    margin-left: .65rem;
+  }
+}
+
 body[data-design="section-band"] .poc-card h3 {
   font-size: 1.15rem;
 }

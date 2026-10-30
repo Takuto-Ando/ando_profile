@@ -1105,9 +1105,10 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   }
 }
 
-.page__content .page-heading {
+.page__content .page-heading,
+.page__content .technical .page-heading {
   margin: 0 0 1rem;
-  font-size: 1.65rem;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0;
@@ -1216,8 +1217,9 @@ figcaption { color: var(--muted) !important; font-size: 0.72rem !important; text
   color: var(--link) !important;
 }
 @media (max-width: 640px) {
-  .page__content .page-heading {
-    font-size: 1.45rem;
+  .page__content .page-heading,
+  .page__content .technical .page-heading {
+    font-size: 1.7rem;
   }
   .about-card {
     padding: .85rem;
