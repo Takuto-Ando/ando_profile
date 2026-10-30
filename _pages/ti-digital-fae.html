@@ -23,6 +23,21 @@ classes: wide
 
   <aside class="ti-note"><strong>このプランの前提</strong><p>TIにDigital FAEとして入社する想定。オファー、入社時期、配属製品、採用区分は未確認。提案する期限・指標は本人の行動目標であり、TIの人事基準ではない。内定・給与上限・昇格を保証するものではなく、日本のDigital FAE固有の報酬規程は確認が必要。</p></aside>
 
+  {% if site.local_poc_preview %}
+  <aside class="ti-note" aria-label="ローカル学習アプリ">
+    <strong>FAE Design Win Simulator</strong>
+    <p>顧客ヒアリング → 要件整理 → 技術的成立性検証を演習する。競合比較、反証、回答履歴、ChatGPT用の復習プロンプトにも対応。</p>
+    <p><a href="http://127.0.0.1:4178/">Simulatorを開く（このPC専用）</a></p>
+    <details><summary>接続できない場合の起動手順</summary>
+      <p>WSLのターミナルで次を実行し、表示されたURLを開く。履歴を継続するため、ホストとポートは変更しない。</p>
+      <pre><code>cd /home/wsl_user/work_space/Research_project/fae-design-win-simulator
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4178 --strictPort</code></pre>
+      <p>このリンクはローカル確認時のみ表示する。アプリ・Notion事例・回答履歴をプロフィールサイトへ公開・転送しない。</p>
+    </details>
+  </aside>
+  {% endif %}
+
   <section id="priorities">
     <h2><span>01</span>まず、これをする。</h2>
     <div class="ti-grid">
