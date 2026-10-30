@@ -9,7 +9,7 @@ author_profile: false
 {% if site.active_lang == 'en' %}{% assign is_en = true %}{% endif %}
 <div class="materials-page" markdown="0">
   <header class="page-intro">
-    <h1 class="page-heading">{% if is_en %}Presentation Materials{% else %}発表資料{% endif %}</h1>
+    <h1 class="page-heading">Materials</h1>
     <p>{% if is_en %}Slides and posters on accelerator evaluation and FPGA / image processing research.{% else %}アクセラレータの評価と、FPGA・画像処理研究のスライドとポスターをまとめています。{% endif %}</p>
     <nav class="page-links" aria-label="{% if is_en %}Material types{% else %}資料の種類{% endif %}">
       <a href="#slides">{% if is_en %}Slides{% else %}スライド{% endif %}</a>

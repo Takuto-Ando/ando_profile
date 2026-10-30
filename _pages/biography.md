@@ -54,7 +54,7 @@ classes: wide
 
 {% else %}
 
-<h1 class="page-heading">経歴</h1>
+<h1 class="page-heading">Biography</h1>
 
 ### 学歴
 
