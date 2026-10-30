@@ -44,6 +44,16 @@
 {% if links_url %}
   {% assign has_inline_links = true %}
 {% endif %}
+{% assign first_author = publication.authors | first %}
+{% assign fallback_link = nil %}
+{% unless publication.title contains 'Q-snap' %}
+{% if first_author.me %}
+  {% assign fallback_link = publication.abstractSource | default: pdf_url %}
+  {% if fallback_link and has_inline_links == false %}
+    {% assign has_inline_links = true %}
+  {% endif %}
+{% endif %}
+{% endunless %}
 
 <article class="pub-item">
   <div class="pub-item__index">{{ item_label }}.</div>
@@ -166,6 +176,18 @@
               {% assign links_href = links_url %}
               {% unless links_href contains '://' %}{% assign links_href = links_href | relative_url %}{% endunless %}
               <li><a href="{{ links_href }}">{{ publication.title }}</a></li>
+            {% endif %}
+            {% if fallback_link and links_url == nil and publication.linkItems == nil %}
+              {% assign has_other_link = false %}
+              {% for item in publication.links %}
+                {% assign item_kind = item.label | downcase %}
+                {% unless item_kind == 'pdf' or item_kind == 'abstract' or item_kind == 'bibtex' %}{% assign has_other_link = true %}{% endunless %}
+              {% endfor %}
+              {% unless has_other_link %}
+              {% assign fallback_href = fallback_link %}
+              {% unless fallback_link contains '://' %}{% assign fallback_href = fallback_link | relative_url %}{% endunless %}
+              <li><a href="{{ fallback_href }}">{% if publication.abstractSource %}出典{% else %}PDF{% endif %}</a></li>
+              {% endunless %}
             {% endif %}
           </ul>
         </div>

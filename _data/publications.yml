@@ -564,6 +564,7 @@ sections:
             me: true
           - name: 井上 優良
         title: FPGAにおけるDPUを用いた表情認識システムの実装
+        links_url: https://onct.oita-ct.ac.jp/senkou/tokuken/program/2023_A1ES.pdf
         venue: 情報処理学会第249回 システム・アーキテクチャ研究発表会
         citation: 2024
         bibtexText: |-
@@ -573,14 +574,12 @@ sections:
             booktitle = {情報処理学会第249回 システム・アーキテクチャ研究発表会},
             year = {2024}
           }
-        links:
-          - label: PDF
-            url: /assets/pdfs/paper/ipsj_arc2024.pdf
       - authors:
           - name: 安藤 拓翔
             me: true
           - name: 井上 優良
         title: FPGAによるリアルタイム表情認識システムの実装
+        links_url: https://www.oita-ct.ac.jp/wpct/data/akeno/akeno_137.pdf
         venue: 電子情報通信学会九州支部学生会講演会
         citation: 2023
         bibtexText: |-
