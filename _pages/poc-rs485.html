@@ -9,19 +9,15 @@ classes: wide
 <div class="poc">
   <a class="poc-back" href="{{ '/research/#industrial' | relative_url }}">← Technology</a>
   <p class="poc-eyebrow">機器間通信・UART</p>
-  <p class="poc-lead">MAX3485とUARTを使い、終端・バイアスを含むRS-485通信と長時間試験に取り組んだPoC。</p>
-  <h2>課題と目的</h2>
-  <p>MCU側のUARTからRS-485通信を構成し、配線・終端・バイアスとファームウェアの送受信を合わせて確認することを目的にしました。</p>
+  <p class="poc-lead">MAX3485でMCUのUARTをRS-485に変換し、対向ノードと通信させた記録。バス側は120Ω終端とバイアス入り。</p>
+  <p>UARTだけでは届かない機器間配線を想定して、トランシーバ側の終端とバイアスまで含めて組んだ。</p>
   <h2>システム構成</h2>
   <div class="poc-flow" aria-label="通信経路">
     <span>MCU / UART</span><b aria-hidden="true">↔</b><span>MAX3485</span><b aria-hidden="true">↔</b><span>RS-485 A / B</span><b aria-hidden="true">↔</b><span>対向ノード</span>
   </div>
-  <p>構成には120Ω終端とバイアスが含まれます。</p>
-  <h2>回路と通信試験で取り組んだこと</h2>
-  <h3>UARTとMAX3485の接続</h3>
-  <p>UARTとMAX3485を使ってRS-485通信を構成しました。MCU側の送受信と、A/B配線・終端・バイアスを含むバス側の接続を、一つの動作系として扱ったPoCです。</p>
-  <h3>長時間通信の試験</h3>
-  <p>構成した通信系で長時間の通信試験に取り組みました。</p>
-  <h2>実装と現在の結果</h2>
-  <p>試験時間やエラー数の定量結果は未確認です。</p>
+  <h2>やったこと</h2>
+  <h3>配線</h3>
+  <p>MCUのUARTをMAX3485につなぎ、A/B線で対向ノードと接続した。終端は120Ω、バイアスも入れた構成。</p>
+  <h3>長時間試験</h3>
+  <p>この構成で長時間の通信も回した。ただし試験時間・ボーレート・フレーム数とエラー数の記録は残っていないので、安定性の数値はここには書けない。</p>
 </div>

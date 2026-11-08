@@ -24,7 +24,7 @@ sections:
   - id: industrial
     title: Industrial Embedded Systems / PoC
     title_ja: 組込みシステム・PoC
-    description: 個人で実際に動かした回路・ファームウェアの経験などをまとめています。研究成果とは別に、将来のキャリアのために取り組んだPoCの記録です。
+    description: 研究とは別に、個人で組んだ回路とファームウェア。24V入力、RS-485、MSPM0の周辺機能、モータ駆動の4件。
     items:
       - title: 24V産業用デジタル入力
         href: /poc/24v-digital-input/
@@ -36,7 +36,7 @@ sections:
         href: /poc/rs485/
         image: /assets/images/technical/rs485-preview.svg
         image_alt: UART・トランシーバ・RS-485バスの概念図。実配線図ではありません
-        body: MAX3485とUARTを使った通信、120Ω終端・バイアス、長時間通信試験の経験。
+        body: MAX3485とUART、120Ω終端とバイアス付きで対向ノードと通信。長時間試験の記録は残っていない。
         tags: [RS-485, UART, 終端, 通信試験]
       - title: MSPM0の周辺機能制御
         href: /poc/mspm0-peripheral-control/

@@ -9,9 +9,7 @@ classes: wide
 <div class="poc">
   <a class="poc-back" href="{{ '/research/#industrial' | relative_url }}">← Technology</a>
   <p class="poc-eyebrow">産業用入出力・マイコン</p>
-  <p class="poc-lead">24V入力からMSPM0の割込み検知までをつなぎ、アナログ入力の判定とファームウェアのデバウンスを試したPoC。</p>
-  <h2>課題と目的</h2>
-  <p>産業用の24V入力をMCUのロジック入力へ接続する構成を学び、入力判定からイベント検知までの一連の動作を確かめることを目的にしました。</p>
+  <p class="poc-lead">24V入力を分圧してLM393で判定し、PC817と74HC14を通してMSPM0のGPIOに入れた。検知はGPIO割込み、デバウンスはファームウェア側。</p>
   <h2>システム構成</h2>
   <div class="poc-flow" aria-label="信号経路">
     <span>24V入力・分圧</span><b aria-hidden="true">→</b><span>LM393</span><b aria-hidden="true">→</b><span>PC817</span><b aria-hidden="true">→</b><span>74HC14</span><b aria-hidden="true">→</b><span>MSPM0 GPIO割込み</span><b aria-hidden="true">→</b><span>デバウンス</span>
@@ -26,15 +24,14 @@ classes: wide
       <tr><td>MSPM0</td><td>GPIO割込みとデバウンス</td></tr>
     </tbody>
   </table></div>
-  <h2>回路とファームウェアで取り組んだこと</h2>
-  <h3>入力からロジック信号までの接続</h3>
-  <p>24V入力を分圧してLM393へ渡し、PC817、74HC14を経由してMSPM0へ接続しました。入力の比較、フォトカプラを介した信号伝達、波形整形を段ごとに分けた構成です。</p>
+  <h2>回路とファームウェア</h2>
+  <p>判定（LM393）、絶縁側の伝達（PC817）、波形整形（74HC14）を分けたのは、どの段で信号が崩れるかを切り分けられるようにするため。</p>
   <figure class="article-figure">
     <a href="{{ '/assets/images/mspm0-24v-di.jpg' | relative_url }}" target="_blank" rel="noopener"><img src="{{ '/assets/images/mspm0-24v-di.jpg' | relative_url }}" alt="MSPM0を使った24V入力PoCの実機配線とオシロスコープ" loading="lazy"></a>
     <figcaption>24V入力PoCの実機配線と、オシロスコープによる観測の様子。</figcaption>
   </figure>
   <h3>MSPM0での割込みとデバウンス</h3>
-  <p>回路から得られる信号をMSPM0のGPIO割込みで検知し、デバウンスを含む入力処理まで動作させました。回路の出力をファームウェアのイベントへつなぐ部分が、このPoCで実装した範囲です。</p>
-  <h2>実装と現在の結果</h2>
-  <p>24V入力からLM393、PC817、74HC14を通し、MSPM0で割込み・デバウンスして検知するところまで動作させています。現段階の成果は、この入力経路を個人PoCとして実装したことです。</p>
+  <p>MSPM0のGPIO割込みで検知し、デバウンスはファームウェア側で処理した。</p>
+  <h2>現在の結果</h2>
+  <p>24Vを入れてMSPM0側で割込み検知とデバウンスが動くところまで確認した。しきい値付近の入力波形や検知ログは残していない。</p>
 </div>

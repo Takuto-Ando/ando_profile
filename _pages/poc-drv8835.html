@@ -9,18 +9,13 @@ classes: wide
 <div class="poc">
   <a class="poc-back" href="{{ '/research/#industrial' | relative_url }}">← Technology</a>
   <p class="poc-eyebrow">モータ制御・トラブルシュート</p>
-  <p class="poc-lead">MCUからDRV8835を制御してモータを駆動し、誤配線時の不調とMODE設定の修正に取り組んだPoC。</p>
-  <h2>課題と目的</h2>
-  <p>MCUとモータドライバを接続し、DRV8835のMODE設定を含めたモータ駆動を試しました。動作した構成に加え、配線を誤った際の症状と復旧の経緯を、トラブルシュート事例として残します。</p>
+  <p class="poc-lead">MCUからDRV8835でモータを回した記録。誤配線で一度壊しかけ、MODE設定を直して動くようになった経緯も残す。</p>
   <h2>システム構成</h2>
   <div class="poc-flow" aria-label="モータ制御の構成">
     <span>MCU / 制御信号</span><b aria-hidden="true">→</b><span>DRV8835 / MODE設定</span><b aria-hidden="true">→</b><span>モータ駆動</span>
   </div>
   <h2>実装と動作結果</h2>
-  <p>MCUからDRV8835を制御してモータを駆動しました。MODE設定を扱い、正しい設定に修正した構成で動作を確認しています。</p>
+  <p>MCUの制御信号でDRV8835を駆動し、モータが回ることを確認した。MODE設定は最初間違えていて、直した後に動作した。</p>
   <h2>トラブルシュート事例</h2>
-  <h3>観測した症状</h3>
-  <p>誤配線をした際に、モータ側に加えてUSB側にも不調が生じました。</p>
-  <h3>復旧と修正</h3>
-  <p>BOOTSEL＋リセットで復旧し、その後、正しいMODE設定でモータが動作しました。</p>
+  <p>誤配線時にモータが回らないだけでなく、USB側も不調になった。BOOTSEL＋リセットで復旧した。ただし誤配線の箇所と、MODEをどう変えたかの記録は残っていない。USB不調の原因も未確認のまま。</p>
 </div>

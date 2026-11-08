@@ -9,9 +9,8 @@ classes: wide
 <div class="poc">
   <a class="poc-back" href="{{ '/research/#industrial' | relative_url }}">← Technology</a>
   <p class="poc-eyebrow">マイコン・イベント駆動ファームウェア</p>
-  <p class="poc-lead">GPIO割込み、タイマによるデバウンス、ADC連続変換、UART出力、__WFIを組み合わせたMSPM0のファームウェアの動作検証。</p>
-  <h2>課題と目的</h2>
-  <p>MSPM0の周辺機能を個別に動かすだけでなく、入力イベントの検知とADCのサンプリングを共存させる実装に取り組みました。GPIO、タイマ、ADC、UARTを組み合わせ、MCUが入力を受けて処理する一連の流れを確認することが目的です。</p>
+  <p class="poc-lead">MSPM0でGPIO割込み、TimerGデバウンス、ADC12連続変換、UART出力と__WFI待機を一緒に動かした記録。</p>
+  <p>周辺機能を1つずつ動かすのではなく、入力割込みとADCサンプリングが同時に走る状態で試した。</p>
   <h2>実装構成</h2>
   <div class="poc-flow" aria-label="イベント処理の構成">
     <span>PA25 / 立下りエッジ</span><b aria-hidden="true">→</b><span>GPIO割込み</span><b aria-hidden="true">→</b><span>TimerG / デバウンス</span><b aria-hidden="true">→</b><span>イベントカウント / UART</span>
@@ -21,11 +20,11 @@ classes: wide
   </div>
   <h2>実際に取り組んだこと</h2>
   <h3>GPIO割込みとタイマによるデバウンス</h3>
-  <p>PA25の立下りエッジをGPIO割込みで検知し、TimerGを使ったデバウンス処理を実装しました。イベント数をUARTで表示し、入力イベントをファームウェアで受け取る動作を確認しました。</p>
+  <p>PA25の立下りエッジで割込みをかけ、TimerGでデバウンスした。イベント数はUARTに出した。</p>
   <h3>ADC12の連続サンプリング</h3>
-  <p>PA24を使ったADC12の連続変換を動かし、GPIO割込みとの共存も試しました。</p>
+  <p>PA24でADC12の連続変換を回し、上の割込みと同時に動かしても止まらないかを見た。</p>
   <h3>__WFIによるイベント待機</h3>
-  <p>__WFIを使うイベント駆動の実装に取り組みました。</p>
+  <p>処理が無い間は__WFIで待機させ、割込みで起こす形にした。</p>
   <h2>入力イベントをUARTへ送る保存コード</h2>
   <p>保存していたMSPM0C1104向けプロジェクトから、GPIO入力、LED、UART、イベント待機をつなぐソース例を整理しました。SysConfigの記録はMSPM0 SDK 2.11.00.07、SysConfig 1.26.2、VSSOP-20（DGS20）です。</p>
   <div class="poc-flow" aria-label="添付コードの処理">
