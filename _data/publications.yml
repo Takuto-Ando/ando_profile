@@ -474,6 +474,23 @@ sections:
 
     items:
       - authors:
+          - name: 浦山 健太郎
+          - name: 中井 平蔵
+          - name: 宗片 吉史
+          - name: 安藤 拓翔
+            me: true
+          - name: 中島 康彦
+        title: CGLAアクセラレータにおけるレーン数に応じた演算完了の待機方法によるLLM推論の高速化
+        venue: 第38回コンピュータシステム・シンポジウム（ComSys 2026）
+        citation: 2026年11月
+        bibtexText: |-
+          @inproceedings{urayama2026completionwait,
+            author = {浦山 健太郎 and 中井 平蔵 and 宗片 吉史 and 安藤 拓翔 and 中島 康彦},
+            title = {CGLAアクセラレータにおけるレーン数に応じた演算完了の待機方法によるLLM推論の高速化},
+            booktitle = {第38回コンピュータシステム・シンポジウム（ComSys 2026）論文集},
+            year = {2026}
+          }
+      - authors:
           - name: 安藤 拓翔
             me: true
           - name: 宗片 吉史
