@@ -64,7 +64,9 @@
       {% endfor %}
     </div>
 
-    <h3 class="pub-item__title">"{{ publication.title }}"</h3>
+    {% assign display_title = publication.title %}
+    {% if site.active_lang == 'en' and publication.titleEn %}{% assign display_title = publication.titleEn %}{% endif %}
+    <h3 class="pub-item__title">"{{ display_title }}"</h3>
 
     <div class="pub-item__meta">
       <span class="pub-item__venue">{{ publication.venue }}</span>

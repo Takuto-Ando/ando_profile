@@ -136,9 +136,12 @@ sections:
             me: true
           - name: 井上 優良
         title: エッジデバイス上におけるリアルタイム小ねぎ分岐部位置検出
+        titleEn: Real-time Detection of Green Onion Branch Position on Edge Devices
         venue: 農業情報研究
         citation: vol. 33, no. 2, pp. 73-80, 2024
         abstractJa: 近年，小ねぎ生産における農業従事者の不足が深刻な課題となっており，人手を減らす小ねぎ調製機の開発が求められている．現行の調製機では一度に不要な葉を全て除去できず，小ねぎを調製機に通した後に，人手による不要な葉を取り除く作業を行う必要がある．二次処理の不要な調製を行うためには，小ねぎの最上部の分岐部位置にノズルを合わせて調製機へ投入することが有効であると分かっている．これを行うには，分岐部の位置は個体によって異なるため分岐部の位置を判別し，位置を揃えて調製機に投入する必要がある．したがって，画像認識により小ねぎ分岐部の位置を検出し，ノズルの位置を自動で合わせることが正確な調製につながると考えた．そこで本稿では，分岐部の検出を目的として，小ねぎ分岐部における特有の斜線を抽出する手法を提案する．本手法は，低消費電力で演算能力の低いエッジデバイスでの実装を目標として，エッジ検出による画像処理をベースとした軽量なアルゴリズムを用いる．本手法を実際の小ねぎ画像に適用して，Raspberry Pi 3で評価した結果，分岐部斜線の検出率は90.6%であり．処理時間は455 msを達成した．この結果より，本手法が分岐部の検出に対して有効であることが明らかとなり，実環境にて応用できる可能性が示された．
+        abstractEn: "In recent years, a shortage of farm workers in green onion production has become a serious problem. Therefore, there is a need to further mechanize preparation. Current machinery cannot remove all unwanted leaves at once, requiring subsequent manual removal. To reduce this secondary processing, it is effective to align the nozzle with the uppermost branch position. It is necessary to recognize the branch position of each green onion and feed the plant into the machine with the branch position aligned. Detecting the branch position by image recognition and automatic alignment of the nozzle for preparation could improve the accuracy of preparation. In this paper, we propose a method for detecting the branch position by extracting a particular oblique line at the branch. The method is designed for implementation on low-power edge devices and uses a lightweight edge detection algorithm based on image processing. On a Raspberry Pi 3, it achieved a correct detection rate of 90.6% and a processing time of 455 ms. This result shows that our method is effective for detecting the branch position and may be applied to real-world use."
+        abstractSource: "https://www.jstage.jst.go.jp/article/air/33/2/33_73/_article/-char/en"
         bibtexText: |-
           @article{ando2024greenonion,
             author  = {安藤 拓翔 and 井上 優良},
@@ -154,6 +157,10 @@ sections:
         links:
           - label: Links
             url: https://doi.org/10.3173/air.33.73
+          - label: J-STAGE (English)
+            url: https://www.jstage.jst.go.jp/article/air/33/2/33_73/_article/-char/en
+          - label: English follow-up (YOLOX, ICIC Express Letters 2026)
+            url: https://doi.org/10.24507/icicel.20.08.811
         pdf: https://www.jstage.jst.go.jp/article/air/33/2/33_73/_pdf/-char/ja
 
   - key: international_conferences
