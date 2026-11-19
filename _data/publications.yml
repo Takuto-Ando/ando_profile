@@ -182,6 +182,8 @@ sections:
             title = {{Mamba-Family State-Space Model Kernels on a Programmable CGLA}},
             booktitle = {2026 IEEE 19th International Symposium on Embedded Multicore/Many-core Systems-on-Chip},
             year = {2026},
+            eprint = {2609.27437},
+            archivePrefix = {arXiv},
             url = {https://arxiv.org/abs/2609.27437}
           }
         links:
@@ -204,6 +206,8 @@ sections:
             title = {{Implementation and Evaluation of NTT Arithmetic for ML-KEM on a CGLA}},
             booktitle = {2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)},
             year = {2026},
+            eprint = {2609.28904},
+            archivePrefix = {arXiv},
             url = {https://arxiv.org/abs/2609.28904}
           }
         links:
@@ -226,6 +230,8 @@ sections:
             title = {{Implementation and Evaluation of BitNet Inference on a CGLA by Signed-Int4 Instructions}},
             booktitle = {2026 Fourteenth International Symposium on Computing and Networking Workshops (CANDARW 2026)},
             year = {2026},
+            eprint = {2609.27453},
+            archivePrefix = {arXiv},
             url = {https://arxiv.org/abs/2609.27453}
           }
         links:
@@ -249,6 +255,8 @@ sections:
             booktitle = {2026 IEEE Asia Pacific Conference on Circuits and Systems},
             year = {2026},
             note = {Poster Paper},
+            eprint = {2609.27438},
+            archivePrefix = {arXiv},
             url = {https://arxiv.org/abs/2609.27438}
           }
         links:
@@ -292,6 +300,7 @@ sections:
             author    = {Takuto Ando and Yu Eto and Yasuhiko Nakashima},
             title     = {Implementation and Evaluation of Stable Diffusion on a General-Purpose CGLA Accelerator},
             booktitle = {2025 IEEE 18th International Symposium on Embedded Multicore/Many-core Systems-on-Chip (MCSoC)},
+            pages     = {752--759},
             year      = {2025},
             doi       = {10.1109/MCSoC67473.2025.00120}
           }
@@ -316,6 +325,7 @@ sections:
             author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
             title     = {Energy-Efficient Hardware Acceleration of Whisper ASR on a CGLA},
             booktitle = {2025 13th International Symposium on Computing and Networking (CANDAR)},
+            pages     = {85--91},
             year      = {2025},
             doi       = {10.1109/CANDAR68384.2025.00018}
           }
@@ -365,6 +375,7 @@ sections:
             author    = {Takuto Ando and Yu Eto and Ayumu Takeuchi and Yasuhiko Nakashima},
             title     = {Energy-Efficient Llama3 Acceleration on a CGLA by Offloading Computational Kernels},
             booktitle = {2025 IEEE 38th International System-on-Chip Conference (SOCC) PhD/Master Forum},
+            pages     = {1--2},
             year      = {2025},
             doi       = {10.1109/SOCC66126.2025.11235407}
           }
@@ -372,6 +383,8 @@ sections:
         links:
           - label: Links
             url: https://doi.org/10.1109/SOCC66126.2025.11235407
+          - label: PDF
+            url: /assets/pdfs/paper/socc2025.pdf
       - authors:
           - name: Yu Eto
           - name: Takuto Ando
